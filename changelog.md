@@ -1,14 +1,10 @@
 # Changelog
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [6.1.0] - 2020-10-02
 ### Added
 - Document template preflight for headers and footers (#30)
 - Document template preflight for headings (#50)
-- CLI: Use preflight option in CLI commands make-accessible, add-tags, pdf2html – responsive (#127)
+- (CLI) Use preflight option in CLI commands make-accessible, add-tags, pdf2html – responsive (#127)
 
 ### Changed
 - Merge text objects with the same text state into single BT/ET in content writer (#130)
@@ -41,7 +37,7 @@ support of .NET Framework and .NET Core for Windows operating systems.
 - PdfPage.SetRotate
 - PdfDoc.Save added kSaveUncompressed, kSaveCompressedStructureOnly flags
 - PdfDoc.InserPages, DeletePage, CreatePage
-- CLI: Document template preflight for headers and footers (#30)
+- (CLI) Document template preflight for headers and footers (#30)
 
 ### Changed 
 - Renamed method PdfPage.AddTextAnnot
@@ -112,7 +108,6 @@ support of .NET Framework and .NET Core for Windows operating systems.
 - Form field appearance not created correctly when filling-in the form on Windows OS
 
 ## [5.5.2] - 2020-05-29
-
 ### Fixed
 - PdfDoc.Save flags kSaveUncompressed, kSaveCompressedStructureOnly
 
@@ -128,3 +123,287 @@ support of .NET Framework and .NET Core for Windows operating systems.
 - Form field appearance not created when filling-in the form
 - Setting PDF Producer in metadata
 - Performance and stability improvements
+
+## [5.0.44] - 2020-03-15
+### Changed
+- PdfDoc.AddWatermarkFromImage - fixed z-order placement
+
+### Fixed
+- Stability improvements
+
+## [5.0.40] - 2019-12-13
+### Fixed
+- URI Link conversion fix
+
+## [5.0.39] - 2019-11-22
+### Fixed
+- PdfPage.FlattenFormXObjects
+
+## [5.0.36] - 2020-10-10
+### Changed
+- PdfAccessibleParams - create_bookmarks parameter to control bokmark creation in MakeAccessible method
+- PdfDoc.AddTags -Images tagged by default with an AltText "Figure" unless defined by the config file
+- PdfDoc.AddTags - Tables tagged with table headers by default
+
+### Fixed
+- AcroForm SubmitForm method
+
+## [5.0.34] - 2020-03-15
+### Fixed
+- Stability and memory management improvements.
+
+## [5.0.0] - 2019-06-06
+The major release focused on accessibility, PDF/UA compliance and custom configurations.
+A new PDFix SDK Enterprise version brings the ability to customize layout detection, data extraction, and tagging.
+New functions allow developers to programmatically create content structure (PdsStructTree, PdsStructElement) and 
+also manipulate and edit existing structure elements, marked content, properties, and attributes.
+With manual adjustments, you will have full control over the process of creating PDF/UA compliant files.
+The automated data extraction process is now fully customizable via the configuration file. 
+In addition to the general set of thresholds, a developer can use special query language to dramatically improve the quality of data extraction.
+These two major features in combination can streamline your remediation workflows.
+
+### Added
+- Pdfix.RegisterPlugin, GetPluginByName,  GetEvent
+- PdfixPlugin.GetPdfixVersionMajor, GetPdfixVersionMinor, GetPdfixVersionPatch
+- PsEvent.GetType, GetDoc, GetPage, GetAnnot
+- PdsStructTree.GetObject, RemoveKid, CreateStructElement, GetDoc, UpdateParentTree
+- PdsStructElement.SetAlt, AddAttrObj, RemoveAttrObj, RemoveKid, CreateStructElement, SetParent, AddPageObject, AddAnnot, GetStructTree, SetType
+- PdfPageView.Release
+- PdePageMap.Release, AcquireElements, CreateElement,  AddTags
+- PdfPage.Release, GetLogicalRotate, CreatePageMap, GetNumPageObjects, GetPageObject, GetResources, GetObject, FlattenFormXObjects, GetContentFlags, SetContent, GetDoc
+- PdfDocTemplate.GetProperty, SetProperty, GetRegex, SetRegex
+- PdfDoc.RemoveTags, CreateDictObject, CreateArrayObject, CreateNameObject, CreateStringObject, CreateIntObject, CreateNumberObject, CreateStreamObject, GetObjectById, CreateStructTree, RemoveStructTree, RemoveBookmarks, CreateBookmarks, AddFontMissingUnicode
+- PdfAnnot.GetStructObject
+- PdfAction.GetDestPageNum
+- PdeText.GetTextFlags, GetLabelLevel, SetLabelLevel
+- PdeTextLine.GetTextLineFlags
+- PdeWord.GetWordFlags
+- PdeElement.SetBBox, SetRender, SetData, GetData, SetAlt, SetActualText, GetFlags, SetFlags, PdsContentMark, GetNumTags, GetTagName, GetTagObject, GetTagMcid, GetTagArtifact, AddTag, RemoveTag
+- PdsForm.GetNumPageObjects, GetPageObject
+- PdsText.GetTextState
+- PdsPageObject.GetId, SetRender, GetStructObject, GetContentMark, GetPage
+- PdsStream.IsEof, GetSize, Read, GetPos
+- PdsDictionary.Put, GetDictionary, GetArray, GetStream, GetString, GetText, GetNumber, GetInteger, GetBoolean
+- PdsArray.Put, Insert, GetDictionary, GetArray, GetStream, GetString, GetText, GetNumber, GetInteger
+- PdsName.GetText, 
+- PdsString.GetText
+- PdsObject.GetId
+- (OCR) OcrTesseract.SetDataPath, SetEngine
+- (OCR) TesseractDoc.OcrImageToPage
+
+### Changed
+- PdsStructElement.GetType, PdsStructElement.GetID
+- PdfDoc.GetRootObject, PdfDoc.GetInfoObject
+
+### Removed
+- Pdfix.SetRegex
+- PdsStructTree.ReleaseStructElement
+- PdfPage.ReleasePageMap, PdfPage.ReleasePageView, PdfPage.GetNumMcidPageObjects, PdfPage.GetMcidPageObject
+- PdfDoc.ReleasePage, PdfPage.RemoveStructTree
+- PdeTextLine.GetFlags
+- PdeWord.GetFlags
+- PdeElement.SetRenderMode
+- PdsReference.GetObjectNumber
+- (OCR) OcrTesseract.SetData
+- (OCR) TesseractDoc.Save
+
+## [4.1.0] - 2018-10-03
+### Added
+- PdsObject - access to PDF low level objects
+- PdsStructTree - access to PDF document structure tree (Tags)
+- PDF to XML conversion
+- PdfDocTemplate.kTrDetectRotation - automatic detection of page rotation flag
+- PdfDocTemplate.kMinCharClipRatio - clipping area intersection threshold
+- PdfDocTemplate.kTrMaxLineSpacing - maximum line spacing in paragraph threshold
+- (HTML) Text decoration under text markup annotations (highlight, underline, cross-out, squiggly)
+
+### Changed 
+- PdfDoc.GetInfo returns empty string if Info dict not present
+- PdfPage.GetMediaBox returns bounding box 0,0,612,792 if not present
+- PdeContentWriter - content stream optimization for TJ and Tj operators
+- PdeContentWriter - type3 font support
+- PdeContentWriter - inline image support
+- PdfFlattenAnnotsParams - flat_annot member to select annotation type to flatten
+- PdfPageMap - applied kTextFlagStrikeout flag on text when Cross-Out annotation is in place
+- PdfPageMap - text outside of clip area treated as artifact
+- PdfPageMap - split filling words into separate PdeTexts
+- AddTags - set generic Form Field tooltip when missing TU key
+- AddTags - extra spaces in text handling
+- Metadata support of in dc:title update
+- ErrorCode renamed kErrorPdfCosObjInvalid to kErrorPdsObjectInvalid
+- Xref stream support when saving files
+- (HTML) changed < input > defaultValue property to data-default-value
+
+### Fixed
+- (HTML) .pdf-page h1 h2 h3 h4 to .pdf-page h1, ,pdf-page h2, … to apply style on .pdf-page only, same with .pdf-page.responsive table h1 .. h4
+- (HTML) < input > maxLength property – missing quotes
+- (HTML) CSS & HTML validation fixes
+- (HTML) Unwanted “)” in html output
+- (HTML) PdfToHtmlDoc.SaveDocHtml, PdfToHtmlDoc.SavePageHtml memory allocation fix
+- (HTML) Textarea CSS - scrollbar was missing in case of long text
+
+### Removed
+- kTemplateFlatAnnots - use flat_annot in PdfFlattenAnnotsParams instead
+- kTrLineSpacingTextSplit - use kTrMaxLineSpacing instead
+- kTrLineSpacing - use kTrMaxLineSpacing instead
+- kTemplateAcceptTags
+- (HTML) Removed css white-space: -pre-wrap, -o-pre-wrap, -moz-pre-wrap as unsupported properties
+
+## [4.0.5] - 2018-08-20
+### Fixed
+- Text tagging fix
+- Text content writer fix
+
+## [4.0.1] - 2018-06-20
+### Changed 
+- Updated c# wrapper
+- Stability improvements
+- New sample on Github for c# 
+- Font subsetting update
+- (OCR) OcrTesseract.SetLanguage parameters update
+
+### Fixed
+- Table recognition fix
+
+## [4.0.0] - 2018-05-07
+### Added
+- Make PDF Accessible - allows you to convert PDF to PDF/UA
+- EmbedFonts - allows you to embed/subset fonts in PDF document
+- (OCR) OCR module - allows you to convert scanned PDF into searchable PDF
+
+### Changed 
+- Github repository samples
+- Online documentation
+- Trial key authorization update
+- PdfixPlugin.GetID was removed
+- PsImage.Save renamed to SaveToStream, new PsImage.Save()
+- PsMetadata object
+- PdfDoc.SetLang, PdfDoc.GetLang
+- Read/write document metadata (title, author, creator, description) and sync. with Info dict
+- PdfDoc.GetMetadata,
+- PdsStructElement renamed to PdfStructElement
+
+### Fixed
+- File size issue after saving file
+- Incremental save fix
+- Digital signature fix
+- Content writer - double, float value format - no exponent
+- PdePageMap android crash fix
+- (HTML) Link annotations with URI action in a fixed view
+
+## [3.2.5] - 2018-08-01
+### Changed
+- (HTML) Changed defaultValue property to data-default-value in input element
+
+### Fixed
+- (HTML) Bug fixes in PDF to HTML conversion
+- (HTML) css .pdf-page h1 h2 h3 h4 to .pdf-page h1, ,pdf-page h2, … not to apply style outside .pdf-page (same with .pdf-page.responsive table h1 .. h4)
+- (HTML) Missing quotes in maxLength property in input element
+
+### Removed
+- (HTML) css properties white-space: -pre-wrap, -o-pre-wrap, -moz-pre-wrap
+
+## [3.2.4] - 2018-05-18
+### Changed
+- PdfFormField.GetFontName returns user friendly font name
+
+### Fixed
+- (HTML) Form field font style support (font family, size)
+- (HTML) Form field NoScroll flag support for textarea
+- (HTML) Form field MaxLen support
+
+## [3.2.3] - 2018-05-08
+### Added
+- Thread-safe support for jni interface
+
+## [3.2.2] - 2018-02-22
+### Changed
+- Ability to reset previously modified Document templates
+- PdePageMap bullet detection
+- PdePageMap rotated text handling
+- (CLI) Support for relative path names for input and output files
+
+### Fixed
+- (HTML) Table column alignment
+- (HTML) Duplicate form field elements in fixed layout
+- (HTML) Incorrect url data format in embedded image streams
+
+## [3.2.0] - 2018-02-08
+### Added
+- (HTML) Support for JPEG image format and image quality
+- (HTML) Simplified CSS in the output
+
+### Changed
+- Improved content extraction algorithms
+- Tables, charts, bullets, lists, TOC, headers/footers recognition update
+- Reading order detection improvements
+- Customizable document templates
+- Ability to configure content extraction and Autotag process for specific document type or document set
+
+### Fixed
+- (HTML) Table column alignment
+- (HTML) Duplicate form field elements in fixed layout
+- (HTML) Incorrect url data format in embedded image streams
+
+## [3.0.0] - 2017-10-03
+### Added
+- PDF to PDF/UA conversion
+- PdfDoc.MakeAccessible,  Make PDF accessible functionality
+- PdfDoc.AddTags,  Add tags into PDF automatically
+
+### Changed
+- Streams support
+- Improved Table detection
+- Improved Paragraph recognition
+- Improved List detection
+- Table of contents detection
+- Customizable document templates
+- (HTML) New PDF to HTML conversions
+- (HTML) PDF conversion to embeddable <div> html element
+- (HTML) Embedded resources
+
+### Fixed
+- (HTML) Table column alignment
+- (HTML) Duplicate form field elements in fixed layout
+- (HTML) Incorrect url data format in embedded image streams
+
+## [2.0.0] - 2017-02-15
+### Changed
+- More accurate elements detection
+- Text Tables detection improvement
+- Colspan and Rowspan bug fixies
+- Text Paragraphs detection improvement
+- Bullets recognition
+- Repeated pattern detection (patterns of characters, such as a series of dots or dashes, between a tab and the following text)
+- Background image separation
+- Drop Cap text detection
+- Form Field flattening
+- (HTML) PDF to HTML conversion SDK released
+- (HTML) Fixed or Responsive layout output
+- (HTML) Multiple HTML files output or one continuous HTML page
+- (HTML) TrueType Font Extraction
+- (HTML) Text size output control
+- (HTML) AcroForm support
+
+## [1.0.2] - 2017-01-10
+### Changed
+- Text tables detection
+- Lists and Table of contents detection
+- Image intersection improvement
+- Words detection improvement
+- Elements clipping improvement
+- Reading order detection improvement
+- Header/Footer detection
+
+## [1.0.1] - 2016-05-20
+### Changed
+- Discrete elements detection
+- Text tables detection (output as an image)
+- Table cell background color detection
+- Words detection improvement
+- Headers/Footers detection
+- XForm object handling
+
+## [1.0.0] - 2016-05-01
+### Added
+- Initial release
