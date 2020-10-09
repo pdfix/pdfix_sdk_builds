@@ -30,7 +30,7 @@ is required for the Windows version.
 
 ## Quick start guide for PDFix CLI (Make Accessible PDF Example)
 
-<img src="res/terminal.gif" width="600">
+<img src="https://github.com/pdfix/pdfix_sdk_builds/blob/main/res/terminal.gif" width="600">
 
 1. Download the build for your operating system.
 2. Extract the content of the .zip file.
