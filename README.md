@@ -63,4 +63,4 @@ is required for the Windows version.
 ## Documentation
 The [changelog](changelog.md) tracks changes in the SDK and the pdfix_app.
 
-- [PDFix CLI documentation](docs/command_line.md) 
+- [PDFix CLI documentation](https://pdfix.net/support/pdfix-command-line/) 
