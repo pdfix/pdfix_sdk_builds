@@ -26,7 +26,7 @@ The latest [Microsoft Visual C++ Redistributable for Visual Studio
 is required for the Windows version.
 
 ## Download
-- [PDFix SDK with CLI application](https://github.com/pdfix/pdfix_sdk_builds/releases/latest)
+- [PDFix SDK with CLI application](https://pdfix.net/download)
 
 ## Quick start guide for PDFix CLI (Make Accessible PDF Example)
 
