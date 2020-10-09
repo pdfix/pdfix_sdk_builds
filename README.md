@@ -28,6 +28,32 @@ is required for the Windows version.
 ## Download
 - [PDFix SDK with CLI application](https://github.com/pdfix/pdfix_sdk_builds/releases/latest)
 
+## Quick start guide for PDFix CLI (Make Accessible PDF Example)
+
+<img src="res/terminal.gif" width="600">
+
+1. Download the build for your operating system.
+2. Extract the content of the .zip file.
+3. Go to the folder containing the pdfix_app:
+
+- Linux:  
+   `pdfix_sdk_x.x.x_linux/bin/linux`
+- MacOS:  
+   `pdfix_sdk_x.x.x_linux/bin/darwin`
+- Windows 32-bit:  
+   `pdfix_sdk_x.x.x_linux/bin/x86`
+- Windows 64-bit:  
+   `pdfix_sdk_x.x.x_linux/bin/x64`
+
+4. Make accessible PDF with pdfix_app
+
+- Linux:  
+   `./pdfix_app make-accessible -i input.pdf -o output.pdf`
+- MacOS:  
+   `./pdfix_app make-accessible -i input.pdf -o output.pdf`
+- Windows:  
+   `pdfix_app.exe make-accesible -i input.pdf -o output.pdf`
+
 ## Example projects
 - [C++](https://github.com/pdfix/pdfix_sdk_example_cpp)
 - [.net](https://github.com/pdfix/pdfix_sdk_example_dotnet)
