@@ -19,9 +19,6 @@ $ ./pdfix_app make-accessible -i test.pdf -o output.pdf
 For more CLI options please check the [PDFix SDK Command-line interface](https://pdfix.net/support/pdfix-command-line/).
 
 ## Integration using the SDK
-PDFix SDK allows full control of integration and processing. It gives you
-access to all SDK features and you have power to fully customise our extraction
-and conversion engine.
 
 ### c#
 Import NuGet package [PDFix.SDK](https://www.nuget.org/packages/PDFix.SDK/)
