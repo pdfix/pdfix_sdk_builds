@@ -20,7 +20,7 @@ For more CLI options please check the [PDFix SDK Command-line interface](https:/
 
 ## Integration using the SDK
 
-### c#
+### c\#
 Import NuGet package [PDFix.SDK](https://www.nuget.org/packages/PDFix.SDK/)
 ```cs
 using PDFixSDK.Pdfix;
