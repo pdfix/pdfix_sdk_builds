@@ -1,5 +1,10 @@
 # Changelog
 
+## [6.1.1] - 2020-10-16
+### Fixed
+- SDK-197 Fixed crashes when processing pdf with the PDFix SDK Basic license	
+- SDK-193 Fixed fail to identify Windows system home directory in PHP application
+
 ## [6.1.0] - 2020-10-02
 ### Added
 - Document template preflight for headers and footers (#30)
