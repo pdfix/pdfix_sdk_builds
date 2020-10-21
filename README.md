@@ -13,7 +13,7 @@ command-line. PDFix CLI is the easiest way to integrate the PDFix SDK
 functionality into your solutions.
 
 ```console
-$ ./pdfix_app make-accessible -i test.pdf -o output.pdf
+$ ./pdfix_app make-accessible -i test.pdf -o output.pdf --preflight
 ```
 
 For more CLI options please check the [PDFix SDK Command-line interface](https://pdfix.net/support/pdfix-command-line/).
