@@ -1,9 +1,35 @@
 # Changelog
 
+## [6.2.0] - 2020-11-05
+### Added
+- Added option to prefere rows in reading order detection (#271)
+- Added word splitters to split columns (#240)
+- Added template threshold for object label detection (#256)
+- Added template threshold for word label detection (#257)
+- Added method PdfPageMap::GetPage (#251)
+- Added method PdeElement::GetPageMap (#250)
+- Added methods for PdsStructElement::SetID, GetLang, SetLang SetActualText (#243, #244, #245)
+- Added redact CLI command and samples (#190)
+- Added template word slitters for column detection (#240)
+- Added extract-data CLI command and samples (#167)
+
+### Fixed
+- Fixed PdePageMap::GetBBox method interface (#250)
+- Fixed PdfBookmark::GetNumChildren fail then bookmark has no kids (#273)
+- Fixed fail in detection of PdeList when wmpty string is present (#269)
+- Fixed fail when creating PdfAction (#253, #254)
+- Fixed underline detection and comparison of wrong coordinates (#209)
+- Fixed wrong naming in pdf_config.json, rename elements_values node to elements node (#219)
+- Fixed support for float values in PdfDocTemplate "bbox" property (#238)
+- Fixed pdfix_app pdf2txt does not support -1 as a default value for -p parameter (#239)
+
+### Removed
+- Removed method PdfDoc::CreateFormFromObject (#255)
+
 ## [6.1.1] - 2020-10-16
 ### Fixed
-- SDK-197 Fixed crashes when processing pdf with the PDFix SDK Basic license	
-- SDK-193 Fixed fail to identify Windows system home directory in PHP application
+- Fixed crashes when processing pdf with the PDFix SDK Basic license (#197)
+- Fixed licensing management fail to identify Windows system home directory in PHP application (#193)
 
 ## [6.1.0] - 2020-10-02
 ### Added
