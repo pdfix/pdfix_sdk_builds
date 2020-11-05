@@ -12,42 +12,42 @@ _Options:_
 ```
 ## Subcommands
 
-name | description
-- | -
-[`render-page`](#render-page) | Render Page
-[`watermark`](#watermark) | Add watermark to PDF
-[`embedfonts`](#embedfonts) | Embeds fonts into PDF
-[`extract-highlighted-text`](#extract-highlighted-text) | Extract highlighted text from PDF
-[`add-comment`](#add-comment) | Add comment to PDF
-[`remove-comments`](#remove-comments) | Remove comments from PDF
-[`document-metadata`](#document-metadata) | Get and set document metadata as XML
-[`digital-signature`](#digital-signature) | Sign PDF
-[`create-page`](#create-page) | Create new page in PDF
-[`create-document`](#create-document) | Create new PDF
-[`move-page`](#move-page) | Move one page in document
-[`delete-pages`](#delete-pages) | Delete pages from PDF
-[`pages2json`](#pages2json) | Convert PDF Pages into JSON
-[`extract-data`](#extract-data) | Extract PDF data into JSON/XML
-[`bmk2json`](#bmk2json) | Convert PDF Bookmarks into JSON
-[`acroform2json`](#acroform2json) | Extract PDF Form Fields into JSON
-[`json2acroform`](#json2acroform) | Import PDF Form Fields from JSON
-[`flatten`](#flatten) | Flatten all annotations into the PDF content.
-[`make-accessible`](#make-accessible) | Makes PDF Accessible. Converts PDF to fully compliant PDF/UA.If you have image-only PDF, please use OCR command before.
-[`add-tags`](#add-tags) | Add tags to PDF.
-[`pdf2table`](#pdf2table) | Extracts tables detected in the PDF into CSV files.Output should point to the folder where separate CSV files will be saved.
-[`pdf2txt`](#pdf2txt) | Extract text from PDF
-[`pdf2image`](#pdf2image) | Extract images from PDF
-[`ocr`](#ocr) | Converts scans or images-only PDF documents into searchable, editable PDF files.
-[`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file.
-[`license`](#license) | License related commands
-[`tags2json`](#tags2json) | StructTree to JSON
-[`import-data`](#import-data) | Import form data from JSON
-[`content2json`](#content2json) | Page Content to JSON
-[`parse-pds-objects`](#parse-pds-objects) | Tag operations on PDF
-[`dests2json`](#dests2json) | Extract Named Destivations into JSON
-[`create-documents`](#create-documents) | Create new PDF files
-[`render-pages`](#render-pages) | Render Pages
-[`redact`](#redact) | Redact content using all redaction annotations.
+|name | description|
+|- | -|
+|[`render-page`](#render-page) | Render Page |
+|[`watermark`](#watermark) | Add watermark to PDF |
+| [`embedfonts`](#embedfonts) | Embeds fonts into PDF |
+| [`extract-highlighted-text`](#extract-highlighted-text) | Extract highlighted text from PDF |
+| [`add-comment`](#add-comment) | Add comment to PDF |
+| [`remove-comments`](#remove-comments) | Remove comments from PDF |
+| [`document-metadata`](#document-metadata) | Get and set document metadata as XML |
+| [`digital-signature`](#digital-signature) | Sign PDF |
+| [`create-page`](#create-page) | Create new page in PDF |
+| [`create-document`](#create-document) | Create new PDF |
+| [`move-page`](#move-page) | Move one page in document |
+| [`delete-pages`](#delete-pages) | Delete pages from PDF |
+| [`pages2json`](#pages2json) | Convert PDF Pages into JSON |
+| [`extract-data`](#extract-data) | Extract PDF data into JSON/XML |
+| [`bmk2json`](#bmk2json) | Convert PDF Bookmarks into JSON |
+| [`acroform2json`](#acroform2json) | Extract PDF Form Fields into JSON |
+| [`json2acroform`](#json2acroform) | Import PDF Form Fields from JSON |
+| [`flatten`](#flatten) | Flatten all annotations into the PDF content. |
+| [`make-accessible`](#make-accessible) | Makes PDF Accessible. Converts PDF to fully compliant PDF/UA.If you have image-only PDF, please use OCR command before. |
+| [`add-tags`](#add-tags) | Add tags to PDF. |
+| [`pdf2table`](#pdf2table) | Extracts tables detected in the PDF into CSV files.Output should point to the folder where separate CSV files will be saved. |
+| [`pdf2txt`](#pdf2txt) | Extract text from PDF |
+| [`pdf2image`](#pdf2image) | Extract images from PDF |
+| [`ocr`](#ocr) | Converts scans or images-only PDF documents into searchable, editable PDF files. |
+| [`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file. |
+| [`license`](#license) | License related commands |
+| [`tags2json`](#tags2json) | StructTree to JSON |
+| [`import-data`](#import-data) | Import form data from JSON |
+| [`content2json`](#content2json) | Page Content to JSON |
+| [`parse-pds-objects`](#parse-pds-objects) | Tag operations on PDF |
+| [`dests2json`](#dests2json) | Extract Named Destivations into JSON |
+| [`create-documents`](#create-documents) | Create new PDF files |
+| [`render-pages`](#render-pages) | Render Pages |
+| [`redact`](#redact) | Redact content using all redaction annotations. |
 ### `[Option Group: ]`
 Internal commands
 
