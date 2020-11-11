@@ -27,12 +27,11 @@ class PdfixDoxygenReleases {
                 for ( let release of releases ) {
                     $(target).append(new Option(release.tag_name, release.tag_name));
                 }
-                let version = $('#projectnumber')
+                let version = $('#projectnumber').text();
                 $(target + ' option').each(function() {
                     let optionVal = $(this).val();
                     if ( optionVal == version ) {
                         $(target).val(optionVal);
-                        console.log("OK")
                     }
                 });
             },
