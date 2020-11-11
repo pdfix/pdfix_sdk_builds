@@ -1,5 +1,18 @@
 # Changelog
 
+## [6.3.0] - 2020-11-11
+### Added
+- Added get primary font method for PdeWord this info instead of word max font (#272)
+- Added text_line_join_distance threshold into the template JSON (#277)
+- Added CLI --password parameter to the command line to support password protected files (#281)
+- Added pdf open exception for password protected documents kErrorPdfInvalidPassword, kErrorPdfEncryptionFilter	(#282)
+
+### Changed
+- Updated PDF to HTML to export form field registration JavaScript even if --export-js flag is not set (#279)
+
+### Fixed
+- Fixed fail when splitting text during the page map recognition (#278)
+
 ## [6.2.0] - 2020-11-05
 ### Added
 - Added option to prefere rows in reading order detection (#271)
