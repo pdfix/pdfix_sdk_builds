@@ -27,12 +27,11 @@ class PdfixDoxygenReleases {
                 for ( let release of releases ) {
                     $(target).append(new Option(release.tag_name, release.tag_name));
                 }
-                let version = $('#projectnumber')
+                let version = $('#projectnumber').text();
                 $(target + ' option').each(function() {
                     let optionVal = $(this).val();
                     if ( optionVal == version ) {
                         $(target).val(optionVal);
-                        console.log("OK")
                     }
                 });
             },
@@ -49,7 +48,7 @@ class PdfixDoxygenReleases {
         let docUrl = this.documentationUrl;
         $(this.selectBox).on('change', function() {
             let version = this.value;
-            let url = docUrl + version;
+            let url = docUrl + version + '/html';
             location.href = url;
         });
     }
