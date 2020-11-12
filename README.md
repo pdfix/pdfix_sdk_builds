@@ -3,9 +3,9 @@
 PDFix SDK is a cross-platform PDF processing tool, that offers various ways of the integration. 
 A Command-line interface [PDFix CLI](#Integration-using-the-CLI) is a quick and easy way to add PDF processing functionality into various workflows without coding.
 
-Developers can use the PDFix SDK in various [programming languages](#Integration-using-the-SDK) to take advandatage of the full control over the PDF documents.
+Developers can use the PDFix SDK with [programming languages](#Integration-using-the-SDK) to take advandatage of the full control over the PDF documents.
 
-Check the [system requirements](#Prerequisites) to avoid any problems.
+Check the [system requirements](#Prerequisites) to avoid any problems with running PDFix SDK on your system. 
 
 ## Integration using the CLI
 PDFix provides simple, fast and automated PDF processing through the
@@ -71,12 +71,15 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python]
 
 
 ## Prerequisites
-Windows 10, Windows Server 2016 (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
+- Windows 10, Windows Server 2016 (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)_)
+- macOS 10.15+
+- Ubuntu 16.04+, CentOS 7+ (libstdc++ 6)
 
-macOS 10.15+
-
-Ubuntu 16.04+
+## Trial license limitations
+- Methods extracting text from the PDF content randomly replace characters with "*"
+- Rasterized images may contain logo watermark
+- Saved PDFs may have redacted parts of the content 
 
 ## Support
 In case of any questions please [contact support](https://pdfix.net/support).
