@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['acquirealternate_1383',['AcquireAlternate',['../struct_pdf_doc.html#ac9c964ed53b34c2f7bd5c6ea808a9ef4',1,'PdfDoc']]],
+  ['acquirecontent_1384',['AcquireContent',['../struct_pds_form.html#a44f7b768e9999b92c79bfe21f6dcc193',1,'PdsForm']]],
+  ['acquireelements_1385',['AcquireElements',['../struct_pde_page_map.html#a1371719584aa3764322e049ebe5ca84a',1,'PdePageMap']]],
+  ['acquirepage_1386',['AcquirePage',['../struct_pdf_doc.html#a4a4399c11e91b254a7c8efbbb3f7c860',1,'PdfDoc']]],
+  ['acquirepagemap_1387',['AcquirePageMap',['../struct_pdf_page.html#adbb1aceb3a14a98403f2c687eba0434b',1,'PdfPage']]],
+  ['acquirepageview_1388',['AcquirePageView',['../struct_pdf_page.html#af9b832af9f341bd61506f4354f38f732',1,'PdfPage']]],
+  ['acquirestructelement_1389',['AcquireStructElement',['../struct_pds_struct_tree.html#ac4a1fca5afa17a918fa480c91adfa24f',1,'PdsStructTree']]],
+  ['activate_1390',['Activate',['../struct_ps_standard_authorization.html#a700df34e0ba2ce560d3a0b9c779e18a2',1,'PsStandardAuthorization']]],
+  ['addannot_1391',['AddAnnot',['../struct_pdf_page.html#a3165cb6a40e84fbfca3c84ab671ae38b',1,'PdfPage::AddAnnot()'],['../struct_pds_struct_element.html#aef9ce9d97ffba3cc8876837832865a14',1,'PdsStructElement::AddAnnot()']]],
+  ['addattrobj_1392',['AddAttrObj',['../struct_pds_struct_element.html#a1d2007ec5a663805b284984f19250ab3',1,'PdsStructElement']]],
+  ['addfontmissingunicode_1393',['AddFontMissingUnicode',['../struct_pdf_doc.html#ad71bb40602cb342ede4b8bc3dd92c19c',1,'PdfDoc']]],
+  ['addnewannot_1394',['AddNewAnnot',['../struct_pdf_page.html#aa8084072e6332a3a39fe3af794efee9d',1,'PdfPage']]],
+  ['addnewlinkannot_1395',['AddNewLinkAnnot',['../struct_pdf_page.html#a4a58cedc1c6611970b24c98ad07201d2',1,'PdfPage']]],
+  ['addnewtextannot_1396',['AddNewTextAnnot',['../struct_pdf_page.html#a7471b2b793f75fb43902e7be5d6b5430',1,'PdfPage']]],
+  ['addnewtextmarkupannot_1397',['AddNewTextMarkupAnnot',['../struct_pdf_page.html#ad0bab82514db73e575b81188c9be5dd9',1,'PdfPage']]],
+  ['addpage_1398',['AddPage',['../struct_pdf_doc_template.html#a0d7154ea980bbbfbd07d19077044ad9a',1,'PdfDocTemplate']]],
+  ['addpageobject_1399',['AddPageObject',['../struct_pds_struct_element.html#a0e6dcd838d3f420321dcd48cf60c18ad',1,'PdsStructElement']]],
+  ['addquad_1400',['AddQuad',['../struct_pdf_link_annot.html#a4e3d0f6594628adbb3afe66197d68ea5',1,'PdfLinkAnnot::AddQuad()'],['../struct_pdf_text_markup_annot.html#a970a00c7c0c2b70050e1f5f8e685cb79',1,'PdfTextMarkupAnnot::AddQuad()']]],
+  ['addreply_1401',['AddReply',['../struct_pdf_markup_annot.html#a4d1742badb45de51cd2ba2ee453d1b4b',1,'PdfMarkupAnnot']]],
+  ['addtag_1402',['AddTag',['../struct_pds_content_mark.html#a5b75423149667d7ffd7450c0d1ebb634',1,'PdsContentMark']]],
+  ['addtags_1403',['AddTags',['../struct_pdf_doc.html#ac0f482c59610653c8e0960d927f2bc79',1,'PdfDoc::AddTags()'],['../struct_pde_page_map.html#ad79747cbfdcad0c2d52ef58faf266fb1',1,'PdePageMap::AddTags()']]],
+  ['addwatermarkfromimage_1404',['AddWatermarkFromImage',['../struct_pdf_doc.html#a8e4514c7107a903ab934f3379ec2177b',1,'PdfDoc']]],
+  ['applyredaction_1405',['ApplyRedaction',['../struct_pdf_doc.html#a62b1cab4de95362a5040a75bea20f750',1,'PdfDoc']]],
+  ['authorize_1406',['Authorize',['../struct_ps_account_authorization.html#a9891d9d39491dc27142cc8cff5670b7c',1,'PsAccountAuthorization']]]
+];

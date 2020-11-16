@@ -1,5 +1,12 @@
 # Changelog
 
+## [6.4.0] - 2020-11-16
+### Fixed
+- Fixed initialization on linux when running under php/jvm (#292)
+- Fixed PdsStructElement::SetTitle does not modify the element title (#293)
+- Fixed a bug in filling words detection (#295)
+- Fixed extract-data CLI command saving PageMapData into "page_map" node (#303)
+
 ## [6.3.0] - 2020-11-11
 ### Added
 - Added get primary font method for PdeWord this info instead of word max font (#272)
