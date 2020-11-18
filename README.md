@@ -81,5 +81,74 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python]
 - Rasterized images may contain logo watermark
 - Saved PDFs may have redacted parts of the content 
 
+## License Management
+PDFix SDK can be autorized using an activation key or using the name, key pair.
+
+### Standard license Activation
+Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
+- Command line example:
+```
+$ ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX
+```
+- Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseActivate.cpp), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+
+### Standard license deactivation
+When moving license to another computer the license should be deactivated.
+- Command line example:
+```
+$ ./pdfix_app license --deactivate
+```
+- Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
+
+### Account license authorization
+Software can be authorized using a name and key. The name key pair should be used every time the PDFix SDK is used. 
+- Command line example:
+```
+$ ./pdfix_app extract-data --input test.pdf --email your@email --key XXXXXXXXXXXXXX
+```
+- Code example: [c++](), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+
+### License Status
+The current license status can be saved into JSON
+- Display license status using command line
+```
+$ ./pdfix_app license --status 
+```
+- Save license status using code [c++]()
+
+Satus output example:
+```
+{
+    "product": {
+        "name": "PDFix SDK",
+        "option": "Enterprise",
+        "version": "6.4.0"
+    },
+    "status": {
+        "authorized": "true"
+    },
+    "license": {
+        "type": "standard",
+        "active": "true",
+        "key": "XXXX-XXXX-XXXX-XXXX",
+        "max_activations": "5",
+        "total_activations": "2",
+        "days_remaining": "51",
+        "expired": "false",
+        "expiration_date": "2021-01-09",
+        "days_since_last_check": "1",
+        "pages": {
+            "type": "2",
+            "max_consumption": "300000",
+            "total_consumption": "37024",
+            "local_consumption": "5"
+        },
+        "enterprise": {
+            "type": "1"
+        }
+    }
+}
+```
+
 ## Support
 In case of any questions please [contact support](https://pdfix.net/support).
