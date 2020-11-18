@@ -106,7 +106,7 @@ Software can be authorized using a name and key. The name key pair should be use
 ```
 $ ./pdfix_app extract-data --input test.pdf --email your@email --key XXXXXXXXXXXXXX
 ```
-- Code example: [c++](), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+- Code example: [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
 
 ### License Status
 The current license status can be saved into JSON
@@ -114,7 +114,7 @@ The current license status can be saved into JSON
 ```
 $ ./pdfix_app license --status 
 ```
-- Save license status using code [c++]()
+- Save license status using code [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/LicenseStatus.cpp)
 
 Satus output example:
 ```
