@@ -1,5 +1,9 @@
 # Changelog
 
+## [6.4.1] - 2020-11-24
+### Fixed
+- Fixed initialization of Pdfix on windows when running under php/jvm (#319)
+
 ## [6.4.0] - 2020-11-16
 ### Fixed
 - Fixed initialization on linux when running under php/jvm (#292)
