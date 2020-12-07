@@ -2,24 +2,24 @@
 
 ## [6.5.0] - 2020-12-07
 ### Added
-Added support for creating PdsPath and PdsImage objects PdsContent (#89 #90 #118)
-Added method PdsPageObject.SetGState (#115)
-Added method PdfAnnot.IsValid()
-Added word spacing detection thresholds into the configuration template (#302)
-Added support for "pde_element" and "pde_object" type in the configuration template (#299)
-Added no_label option into configuration template (#298)
-Added CLI option --page-annots support to extract-data command (#327)
-Added support for password protected documents for CLI commands bmk2json, pages2json, dests2json (#323)
-Added graphic state and text state extraction to extract-data CLI command (#312)
+- Added support for creating PdsPath and PdsImage objects PdsContent (#89 #90 #118)
+- Added method PdsPageObject.SetGState (#115)
+- Added method PdfAnnot.IsValid()
+- Added word spacing detection thresholds into the configuration template (#302)
+- Added support for "pde_element" and "pde_object" type in the configuration template (#299)
+- Added no_label option into configuration template (#298)
+- Added CLI option --page-annots support to extract-data command (#327)
+- Added support for password protected documents for CLI commands bmk2json, pages2json, dests2json (#323)
+- Added graphic state and text state extraction to extract-data CLI command (#312)
 
 ### Changed
-Changed vertical splitters detection for words (#308) 
-Changed paragraphs detection to allow joining lines with different font size (#297)
+- Changed vertical splitters detection for words (#308) 
+- Changed paragraphs detection to allow joining lines with different font size (#297)
 
 ### Fixed
-Fixed generating random id for PdsStructElement on CentOS7 (#332)
-Fixed image margin in pdf to html responsive layout (#320)
-Fixed colon text spliter position (#304)
+- Fixed generating random id for PdsStructElement on CentOS7 (#332)
+- Fixed image margin in pdf to html responsive layout (#320)
+- Fixed colon text spliter position (#304)
 
 ## [6.4.1] - 2020-11-24
 ### Fixed
