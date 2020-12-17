@@ -86,37 +86,48 @@ PDFix SDK can be autorized using an activation key or using the name, key pair.
 
 ### Standard license Activation
 Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
-- Command line example:
+The activated license information is stored on computer under the current user account. A write permission is required in the following directories:
+
+- Windows: `<user>\AppData\Local\.pdfixsdk`
+- MacOS: `<user>/Library/Application Support/.pdfixsdk`
+- Linux: `<user>/.pdfixsdk`
+
+Command line example:
 ```
 $ ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX
 ```
-- Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseActivate.cpp), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseActivate.cpp), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+
+_Note to PHP users: Depending on the configuration the PHP may operate in a safe mode under a virtual user (e.g. www-data). In such a case the license should be activated separately with PHP._
 
 ### Standard license deactivation
 When moving license to another computer the license should be deactivated.
-- Command line example:
+
+Command line example:
 ```
 $ ./pdfix_app license --deactivate
 ```
-- Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
 
 ### Account license authorization
 Software can be authorized using a name and key. The name key pair should be used every time the PDFix SDK is used. 
-- Command line example:
+
+Command line example:
 ```
 $ ./pdfix_app extract-data --input test.pdf --email your@email --key XXXXXXXXXXXXXX
 ```
-- Code example: [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+Code example: [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
 
 ### License Status
-The current license status can be saved into JSON
-- Display license status using command line
+The current license status can be saved into JSON.
+
+Command line example:
 ```
 $ ./pdfix_app license --status 
 ```
-- Save license status using code [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/LicenseStatus.cpp)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/LicenseStatus.cpp)
 
-Satus output example:
+Satus output:
 ```
 {
     "product": {
