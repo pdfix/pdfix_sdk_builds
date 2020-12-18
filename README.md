@@ -84,7 +84,7 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python]
 ## License Management
 PDFix SDK can be autorized using an activation key or using the name, key pair.
 
-### Standard license Activation
+### Standard License Activation
 Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
 The activated license information is stored on computer under the current user account. A write permission is required in the following directories:
 
@@ -100,7 +100,7 @@ Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/s
 
 _Note to PHP users: Depending on the configuration the PHP may operate in a safe mode under a virtual user (e.g. www-data). In such a case the license should be activated separately with PHP._
 
-### Standard license deactivation
+### Deactivating the standard license
 When moving license to another computer the license should be deactivated.
 
 Command line example:
@@ -108,6 +108,15 @@ Command line example:
 $ ./pdfix_app license --deactivate
 ```
 Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
+
+### Updating the standard license
+The license is updated automatically when running the software. When an instant update is needed the following command should be executed:
+
+Command line example:
+```
+$ ./pdfix_app license --update
+```
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseUpdate.cpp)
 
 ### Account license authorization
 Software can be authorized using a name and key. The name key pair should be used every time the PDFix SDK is used. 
