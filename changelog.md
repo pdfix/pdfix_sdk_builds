@@ -1,5 +1,27 @@
 # Changelog
 
+## [6.6.0] - 2021-01-13
+### Added
+- Added objects PdfColorSpace, PdfColor for color space manipulation (#343)
+- Added $if statement evaluation for the configuration query (#355)
+- Added methods PdsText.GetNumChars, GetCharText, GetCharBBox, GetCharAdvanceWidth, GetTextMatrix (#364)
+- Added methods PdePageMap.GetNumArtifacts, GetArtifact to extract artifacts for the page map (#384)
+- Added methods PdfBookmark.AddNewChild, GetObject (#365, #374)
+- Added methods PdfFormField.NotifyWillChange, NotifyDidChange (#385)
+- Added method PdfDoc.FlattenAnnot (#388)
+- Added methods PdsPageObject.GetStateFlag/SetStateFlag, PdeElement::GetStateFlag/SetStateFlag (#407)
+- Added method PdsArray.PutString (#410)
+
+### Fixed
+- Fixed form xobject redaction (#316)
+- Fixed license activation check exception during initializing (#331)
+- Fixed linking of libstdc++ to support older linux distributions (#360)
+- Fixed page cache handling after page insertion (#361)
+- Fixed rendering of text elements after conversion to html (#367)
+
+### Removed
+- Removed method PdeElement.SetRender (#407)
+
 ## [6.5.0] - 2020-12-07
 ### Added
 - Added support for creating PdsPath and PdsImage objects PdsContent (#89 #90 #118)
