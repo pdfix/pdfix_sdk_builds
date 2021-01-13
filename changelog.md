@@ -2,7 +2,7 @@
 
 ## [6.7.0] - 2021-01-14
 ### Fixed
-- Fixed page object caching in PdfDocTemplate during preflight (#412)
+- Fixed page object caching in PdfDocTemplate while running preflight (#412)
 
 ## [6.6.0] - 2021-01-13
 ### Added
