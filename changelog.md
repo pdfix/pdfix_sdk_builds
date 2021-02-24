@@ -1,5 +1,47 @@
 # Changelog
 
+## [6.8.0] - 2021-02-25
+### Added
+- Added mothods for creation of text object with font (#91)
+- Added Java Maven sdk sample into github (#164)
+- Added PdsText methods SetText, SplitAtChar, GetCharQuad (#91 #391 #388 #390 )
+- Added PdeElement method GetQuad (#392)
+- Added PdfDoc methods AcquireAction, AcquireViewDestination (#396 #454)
+- Added PdfAction method Release methods to PdfAction and PdfViewDestination
+- Added PdfPageObject method CopyTo, MoveTo, GetQuad (#399 #392)
+- Added flags to save preflight config with comments and compressed (#406)
+- Added PsSysFont class for handling system fonts (#409)
+- Added progress control to the library (#415)
+- Added PdfAnnot.IsMarkup method (#419)
+- Added flag for render border of the page (#420)
+- Added support to open document from custom stream (#422)
+- Added method PdsPath.ArcTo (#427)
+- Added support for comb property of the widget conversion to HTML (#431)
+- Added PdfBookmark methods SetAction, GetAppearance, SetAppearance (#439 #442)
+- Added methods for creating of PdfActions (#440)
+- Added parameter to extract text style of the text element in extract-data CLI command (#444)
+- Added method for creating PdfViewDestination (#446)
+- Added Remove method to the PdfBookmark class (#447)
+- Added GetGenId method to the PdsObject (#452)
+- Added SetTitle method to PdfBookmark interface (#453 #455)
+- Added put functions for Array and Dictionary (#457)
+- Added kInsertAfterLast & kInsertBeforFirst constants (#459)
+### Changed
+- Changed PdsContent interfaces, to create objects at specified index (#402)
+- Changed output in the extract highlighted text command to application output and add line breaks (#430)
+- Changed PdfBookmark.AddNewChild method with 'index' input parameter specifying the position of the bookmark (#459)
+### Fixed
+- Fixed PdfDoc.SetInfo when updating document author (#413)
+- Fixed PdfToHtml saving style and script nodes outside the html node (#421)
+- Fixed PdfDocTemplate.SetDefaults method to properly cleanup config (#423)
+- Fixed object positioning in html (#429)
+- Fixed PDF to HTML conversion of a form field name or values containing ' or " (#436)
+- Fixed performance of the AcquireStructElement methods (#437)
+- Fixed save file performance (#443)
+- Fixed merging preflight with the current template (#449)
+- Fixed removing of the first and the last bookmark in the list (#460)
+- Fixed performace issues in MacOS and Linux (#448)
+
 ## [6.7.0] - 2021-01-14
 ### Fixed
 - Fixed page object caching in PdfDocTemplate while running preflight (#412)

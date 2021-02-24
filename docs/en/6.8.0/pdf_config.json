@@ -1,0 +1,1672 @@
+{
+  "@general_desc": "Contains general info.",
+  "@general": {
+    "version": "1.0",
+    "date": "yyyy/mm/dd",
+    "id": "",
+    "sdk_version": "major.minor.patch",
+    "commit": ""
+  },
+  
+  "@template_desc": "Contains template info.",
+  "template":
+  {  
+    "@pagemap_desc": "Pagemap node contains general thresholds for the pagemap recognition.",
+    "@pagemap_use": "Pagemap node contains general thresholds for the pagemap recognition.",
+    "pagemap": [
+      {
+        "@preflight_columns_desc": "Preflight colums druring preflight method. Set to 0 if this information is not required.",
+        "preflight_columns": 1,
+
+        "@preflight_column_width_distance_desc": "Columns width detection precision.",
+        "preflight_column_width_distance": 20,
+
+        "@preflight_column_alignment_distance_desc": "Columns alignment detection precision.",
+        "preflight_column_alignment_distance": 4,
+
+        "@preflight_artifact_font_size_min_desc": "Minimum font size for artifact",
+        "preflight_artifact_font_size_min" : 32,
+        
+
+        "@concurrent_threads_desc": "The number of concurrent threads. If zero, the number of concurrent threads supported by the implementation is used. If it's set to 1, no parallel algorithms are used.",
+        "concurrent_threads" : 0,
+
+        "@text_only_desc": "Process only texts in pagemap.",
+        "text_only": 0,
+
+        "@rotation_detect_desc": "Detect and correct page rotation for reading.",
+        "rotation_detect": 1,
+
+        "@background_color_red_desc": "Page background color - red.",
+        "background_color_red": 255,
+        "@background_color_green_desc": "Page background color - green.",
+        "background_color_green": 255,
+        "@background_color_blue_desc": "Page background color - blue.",
+        "background_color_blue": 255,
+
+        "@bbox_expansion_desc": "Bounding box expansion - half of kTrTextHeight.",
+        "bbox_expansion": 4,
+
+        "@angle_deviation_desc": "Maximum angle deviation for horizontal and vertical elements.",
+        "angle_deviation": 0.015707963267949,
+
+
+        "@header_ratio_desc": "Maximum percentage of a header height. Possible values from interval [0,1].",
+        "header_ratio": 0.15,
+
+        "@footer_ratio_desc": "Maximum percentage of a footer height. Possible values from interval [0,1].",
+        "footer_ratio": 0.15,
+
+
+        "@artifact_w1_desc": "Artifact border distance weight.",
+        "artifact_w1": 1,
+        "@artifact_w2_desc": "Artifact area weight.",
+        "artifact_w2": 1,
+
+        "@artifact_border_distance_max_desc": "Maximum distance of artifact to page border.",
+        "artifact_border_distance_max": 2,
+
+        "@artifact_font_size_desc": "All texts with font size bigger then this is artifact.",
+        "artifact_font_size": 40,
+
+        "@artifact_similarity_desc": "Minimum similarity value when object or element is an artifact normalized to interval [0,1].",
+        "artifact_similarity" : 0.7,
+
+
+        "@object_intersection_desc": "Expansion for page objects intersection.",
+        "object_intersection": 0.1,
+
+        "@object_isolated_desc": "Maximum isolated object heigh and width. It's used for joining isolated objects.",
+        "object_isolated": 16,
+
+
+        "@path_object_max_desc": "Maximum number of subsequence path objects that are still paths.",
+        "path_object_max": 2000,
+
+        "@path_object_min_desc": "Minimum number of subsequence path objects that are still paths.",
+        "path_object_min": 100,
+
+
+        "@isolated_text_ratio_desc": "Maximum isolated text width ratio. Is multiplied with the font size.",
+        "isolated_text_ratio": 10,
+
+        "@isolated_text_desc": "Maximum isolated text width.",
+        "isolated_text": 80,
+
+        "@isolated_element_ratio_desc": "Maximum isolated element width/height ratio. Is multiplied with the font size.",
+        "isolated_element_ratio": 6,
+
+
+        "@initial_element_expansion_desc": "Initial element bounding box expansion when searching children. Size in points.",
+        "initial_element_expansion": 10,
+
+
+        "@element_isolated_w1_desc": "Element paragraph weight.",
+        "element_isolated_w1": 1,
+        "@element_isolated_w2_desc": "Element width weight.",
+        "element_isolated_w2": 1,
+
+        "@element_isolated_caption_desc": "If set to 1 and element contains caption(table, image, chart, note) do not mark it as isolated element.",
+        "element_isolated_caption": 1,
+
+        "@element_isolated_width_min_desc": "Minimal value of bbox width for isolated element. If zero, element_isolated_width_min_ratio is used. Size in points.",
+        "element_isolated_width_min": 0,
+
+        "@element_isolated_width_min_ratio_desc": "Minimal value of bbox width for isolated element multiply with average page font size.",
+        "element_isolated_width_min_ratio": 4,
+
+        "@element_isolated_width_max_desc": "Maximal value of bbox width for isolated element. If zero, element_isolated_width_max_ratio is used. Size in points.",
+        "element_isolated_width_max": 0,
+        
+        "@element_isolated_width_max_ratio_desc": "Maximal value of bbox width for isolated element multiply with average page font size.",
+        "element_isolated_width_max_ratio": 10,
+
+        "@element_isolated_similarity_desc": "Minimum similarity value when element is isolated normalized to interval [0,1].",
+        "element_isolated_similarity" : 0.7,
+
+
+        "@element_isolated_image_w1_desc": "Image vs page area weight.",
+        "element_isolated_image_w1": 1,
+        "@element_isolated_image_w2_desc": "Elements isolated similarity weight.",
+        "element_isolated_image_w2": 1,
+        "@element_isolated_image_w3_desc": "Images area vs join image area weight.",
+        "element_isolated_image_w3": 1,
+        
+        "@element_isolated_image_similarity_desc": "Minimum similarity value when isolated elements can be added to an image.",
+        "@element_isolated_image_similarity_use": "Isolated elements process. Use higher value to join isolated elements to nearest images.",  
+        "element_isolated_image_similarity" : 0.7,
+
+
+        "@element_line_w1_desc": "Line width weight.",
+        "element_line_w1": 1,
+
+        "@element_line_width_max_desc": "Maximal value of line width. If zero, element_line_width_max_ratio is used. Size in points.",
+        "element_line_width_max": 8,
+        
+        "@element_line_width_max_ratio_desc": "Maximal value of line width multiply with average page font size.",
+        "element_line_width_max_ratio": 1,
+
+        "@element_line_similarity_desc": "Minimum similarity value when element is recognized as line normalized to interval [0,1].",
+        "@element_line_similarity_use": "Multiple methods.",
+        "element_line_similarity" : 0.6,
+
+
+        "@element_alignment_ratio_desc": "Ration between baseline and bounding box alignments. Bounding box alignment precision is multiplied with element_alignment_ratio.",
+        "element_alignment_ratio" : 0.5,
+
+
+        "@rect_image_similarity_desc": "Minimum similarity value when rectangle is image normalized to interval [0,1].",
+        "rect_image_similarity" : 0.7,
+
+
+        "@image_background_text_desc": "Text bounding box expansion.",
+        "@image_background_text_use": "Image detection. Images that have same size as texts(text beackground) are moved to artifacts.",
+        "image_background_text" : 1,
+
+        "@image_overlap_distance_desc": "Maximum distance value when graphic page objects can be joined. Distance in points.",
+        "@image_overlap_distance_use": "Image detection. Lower value leaves possible labels isolated.",
+        "image_overlap_distance" : 1,
+
+        "@image_join_distance_desc": "Maximum distance value when graphic page objects can be joined. Distance in points.",
+        "@image_join_distance_use": "Image detection. Lower value leaves small isolated images.",
+        "image_join_distance" : 8,
+
+
+        "@char_clip_ratio_desc": "Minimal ratio of the clipping area of the character comparing to it's original size.",
+        "char_clip_ratio": 0.5,
+
+
+        "@word_space_width_ratio_desc": "Default space width ratio (percentage) based on the font size.",
+        "@word_space_width_ratio_use": "Words detection. TODO: change to clustering.",
+        "word_space_width_ratio": 0.6,
+
+        "@word_space_width_min_ratio_desc": "Minimal acceptable space width ratio.",
+        "@word_space_width_min_ratio_use": "Words detection. TODO: change to clustering.",
+        "word_space_width_min_ratio": 0.1,
+
+        "@word_space_type_desc": "Normal word spacing detection type [0 - average, -1 - max, -2 - space character width, >0 - multiplies font size]",
+        "@word_space_type_use": "Text lines detection. Method how to detect normal word spacing for the selected font.",
+        "word_space_type": 0,
+
+        "@word_space_distance_max_desc": "Maximum distance between chunks. If zero, word_space_distance_max_ratio is used. Size in points.",
+        "@word_space_distance_max_use": "Text lines detection. Each space wider then this value splits the line into separate lines.",
+        "word_space_distance_max": 0,
+        
+        "@word_space_distance_max_ratio_desc": "Maximum distance between chunks. The value is multiplied by simple word spacing between words.",
+        "@word_space_distance_max_ratio_use": "Text lines detection. Each space wider then this value splits the line into separate lines.",
+        "word_space_distance_max_ratio": 10,
+
+        "@word_space_update_desc": "Maximum distance of word spacing. Size in points.",
+        "@word_space_update_use": "Word spacing detection. Updates maximum space for normal word spacing for each font on the page. Higher value allows variable word spacing in simple paragraph.",
+        "word_space_update": 0.1,
+
+        "@word_distance_desc": "Maximum distance value in word spacing detection. If zero, word_distance_ratio is used. Size in points.",
+        "@word_distance_use": "Text lines detection. Higher value allows creating justify paragraphs with not strictly same word spacings.",
+        "word_distance": 0,
+        
+        "@word_distance_ratio_desc": "Maximum distance value in word spacing detection. The value is multiplied by word font size.",
+        "@word_distance_ratio_use": "Text lines detection. Higher value allows creating justify paragraphs with not strictly same word spacings.",
+        "word_distance_ratio": 0.1,
+
+        "@word_space_splitter_ratio_desc": "Minimum space before splitter. The value is multiplied by first word spacing.",
+        "@word_space_splitter_ratio_use": "Words splitters detection. Use smaller value when columns are close to each other.",
+        "word_space_splitter_ratio": 2,
+
+        "@word_splitter_distance_desc": "Maximum threshold value for word splitters detections. Real distance in points.",
+        "word_splitter_distance" : 4,
+
+
+        "@text_line_baseline_ratio_desc": "Multiplies minimal font. Maximum deviation of words on the same line.",
+        "text_line_baseline_ratio": 0.1,
+        
+        "@text_line_underline_distance_desc": "Distance of the underline and text baseline.",
+        "text_line_underline_distance": 2.6,      
+
+        "@text_line_underline_char_distance_ratio_desc": "Distance of the underline and character. The value is multiplied by line font size.",
+        "text_line_underline_char_distance_ratio": 0.1,   
+
+        "@text_line_subscript_space_ratio_desc": "Subscript space multiplied with word space.",
+        "text_line_subscript_space_ratio": 0.5,      
+
+        "@text_line_subscript_font_ratio_desc": "Mamimum subscript font size multiplied with line font size.",
+        "text_line_subscript_font_ratio": 1,   
+
+        "@text_line_subscript_len_desc": "Maximum number of characters in subscript.",
+        "text_line_subscript_len": 6,   
+        
+        "@text_line_join_font_size_distance_desc": "Distance of two fonts in points, when two lines with different fonts can be join.",
+        "text_line_join_font_size_distance" : 0,
+
+        "@text_line_distance_max_desc": "Maximum distance between lines. If zero, text_line_distance_max_ratio is used. Size in points.",
+        "@text_line_distance_max_use": "Paragraphs detection. Each space wider then this value splits the text into lines.",
+        "text_line_distance_max": 0,
+        
+        "@text_line_distance_max_ratio_desc": "Maximum distance between lines. The value is multiplied by line font size.",
+        "@text_line_distance_max_ratio_use": "Paragraphs detection. Each space wider then this value splits the text into lines.",
+        "text_line_distance_max_ratio": 3.6,
+
+        "@text_line_join_distance_desc": "Maximum threshold value in line spacing detection for specific font size. The higher value allows creating paragraph with variable line spacings. The value is multiplied by font size.",
+        "text_line_join_distance" : 2,
+
+        
+        "@text_chunk_distance_max_desc": "Maximum distance between chunks. If zero, text_chunk_distance_max_ratio is used. Size in points.",
+        "@text_chunk_distance_max_use": "Text chunks detection. Each space wider then this value splits the line into chunks.",
+        "text_chunk_distance_max": 0,
+        
+        "@text_chunk_distance_max_ratio_desc": "Maximum distance between chunks. The value is multiplied by simple word spacing between words.",
+        "@text_chunk_distance_max_ratio_use": "Text chunks detection. Each space wider then this value splits the line into chunks.",
+        "text_chunk_distance_max_ratio": 6,
+
+        "@text_chunk_distance_desc": "Maximum distance value when text chunks are vertically aligned. If zero, text_chunk_distance_ratio is used. Size in points.",
+        "@text_chunk_distance_use": "Paragraph detection. Higher value causes identification of tables with not stricly aligned columns.",
+        "text_chunk_distance": 0,
+        
+        "@text_chunk_distance_ratio_desc": "Maximum distance value when text chunks are vertically aligned. The value is multiplied by page font width.",
+        "@text_chunk_distance_ratio_use": "Paragraph detection. Higher value causes identification of tables with not stricly aligned columns.",
+        "text_chunk_distance_ratio": 0.42,
+
+        "@text_chunk_simple_distance_desc": "Maximum distance value when text chunks create simple line. Normalized to interval [0,1].",
+        "@text_chunk_simple_distance_use": "Paragraph detection. Lower value.",
+        "text_chunk_simple_distance": 0.4,
+
+        "@text_chunk_word_distance_desc": "Maximum distance value when single line text has to be split to words. Normalized to interval [0,1].",
+        "text_chunk_word_distance": 0.1,
+
+
+        "@text_height_desc": "Minimal text height on the page.",
+        "text_height": 8,
+
+        "@text_simple_similarity_desc": "Minimum similarity value when text lines create a simple paragraph normalized to interval [0,1].",
+        "@text_simple_similarity_use": "Paragraph detection. Higher value causes more solid paragraphs.",
+        "text_simple_similarity": 0.96,
+
+        "@text_justify_similarity_desc": "Minimum similarity value when text lines create a justify paragraph normalized to interval [0,1].",
+        "@text_justify_similarity_use": "Paragraph detection. Higher value causes more solid paragraphs.",
+        "text_justify_similarity": 0.96,
+
+        "@text_table_similarity_desc": "Minimum similarity value when text lines create a table normalized to interval [0,1].",
+        "@text_table_similarity_use": "Paragraph detection. Lower value splits lines with larger spaces into chunks to be able to detect tables.",
+        "text_table_similarity": 0.65,
+
+        "@text_paragraph_similarity_desc": "Minimum similarity value when text is paragraph normalized to interval [0,1].",
+        "text_paragraph_similarity" : 0.7,
+
+        "@text_split_distance_desc": "Dissimilarity boundary value when text lines creates a paragraph.",
+        "text_split_distance" : 0.2,
+
+        "@text_heading_h1_desc": "Minimal font size for H1.",
+        "text_heading_h1": 0,
+
+        "@text_heading_h2_desc": "Minimal font size for H2.",
+        "text_heading_h2": 0,
+
+        "@text_heading_h3_desc": "Minimal font size for H3.",
+        "text_heading_h3": 0,
+
+        "@text_column_similarity_desc": "Minimum similarity value that text creates a column normalized to interval [0,1].",
+        "text_column_similarity" : 0.7,
+
+
+        "@label_alignment_h_desc": "Maximum deviation of horizontal label alignment.",
+        "label_alignment_h": 2,
+
+        "@label_distance_ratio_desc": "Distance of the label and text. Is multiplied with the page most used font size.",
+        "label_distance_ratio": 10,
+
+        "@label_baseline_ration_desc": "Multiplies minimal font. Maximum deviation of horizontal label aligned to text.",
+        "label_baseline_ration": 0.14,
+
+        "@label_image_w1_desc": "Labels alignment weight. Accepted only if labels overlap.",
+        "label_image_w1": 1,
+        "@label_image_w2_desc": "Labels and sibling distance weight.",
+        "label_image_w2": 1,
+        "@label_image_w3_desc": "Siblings font size difference weight. Accepted only if it's not equal.",
+        "label_image_w3": 1,
+        "@label_image_w4_desc": "Labels width difference weight.",
+        "label_image_w4": 0.25,
+        "@label_image_w5_desc": "Labels height difference weight.",
+        "label_image_w5": 0.25,
+        "@label_image_w6_desc": "Label and sibling height weight.",
+        "label_image_w6": 1,
+        "@label_image_w7_desc": "Label width weight.",
+        "label_image_w7": 1,
+        "@label_image_w8_desc": "Labels type weight. If set to 1, accept only same type labels.",
+        "label_image_w8": 0,
+        "@label_image_w9_desc": "Labels graphic state weight. If set to 1, labels have to have same graphics state.",
+        "label_image_w9": 0,
+        "@label_image_w10_desc": "Siblings text state weight. If set to 1, siblings have to have same text state.",
+        "label_image_w10": 0,
+
+        "@label_image_width_min_desc": "Minimal value of bbox width for label object. If zero, label_image_width_min_ratio is used. Size in points.",
+        "label_image_width_min": 0,
+        
+        "@label_image_width_min_ratio_desc": "Minimal value of bbox width for label objec multiply with average page font size.",
+        "label_image_width_min_ratio": 1,
+
+        "@label_image_width_max_desc": "Maximal value of bbox width for label object. If zero, label_image_width_max_ratio is used. Size in points.",
+        "label_image_width_max": 0,
+        
+        "@label_image_width_max_ratio_desc": "Maximal value of bbox width for label object multiply with average page font size.",
+        "label_image_width_max_ratio": 6,
+
+        "@label_image_distance_desc": "Minimum distance value when graphic page object is label. Distance in points.",
+        "@label_image_distance_use": "Image label detection. Higher value allows more flexibility in labels detection.",
+        "label_image_distance" : 8,
+
+
+        "@label_word_w1_desc": "Labels alignment weight.",
+        "label_word_w1": 1,
+        "@label_word_w2_desc": "Labels and sibling distance weight.",
+        "label_word_w2": 1,
+        "@label_word_w3_desc": "Siblings font size difference weight. Accepted only if it's not equal.",
+        "label_word_w3": 1,
+
+        "@label_word_distance_desc": "Minimum distance value when graphic page object is label. Distance in points.",
+        "@label_word_distance_use": "Image label detection. Higher value allows more flexibility in labels detection.",
+        "label_word_distance" : 0.6,
+
+
+        "@label_sibling_dist_ratio_desc": "Minimum distance of left lebel sibling. Ratio is multiplied with right sibling distance.",
+        "label_sibling_dist_ratio" : 1.2,
+
+        "@label_similarity_desc": "Minimum similarity value when element is label normalized to interval [0,1].",
+        "label_similarity" : 0.7,
+
+
+        "@graphic_table_alignment_distance_desc": "Maximum alignment distance value when elements can create a table. Distance in points.",
+        "graphic_table_alignment_distance" : 0.8,
+
+        "@graphic_table_split_w1_desc": "Table texts paragraph weight.",
+        "graphic_table_split_w1": 1,
+        "@graphic_table_split_w2_desc": "Table texts horizontal alignment weight.",
+        "graphic_table_split_w2": 1,
+        "@graphic_table_split_w3_desc": "Columns width weight.",
+        "graphic_table_split_w3": 1,
+        "@graphic_table_split_w4_desc": "Number of columns weight.",
+        "graphic_table_split_w4": 0.5,
+        "@graphic_table_split_w5_desc": "Number of rows weight.",
+        "graphic_table_split_w5": 0.5,
+        "@graphic_table_split_w6_desc": "Page area weight.",
+        "graphic_table_split_w6": 1,
+
+        "@graphic_table_split_col_max_desc": "Maximal number of columns when table can be split.",
+        "graphic_table_split_col_max": 5,
+
+        "@graphic_table_split_row_max_desc": "Maximal number of rows when table can be split.",
+        "graphic_table_split_row_max": 5,
+
+        "@graphic_table_split_similarity_desc": "Minimum similarity value when graphic table has to be split.",
+        "@graphic_table_split_similarity_use": "Graphic table detection. Page layout sometimes creates a table. Higher value preserves this layout as table (html), otherwise it's split to elements. It's important for tagging, because it requires strictly defined tables.",  
+        "graphic_table_split_similarity" : 0.7,
+
+        "@graphic_table_split_layout_similarity_desc": "Minimum similarity value when graphic table has to be split.",
+        "@graphic_table_split_layout_similarity_use": "Graphic table detection. Page layout sometimes creates a table. Higher value preserves this layout as table (html), otherwise it's split to containers. It's important for tagging, because it requires strictly defined tables.",  
+        "graphic_table_split_layout_similarity" : 0.7,
+
+        "@graphic_table_chart_similarity_desc": "Minimum similarity value when graphic table is a char.",
+        "@graphic_table_chart_similarity_use": "Graphic table detection. Use lower value to recognize charts(images) instead of tables.",  
+        "graphic_table_chart_similarity" : 0.3,
+
+        "@graphic_table_image_w1_desc": "Images area weight. If -1, number of images is used.",
+        "graphic_table_image_w1": -1,
+        "@graphic_table_image_w2_desc": "Images horizontal alignment weight. If -1, number of images is used.",
+        "graphic_table_image_w2": -1,
+        "@graphic_table_image_w3_desc": "Chart similarity weight. If -1, number of paths is used.",
+        "graphic_table_image_w3": -1,
+        "@graphic_table_image_w4_desc": "Texts vertical alignment weight.",
+        "graphic_table_image_w4": 1,
+        "@graphic_table_image_w5_desc": "Table size weight.",
+        "graphic_table_image_w5": 1,
+        "@graphic_table_image_w6_desc": "Table border weight.",
+        "graphic_table_image_w6": 1,
+
+        "@graphic_table_image_similarity_desc": "Minimum similarity value when graphic table has an image.",
+        "@graphic_table_image_similarity_use": "Graphic table detection. Use lower value to recognize charts(images) instead of tables.",  
+        "graphic_table_image_similarity" : 0.7,
+
+
+        "@sect_table_row_alignment_type_desc": "Table row alignment type [0 - strong, 1 - average, 2 - weak].",
+        "@sect_table_row_alignment_use": "Table detection. Select strong for strictly aligned rows.",
+        "sect_table_row_alignment_type" : 1,
+
+        "@sect_table_col_alignment_type_desc": "Table column alignment type [0 - strong, 1 - average, 2 - weak].",
+        "@sect_table_col_alignment_use": "Table detection. Select strong for strictly aligned columns.",       
+        "sect_table_col_alignment_type" : 1,
+        
+        "@sect_table_col_similarity_type_desc": "Table column similarity type [0 - column alignment distance, 1 - element distance, 2 - element size, 3 - max].",
+        "@sect_table_col_similarity_type_use": "Table detection. Table columns similarity calculation. Different weights calculation for table elements.",       
+        "sect_table_col_similarity_type" : 0,
+
+        "@sect_table_col_distance_desc": "Maximum deviation value for detection nearest distancies for table columns. Real distance in points.",
+        "@sect_table_col_distance_use": "Table detection. Table columns are detected from smallest element distancies. Higher value causes more presize distancies detection.",
+        "sect_table_col_distance" : 0.8,
+
+        "@sect_table_col_similarity_desc": "Minimum similarity value when elements create table column.",
+        "@sect_table_col_similarity_use": "Table detection. Select lower values for tables that contains paragraps, select higher values for typical tables with numbers.",  
+        "sect_table_col_similarity" : 0.36, 
+        
+        "@sect_table_alignment_type_desc" : "Table column alignment type [0 - strong, 1 - average, 2 - weak]. Select strong for strictly aligned table elements.",
+        "@sect_table_alignment_use": "Table detection. Select strong for strictly aligned tables.",  
+        "sect_table_alignment_type" : 2,
+        
+        "@sect_table_alignment_distance_desc": "Maximum threshold value for detection alignment distancies for table elements. Real distance in points.",
+        "sect_table_alignment_distance" : 0.4,
+
+
+        "@sect_table_text_col_w1_desc": "Text column paragraph weight.",
+        "sect_table_text_col_w1": 1,
+        "@sect_table_text_col_w2_desc": "Text column width weight.",
+        "sect_table_text_col_w2": 1,
+
+        "@sect_table_text_col_width_min_desc": "Minimal value of bbox width for text in table column. If zero, sect_table_text_col_width_min_ratio is used. Size in points.",
+        "sect_table_text_col_width_min": 0,
+
+        "@sect_table_text_col_width_min_ratio_desc": "Minimal value of bbox width for text in table column multiply with average page font size.",
+        "sect_table_text_col_width_min_ratio": 1,
+
+        "@sect_table_text_col_width_max_desc": "Maximal value of bbox width for text in table column. If zero, sect_table_text_col_width_max_ratio is used. Size in points.",
+        "sect_table_text_col_width_max": 0,
+        
+        "@sect_table_text_col_width_max_ratio_desc": "Maximal value of bbox width for text in table column multiply with average page font size.",
+        "sect_table_text_col_width_max_ratio": 8,
+
+        "@sect_table_image_col_w1_desc": "Image column weight.",
+        "sect_table_image_col_w1": 1,
+
+        "@sect_table_image_col_gs_desc": "If set to 1, image column has to have same graphics state.",
+        "sect_table_image_col_gs": 1,
+
+        "@sect_table_image_col_width_min_desc": "Minimal value of bbox width for image in table column. If zero, sect_table_image_col_width_min_ratio is used. Size in points.",
+        "sect_table_image_col_width_min": 0,
+
+        "@sect_table_image_col_width_min_ratio_desc": "Minimal value of bbox width for image in table column multiply with average page font size.",
+        "sect_table_image_col_width_min_ratio": 1,
+
+        "@sect_table_image_col_width_max_desc": "Maximal value of bbox width for image in table column. If zero, sect_table_image_col_width_max_ratio is used. Size in points.",
+        "sect_table_image_col_width_max": 0,
+        
+        "@sect_table_image_col_width_max_ratio_desc": "Maximal value of bbox width for image in table column multiply with average page font size.",
+        "sect_table_image_col_width_max_ratio": 4,
+
+        "@sect_table_image_col_height_min_desc": "Minimal value of bbox height for image in table column. If zero, sect_table_image_col_height_min_ratio is used.",
+        "sect_table_image_col_height_min": 0,
+        
+        "@sect_table_image_col_height_min_ratio_desc": "Minimal value of bbox height for image in table column multiply with average page font size.",
+        "sect_table_image_col_height_min_ratio": 1,
+
+        "@sect_table_image_col_height_max_desc": "Maximal value of bbox height for image in table column. If zero, sect_table_image_col_height_max_ratio is used.",
+        "sect_table_image_col_height_max": 0,
+        
+        "@sect_table_image_col_height_max_ratio_desc": "Maximal value of bbox height for image in table column multiply with average page font size.",
+        "sect_table_image_col_height_max_ratio": 2,
+
+        "@sect_table_column_similarity_desc": "Minimum similarity value when elements create table column.",
+        "sect_table_column_similarity" : 0.5,
+
+        "@sect_table_image_similarity_w1_desc": "Sect table image similarity area weight.",
+        "sect_table_image_similarity_w1": 1,
+        "@sect_table_image_similarity_w2_desc": "Sect table image similarity chart weight.",
+        "sect_table_image_similarity_w2": 1,
+
+        "@sect_table_image_similarity_desc": "Minimum similarity value when section table is image normalized to interval [0,1].",
+        "sect_table_image_similarity" : 0.7,
+
+        "@sect_table_paragraph_similarity_desc": "Minimum similarity value when section table is paragraph normalized to interval [0,1].",
+        "sect_table_paragraph_similarity" : 0.7,
+
+
+        "@table_span_col_ratio_desc": "Intersection percentage of colspan element. Possible values from interval [0,1].",
+        "table_span_col_ratio": 0.1,
+
+        "@table_span_row_ratio_desc": "Intersection percentage of rowspan element. Possible values from interval [0,1].",
+        "table_span_row_ratio": 0.2,
+
+        "@table_alignment_h_desc": "Maximum deviation (in points) of horizontal table aligned elements.",
+        "table_alignment_h": 1,
+
+        "@table_alignment_v_desc": "Maximum deviation (in points) of vertical table aligned elements.",
+        "table_alignment_v" : 4,
+
+        "@table_line_intersection_desc": "Expansion (in points) for lines intersection. It's used in table detection.",
+        "table_line_intersection" : 1,
+
+        "@table_detect_form_desc": "Recognize form fields as tables.",
+        "table_detect_form": 1,
+
+        "@table_detect_sect_desc": "Texts (not graphic) tables detection. Possible values: 0 | 1. If 0 is set, it prevents generating tables from isolated chunk of text.",
+        "table_detect_sect" : 1,
+
+
+        "@caption_distance_desc": "Distance of the caption and the image/table.",
+        "caption_distance": 80,
+
+        "@caption_alignment_h_desc": "Maximum deviation (in points) in caption and nearest element alignment.",
+        "caption_alignment_h": 4,
+
+        "@caption_alignment_v_desc": "Maximum deviation (in points) in caption and nearest element alignment.",
+        "caption_alignment_v" : 4,
+
+
+        "@mc_detect_desc": "Update elements language, alternate description and actual text based on kb. Default value is set to 1 but can be turn to 0 due to optimization - when alternate description is not required.",
+        "mc_detect": 1,
+
+
+        "@rd_sort_desc": "Sort elements: 0 - inbuild, 1 - original content positions, 2 - by x and y coordinates.",
+        "rd_sort": 0,
+        
+        "@rd_sort_direction_desc": "Sort elements: 0 - inbuild, 1 - prefere columns, 2 - prefere rows.",
+        "rd_sort_direction": 0,
+
+
+        "@rd_column_distance_desc": "Maximum threshold value for columns detection. Real distance in points.",
+        "rd_column_distance" : 0.8
+      }
+    ],
+    
+    "@pagemap_regex_desc": "Regex node allows to setup general regex patterns for detection algorithm.",
+    "pagemap_regex": [
+      {
+        "regex_hyphen": "-$",
+        "regex_bullet": "[\\u2010\\u2011\\u2212\\u005E\\u005B\\uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8\\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u2212\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\\u25A1\\u005D\\u25C6]",
+        "regex_bullet_font": "(Wingdings)|(Symbol)",
+        "regex_decimal_numbering": "^[\\[\\(]?(?:\\d{1,2}\\.){0,5}\\d{0,2}\\s?[\\)\\]\\.]?$",
+        "regex_roman_numbering": "^[\\[\\(]?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})[\\)\\]\\.]?$",
+        "regex_letter_numbering": "^[\\[\\(]?[A-Za-z][\\)\\]\\.]$",
+        "regex_filling": "[._]{2,}",
+        "regex_filling_char": "[._]",
+        "regex_page_number": "(^\\d+$)|(^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$)",
+        "regex_first_cap": "^[A-Z]",
+        "regex_terminal": "[\\.\\!\\?]$",
+        "regex_table_caption": "((^table)|(^tab\\.))",
+        "regex_image_caption": "((^image)|(^img\\.)|(^figure)|(^fig\\.))",
+        "regex_chart_caption": "((^chart)|(^map))",
+        "regex_note_caption": "((^source\\:)|(^note\\:))",
+        "regex_toc_caption": "((^content)|(^toc))",
+        "regex_colon": ":$",
+        "regex_comma": "[,;]$",
+        "regex_letter": "^[A-Za-z]$",
+        "number_chars": "-+.,%€$¥£",
+        "numbering_splitter_chars": ".()[]"
+      }
+    ],
+
+    "@pagemap_vars_desc" : "general variables available across all queries",
+    "@pagemap_vars": [
+      {
+        "@example_rect": {
+          "type" : "rect",
+          "value": [[0.3,0.5,100,200], [0.8,1.5,80,20]]
+        },
+        "@example_string": 3.14,
+        "@example_float": {
+          "type": "float",
+          "value": [1.2, 4.5]
+        }
+      }
+    ],
+
+    "@form_object_process_desc": "Test is called when page form object is parsed.",
+    "@form_object_process": [
+      {
+        "@query": {
+          "param_0": ["pds_form"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": ""
+      }
+    ],
+
+    "@path_object_process_desc": "Test is called when page path object is parsed.",
+    "@path_object_process": [
+      {
+        "@query": {
+          "param_0": ["pds_path"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+
+        "@type_link": "schema:values:type", 
+        "@type": "" 
+      }
+    ],
+
+    "@image_object_process_desc": "Test is called when page image object is parsed.",
+    "@image_object_process": [
+      {
+        "@query": {
+          "param_0": ["pds_image"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": ""
+      }
+    ],
+
+    "@line_update_desc": "Updates a line after horizontal and vertical lines detection.",
+    "@line_update": [
+      {
+        "@query": {
+          "param_0": ["pde_line"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+
+        "@label_link": "schema:values:label", 
+        "@label": "",
+        
+        "@tag_link": "schema:values:tag", 
+        "@tag": ""
+      }
+    ],
+
+    "@rect_update_desc": "Updates a rect after rectangles detection.",
+    "@rect_update": [
+      {
+        "@query": {
+          "param_0": ["pde_rect"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+
+        "@label_link": "schema:values:label", 
+        "@label": "",
+        
+        "@tag_link": "schema:values:tag", 
+        "@tag": ""
+      }
+    ],
+
+    "@word_update_desc": "Updates a word after words detection.",
+    "@word_update": [
+      {
+        "@query": {
+          "param_0": ["pde_word"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+
+        "@type_link": "schema:values:type", 
+        "@type": "",
+
+        "@label_link": "schema:values:label", 
+        "@label": "",
+
+        "@tag_link": "schema:values:tag", 
+        "@tag": "",
+
+        "@heading_link": "schema:values:heading", 
+        "@heading": "normal",
+
+        "@word_flag_desc": "Sets word regex flag.",
+        "@word_flag_type": "string",
+        "@word_flag_value": ["", "hyphen", "bullet", "colon", "number", "subscript", "superscript", "terminal", "capital", "image", "decimal_num", "roman_num", "letter_num", "page_num", "filling", "uppercase", "comma", "no_unicode"],
+        "@word_flag": ""
+      }
+    ],
+
+    "@word_spacing_desc": "Detect word spacing between two words.",
+    "@word_spacing": [
+      {
+        "@query": {
+          "param_0": ["pde_word"],
+          "param_1": ["pde_word"]
+        },
+
+        "@width_desc": "Word spacing beween two words in points.",
+        "@width_type": "float",
+        "@width": 40,
+
+        "@ratio_desc": "Word spacing beween two words multiplied with the  points.",
+        "@ratio_type": "float",
+        "@ratio": 1.5
+      }
+    ],
+
+    "@text_line_add_word_desc": "Test is called when creating text lines from words.",
+    "@text_line_add_word_rule": "FIRST param pde_text_line starting from right side and adding SECOND param pde_word from left side, DIRECTION from right to left",
+    "@text_line_add_word": [
+      {
+        "@query": {
+          "param_0": ["pde_text_line"],
+          "param_1": ["pde_word"]
+        },
+
+        "@join_desc": "If join is set to 'true', insert word into the current text line. If it's set to false, do not add the word into it.",
+        "@join_type": "bool",
+        "@join": true
+      }
+    ],
+
+    "@text_line_update_desc": "Updates a line after lines detection.",
+    "@text_line_update": [
+      {
+        "@query": {
+          "param_0": ["pde_text_line"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+
+        "@label_link": "schema:values:label", 
+        "@label": "",
+        
+        "@tag_link": "schema:values:tag", 
+        "@tag": "",
+
+        "@heading_link": "schema:values:heading", 
+        "@heading": "normal",
+        
+        "@text_line_flag_desc" : "Sets line regex flag. hyphen - Hyphen. new_line - New line. indent - Line has indentation. terminal - Line ended with terminal character. drop_cap - First char on the line is drop cap. filling - Line is filling only. justified- Line has large wordspacing and is probably justified.",
+        "@text_line_flag_type": "string",
+        "@text_line_flag_value": ["", "hyphen", "new_line", "indent", "terminal", "drop_cap", "filling", "uppercase"],
+        "@text_line_flag": ""
+      }
+    ],
+
+    "@text_line_split_filling_desc": "Splits a text line based on filling.",
+    "@text_line_split_filling": [
+      {
+        "@query": {
+          "param_0": ["pde_text_line"]
+        },
+
+        "@split_desc": "If false, ignnore such text line when splitting by filling.",
+        "@split_type": "bool",
+        "@split": true
+      }
+    ],
+    
+    "@text_line_neighbours_desc": "Test if two neighbours lines can create a paragraph.",
+    "@text_line_neighbours_rule": "FIRST param pde_text_line is above and SECOND param pde_text_line is below, DIRECTION from top to bottom",
+    "@text_line_neighbours": [
+      {
+        "@query": {
+          "param_0": ["pde_text_line"],
+          "param_1": ["pde_text_line"]
+        },
+
+        "@join_desc": "If join is set to 'true', these lines can be a part of one paragraph. If false, paragraph is split. If the node is not presented, lines are joined based on font size and other properties.",
+        "@join_type": "bool",
+        "@join": true,
+     
+        "@split_desc": "If split is set to 'true', text is split in between these lines.",
+        "@split_type": "bool",
+        "@split": true
+      }
+    ],
+
+    "@text_update_desc": "Updates a text after paragraps detection.",
+    "@text_update": [
+      {
+        "@query": {
+          "param_0": ["pde_text"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+        
+        "@label_link": "schema:values:label", 
+        "@label": "",
+        
+        "@tag_link": "schema:values:tag", 
+        "@tag": "",
+        
+        "@heading_link": "schema:values:heading", 
+        "@heading": "normal",
+ 
+        "@text_flag_desc": "Sets word regex flag.",
+        "@text_flag_type": "string",
+        "@text_flag_value": ["table_caption", "image_caption", "chart_caption", "note_caption", "filling", "uppercase"],
+        "@text_flag": "",
+ 
+        "@reflow_link": "schema:values:reflow", 
+        "@reflow": true
+      }
+    ],
+
+    "@element_create_desc": "Create pre-defined elements.",
+    "@element_create": [
+      {
+        "@elements_desc": "Array of pre-defined elements.",
+        "@elements_type": "array",
+        "@elements": [
+          {
+            "@type_link": "schema:values:type", 
+            "type": "",
+            
+            "@bbox_desc": "Bounding box where element is located.",
+            "@bbox_type": "array",
+            "bbox": [0,0,0,0],
+
+            "@tag_desc": "Element tag name.",
+            "@tag_type": "string",
+            "@tag": ""
+          }
+        ]
+      }
+    ],
+
+    "@element_update_desc": "Updates an element after basic elements detection.",
+    "@element_update": [
+      {
+        "@query": {
+          "param_0": ["pde_element", "pde_text", "pde_image", "pde_line", "pde_rect", "pde_table"]
+        },
+
+        "@flag_link": "schema:values:flag", 
+        "@flag": "",
+        
+        "@label_link": "schema:values:label", 
+        "@label": "",
+        
+        "@tag_link": "schema:values:tag", 
+        "@tag": ""
+      }
+    ],
+
+    "@table_recognize_desc": "Test is called during table recognition process - columns and rows detection. This test is called multiple times!",
+    "@table_recognize": [
+      {
+        "@query": {
+          "param_0": ["pde_table"]
+        },
+
+        "@isolated_desc": "If isolated is set to 'true', isolated elements determine additional table coordinates. Otherwise process stops when graphic table coordinates are recognized.",
+        "@isolated_type": "bool",
+        "@isolated": true
+      }
+    ],
+
+    "@caption_join_desc": "Finds element for text that was marked as a caption.",
+    "@caption_join": [
+      {
+        "@query": {
+          "param_0": ["pde_text"]
+        },
+
+        "@distance_desc": "Defines a maximum distance of caption from the element. This value updates 'caption_dist' default threshold.",
+        "@distance_type": "float",
+        "@distance": 80,
+        
+        "@position_desc": "Defines a position of caption regarding to the nearest element.",
+        "@position_type": "string",
+        "@position_value": ["left", "right", "top", "bottom"],
+        "@position": ""
+      }
+    ],
+
+    "@table_update_desc": "Updates a table after the whole process od table detection is done.",
+    "@table_update": [
+      {
+        "@query": {
+          "param_0": ["pde_table"]
+        },
+
+        "@delete_empty_desc": "If true, empty rows and columns are deleted.",
+        "@delete_empty_type": "bool",
+        "@delete_empty": true,
+
+        "@split_desc": "If true, all table elements are split to fit to cells.",
+        "@split_type": "bool",
+        "@split": true,
+
+        "@span_empty_desc": "If true, empty cells are spanned together.",
+        "@span_empty_type": "bool",
+        "@span_empty": true,
+
+        "@span_row_desc": "If true, rows are joined based on the maximum row span.",
+        "@span_row_type": "bool",
+        "@span_row": false,
+
+        "@join_desc": "If true, all texts elements in a single cell are joined into one paragraph.",
+        "@join_type": "bool",
+        "@join": false,
+
+        "@header_desc": "If true, table headers are detected. It's important for table tagging.",
+        "@header_type": "bool",
+        "@header": true
+      }
+    ],
+
+    "@table_detect_header_desc": "Defines rules for table headers detection. Tests if text is a header in a table.",
+    "@table_detect_header": [
+      {
+        "@query": {
+          "param_0": ["pde_table"],
+          "param_1": ["pde_text"]
+        },
+
+        "@col_desc": "If true and query passed, input text is set as a column table header.",
+        "@col_type": "bool",
+        "@col": false,
+
+        "@row_desc": "If true and query passed, inout text is set as a row table header.",
+        "@row_type": "bool",
+        "@row": false,
+
+        "@row_num_desc": "If there is a number > 0 and no headers were detected, set row_num's row as table header.",
+        "@row_num_type": "int",
+        "@row_num": 0,
+
+        "@col_num_desc": "If there is a number > 0 and no headers were detected, set col_num's column as table header.",
+        "@col_num_type": "int",
+        "@col_num": 0
+      }
+    ],
+   
+    "@table_split_desc": "Updates a table after the whole process od table detection is done.",
+    "@table_split": [
+      {
+        "@query": {
+          "param_0": ["pde_table"],
+          "param_1": ["pde_element"]
+        },
+         
+        "@row_desc": "If true, table is split by row that contains element from query.",
+        "@row_type": "bool",
+        "@row_default": false,
+        "@row": false     
+      }
+    ],
+
+    "@single_instance_detect_desc": "Handles elements that require a single occurence only.",
+    "@single_instance_detect": [
+      {
+        "@query": {
+          "param_0": ["pde_element"]
+        },
+
+        "@text_desc": "If true, compare texts buffers to identify single instance.",
+        "@text_type": "bool",
+        "@text": false,
+
+        "@left_desc": "If true, compare left coordinate to identify single instance.",
+        "@left_type": "bool",
+        "@left": false,
+
+        "@top_desc": "If true, compare top coordinate to identify single instance.",
+        "@top_type": "bool",
+        "@top": false,
+
+        "@widht_desc": "If true, compare element width to identify single instance.",
+        "@widht_type": "bool",
+        "@widht": false,
+
+        "@height_desc": "If true, compare element height to identify single instance.",
+        "@height_type": "bool",
+        "@height": false
+      }
+    ],
+
+    "@alt_update_desc": "Sets alternate description for the element. Alternate description for the element is set in an order! If you want to skip some step, set false as default value for such step!",
+    "@alt_update_rule": "If existing Alternate Text is not EMPTY, new text will be not apply",
+    "@alt_update": [
+      {
+        "@query": {
+          "param_0": ["pde_element"]
+        },
+
+        "@mc_desc": "If true, alternate description is taken from the original marked content and Alt tag. If there is no marked content or mc is set to false, continue to the next step.",
+        "@mc_type": "bool",
+        "@mc": true,
+
+        "@children_desc": "If true, alternate description is taken from the children of the element. Currently only PdeImage is supported. All texts from PdeTexts children inside the image are joined into the output alternate description. If there are no children node is set to false, continue to the next step.",
+        "@children_type": "bool",
+        "@children": true,
+
+        "@caption_desc": "If true, alternate description is taken from the nearest caption if exists.",
+        "@caption_type": "bool",
+        "@caption": true,
+
+        "@distance_desc": "Defines a maximum distance of alternate from the element. This value updates 'caption_dist' default threshold. If you want to skip this step, set value to 0.",
+        "@distance_type": "float",
+        "@distance": 80,
+
+        "@position_desc": "Defines a position of alternate regarding to the element. You can use this, if setup distance more than 0",
+        "@position_type": "string",
+        "@position_value": ["left", "right", "top", "bottom"],
+        "@position": "",
+
+        "@alt_desc": "If exists, alternate description is taken from this node.",
+        "@alt_type": "string",
+        "@alt": ""
+      }
+    ],
+
+    "@actual_text_update_desc": "Sets actual text for the element. Actual text for the element is set in an order! If you want to skip some step, set false as default value for such step!",
+    "@actual_text_update_rule": "If existing Actual Text is not EMPTY, new text will be not apply",
+    "@actual_text_update": [
+      {
+        "@query": {
+          "param_0": ["pde_element"]
+        },
+
+        "@mc_desc": "If true, actual text is taken from the original marked content and Alt tag. If there is no marked content or mc is set to false, continue to the next step.",
+        "@mc_type": "bool",
+        "@mc": true,
+
+        "@children_desc": "If true, actual text is taken from the children of the element. Currently only PdeImage is supported. All texts from PdeTexts children inside the image are joined into the output alternate description. If there are no children node is set to false, continue to the next step.",
+        "@children_type": "bool",
+        "@children": true,
+
+        "@caption_desc": "If true, actual text is taken from the nearest caption if exists.",
+        "@caption_type": "bool",
+        "@caption": true,
+
+        "@distance_desc": "Defines a maximum distance of alternate from the element. This value updates 'caption_dist' default threshold. If you want to skip this step, set value to 0.",
+        "@distance_type": "float",
+        "@distance": 80,
+
+        "@position_desc": "Defines a position of alternate regarding to the element. You can use this, if setup distance more than 0.",
+        "@position_type": "string",
+        "@position_value": ["left", "right", "top", "bottom"],
+        "@position": "",
+
+        "@actual_text_desc": "If exists, actual text is taken from this node.",
+        "@actual_text_type": "string",
+        "@actual_text": ""
+      }
+    ],
+
+    "@artifact_update_desc": "Iterates detected artifact and update them.",
+    "@artifact_update": [
+      {
+        "@query": {
+          "param_0": ["pde_element"]
+        },
+
+        "@artifact_desc": "If false, the artifact is moved back to elements - for example a background image can be moved into meaningful element. ",
+        "@artifact_type": "bool",
+        "@artifact": true
+      }
+    ],
+    
+    "@reading_order_detect_desc": "Detect reading order options",
+    "@reading_order_detect": [
+      {
+        "@type_desc": "Reading order detection type.",
+        "@type_type": "string",
+        "@type_value": ["tsp", "xy", "content"],
+        "@type": "tsp"
+      }
+    ],
+
+    "@label_update_desc": "Update elements thta are marked as labels to make them a part of the list.",
+    "@label_update": [
+      {
+        "@query": {
+          "param_0": ["pde_element"]
+        },
+
+        "@label_link": "schema:values:label", 
+        "@label": ""
+      }
+    ],  
+
+    "@list_update_desc": "Tests if a list is correct.",
+    "@list_update": [
+      {
+        "@query": {
+          "param_0": ["pde_list", "pde_word"]
+        },
+
+        "@split_desc": "If true, splits the list back to elements. Label flag still remains on each list item.",
+        "@split_type": "bool",
+        "@split": false
+      }
+    ],   
+
+    "@tag_list_desc": "Handles process of list tagging.",
+    "@tag_list": [
+      {
+        "@query": {
+          "param_0": ["pde_list"],
+          "param_1": ["pde_word"]
+        },
+
+        "@numbering_desc": "Set list numbering attribute.",
+        "@numbering_type": "string",
+        "@numbering_value": ["None", "Unordered", "Disc", "Circle", "Square", "Ordered", "Decimal", "UpperRoman", "LowerRoman", "UpperAlpha", "LowerAlpha", "Description"],
+        "@numbering": "",
+
+        "@continued_desc": "Set continued list attribute.",
+        "@continued_type": "bool",
+        "@continued": false
+      }
+    ],
+
+    "@tag_image_desc": "Handles process of image tagging. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are missing, default behaviour is tagged Figure with empty alt.",
+    "@tag_image": [
+      {
+        "@query": {
+          "param_0": ["pde_image"]
+        },
+
+        "@alt_desc": "If image alternate description is presented, this value allows to set alt during the process of tagging.",
+        "@alt_type": "string",
+        "@alt": "",
+
+        "@actual_text_desc": "If image actual text is presented, this value allows to set actual text during the process of tagging.",
+        "@actual_text_type": "string",
+        "@actual_text": "",
+
+        "@artifact_desc": "If there is no alt or actual text presented, a Figure element should be tagged as an artifact. Setting this node to false allows tag this image with empty alt/actual even if it's not PDF/UA compliant!",
+        "@artifact_type": "bool",
+        "@artifact": false,
+
+        "@children_desc": "If false, all children are tagged as artifacts. If true, all image children (texts and form fields) are properly tagged (from PDF v2.0 a Figure tag can contain other tags as well).",
+        "@children_type": "bool",
+        "@children": false
+      }
+    ],
+
+    "@tag_table_desc": "Handles process of table tagging. For repurposing and accessibility purposes, a Table should have headers. If there are no headers detected, default behaviour is leave the table without TH.",
+    "@tag_table": [
+      {
+        "@query": {
+          "param_0": ["pde_table"]
+        },
+
+        "@split_desc": "If there are no headers detected, a Table should be split into cells and each cell is tagged individually. Setting this node to false allows tag this table with no headers even if it's not PDF/UA compliant!",
+        "@split_type": "bool",
+        "@split": false,
+        
+        "@row_desc": "If table needs to be split and row is true, split table to cells and use rows reading order.",
+        "@row_type": "bool",
+        "@row": true,
+
+        "@col_desc": "If table needs to be split and col is true, split table to cells and use cols reading order.",
+        "@col_type": "bool",
+        "@col": false
+      }
+    ],
+
+    "@tag_annot_desc": "Handles process of annotation tagging.",
+    "@tag_annot": [
+      {
+        "@query": {
+          "param_0": ["pde_annot"]
+        },
+
+        "@remove_desc": "Remove annotation from the page. Usually used for invalid annotations.",
+        "@remove_type": "bool",
+        "@remove": false
+      }
+    ],
+
+    "@add_tags_desc": "Handles process of automated tagging. Defaulf values are applied even if node is not presented in config file!",
+    "@add_tags": [
+      {
+        "@ignore_desc": "Ignore all page objects and annotations that have marked content (mcid or artifact) when creating pagemap.",
+        "@ignore_type": "bool",
+        "@ignore": false,
+
+        "@flatten_form_desc": "Flatten Form XObjects to avoid PAC3 validator errors.",
+        "@flatten_form_type": "bool",
+        "@flatten_form": false,
+ 
+        "@parse_form_desc": "Parse Form XObject and tag elements inside.",
+        "@parse_form_type": "bool",
+        "@parse_form": true,
+ 
+        "@standard_attrs_desc": "Write standard attributes. If true, standard attributes objects are added during autotag process.",
+        "@standard_attrs_type": "bool",
+        "@standard_attrs": false,
+
+        "@css_attrs_desc": "Write css attributes. If true, css objects are added during autotag process.",
+        "@css_attrs_type": "bool",
+        "@css_attrs": false,
+
+        "@headings_desc": "",
+        "@headings_type": "bool",
+        "@headings": false
+      }
+    ],
+
+    "@make_accessible_desc": "Handles process of PDF to PDF/UA conversion. Defaulf values are applied even if node is not presented in config file!",
+    "make_accessible": [
+      {
+        "query": {
+          "$and": [             
+            {"$doc_lang": ""}     
+          ]
+        },
+        "@language_desc": "Sets document language if empty.",
+        "@language_type": "string",
+        "language": "en-US"
+      },
+      {
+        "query": {
+          "$and": [             
+            {"$doc_title": ""}     
+          ]
+        },
+        "@title_desc": "Sets document title if empty.",
+        "@title_type": "string",
+        "title": "Document"
+      },
+      {
+        "@accept_tags_desc": "If document already contain tags, use them.",
+        "@accept_tags_type": "bool",
+        "@accept_tags": false,
+
+        "@embed_fonts_desc": "Embeds all fonts.",
+        "@embed_fonts_type": "bool",
+        "@embed_fonts": false,
+
+        "@subset_fonts_desc": "Subset all fonts.",
+        "@subset_fonts_type": "bool",
+        "subset_fonts": true,
+
+        "@create_bookmarks_desc": "Creates bookmarks from heading structure.",
+        "@create_bookmarks_type": "bool",
+        "@create_bookmarks": true
+      }
+    ]
+
+  },
+
+  "@schema": {
+    "statement" : {
+      "desc": "The it-statement type of the query. Possible values are $if (default), $elif, #else. According to the statement the query evaluation stops upon pass or not."
+    },
+    "query": {
+      "desc": "Query defines thresholds and operations for a pagemap detection. ",
+      "param": {
+        "desc": "Define input parameters number and type.",
+        "type": "array",
+        "value": {
+          "pds_object_params": {
+            "desc": "Parameter that represents PdsObject. Value should start with character $ that is followed by number. E.g $0_width. Number represents the index of parameter in the param array",
+            "type": "schema:pds_object_params"
+          },
+          "pde_element_params": {
+            "desc": "Parameter that represents PdeElement. Value should start with character $ that is followed by number. E.g $0_width. Number represents the index of parameter in the param array",
+            "type": "schema:pde_element_params"
+          },
+          "pdf_rect": {
+            "desc": "Parameter that represents PdsObject.",
+            "type": "array"
+          },
+          "pdf_rgb": {
+            "desc": "Parameter that represents PdfRgb.",
+            "type": "array"
+          },
+          "int": {
+            "desc": "Parameter that represents integer.",
+            "type": "int"
+          },
+          "bool": {
+            "desc": "Parameter that represents boolean value.",
+            "type": "bool"
+          },
+          "float": {
+            "desc": "Parameter that represents floating value.",
+            "type": "float"
+          },
+          "string": {
+            "desc": "Parameter that represents string value.",
+            "type": "string"
+          }
+        }
+      },
+      "var_link": "schema:vars",
+      "logical_operators_link": "schema:logical_operators",
+      "aritmetic_operators_link": "schema:aritmetic_operators",
+      "comparison_operators_link": "schema:comparison_operators",
+      "values": {
+        "desc": "Thresholds or values that are used when query passed. Default behaviour is set by 'default' value. If there is no such value defines, do not add this node for default behaviour!"
+      }
+    },
+
+    "logical_operators": {
+      "desc": "Available logical operators.",
+      "type": "string",
+      "value": {
+        "$and": {
+          "desc": "Logical AND.",
+          "num_values": 2
+        },
+        "$or": {
+          "desc": "Logical OR.",
+          "num_values": 2
+        },
+        "$not": {
+          "desc": "Logical NOT.",
+          "num_values": 1
+        }
+      }
+    },
+
+    "comparition_operators": {
+      "desc": "Available comparition operators.",
+      "type": "string",
+      "value": {
+        "$eq": {
+          "desc": "Equality comparison operator.",
+          "num_values": 1
+        },
+        "$ne": {
+          "desc": "Nequality comparator operator.",
+          "num_values": 1
+        },
+        "$lt": {
+          "desc": "Less than comparison operator.",
+          "num_values": 1
+        },
+        "$lte": {
+          "desc": "Less than or equals operator.",
+          "num_values": 1
+        },
+        "$gt": {
+          "desc": "Greater than operator.",
+          "num_values": 1
+        },
+        "$gte": {
+          "desc": "Greater than or equals operator.",
+          "num_values": 1
+        },
+        "$regex": {
+          "desc": "Regular expression predicate.",
+          "num_values": 1
+        }
+      }
+    },
+
+    "aritmetic_operators": {
+      "desc": "Available artitmetic_operators.",
+      "type": "string",
+      "value": {
+        "$sum": {
+          "desc": "Sum of two numbers.",
+          "value": ["int", "float"],
+          "num_values": 2
+        },
+        "$diff": {
+          "desc": "Difference of two numbers.",
+          "value": ["int", "float"],
+          "num_values": 2
+        },
+        "$abs": {
+          "desc": "Absolute value of a single number.",
+          "value": ["int", "float"],
+          "num_values": 1
+        },
+        "$mul": {
+          "desc": "Multiply two numbers.",
+          "value": ["int", "float"],
+          "num_values": 2
+        },
+        "$div": {
+          "desc": "division two numbers.",
+          "value": ["int", "float"],
+          "num_values": 2
+        },
+        "$min": {
+          "desc": "Get minimal value from any number of values.",
+          "value": ["int", "float"],
+          "num_values": 1
+        },
+        "$max": {
+          "desc": "Get maximal value from any number of values.",
+          "value": ["int", "float"],
+          "num_values": 1
+        }
+      }
+    },
+
+    "pds_object_params": {
+      "pds_text_link": "pds_object",
+      "pds_path_link": "pds_object",
+      "pds_image_link": "pds_object",
+      "pds_shading_link": "pds_object",
+      "pds_form_link": "pds_object",
+      "pds_object": {
+        "type": {
+          "desc": "Type of PdsObject.",
+          "type": "string",
+          "value": ["pds_object", "pds_text", "pds_path", "pds_image", "pds_shading", "pds_form"]
+        },
+        "width": {
+          "desc": "Width of PdsObject.",
+          "type": "float"
+        },
+        "height": {
+          "desc": "Height of PdsObject.",
+          "type": "float"
+        },
+        "left": {
+          "desc": "Left coordinate of PdsObject bounding box.",
+          "type": "float"
+        },
+        "right": {
+          "desc": "Right coordinate of PdsObject bounding box.",
+          "type": "float"
+        },
+        "top": {
+          "desc": "Top coordinate of PdsObject bounding box.",
+          "type": "float"
+        },
+        "bottom": {
+          "desc": "Bottom coordinate of PdsObject bounding box.",
+          "type": "float"
+        },
+        "bbox": {
+          "desc": "Bounding box of PdsObject.",
+          "type": "array: [left, bottom, right, top]"
+        },
+        "children_num": {
+          "desc": "Number of associated page objects.",
+          "type": "int"
+        }
+      }
+    },
+
+    "pde_element_params": {
+      "pde_text_link": "pde_element",
+      "pde_text_line_link": "pde_element",
+      "pde_word_link": "pde_element",
+      "pde_text_run_link": "pde_element",
+      "pde_image_link": "pde_element",
+      "pde_container_link": "pde_element",
+      "pde_list_link": "pde_element",
+      "pde_line_link": "pde_element",
+      "pde_rect_link": "pde_element",
+      "pde_table_link": "pde_element",
+      "pde_cell_link": "pde_element",
+      "pde_toc_link": "pde_element",
+      "pde_header_link": "pde_element",
+      "pde_footer_link": "pde_element",
+      "pde_form_field_link": "pde_element",
+      "pde_annot_link": "pde_element",
+      "pde_element": {
+        "type": {
+          "desc": "Type of PdeElement.",
+          "type": "int",
+          "value": ["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]
+        },
+        "width": {
+          "desc": "Width of PdeElement.",
+          "type": "float"
+        },
+        "height": {
+          "desc": "Height of PdeElement.",
+          "type": "float"
+        },
+        "left": {
+          "desc": "Left coordinate of PdeElement bounding box.",
+          "type": "float"
+        },
+        "right": {
+          "desc": "Right coordinate of PdeElement bounding box.",
+          "type": "float"
+        },
+        "top": {
+          "desc": "Top coordinate of PdeElement bounding box.",
+          "type": "float"
+        },
+        "bottom": {
+          "desc": "Bottom coordinate of PdeElement bounding box.",
+          "type": "float"
+        },
+        "bbox": {
+          "desc": "Bounding box of PdeElement.",
+          "type": "array: [left, bottom, right, top]"
+        },
+        "font_size": {
+          "desc": "Font size.",
+          "type": "float"
+        },
+        "font_name": {
+          "desc": "Font name.",
+          "type": "float"
+        },
+        "text": {
+          "desc": "Text.",
+          "type": "string"
+        },
+        "fill_color": {
+          "desc": "Fill color.",
+          "type": "array",
+          "value": [0, 255]
+        },
+        "stroke_color": {
+          "desc": "Stroke color.",
+          "type": "array",
+          "value": [0, 255]
+        },
+        "angle": {
+          "desc": "Angle.",
+          "type": "float"
+        },
+        "row_num": {
+          "desc": "Number of rows in the table.",
+          "type": "int"
+        },
+        "col_num": {
+          "desc": "Number of columns in the table.",
+          "type": "int"
+        },
+        "header": {
+          "desc": "Table header.",
+          "type": "bool"
+        },
+        "alt": {
+          "desc": "Alternate description.",
+          "type": "string"
+        },
+        "actual_text": {
+          "desc": "Actual text.",
+          "type": "string"
+        },
+        "table_type": {
+          "desc": "Table type [int]. Values: PdfTableType.",
+          "type": "int",
+          "value": ["graphic", "isolated", "row", "col", "form"]
+        },
+        "heading": {
+          "desc": "Text style (heading).",
+          "type": "string"
+        },
+        "isolated_num": {
+          "desc": "NNumber of isolated elements in the table.",
+          "type": "int"
+        },
+        "children_num": {
+          "desc": "Number of children.",
+          "type": "int"
+        },
+        "text_flag": {
+          "desc": "Word regex flag.",
+          "type": "string",
+          "value": ["table_caption", "image_caption", "chart_caption", "filling", "uppercase"]
+        }
+      }
+    },
+
+    "general_vars": {
+      "desc": "General variables can be used without parameters. It represents general state during the processing. It contains information about the current page and the document and can be used in any query.",
+      "type": "string",
+      "value": {
+        "$page_num": {
+          "desc": "Page number.",
+          "type": "int"
+        },
+        "$page_width": {
+          "desc": "age cropbox width.",
+          "type": "float"
+        },
+        "$page_height": {
+          "desc": "Page cropbox height.",
+          "type": "float"
+        },
+        "$page_rotation": {
+          "desc": "Page rotation.",
+          "type": "int",
+          "value": [0, 90, 180, 270]
+        },
+        "$doc_num_pages": {
+          "desc": "Document number of pages.",
+          "type": "int"
+        },
+        "$doc_lang": {
+          "desc": "Document language.",
+          "type": "string"
+        },
+        "$doc_title": {
+          "desc": "Document title.",
+          "type": "string"
+        }
+      }
+    },
+
+    "vars": {
+      "desc": "User defined variables. Use scheme:aritmetic_operators to define variables",
+      "type": "string"
+    },
+
+    "values" : {
+      "actual_text": {
+        "desc": "Sets element actual text.",
+        "type": "string"
+      },
+      "alt": {
+        "desc": "Sets element alternate description.",
+        "type": "string"
+      },
+      "type": {
+        "desc": "Mark objct or element as type. It helps to recognize correct element type.",
+        "type": "string",
+        "value": ["pde_image"]
+      },
+      "flag": {
+        "desc": "Element flag.",
+        "type": "string",
+        "value": ["no_join", "no_split", "artifact", "header", "footer", "splitter", "no_table", "table"]
+      }, 
+      "heading": {
+        "desc": "Sets text heading style.",
+        "type": "string",
+        "value": ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "note", "title"]
+      },
+      "label": {
+        "desc": "Marks the element as a label.",
+        "type": "string",
+        "value": ["", "label", "li_1", "li_2", "li_3", "li_4", "label_no"]
+      },
+      "reflow": {
+        "desc": "Sets text reflow. If reflow is set to false, each line is marked as a new line.",
+        "type": "bool"
+      },
+      "tag": {
+        "desc": "Replaces a default tag name.",
+        "type": "string"
+      }
+    }
+  }
+}
