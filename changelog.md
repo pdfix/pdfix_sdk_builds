@@ -24,7 +24,6 @@
 - Added Remove method to the PdfBookmark class (#447)
 - Added GetGenId method to the PdsObject (#452)
 - Added SetTitle method to PdfBookmark interface (#453 #455)
-- Added put functions for Array and Dictionary (#457)
 - Added kInsertAfterLast & kInsertBeforFirst constants (#459)
 
 ### Changed
@@ -41,7 +40,6 @@
 - Fixed performance of the AcquireStructElement methods (#437)
 - Fixed save file performance (#443)
 - Fixed merging preflight with the current template (#449)
-- Fixed removing of the first and the last bookmark in the list (#460)
 - Fixed performace issues in MacOS and Linux (#448)
 
 ## [6.7.0] - 2021-01-14
