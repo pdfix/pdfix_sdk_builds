@@ -7,7 +7,7 @@
 - Added PdsText methods SetText, SplitAtChar, GetCharQuad (#91 #391 #388 #390 )
 - Added PdeElement method GetQuad (#392)
 - Added PdfDoc methods AcquireAction, AcquireViewDestination (#396 #454)
-- Added PdfAction method Release methods to PdfAction and PdfViewDestination
+- Added Release methods to PdfAction and PdfViewDestination
 - Added PdfPageObject method CopyTo, MoveTo, GetQuad (#399 #392)
 - Added flags to save preflight config with comments and compressed (#406)
 - Added PsSysFont class for handling system fonts (#409)
@@ -26,10 +26,12 @@
 - Added SetTitle method to PdfBookmark interface (#453 #455)
 - Added put functions for Array and Dictionary (#457)
 - Added kInsertAfterLast & kInsertBeforFirst constants (#459)
+
 ### Changed
 - Changed PdsContent interfaces, to create objects at specified index (#402)
 - Changed output in the extract highlighted text command to application output and add line breaks (#430)
 - Changed PdfBookmark.AddNewChild method with 'index' input parameter specifying the position of the bookmark (#459)
+
 ### Fixed
 - Fixed PdfDoc.SetInfo when updating document author (#413)
 - Fixed PdfToHtml saving style and script nodes outside the html node (#421)
