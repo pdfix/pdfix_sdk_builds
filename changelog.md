@@ -1,4 +1,19 @@
 # Changelog
+## [6.9.0] - 2021-03-08
+### Added
+- Added support for converting partial content into HTML using object state flags (#477)
+- Added form field event emitter upon register_widget (#476)
+- Added python internal samples and OpenFromStream example (#472)
+
+### Changed
+- Changed python github examples (#469)
+
+### Fixed
+- Fixed content2json CLI example page number default value (#481)
+- Fixed PDF to HTML JavaScript conversion of a form field with ' or " in the name (#475)
+- Fixed targets for nuget packages (#474)
+- Fixed Wasm sdk.CreateImage/Destroy memory leaks (#473)
+- Fixed python interface methods with passed structure as parameter (#467)
 
 ## [6.8.0] - 2021-02-25
 ### Added
