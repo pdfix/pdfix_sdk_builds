@@ -1,4 +1,47 @@
 # Changelog
+
+## [6.10.0] - 2021-04-21
+### Added
+- Added method PdfAnnot.SetFlags (#540)
+- Added const to exported functions (#506)
+- Added PdsText.GetCharStateFlags, SetCharStateFlags method to set the flag on text run character (#518)
+- Added PdeWord.GetCharStateFlags method to get the flag on character (#519)
+- Added support for kStateExclude flag for method PdeWord.GetCharStateFlags when converting to HTML (#520)
+- Added PdsTextRun & PdeTextRun interfaces and methods that allow us to iterate over textruns in words (#507)
+- Added PdsContentMark.Equals method to compare two content marks (#509)
+- Added PdfUndo object to support undo, redo for PdsObject manipulation (#501)
+- Added PdsDictionary.RemoveKey method (#499)
+- Added cancel proc and progress control to PdfDoc.EmbedFonts, ApplyRedaction, AddFontMissingUnicode, PdfPageMap.AcquireElements, PdfHtmlDoc.Save, PdfHtmlDoc.SaveDocHtml, PdfHtmlDoc.SavePageHtml (#493, #478, #479, #480)
+- Added PdfStateFlags.kStateDefault enum value (#486)
+- Added PdfWordFinder class to access page words (#465)
+- Added method PdfDoc.CreateBooleanObject (#484)
+- Added method PdfDoc.GetFlags to identify the document state (#517)
+
+### Changed
+- Changed doubles to floats in the API (#471)
+- Changed PdfPage method FlattenAnnot to add annotation appearance into page content as a FormXObject through PdsContent (#495)
+- Renamed PdsPageObject methods MoveTo, CopyTo to MoveToContent, CopyToContent (#491)
+
+### Fixed
+- Fixed loading multiple config jsons into PdfDocTemplate (#539)
+- Fixed bullets not exported into json when calling extract-data (#496)
+- Fixed artifact_update config processing when "artifact" value is set or not (#535)
+- Fixed method PdfDocTemplate.SetDefaults does not clean the config (#534)
+- Fixed document being held after closing in .net (#532)
+- Fixed getting the font name from PdeObject (#531)
+- Fixed PDF version update to minimum 1.4 when adding tags into the document (#502)
+- Fixed missing form field appearance after updating the field value (#511)
+- Fixed creation of form field appearance shared with multiple form fields (#503)
+- Fixed BBox calculation in SetAppearanceFromXObject when XObejct is form (#497)
+- Fixed handling zero default values in structures in .NET (#492)
+- Fixed document template config merge after preflight (#485)
+- Fixed conversion of launch action in PDF to HTML conversion (#482)
+
+### Removed
+- Removed PdfDoc.FlattenAnnots, use PdfPage.RemoveAnnot instead (#494)
+
+
+
 ## [6.9.0] - 2021-03-08
 ### Added
 - Added support for converting partial content into HTML using object state flags (#477)
