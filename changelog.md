@@ -38,7 +38,7 @@
 - Fixed conversion of launch action in PDF to HTML conversion (#482)
 
 ### Removed
-- Removed PdfDoc.FlattenAnnots, use PdfPage.RemoveAnnot instead (#494)
+- Removed PdfDoc.FlattenAnnots, use PdfPage.FlattenAnnot instead (#494)
 
 
 
