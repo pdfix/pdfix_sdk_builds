@@ -1,5 +1,29 @@
 # Changelog
 
+## [6.11.0] - 2021-05-13
+### Added
+- Added method PdsObject.GetDoc (#522)
+- Added kEventDocDidChangeFlags notification when document flags did change (#552)
+- Added PdsWord.GetQuad method (#558)
+- Added PdfStandardSecurityHandler and PdfCustomSecurityHandler interface (#530, #537)
+- Added PdfDoc methods Authorize, IsSecured to enable opening document without password (#525, #528, #529, #536, #541)
+- Added PdfWordList object to access words on the page (#560, #569)
+
+### Changed
+- Changed c++ API PdfPoint, PdfDevPoint default constructor (#557)
+- Changed PdfPage::AcquirePageMap to improve performance (#562)
+- Changed PdfPage::FlattenAnnot, FlattenFormXObjects do not save new page content directly (#564, #567)
+- Changed PdfPage::Release method returns the number of remaining references (#555)
+
+### Fixed
+- Fixed FlattenAnnots when appearance object is missing form XObject Type and Subtype key (#578)
+- Fixed scrolling effect of converted PDF form to HTML (#554)
+- Fixed application of trialstamp after content redaction (#545)
+
+### Removed
+- Removed CPdfDoc::AddWatermarkFromImage and structures PdfPageRange, PdfWatermarkParams (#572)
+- Removed PdfWordFinder object (#560, #569)
+  
 ## [6.10.0] - 2021-04-21
 ### Added
 - Added method PdfAnnot.SetFlags (#540)
