@@ -1,5 +1,21 @@
 # Changelog
 
+## [6.12.0] - 2021-06-09
+### Added
+- Added methods IsOpen, SetOpen to read write bookmark open state (#643)
+- Added notifications will/did add/remove/change to PdfDocTemplate, PdsObject, StructTree, StructElement, PdePageMap (#635, #639, #633, #634, #609)
+- Added method PdfDoc.ClearFlags (#630)
+- Added PdfPage.GetRefNum method (#611)
+- Added conversion of button field style to HTML (#607)
+### Changed
+- Changed PdePageMap acquisition, object creation and manipulation (#602, #608, #610, #600)
+- Changed add watermark CLI parameters (#572)
+### Fixed
+- Fixed missing objects when saving document multiple times (#631)
+- Fixed charcode from unicode conversion (606)
+- Fixed structures with default value None in python API (#601)
+- Fixed memory management, object reference count control acquire/release  (#571, #570)
+
 ## [6.11.0] - 2021-05-13
 ### Added
 - Added method PdsObject.GetDoc (#522)
