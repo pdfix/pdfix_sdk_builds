@@ -7,9 +7,11 @@
 - Added method PdfDoc.ClearFlags (#630)
 - Added PdfPage.GetRefNum method (#611)
 - Added conversion of button field style to HTML (#607)
+
 ### Changed
 - Changed PdePageMap acquisition, object creation and manipulation (#602, #608, #610, #600)
 - Changed add watermark CLI parameters (#572)
+
 ### Fixed
 - Fixed missing objects when saving document multiple times (#631)
 - Fixed charcode from unicode conversion (606)
