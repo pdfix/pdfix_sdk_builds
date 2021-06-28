@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['read_1786',['Read',['../struct_pds_stream.html#ae7f0d06843ddabcf421105b298c70055',1,'PdsStream::Read()'],['../struct_ps_stream.html#a828c3339ca5345182eac6e2cbfcc0ec9',1,'PsStream::Read()']]],
+  ['rectinannot_1787',['RectInAnnot',['../struct_pdf_annot.html#a63661edb7d7d9e4436676ab19e82a52a',1,'PdfAnnot']]],
+  ['recttodevice_1788',['RectToDevice',['../struct_pdf_page_view.html#a7d98a05da4c493911b9488e1ea58c3e9',1,'PdfPageView']]],
+  ['recttopage_1789',['RectToPage',['../struct_pdf_page_view.html#a2621092808a38f95eea250a7eae262a7',1,'PdfPageView']]],
+  ['registerdigestdataproc_1790',['RegisterDigestDataProc',['../struct_pdf_custom_dig_sig.html#ad6cb41b1d693d579b9b587ddbbc9e9ef',1,'PdfCustomDigSig']]],
+  ['registerevent_1791',['RegisterEvent',['../struct_pdfix.html#a3b8141a41e599249fa7e8422b6ff36fe',1,'Pdfix']]],
+  ['registerplugin_1792',['RegisterPlugin',['../struct_pdfix.html#ac307296356f1720ac58ebd7f6f785f2f',1,'Pdfix']]],
+  ['registersecurityhandler_1793',['RegisterSecurityHandler',['../struct_pdfix.html#abe4b849cb88a89dfec10e802132f8433',1,'Pdfix']]],
+  ['release_1794',['Release',['../struct_pds_word_list.html#ac2210828044905dedf70d759ff3b7b56',1,'PdsWordList::Release()'],['../struct_pdf_action.html#a65046e66e52f566f7134f39cf51e8410',1,'PdfAction::Release()'],['../struct_pdf_view_destination.html#adacb2ae7e88d543ef97393b996542d6d',1,'PdfViewDestination::Release()'],['../struct_pdf_alternate.html#adc4d8fc6ae5e36d04b9b6863f80415e2',1,'PdfAlternate::Release()'],['../struct_pdf_page.html#ab58514db443bf07f52fcbf76d29d4a4e',1,'PdfPage::Release()'],['../struct_pde_page_map.html#ac361d195b0b56716560ab410d39b09be',1,'PdePageMap::Release()'],['../struct_pdf_page_view.html#a347db23c87f7ae1df76b6ed13b06e3b3',1,'PdfPageView::Release()'],['../struct_pds_struct_element.html#a5a2858adace2d7b43fbad31e0464d90e',1,'PdsStructElement::Release()']]],
+  ['remove_1795',['Remove',['../struct_pdf_bookmark.html#ac0a6882411d97f309db5a55bf7e94dfe',1,'PdfBookmark']]],
+  ['removeannot_1796',['RemoveAnnot',['../struct_pdf_page.html#ab3c6ed26da5357b8d41c29ef2413302f',1,'PdfPage']]],
+  ['removeattrobj_1797',['RemoveAttrObj',['../struct_pds_struct_element.html#a7f4b698bf21d6c76c6ae145e6f97f79b',1,'PdsStructElement']]],
+  ['removebookmarks_1798',['RemoveBookmarks',['../struct_pdf_doc.html#aaab12b16a2704b9f3e7bff4f604dd840',1,'PdfDoc']]],
+  ['removeelements_1799',['RemoveElements',['../struct_pde_page_map.html#aa38ec8903165fe93da124a8ca75e6cda',1,'PdePageMap']]],
+  ['removekey_1800',['RemoveKey',['../struct_pds_dictionary.html#ab607e7442f8eb77b01d91af4c6221a59',1,'PdsDictionary']]],
+  ['removekid_1801',['RemoveKid',['../struct_pds_struct_element.html#a0ff3a94931da1dd59dd3e7df7037721e',1,'PdsStructElement::RemoveKid()'],['../struct_pds_struct_tree.html#abcb2550d339ac674639e3dd245b590ea',1,'PdsStructTree::RemoveKid()']]],
+  ['removenametree_1802',['RemoveNameTree',['../struct_pdf_doc.html#a75f6fe1e06b797f68b9cb85a0187ced3',1,'PdfDoc']]],
+  ['removenth_1803',['RemoveNth',['../struct_pds_array.html#a868d5793be659b165a04bf113393b8c1',1,'PdsArray']]],
+  ['removeobject_1804',['RemoveObject',['../struct_pds_content.html#a72a448e7ad4282cc1066fa4d89a56014',1,'PdsContent']]],
+  ['removequad_1805',['RemoveQuad',['../struct_pdf_link_annot.html#a843e0e192ef2f82c8ad15a74bce353f9',1,'PdfLinkAnnot::RemoveQuad()'],['../struct_pdf_text_markup_annot.html#a17bcd258e5f1aa165feb2f7c77561537',1,'PdfTextMarkupAnnot::RemoveQuad()']]],
+  ['removestructtree_1806',['RemoveStructTree',['../struct_pdf_doc.html#ab3a9d17f3f7431eba3165859c55e14e6',1,'PdfDoc']]],
+  ['removetag_1807',['RemoveTag',['../struct_pds_content_mark.html#a963fabf41c674c9ac1e40fcb9bca1a72',1,'PdsContentMark']]],
+  ['removetags_1808',['RemoveTags',['../struct_pdf_doc.html#ac92a5a304b5149050ff88d80f0094c37',1,'PdfDoc']]],
+  ['reset_1809',['Reset',['../struct_ps_standard_authorization.html#a210ca70b7207f67f8900f0fbd0d4e4a1',1,'PsStandardAuthorization']]],
+  ['resize_1810',['Resize',['../struct_ps_memory_stream.html#a9c2455a2ece6857f63c4c6ed7ebbfaa9',1,'PsMemoryStream']]]
+];

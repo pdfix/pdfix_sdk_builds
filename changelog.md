@@ -1,5 +1,23 @@
 # Changelog
 
+## [6.13.0] - 2021-06-28
+### Added
+- Added PdfBookmark methods GetNext, GetPrev, GetParent (#671, #668)
+- Added method PdfDoc.GetBookmarkFromObject (#650)
+- Added method PdsPageObject.GetDoc (#659)
+- Added SetAction method to PdfWidgetAnnot, PdfLinkAnnot (#654, #653)
+
+### Changed
+- Changed method PdsText::GetTextState not to require PdfDoc reference (#660)
+
+### Fixed
+- Fixed method PdfDoc::GetInfo modifies the document (#620)
+- Fixed content writer when page object has zero transformation matrix (#649)
+
+### Removed
+- Removed method PsMetadata.LoadFromStream (#655)
+- Removed GetStructElement from PdsStructTree (#666)
+
 ## [6.12.0] - 2021-06-09
 ### Added
 - Added methods IsOpen, SetOpen to read write bookmark open state (#643)
