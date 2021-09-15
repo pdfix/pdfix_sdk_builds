@@ -1,5 +1,45 @@
 # Changelog
 
+## [6.14.0] - 2021-09-14
+### Added
+- Added PdfAnnotHandler class (#547, #580, #590, #594, #605, #648)
+- Added PdfActionHandler class (#629, #647, #681)
+- Added PdfAnnot.Copy, Paste (#646, #676, #677)
+- Added PdfAction.GetNumChildren, GetChild, RemoveChild to support next action (#684, #685)
+- Added PdfBookmark.RemoveChild, AddChild (#698)
+- Added PdePageMap.HasElements to check if the elements were created (#710)
+- Added PdsStructTree.AddKid & PdsStructElement.AddKid (#720)
+- Added PdfDoc.GetUserPermissions to read document's user permissions #735
+- Added PdsPageObject.GetContent to get reference to parent PdsContent (#736)
+- Added PdfDocUndoDidCreate, PdfDocUndoWillDestroy notifications (#746)
+
+### Changed
+- Changed AcquireAction and AcquireViewDestination to GetAction, GetViewDestination (#695)
+- Changed PdfBookmark.RemoveChild returns removed PdfBookmark (#698)
+- Changed PdfStructElement.AcquireStructElement to GetStructElementFromObject (#702)
+- Renamed PdfStructElemen.CreateStructElement to AddNewKid (#722, #723)
+- Changed PdsContentMark method GetTagArtifact returns PdsDictionary (#725)
+- Changed method Close returns number of references (#729)
+- Renamed PdfDocAddNewUndo to PdfDoc.CreateUndo (#747)
+
+### Fixed
+- Fixed auto-rotated page after running page map (#674)
+- Fixed saving style outside of head element when converting PDF to HTML (#680)
+- Fixed setting a color of a bookmark in SetAppearance method (#691)
+- Fixed redaction of image masks (#692)
+- Fixed crash when reading struct tree (#697)
+- Fixed crash when processing page content (#703, #704, #734, #749)
+- Fixed adding bookmark children on invalid index (#707)
+- Fixed html plugin throws exception when pagemap elements were already created (#710)
+- Fixed output path determination in conversion to html (#713)
+- Fixed GetParent on bookmark. Functioned returned null when the bookmark was removed & added to the bookmark tree again (#714)
+- Fixed PdfDocTemplate::LoadFromStream - does not duplicate already existing entries in JSON (#727)
+- Fixed Missing PDF pages failed to load in the HTML output without error (#728)
+
+### Removed
+- Removed AddNewAnnot methods, and Added PdfAction SetViewDestination for action (#700, #688)
+
+
 ## [6.13.0] - 2021-06-28
 ### Added
 - Added PdfBookmark methods GetNext, GetPrev, GetParent (#671, #668)
