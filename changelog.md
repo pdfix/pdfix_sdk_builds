@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.15.0] - 2021-10-04
+### Added
+- Added PdfPage.RemoveArtifact SDK-758 
+- Added PdfPage.ArtifactNonTaggedContent (#757)
+- Added method PdfDoc.CreateRoleMap (#753)
+- Added method PdsRoleMap.GetObject (#754)
+- Added method PdfDoc.CreateBookmarkRoot (#752)
+
+### Fixed
+- Fixed saving page content with too large transformation (#756)
+
 ## [6.14.0] - 2021-09-14
 ### Added
 - Added PdfAnnotHandler class (#547, #580, #590, #594, #605, #648)
