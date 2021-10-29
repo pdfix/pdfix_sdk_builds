@@ -1,5 +1,29 @@
 # Changelog
 
+## [6.16.0] - 2021-10-29
+### Added
+- Added .NET API support for Disposable objects
+- Added PsRenderDeviceContext class to handle different types of devices for rendering (#740)
+- Added PdsStructTree.RemoveRoleMap, CreateClassMap, RemoveClassMap (#766)
+- Added PdfDoc.GetVersion (#767)
+- Added PdsContentMark.InsertTag, GetNumEqualTags (#770, #780)
+- Added PdsClassMap.GetObject method (#772)
+- Added PdsObject.RegisterEvent, UnregisterEvent with notification kEventWillChange, kEventDidChange, kEventWillDestroy (#779)
+- Added PdsContent.RegisterEvent, UnregisterEvent with notification kEventWillChange, kEventDidChange (#785)
+- Added PdsPageObject.RegisterEvent, UnregisterEvent with notification kEventWillDestroy (#786)
+
+### Changed
+- Changed do not allow delete page when it's acquired (#777)
+- Changed PdfDoc.Close to force closing document even if refcount not zero (#791)
+
+### Fixed
+- Fixed setting unicode string values in PdsStructElement and PdfBookmark (#764)
+- Fixed content writer when saving nested BDC .. EMC operators (#765)
+- Fixed nested content marks in the page content (#771)
+- Fixed PdePageMap autorotate reverts to original after elements are created (#774)
+- Fixed PdfBookmark.Unlink method (#775)
+- Fixed PdePageMap.CreateElements returns false when template is invalid (#787)
+
 ## [6.15.0] - 2021-10-04
 ### Added
 - Added PdfPage.RemoveArtifact SDK-758 
