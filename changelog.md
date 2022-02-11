@@ -1,5 +1,46 @@
 # Changelog
 
+## [6.17.0] - 2022-02-11
+### Added
+- Added Pdfix.LoadSettingsFromStream to load SDK settings (#863)
+- Added PdfFont.GetObject method (#860)
+- Added PdfDoc.SetPdfStandard method (#843)
+- Added support for freetext annotation appearance (#840)
+- Added PdfDoc.SetVersion to set the document PDF version (#835)
+- Added PdsContentMark.SetTagName, SetTagObject (#829)
+- Added PdsStructElement.MoveChild method to move child object to another struct element (#828)
+- Added PdfDocConversion, PdfHtmlDocConversion, PdfTiffDocConversion class for handling document conversion (#822)
+- Added PdsPageObject.RemoveTags method to remove object's content marks (#816)
+- Added PdfFont.GetEmbedded, GetUnicodeFromCharCode, SetUnicodeFromCharCode (#815)
+- Added PdsPageObject.GetMcid (#812)
+- Added PdfPage.DrawContent support for subpixel rendering (#810, #809)
+- Added PdsContentMark.RemoveTags to remove tags by type (#808)
+- Added PdfDocTemplate support for fill/stroke color of PdsPageObject (#804)
+
+### Changed
+- Changed PdfDoc.RemoveSecurity method to return bool (#877)
+- Changed PdsStructElement.AddTag, InsertTag methods argument (#869)
+- Changed PdsPageObject.GetBBox to return transformed rect according to page coordinate system (#854)
+- Changed PdfToHtml plugin to be a part of the PDFix SDK core library (#851)
+- Changed PdfDocTemplate.SetDefaults to clear document preflight data (#850)
+- Changed PdsStructElement.SetParent to remove element from its previous parent (#803)
+- Changed PdsStructElement.RemoveChild to remove mcid from page object content mark dictionary (#788)
+
+### Fixed
+- Fixed memory management issues (#875, #874, #872, #870, #801)
+- Fixed saving the PDF file with object stream (#866)
+- Fixed changed path fill color creating page map (#846)
+- Fixed reading unicode keys in the PdsDictionary (#845)
+- Fixed table recognition when empty cells are present (#844)
+- Fixed PdfDoc.RemoveBookmarks does not remove Outlines in document root (#834)
+- Fixed writing content mark name with space character (#833)
+- Fixed PdfDoc.InsertPages to copy also inheritable page keys (#831)
+- Fixed PdfPage.GetRotate on document with multi-level pagetree (#830)
+- Fixed ArcTo, when arc is half-circle (#827)
+- Fixed conversion of combobox export values into HTML (#879)
+- Fixed conversion of hidden form field into HTML (#880)
+
+
 ## [6.16.0] - 2021-10-29
 ### Added
 - Added .NET API support for Disposable objects
