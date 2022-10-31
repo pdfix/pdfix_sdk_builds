@@ -86,11 +86,6 @@ PDFix SDK can be autorized using an activation key or using the name, key pair.
 
 ### Standard License Activation
 Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
-The activated license information is stored on computer under the current user account. A write permission is required in the following directories:
-
-- Windows: `<user>\AppData\Local\.pdfixsdk`
-- MacOS: `<user>/Library/Application Support/.pdfixsdk`
-- Linux: `<user>/.pdfixsdk`
 
 Command line example:
 ```
@@ -108,6 +103,29 @@ Command line example:
 $ ./pdfix_app license --deactivate
 ```
 Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
+
+
+### License file local storage
+The activated license information is stored on computer under the current user account. The default local license storage is in the following directories:
+
+- Windows: `<user>\AppData\Local\.pdfixsdk`
+- MacOS: `<user>/Library/Application Support/.pdfixsdk`
+- Linux: `<user>/.pdfixsdk`
+
+Custom location can be set by setting the license data path and file name in the settings JSON as follows:
+
+```
+{
+    "user": {
+        "license_data_path" : "<local_folder>",
+        "license_file_name" : "MyLicenseLey.txt"
+    }
+}
+```
+Command-line use:
+```
+$ ./pdfix_app [SUBCOMMAND] [OPTIONS] --settings-path <path_to_json>
+```
 
 ### Updating the standard license
 The license is updated automatically when running the software. When an instant update is needed the following command should be executed:
