@@ -1,7 +1,7 @@
 # Changelog
 
 
-## [6.19.0] - 2022-02-11
+## [6.19.0] - 2022-11-11
 ### Added
 - Added PdsString.IsHexValue method to check if string is hex or literal object (1072)
 
