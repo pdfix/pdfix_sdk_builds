@@ -1,5 +1,50 @@
 # Changelog
 
+
+## [6.19.0] - 2022-02-11
+### Added
+- Added PdsString.IsHexValue method to check if string is hex or literal object (1072)
+
+### Fixed
+- Fixed AddTags does not remove mcid childs from struct tree (1085)
+- Fixed PdfToHtml conversion text color flag (1083)
+
+## [6.18.0] - 2022-09-07
+### Added
+- Added option to change the license file path (322)
+- Added struct element rect attribute in derivation (395)
+- Added method PdsObject.Clone (1035)
+- Added PdsPageObject::GetContentStreamIndex (1049)
+- Added method PdfPage.CloneFormXObjects (1064)
+- Added PdfDoc.HasPassword method (1018)
+- Added option to change the page struct element from nonStruct to custom tag (1002)
+- Added method PdeElement.GetTag, SetTag (1001)
+- Added PdfJsonConversion class (1000)
+- Added PsCommand for batch processing
+- Added batch command into pdfix_app (942)
+- Added PdfDocUtils.EnumAnnots, EnumPageObjects, EnumStructElements (956)
+- Added PdfAnnot.GetPageObject method (951)
+- Added PdfDocUtils class to handle document maintenance and fixing (952)
+- Added PdfPage.CreateFomFromObject (899)
+
+### Changed
+- Changed pdf_config to contain document settings, rename general to matedata (1051)
+- Changed PdfTemplate "statement" node mandatory
+
+### Fixed
+- Fixed writing encrypted object streams (1022)
+- Fixed form xobject not marked as artifact after autogagging (1063)
+- Fixed CreateParent tree causes exception if Nums array is missing (1062)
+- Fixed PdsContentUndoEntry on form object optimization (1059)
+- Fixed PdePageMap.AddTags does not clear previous object structure on all objects (1044)
+- Fixed Invalid ptr in C# wrapper if the function returning Struct that not filled (1039)
+- Fixed setting document title in metadata (931)
+- Fixed PDF/UA support when removing annotation (923)
+- Fixed update parent tree after removing OBJR child from struct tree (921)
+- Fixed PdsStrucTree.AddAnnot (912)
+- Fixed CPdsStructElement.GetChildPageNumber (898)
+- Fixed not rendering widget annotations even with renderAnnot flag (896)
+
 ## [6.17.0] - 2022-02-11
 ### Added
 - Added Pdfix.LoadSettingsFromStream to load SDK settings (#863)

@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['acquirealternate_0',['AcquireAlternate',['../struct_pdf_doc.html#af8dcaa1afc3f84d7167d24e29caef8d3',1,'PdfDoc']]],
+  ['acquirepage_1',['AcquirePage',['../struct_pdf_doc.html#ae961d42291f9c191f056729dfe6330f2',1,'PdfDoc']]],
+  ['acquirepagemap_2',['AcquirePageMap',['../struct_pdf_page.html#a75daa572594a705169a8de2f382fabff',1,'PdfPage']]],
+  ['acquirepageview_3',['AcquirePageView',['../struct_pdf_page.html#acee8791c6384f5a6af6cab3865871366',1,'PdfPage']]],
+  ['acquirewordlist_4',['AcquireWordList',['../struct_pdf_page.html#a288387531b2c6ea6a25bb490b5630a2a',1,'PdfPage']]],
+  ['activate_5',['Activate',['../struct_ps_standard_authorization.html#a700df34e0ba2ce560d3a0b9c779e18a2',1,'PsStandardAuthorization']]],
+  ['addannot_6',['AddAnnot',['../struct_pdf_page.html#a3165cb6a40e84fbfca3c84ab671ae38b',1,'PdfPage::AddAnnot()'],['../struct_pds_struct_element.html#ad3b4ea35ec86db15ebd6fd76ecb40ea3',1,'PdsStructElement::AddAnnot(PdfAnnot *annot, int index)=0']]],
+  ['addattrobj_7',['AddAttrObj',['../struct_pds_struct_element.html#a1d2007ec5a663805b284984f19250ab3',1,'PdsStructElement']]],
+  ['addchild_8',['AddChild',['../struct_pdf_bookmark.html#a28f9a9138c9c4cae0ce1afb331daf395',1,'PdfBookmark::AddChild()'],['../struct_pds_struct_element.html#abc7942e30b2590273e30066fbe491fc6',1,'PdsStructElement::AddChild()'],['../struct_pds_struct_tree.html#a40cab618a76442a36d8f022147aa5ac4',1,'PdsStructTree::AddChild()']]],
+  ['addfontmissingunicode_9',['AddFontMissingUnicode',['../struct_pdf_doc.html#ad71bb40602cb342ede4b8bc3dd92c19c',1,'PdfDoc']]],
+  ['addnewchild_10',['AddNewChild',['../struct_pdf_bookmark.html#a677e6337880f6d76d0ac0c48762fca16',1,'PdfBookmark::AddNewChild()'],['../struct_pds_struct_element.html#a8d2e371edc48c709c425d7a08b1e2ab7',1,'PdsStructElement::AddNewChild()'],['../struct_pds_struct_tree.html#abcf4fd715e95a5d8f444780e594948a3',1,'PdsStructTree::AddNewChild()']]],
+  ['addnewform_11',['AddNewForm',['../struct_pds_content.html#ac57e3dba6f64214cc3b5d4e382d89b8e',1,'PdsContent']]],
+  ['addnewimage_12',['AddNewImage',['../struct_pds_content.html#adc613b4767f7fb9ace3c9336acf1b2e3',1,'PdsContent']]],
+  ['addnewpath_13',['AddNewPath',['../struct_pds_content.html#ac8a4eaf3a2ddb5b6da91081ac9eaa5ca',1,'PdsContent']]],
+  ['addnewtext_14',['AddNewText',['../struct_pds_content.html#ac4a59287cc495a9b811e7521e8099ab8',1,'PdsContent']]],
+  ['addpage_15',['AddPage',['../struct_pdf_doc_template.html#a0d7154ea980bbbfbd07d19077044ad9a',1,'PdfDocTemplate::AddPage()'],['../struct_pdf_conversion.html#af99f9c5419906cfd35d21940e4929466',1,'PdfConversion::AddPage()']]],
+  ['addpageobject_16',['AddPageObject',['../struct_pds_struct_element.html#a6acb35182fd97eb88cf04f0a9c2897b8',1,'PdsStructElement']]],
+  ['addquad_17',['AddQuad',['../struct_pdf_link_annot.html#aa32948c5aa41e9562141d9827cba6b89',1,'PdfLinkAnnot::AddQuad()'],['../struct_pdf_text_markup_annot.html#a24a0af49988c1340608e2c621dcd4a88',1,'PdfTextMarkupAnnot::AddQuad()']]],
+  ['addreply_18',['AddReply',['../struct_pdf_markup_annot.html#a2ab80ee5d42ab5411d51cd20cc5cab03',1,'PdfMarkupAnnot']]],
+  ['addtag_19',['AddTag',['../struct_pds_content_mark.html#a111840d31881ec824b2782a1baa4038e',1,'PdsContentMark']]],
+  ['addtags_20',['AddTags',['../struct_pdf_doc.html#afe85bf45e425f996d6dd3974f8b765e1',1,'PdfDoc::AddTags()'],['../struct_pde_page_map.html#aa569606b7da7e01f1f95808ec5547031',1,'PdePageMap::AddTags()']]],
+  ['applyredaction_21',['ApplyRedaction',['../struct_pdf_doc.html#a3b18340bc1ad35f8d422221da51f539d',1,'PdfDoc']]],
+  ['arcto_22',['ArcTo',['../struct_pds_path.html#a28ebd6d478b83f9303b8cac660378482',1,'PdsPath']]],
+  ['authorize_23',['Authorize',['../struct_pdf_doc.html#a7ee05d19eb856a6ef7424dfdaa79dbd5',1,'PdfDoc::Authorize()'],['../struct_ps_account_authorization.html#a9891d9d39491dc27142cc8cff5670b7c',1,'PsAccountAuthorization::Authorize()']]]
+];
