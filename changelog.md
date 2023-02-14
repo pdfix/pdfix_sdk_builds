@@ -1,5 +1,23 @@
 # Changelog
 
+## [6.20.0] - 2023-02-15
+### Added
+- Added PdfDoc.SetTagId to add required tag IDs
+- Added PsCommand.RepairIdTree and PdsStructTree.RepairIdTree
+- Added PdeCell.GetNumAssiciatedHeaders, GetAssociatedHedder, AddAssociatedHeader, RemoveAssociatedHeader
+- Added PdeElement.GetTagId, SetTagId
+- Added PdeCell.GetColNum, SetColNum, GetRowNum, SetRowNum
+- Added PdfDocJsonConversion extract page content
+
+### Fixed
+- PdePageMap.AddTags support for tag ID
+- PdeCell Associated headers manipulation support
+- Fixed PageMap initial table element not created if no children were found
+- Fixed PdfLinkAnnot.AddQuad invalid order of quad points
+- PDF to HTML font size optimization
+
+### Removed
+- Removed PdfDoc.AddTagId
 
 ## [6.19.0] - 2022-11-11
 ### Added
