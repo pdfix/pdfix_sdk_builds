@@ -26,8 +26,8 @@ Import NuGet package [PDFix.SDK](https://www.nuget.org/packages/PDFix.SDK/)
 using PDFixSDK.Pdfix;
 
 static void Main() {
-   var pdfix = new Pdfix();                           // load the library
-   var doc = pdfix.OpenDoc("Sample.pdf", "");         // open document
+   var pdfix = new Pdfix();
+   var doc = pdfix.OpenDoc("Sample.pdf", "");
    // do your stuff
    doc.Close();                                       
 }
@@ -39,12 +39,12 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_dotnet]
 
 #include "Pdfix.h"
 
-Pdfix_statics;                                        // static members
+Pdfix_statics;
 
 int main() {
-   if (Pdfix_init(Pdfix_MODULE_NAME))) {              // load the library
+   if (Pdfix_init(Pdfix_MODULE_NAME))) {
       auto pdfix = GetPdfix();
-      auto doc = pdfix->OpenDoc(L"Sample.pdf", L"");  // open document
+      auto doc = pdfix->OpenDoc(L"Sample.pdf", L"");
       // do your stuff
       doc->Close();                                   
    }
@@ -57,9 +57,9 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_cpp](ht
 import net.pdfix.pdfixlib.*;
 
 public static void main() {
-   System.loadLibrary("pdfix");                       // load the library
+   System.loadLibrary("pdfix");                       
    Pdfix pdfix = new Pdfix();   
-   PdfDoc doc = pdfix.OpenDoc("Sample.pdf", "");      // open document
+   PdfDoc doc = pdfix.OpenDoc("Sample.pdf", "");      
    // do your stuff
    doc.Close();
 }
@@ -67,16 +67,26 @@ public static void main() {
 Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_java](https://github.com/pdfix/pdfix_sdk_example_java)
 
 ### python
+Import Python Package [pdfix-sdk](https://pypi.org/project/pdfix-sdk/)
+
+```python
+from pdfixsdk.Pdfix import *
+
+pdfix  = GetPdfix()
+doc = pdfix.OpenDoc("Sample.pdf", "")
+// do your stuff
+doc.close()
+```
 Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python](https://github.com/pdfix/pdfix_sdk_example_python)
 
 
 ## Prerequisites
-- Windows 10, Windows Server 2016 (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
+- Windows 7, Windows Server 2016 (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)_)
 - macOS 10.15+
 - Ubuntu 16.04+, CentOS 8+
 
-## Trial license limitations
+## Trial/Lite license limitations
 - Methods extracting text from the PDF content randomly replace characters with "*"
 - Rasterized images may contain logo watermark
 - Saved PDFs may have redacted parts of the content 
