@@ -1,5 +1,32 @@
 # Changelog
 
+## [7.0.0] - 2023-06-28
+### Added
+- Added PsCommand FixWhitespaces, SetStructureAttribute, RemoveContentMarks
+- Added CLI batch command
+- Added PdsPageObject.TransformCTM
+- Added flags support for WordFinder
+- Added PdfDoc.CreateXObjectFromPage
+- Added support for macOS M1 chips
+
+### Changed
+- Convert Structure Tree to JSON includes type and attributes
+- Embed Font command failed
+- Get Document Properties output unreadable
+- Layout and content recognition updates
+
+### Fixed
+- Fixed flatten annots issue
+- Fixed adding char spaces in autotag
+- Fixed flatten form XObject invalid matrix
+- Fixed word geometry calculation on rotated pages
+- Fixed handling marked content sequences in derivation
+- Fixed autotag table colspan issue
+- Fixed required flag support to the HTML form field
+
+### Removed
+- Removed PdsPageObject.SetMatrix 
+
 ## [6.20.0] - 2023-02-15
 ### Added
 - Added PdfDoc.SetTagId to add required tag IDs

@@ -1,0 +1,1126 @@
+{
+  "commands": [
+    {
+      "title": "Convert To HTML",
+      "desc": "Convert PDF to HTML",
+      "name": "pdf_to_html",
+      "flags": 0,
+      "params": {
+        "html_type": {
+          "title": "Conversion Type",
+          "desc": "Conversion HTML layout type",
+          "flags": 4,
+          "type": "int",
+          "set": [
+            {
+              "desc": "Original layout",
+              "value": 0
+            },
+            {
+              "desc": "Responsive layout",
+              "value": 1
+            },
+            {
+              "desc": "Layout defined by PDF Tags",
+              "value": 2
+            }
+          ],
+          "value": 0
+        },
+        "output": {
+          "title": "Output Folder",
+          "desc": "Output folder",
+          "type": "folder_path",
+          "value": ""
+        },
+        "width": {
+          "title": "Width",
+          "desc": "Width of the rendered page in pixels",
+          "type": "int",
+          "value": 1200
+        },
+        "flags": {
+          "title": "Conversion Flags",
+          "desc": "HTML conversion flags",
+          "type": "flag",
+          "set": [
+            {
+              "desc": "Basic html",
+              "value": 0
+            },
+            {
+              "desc": "Exports document JavaScripts",
+              "value": 1
+            },
+            {
+              "desc": "Exports embedded font files",
+              "value": 2
+            },
+            {
+              "desc": "Ignore font sizes and use standard",
+              "value": 4
+            },
+            {
+              "desc": "Retain text color",
+              "value": 8
+            },
+            {
+              "desc": "Do not use external css, but use inline instead",
+              "value": 32
+            },
+            {
+              "desc": "Do not use external javascripts, but use inline instead",
+              "value": 64
+            },
+            {
+              "desc": "Do not use external images, but use embedded base64 instead",
+              "value": 128
+            },
+            {
+              "desc": "Do not use external fonts, but use embedded base64 instead",
+              "value": 256
+            },
+            {
+              "desc": "Display pages on the gray background with margin around each page",
+              "value": 512
+            },
+            {
+              "desc": "Do not render the page. Available only in fixed view",
+              "value": 1024
+            },
+            {
+              "desc": "Exclude head and body html nodes",
+              "value": 2048
+            },
+            {
+              "desc": "Exclude pdf-document div element",
+              "value": 4096
+            },
+            {
+              "desc": "Exclude pdf-page div elements",
+              "value": 8192
+            }
+          ],
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Get Document Properties",
+      "desc": "Get document metadata and properties",
+      "name": "get_doc_info",
+      "flags": 0,
+      "output": {
+        "creation_date": {
+          "title": "Created",
+          "desc": "Creation date",
+          "type": "string",
+          "value": ""
+        },
+        "mod_date": {
+          "title": "Modified",
+          "desc": "Modified date",
+          "type": "string",
+          "value": ""
+        },
+        "author": {
+          "title": "Author",
+          "desc": "Author name",
+          "type": "string",
+          "value": ""
+        },
+        "title": {
+          "title": "Title",
+          "desc": "Title",
+          "type": "string",
+          "value": ""
+        },
+        "subject": {
+          "title": "Subject",
+          "desc": "Subject",
+          "type": "string",
+          "value": ""
+        },
+        "keywords": {
+          "title": "Keywords",
+          "desc": "Keywords",
+          "type": "string",
+          "value": ""
+        },
+        "producer": {
+          "title": "Producer",
+          "desc": "Producer name",
+          "type": "string",
+          "value": ""
+        },
+        "creator": {
+          "title": "Creator",
+          "desc": "Creator name",
+          "type": "string",
+          "value": ""
+        },
+        "num_pages": {
+          "title": "Pages",
+          "desc": "Number of pages",
+          "type": "int",
+          "value": -1
+        },
+        "lang": {
+          "title": "Language",
+          "desc": "Language",
+          "type": "string",
+          "value": ""
+        },
+        "standard": {
+          "title": "PDF Standard",
+          "desc": "PDF standard",
+          "type": "string",
+          "value": "None"
+        },
+        "tagged": {
+          "title": "Tagged",
+          "desc": "Tagged",
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Set Document Properties",
+      "desc": "Set document metadata and properties",
+      "name": "set_doc_info",
+      "flags": 1,
+      "params": {
+        "author": {
+          "title": "Author",
+          "desc": "Author name",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "title": {
+          "title": "Title",
+          "desc": "Title",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "subject": {
+          "title": "Subject",
+          "desc": "Subject",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "keywords": {
+          "title": "Keywords",
+          "desc": "Keywords",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "producer": {
+          "title": "Producer",
+          "desc": "Producer name",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "creator": {
+          "title": "Creator",
+          "desc": "Creator name",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "lang": {
+          "title": "Language",
+          "desc": "Language",
+          "flags": 8,
+          "type": "string",
+          "value": ""
+        },
+        "standard": {
+          "title": "PDF Standard",
+          "desc": "PDF standard",
+          "flags": 8,
+          "type": "flag",
+          "set": [
+            {
+              "desc": "No standard",
+              "value": 0
+            },
+            {
+              "desc": "PDF/UA-1",
+              "value": 2
+            }
+          ],
+          "value": "0"
+        }
+      }
+    },
+    {
+      "title": "Set PDF Standard",
+      "desc": "Set PDF standard",
+      "name": "set_pdf_standard",
+      "flags": 1,
+      "params": {
+        "standard": {
+          "title": "PDF Standard",
+          "desc": "PDF standard",
+          "type": "flag",
+          "set": [
+            {
+              "desc": "No standard",
+              "value": 0
+            },
+            {
+              "desc": "PDF/UA-1",
+              "value": 2
+            }
+          ],
+          "value": "0"
+        },
+        "set_suspect_value": {
+          "title": "Suspect Value",
+          "desc": "Suspect value",
+          "type": "bool",
+          "value": true
+        },
+        "set_oc_name": {
+          "title": "OC Properties",
+          "desc": "OC properties",
+          "type": "bool",
+          "value": true
+        },
+        "set_display_doc_title": {
+          "title": "Display Document Title",
+          "desc": "Display document title key",
+          "type": "bool",
+          "value": true
+        },
+        "repair_media_clip_keys": {
+          "title": "Repair Media Clip Keys",
+          "desc": "Add CT and Alt key",
+          "type": "bool",
+          "value": true
+        },
+        "remove_oc_config_as_key": {
+          "title": "Remove AS Key",
+          "desc": "Remove AS key from OC configuration",
+          "type": "bool",
+          "value": true
+        },
+        "remove_standard_tags_mapping": {
+          "title": "Remove Standard Tags Mapping",
+          "desc": "Remove standard tags mapping",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Set Language",
+      "desc": "Set document language",
+      "name": "set_language",
+      "flags": 1,
+      "params": {
+        "lang": {
+          "title": "Language",
+          "desc": "Document language",
+          "type": "string",
+          "set": [
+            {
+              "desc": "cs-CZ",
+              "value": "cs-CZ"
+            },
+            {
+              "desc": "de-DE",
+              "value": "de-DE"
+            },
+            {
+              "desc": "en-GB",
+              "value": "en-GB"
+            },
+            {
+              "desc": "en-US",
+              "value": "en-US"
+            },
+            {
+              "desc": "es-ES",
+              "value": "es-ES"
+            },
+            {
+              "desc": "fi-FI",
+              "value": "fi-FI"
+            },
+            {
+              "desc": "fr-FR",
+              "value": "fr-FR"
+            },
+            {
+              "desc": "hu-HU",
+              "value": "hu-HU"
+            },
+            {
+              "desc": "it-IT",
+              "value": "it-IT"
+            },
+            {
+              "desc": "nl-BE",
+              "value": "nl-BE"
+            },
+            {
+              "desc": "nl-NL",
+              "value": "nl-NL"
+            },
+            {
+              "desc": "no-NO",
+              "value": "no-NO"
+            },
+            {
+              "desc": "pl-PL",
+              "value": "pl-PL"
+            },
+            {
+              "desc": "ru-RU",
+              "value": "ru-RU"
+            },
+            {
+              "desc": "sk-SK",
+              "value": "sk-SK"
+            },
+            {
+              "desc": "sv-SE",
+              "value": "sv-SE"
+            },
+            {
+              "desc": "zh-CN",
+              "value": "zh-CN"
+            }
+          ],
+          "value": ""
+        }
+      }
+    },
+    {
+      "title": "Set Title",
+      "desc": "Set document title",
+      "name": "set_title",
+      "flags": 1,
+      "params": {
+        "title": {
+          "title": "Title",
+          "desc": "Document title",
+          "type": "string",
+          "value": ""
+        },
+        "replace_title": {
+          "title": "Overwrite",
+          "desc": "Overwrite existing title",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Preflight",
+      "desc": "Preflight document",
+      "name": "preflight",
+      "flags": 0,
+      "params": {
+        "merge_preflight": {
+          "title": "Merge",
+          "desc": "Merge preflight",
+          "flags": 4,
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Load Template",
+      "desc": "Load template",
+      "name": "load_template",
+      "flags": 0,
+      "params": {
+        "template": {
+          "title": "Template",
+          "desc": "Template file path",
+          "flags": 4,
+          "type": "file_path",
+          "value": ""
+        }
+      }
+    },
+    {
+      "title": "Reset Template",
+      "desc": "Reset template",
+      "name": "reset_template",
+      "flags": 0
+    },
+    {
+      "title": "Add Tags",
+      "desc": "Autotag document",
+      "name": "add_tags",
+      "flags": 1,
+      "params": {
+        "standard_attrs": {
+          "title": "Add Layout Attributes",
+          "desc": "Add layout attributes",
+          "flags": 4,
+          "type": "bool",
+          "value": false
+        },
+        "headings": {
+          "title": "Sequential Heading Levels",
+          "desc": "Sequential heading levels",
+          "flags": 4,
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Clear Document Structure",
+      "desc": "Clear document structure",
+      "name": "clear_structure",
+      "flags": 1,
+      "params": {
+        "clear_tags": {
+          "title": "Clear Content Marks",
+          "desc": "Clear content marks",
+          "flags": 4,
+          "type": "bool",
+          "value": true
+        },
+        "clear_struct_tree": {
+          "title": "Clear Structure Tree",
+          "desc": "Clear structure tree",
+          "flags": 4,
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Embed Font",
+      "desc": "Embed font",
+      "name": "embed_font",
+      "flags": 1
+    },
+    {
+      "title": "Add Missing Unicode",
+      "desc": "Add missing unicodes",
+      "name": "add_missing_unicode",
+      "flags": 1
+    },
+    {
+      "title": "Repair ID Tree",
+      "desc": "Repair ID tree",
+      "name": "repair_id_tree",
+      "flags": 1
+    },
+    {
+      "title": "Repair Parent Tree",
+      "desc": "Repair parent tree",
+      "name": "repair_parent_tree",
+      "flags": 1
+    },
+    {
+      "title": "Create Bookmarks",
+      "desc": "Create bookmarks",
+      "name": "create_bookmarks",
+      "flags": 1
+    },
+    {
+      "title": "Artifact Content",
+      "desc": "Artifact content",
+      "name": "artifact_content",
+      "flags": 1,
+      "params": {
+        "untagged_object": {
+          "title": "Non-tagged content",
+          "desc": "Artifact non-tagged content only",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Flatten Form XObject",
+      "desc": "Flatten Form XObject",
+      "name": "flatten_xobject",
+      "flags": 1
+    },
+    {
+      "title": "Set Tabs Key",
+      "desc": "Set tabs key",
+      "name": "set_tabs_key",
+      "flags": 1,
+      "params": {
+        "tabs_key": {
+          "title": "Tabs Key",
+          "desc": "Tabs key",
+          "type": "string",
+          "value": "S"
+        },
+        "replace_tabs": {
+          "title": "Overwrite",
+          "desc": "Overwrite existing tabs",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Delete Empty Tags",
+      "desc": "Delete empty tags",
+      "name": "delete_tags",
+      "flags": 1,
+      "params": {
+        "delete_empty": {
+          "title": "Empty",
+          "desc": "Empty tags",
+          "type": "bool",
+          "value": true
+        },
+        "delete_invalid": {
+          "title": "Invalid",
+          "desc": "Invalid tags",
+          "type": "bool",
+          "value": true
+        },
+        "ignore_table": {
+          "title": "Ignore Tables",
+          "desc": "Ignore tables",
+          "type": "bool",
+          "value": true
+        },
+        "ignore_heading": {
+          "title": "Ignore Headings",
+          "desc": "Ignore headings",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Apply Standard Tags",
+      "desc": "Apply standard tags",
+      "name": "apply_standard_tags",
+      "flags": 1
+    },
+    {
+      "title": "Set Tag ID",
+      "desc": "Set tag ID",
+      "name": "set_tag_id",
+      "flags": 1,
+      "params": {
+        "accept_tag_regex": {
+          "title": "Include Tags Defined By Regular Expression",
+          "desc": "Include tags defined using a regular expression",
+          "type": "string",
+          "value": "^((Note)|(TH))$"
+        },
+        "replace_id": {
+          "title": "Overwrite Tag ID",
+          "desc": "Overwrite the tag ID if already set",
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Fix Placement",
+      "desc": "Fix placement",
+      "name": "fix_placement",
+      "flags": 1
+    },
+    {
+      "title": "Remove Tag Properties",
+      "desc": "Remove data from tag",
+      "name": "remove_tag_data",
+      "flags": 1,
+      "params": {
+        "accept_alternate_desc": {
+          "title": "Remove Alt",
+          "desc": "Remove Alt key",
+          "type": "bool",
+          "value": false
+        },
+        "accept_actual_text": {
+          "title": "Remove ActualText",
+          "desc": "Remove ActualText key",
+          "type": "bool",
+          "value": false
+        },
+        "accept_id": {
+          "title": "Remove ID",
+          "desc": "Remove ID key",
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Set Annotation Contents",
+      "desc": "Set annotation Contents key",
+      "name": "set_annot_contents",
+      "flags": 1,
+      "params": {
+        "accept_link": {
+          "title": "Link",
+          "desc": "Link",
+          "type": "bool",
+          "value": true
+        },
+        "accept_markup": {
+          "title": "Markup Annotation",
+          "desc": "Markup annotation",
+          "type": "bool",
+          "value": true
+        },
+        "accept_other": {
+          "title": "Other",
+          "desc": "Other",
+          "type": "bool",
+          "value": false
+        },
+        "replace_contents": {
+          "title": "Overwrite",
+          "desc": "Overwrite existing contents",
+          "type": "bool",
+          "value": false
+        },
+        "contents": {
+          "title": "Custom",
+          "desc": "Custom",
+          "type": "string",
+          "value": ""
+        },
+        "use_bbox": {
+          "title": "Use Associated Text",
+          "desc": "Use associated text bounding box",
+          "type": "bool",
+          "value": true
+        }
+      }
+    },
+    {
+      "title": "Flatten Annotations",
+      "desc": "Flatten annotations",
+      "name": "flatten_annot",
+      "flags": 1
+    },
+    {
+      "title": "Convert To JSON",
+      "desc": "Convert PDF to JSON",
+      "name": "pdf_to_json",
+      "flags": 0,
+      "params": {
+        "output": {
+          "title": "Output Folder",
+          "desc": "Output folder",
+          "type": "folder_path",
+          "value": ""
+        },
+        "struct_tree": {
+          "title": "Structure Tree",
+          "desc": "Structure tree",
+          "type": "bool",
+          "value": false
+        },
+        "page_map": {
+          "title": "PageMap Objects",
+          "desc": "PageMap objects",
+          "type": "bool",
+          "value": true
+        },
+        "page_content": {
+          "title": "Page Content Objects",
+          "desc": "Page content objects",
+          "type": "bool",
+          "value": true
+        },
+        "text": {
+          "title": "Export Texts",
+          "desc": "Export texts",
+          "type": "bool",
+          "value": true
+        },
+        "text_style": {
+          "title": "Export Text Styles",
+          "desc": "Export text styles",
+          "type": "bool",
+          "value": true
+        },
+        "text_state": {
+          "title": "Export Text States",
+          "desc": "Export text states",
+          "type": "bool",
+          "value": false
+        },
+        "images": {
+          "title": "Export Images",
+          "desc": "Export images",
+          "type": "bool",
+          "value": false
+        },
+        "bbox": {
+          "title": "Export Positions",
+          "desc": "Export bounding box positions",
+          "type": "bool",
+          "value": false
+        },
+        "graphics_state": {
+          "title": "Export Graphics States",
+          "desc": "Export sraphics states",
+          "type": "bool",
+          "value": false
+        }
+      }
+    },
+    {
+      "title": "Validation",
+      "desc": "Validation",
+      "name": "validation",
+      "flags": 0
+    },
+    {
+      "title": "Set Structure Element Attribute",
+      "desc": "Set the attribute of a structure element",
+      "name": "set_structure_attribute",
+      "params": {
+        "structure_type": {
+          "title": "Structure Type",
+          "desc": "Structure element type to which the attribute will be set or all types if empty",
+          "set": [
+            {
+              "value": "Document",
+              "desc": "Document"
+            },
+            {
+              "value": "Part",
+              "desc": "Part"
+            },
+            {
+              "value": "Art",
+              "desc": "Art"
+            },
+            {
+              "value": "Sect",
+              "desc": "Sect"
+            },
+            {
+              "value": "Div",
+              "desc": "Div"
+            },
+            {
+              "value": "BlockQuote",
+              "desc": "BlockQuote"
+            },
+            {
+              "value": "Caption",
+              "desc": "Caption"
+            },
+            {
+              "value": "TOC",
+              "desc": "TOC"
+            },
+            {
+              "value": "TOCI",
+              "desc": "TOCI"
+            },
+            {
+              "value": "Index",
+              "desc": "Index"
+            },
+            {
+              "value": "NonStruct",
+              "desc": "NonStruct"
+            },
+            {
+              "value": "Private",
+              "desc": "Private"
+            },
+            {
+              "value": "H",
+              "desc": "H"
+            },
+            {
+              "value": "H1",
+              "desc": "H2"
+            },
+            {
+              "value": "H3",
+              "desc": "H3"
+            },
+            {
+              "value": "H4",
+              "desc": "H4"
+            },
+            {
+              "value": "H5",
+              "desc": "H6"
+            },
+            {
+              "value": "P",
+              "desc": "P"
+            },
+            {
+              "value": "L",
+              "desc": "L"
+            },
+            {
+              "value": "LI",
+              "desc": "LI"
+            },
+            {
+              "value": "Lbl",
+              "desc": "Lbl"
+            },
+            {
+              "value": "LBody",
+              "desc": "LBody"
+            },
+            {
+              "value": "Table",
+              "desc": "Table"
+            },
+            {
+              "value": "TR",
+              "desc": "TR"
+            },
+            {
+              "value": "TH",
+              "desc": "TH"
+            },
+            {
+              "value": "TD",
+              "desc": "TD"
+            },
+            {
+              "value": "THead",
+              "desc": "THead"
+            },
+            {
+              "value": "TBody",
+              "desc": "TBody"
+            },
+            {
+              "value": "TFoot",
+              "desc": "TFoot"
+            },
+            {
+              "value": "Span",
+              "desc": "Span"
+            },
+            {
+              "value": "Part",
+              "desc": "Part"
+            },
+            {
+              "value": "Quote",
+              "desc": "Quote"
+            },
+            {
+              "value": "Note",
+              "desc": "Note"
+            },
+            {
+              "value": "Reference",
+              "desc": "Reference"
+            },
+            {
+              "value": "BibEntry",
+              "desc": "BibEntry"
+            },
+            {
+              "value": "Code",
+              "desc": "Code"
+            },
+            {
+              "value": "Link",
+              "desc": "Link"
+            },
+            {
+              "value": "Annot",
+              "desc": "Annot"
+            },
+            {
+              "value": "Ruby",
+              "desc": "Ruby"
+            },
+            {
+              "value": "RB",
+              "desc": "RB"
+            },
+            {
+              "value": "RT",
+              "desc": "RT"
+            },
+            {
+              "value": "RP",
+              "desc": "RP"
+            },
+            {
+              "value": "Warichu",
+              "desc": "Warichu"
+            },
+            {
+              "value": "WT",
+              "desc": "WT"
+            },
+            {
+              "value": "WP",
+              "desc": "WP"
+            },
+            {
+              "value": "Link",
+              "desc": "Link"
+            },
+            {
+              "value": "Figure",
+              "desc": "Figure"
+            },
+            {
+              "value": "Formula",
+              "desc": "Formula"
+            },
+            {
+              "value": "Form",
+              "desc": "Form"
+            }
+          ],
+          "type": "string",
+          "value": ""
+        },
+        "owner": {
+          "title": "Owner",
+          "desc": "Standard attribute owner",
+          "set": [
+            {
+              "desc": "Layout",
+              "value": "Layout"
+            },
+            {
+              "desc": "List",
+              "value": "List"
+            },
+            {
+              "desc": "PrintField",
+              "value": "PrintField"
+            },
+            {
+              "desc": "Table",
+              "value": "Table"
+            }
+          ],
+          "type": "string",
+          "value": "",
+          "flags": 4
+        },
+        "name": {
+          "title": "Name",
+          "desc": "Attribute name",
+          "type": "string",
+          "flags": 4
+        },
+        "value": {
+          "title": "Value",
+          "desc": "Arrtibute value",
+          "set": [
+            {
+              "value": "<auto>",
+              "desc": "<auto>"
+            }
+          ],
+          "type": "string"
+        },
+        "value_type": {
+          "title": "Value Type",
+          "desc": "Attribute value type",
+          "set": [
+            {
+              "desc": "string",
+              "value": "string"
+            },
+            {
+              "desc": "name",
+              "value": "name"
+            },
+            {
+              "desc": "array",
+              "value": "array"
+            },
+            {
+              "desc": "number",
+              "value": "number"
+            }
+          ],
+          "type": "string",
+          "value": ""
+        },
+        "replace_attribute": {
+          "title": "Overwrite if exists",
+          "desc": "Overwrite attribute if exists",
+          "type": "bool",
+          "value": "false"
+        }
+      }
+    },
+    {
+      "title": "Remove Content Marks",
+      "name": "remove_content_marks",
+      "desc": "Remove content marks from page objects mcid|artifact|all",
+      "params": {
+        "flags": {
+          "title": "Remove content mark flags",
+          "desc": "Types of content marks to be removed",
+          "set": [
+            {
+              "desc": "MCID",
+              "value": "1"
+            },
+            {
+              "desc": "Artifact",
+              "value": "2"
+            },
+            {
+              "desc": "All content marks",
+              "value": "255"
+            }
+          ],
+          "type": "flag",
+          "value": "0"
+        }
+      }
+    },
+    {
+      "title": "Fix Whitespaces",
+      "desc": "Add missing or resolve duplicate whitespaces within a structure element",
+      "name": "fix_structure_spaces",
+      "params": {
+        "add_missing_spaces": {
+          "title": "Add Missing Spaces",
+          "desc": "Identify words in the structure and add missing spaces",
+          "type": "bool",
+          "value": true
+        },
+        "remove_unnecessary_spaces": {
+          "title": "Remove Unnecessary Spaces",
+          "desc": "Remove duplicite spaces after each word",
+          "type": "bool",
+          "value": false
+        },
+        "artifact_unnecessary_spaces": {
+          "title": "Artifact Unnecessary Spaces",
+          "desc": "Mark duplicite spaces after each word as an Artifact",
+          "type": "bool",
+          "value": true
+        }
+      }
+    }
+  ]
+}
