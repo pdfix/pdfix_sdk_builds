@@ -1098,8 +1098,8 @@
       }
     },
     {
-      "title": "Fix Whitespaces",
-      "desc": "Add missing or resolve duplicate whitespaces within a structure element",
+      "title": "Fix Spaces",
+      "desc": "Add missing or resolve duplicate white spaces within a structure element",
       "name": "fix_structure_spaces",
       "params": {
         "add_missing_spaces": {
