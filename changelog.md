@@ -1,5 +1,16 @@
 # Changelog
 
+
+## [7.0.1] - 2023-07-28
+
+### Changed
+- Delete Tags command uses regular expression to define tag names
+- Set Contents command uses regular expression to define annotation types
+
+### Fixed
+- Fixed Conversion to HTML when invalid annotation appears
+- Content writer issues
+
 ## [7.0.0] - 2023-06-28
 ### Added
 - Added PsCommand FixWhitespaces, SetStructureAttribute, RemoveContentMarks
