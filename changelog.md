@@ -1,5 +1,27 @@
 # Changelog
 
+## [7.1.0] - 2023-09-21
+
+### Added
+
+- Delete empty tags after TagAs 
+- Fix placement for Note
+- Rotate pages PsCommand
+
+### Fixed 
+- Adding spaces when tagging generates too many mcids
+- Fix spaces does not embed font correctly on Linux
+- Delete Tags support for tables and rows
+- MoveTag removes the reference to parent object P
+- Add Objects to Tag does not assign direct MCID
+- Fixed Set Suspect Value
+- Remove annot from tag tree if re-taging if UA support is on
+- Flattening form fields causes appearance offset 
+- Page.SetContent skews the content
+- Tag Annotation Error
+- Unicode character converted incorrectly into HTML in derivation
+- Convert to HTML invalid annotation raises an exception
+
 
 ## [7.0.1] - 2023-07-28
 
