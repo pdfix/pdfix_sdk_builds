@@ -10,10 +10,10 @@
 - Progress monitoring in CLI
 - Export to JSON include content marks
 
-### Fixed:
+### Fixed
 - Fixed creating XObject from 1 BPC Image JPG images
 - Fixed adding missing spaces while tagging
-- Autotag breaks transparency in PDF object (2590)
+- Autotag breaks transparency in PDF object
 
 
 ## [7.1.0] - 2023-09-21
