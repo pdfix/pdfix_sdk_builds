@@ -8,7 +8,7 @@
 - Added NPM package 
 - Added modulus operator mod(a,b) in template
 - Progress monitoring in CLI
-- Export to JSON include content marks
+- Export to JSON including content marks
 
 ### Fixed
 - Fixed creating XObject from 1 BPC Image JPG images
