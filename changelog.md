@@ -1,5 +1,21 @@
 # Changelog
 
+## [7.2.0] - 2023-11-29
+
+### Added
+- Added Docker support
+- Added Nuget package support for  Linux (amd64), MacOS(amd64, arm64)
+- Added NPM package 
+- Added modulus operator mod(a,b) in template
+- Progress monitoring in CLI
+- Export to JSON include content marks
+
+### Fixed:
+- Fixed creating XObject from 1 BPC Image JPG images
+- Fixed adding missing spaces while tagging
+- Autotag breaks transparency in PDF object (2590)
+
+
 ## [7.1.0] - 2023-09-21
 
 ### Added
