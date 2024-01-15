@@ -97,6 +97,10 @@ PDFix SDK can be autorized using an activation key or using the name, key pair.
 ### Standard License Activation
 Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
 
+#### Windows Virtual Machines
+In the case of error: 1239 "VM detection dll not found or tempered" download the [VM detection dll](https://drive.google.com/file/d/1K8XpGc7NLSkWHzdLcd2ZZSfVSY3j4wZk/view?usp=drive_link) and copy to the same directory as pdfix_app. 
+
+
 Command line example:
 ```
 $ ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX
