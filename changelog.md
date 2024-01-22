@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.3.0] - 2024-01-22
+
+### Added
+- Set Doc Info command includes set PDF/UA standard
+- Set PDF/UA Standard command
+
+### Fixed
+- Progress control in commands MakeAccessible, ConvertToHtml
+- Untagged content after Make Accessible
+- Virtual Windows server license activation
+- Create Bookmarks from Headings creates empty bookmarks for nested tags
+- Error messages from CLI
+
 ## [7.2.0] - 2023-11-29
 
 ### Added
