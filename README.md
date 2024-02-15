@@ -81,10 +81,10 @@ Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python]
 
 
 ## Prerequisites
-- Windows 7, Windows Server 2016 (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
+- Windows 7 and newer, Windows Server 2016 and newer (_The latest [Microsoft Visual C++ Redistributable for Visual Studio
 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)_)
-- macOS 10.15+
-- Ubuntu 16.04+, CentOS 8+
+- macOS 10.15 and newer
+- Ubuntu 16.04 and newer, Debian 10 and newer, CentOS 8 and newer
 
 ## Trial/Lite license limitations
 - Methods extracting text from the PDF content randomly replace characters with "*"

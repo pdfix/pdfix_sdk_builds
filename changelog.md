@@ -1,5 +1,14 @@
 # Changelog
 
+## [7.3.1] - 2024-02-16
+
+### Added
+- Added PdfHtmlConversion.AddHtml method to append HTML code into converted document
+- Added CLI parameter for `pdf2html` command `-a`|`--append-html` 
+
+### Fixed
+- UFT-8 encoding issue in PDF to HTML conversion using the derivation algorithm
+
 ## [7.3.0] - 2024-01-22
 
 ### Added
