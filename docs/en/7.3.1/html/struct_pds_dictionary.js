@@ -1,0 +1,27 @@
+var struct_pds_dictionary =
+[
+    [ "Get", "struct_pds_dictionary.html#a00a31bad79412d38e46792bc11612781", null ],
+    [ "GetArray", "struct_pds_dictionary.html#a93aea54d5f4f39dd18620e137e12eaee", null ],
+    [ "GetBoolean", "struct_pds_dictionary.html#ab29665202ba4ad328066a2c9787c28e3", null ],
+    [ "GetDictionary", "struct_pds_dictionary.html#a494f4d9a8f22ea5f47795829f467bc56", null ],
+    [ "GetInteger", "struct_pds_dictionary.html#a4a04d59929f92449daa7fe7e76f81219", null ],
+    [ "GetKey", "struct_pds_dictionary.html#a324ae471f8371c27c2b8e3b052ad6df9", null ],
+    [ "GetMatrix", "struct_pds_dictionary.html#aa99e7d2eefbe55633b6abb4b9baf22b0", null ],
+    [ "GetNumber", "struct_pds_dictionary.html#a886801f943e19e97faa8f0c8e630de61", null ],
+    [ "GetNumKeys", "struct_pds_dictionary.html#acd150baef2d6f81141347d71d4fe4bb9", null ],
+    [ "GetRect", "struct_pds_dictionary.html#ab27b9d0024c82faabae4c574140a80fb", null ],
+    [ "GetStream", "struct_pds_dictionary.html#a92f4e5ca297397da99db1cadd816aad4", null ],
+    [ "GetString", "struct_pds_dictionary.html#aa19659181503da64a78c4fa30c6fe669", null ],
+    [ "GetText", "struct_pds_dictionary.html#a0ed655a04211dc831369315f72f09fe8", null ],
+    [ "Known", "struct_pds_dictionary.html#ade2629fdf828bce3529991bd27ca48db", null ],
+    [ "Put", "struct_pds_dictionary.html#abdb7e0652b0fe9c70e1d10448fbf4661", null ],
+    [ "PutArray", "struct_pds_dictionary.html#a76d7fc4905a6d3dfd2f34dd2fe28ae13", null ],
+    [ "PutBool", "struct_pds_dictionary.html#a68200fd6f25492df740e825415fad6d3", null ],
+    [ "PutDict", "struct_pds_dictionary.html#a49ec403476e73098522511bda96423c1", null ],
+    [ "PutMatrix", "struct_pds_dictionary.html#a29f4c56164f85440c868827a32d97308", null ],
+    [ "PutName", "struct_pds_dictionary.html#a4468c5f90703e4c9365ebbe61485368a", null ],
+    [ "PutNumber", "struct_pds_dictionary.html#a7c254f22d9fe667316f90b1da6bbd0f5", null ],
+    [ "PutRect", "struct_pds_dictionary.html#a4690b1bb40264ac275cde3c8ee6f818a", null ],
+    [ "PutString", "struct_pds_dictionary.html#aac38660e8a1f41bc99f6825bd20105e0", null ],
+    [ "RemoveKey", "struct_pds_dictionary.html#ab607e7442f8eb77b01d91af4c6221a59", null ]
+];
