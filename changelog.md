@@ -5,6 +5,7 @@
 ### Added
 - Added PdfHtmlConversion.AddHtml method to append HTML code into converted document
 - Added CLI parameter for `pdf2html` command `-a`|`--append-html` 
+- Added offline license activation support 
 
 ### Fixed
 - UFT-8 encoding issue in PDF to HTML conversion using the derivation algorithm
