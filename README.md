@@ -101,7 +101,8 @@ Software can be authorized using an activation key. After activating the softwar
 In the case of error: 1239 "VM detection dll not found or tempered" download the [VM detection dll](https://drive.google.com/file/d/1K8XpGc7NLSkWHzdLcd2ZZSfVSY3j4wZk/view?usp=drive_link) and copy to the same directory as pdfix_app. 
 
 
-Command line example:
+#### Online Activation
+Using the command line:
 ```
 $ ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX
 ```
@@ -109,14 +110,39 @@ Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/s
 
 _Note to PHP users: Depending on the configuration the PHP may operate in a safe mode under a virtual user (e.g. www-data). In such a case the license should be activated separately with PHP._
 
-### Deactivating the standard license
-When moving license to another computer the license should be deactivated.
+#### Offline activation 
+**Step 1:** Create activation request file
+```
+./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX --request --license-path license.req
+```
+**Step 2:** Send the `license.req` file to [support@pdfix.net](mailto:support@pdfix.net) along with the license key to create a license activation file. Once you receive the `license.lic` file follow to the next step.
 
+**Step 3:** Activate the license from file
+```
+./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX --license-path license.lic
+```
+
+Code examples: (follow the same steps as with CLI)
+
+[c++](https://github.com/pdfix/pdfix_sdk_example_cpp) samples StandardLicenseCreateOfflineActivationFile.cpp, StandardLicenseActivateOffline.cpp
+
+
+### Deactivating the standard license
+Note: When moving license to another computer the license should be deactivated.
+
+#### Online deactivation
 Command line example:
 ```
 $ ./pdfix_app license --deactivate
 ```
 Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivate.cpp)
+
+#### Offline deactivation
+Command line example:
+```
+$ ./pdfix_app license --deactivate --license-path deactivate.req
+```
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivateOffline.cpp)
 
 
 ### License file local storage

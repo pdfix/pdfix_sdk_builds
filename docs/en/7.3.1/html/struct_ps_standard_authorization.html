@@ -139,12 +139,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a700df34e0ba2ce560d3a0b9c779e18a2"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a700df34e0ba2ce560d3a0b9c779e18a2">Activate</a> (const wchar_t *serial_number)=0</td></tr>
 <tr class="memdesc:a700df34e0ba2ce560d3a0b9c779e18a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the library using the activation license key. The method requires internet access.  <a href="struct_ps_standard_authorization.html#a700df34e0ba2ce560d3a0b9c779e18a2">More...</a><br /></td></tr>
 <tr class="separator:a700df34e0ba2ce560d3a0b9c779e18a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d9e04f51e95a29b7e947bb2c5d5707c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a4d9e04f51e95a29b7e947bb2c5d5707c">CreateOfflineActivationFile</a> (const wchar_t *serial_number, const wchar_t *activation_request_file)=0</td></tr>
+<tr class="memdesc:a4d9e04f51e95a29b7e947bb2c5d5707c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create license activation request file for offline activation.  <a href="struct_ps_standard_authorization.html#a4d9e04f51e95a29b7e947bb2c5d5707c">More...</a><br /></td></tr>
+<tr class="separator:a4d9e04f51e95a29b7e947bb2c5d5707c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a622c001444483645aa21c6fee2bee918"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a622c001444483645aa21c6fee2bee918">ActivateOffline</a> (const wchar_t *activation_file)=0</td></tr>
+<tr class="memdesc:a622c001444483645aa21c6fee2bee918"><td class="mdescLeft">&#160;</td><td class="mdescRight">Activates the library using the activation response file.  <a href="struct_ps_standard_authorization.html#a622c001444483645aa21c6fee2bee918">More...</a><br /></td></tr>
+<tr class="separator:a622c001444483645aa21c6fee2bee918"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0513ab817043f85bbb3c8122c5e76882"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a0513ab817043f85bbb3c8122c5e76882">Deactivate</a> ()=0</td></tr>
 <tr class="memdesc:a0513ab817043f85bbb3c8122c5e76882"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deactivates the library. The method requires internet access.  <a href="struct_ps_standard_authorization.html#a0513ab817043f85bbb3c8122c5e76882">More...</a><br /></td></tr>
 <tr class="separator:a0513ab817043f85bbb3c8122c5e76882"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9e4b08e0fd7f2838731b197a650343a"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#ac9e4b08e0fd7f2838731b197a650343a">DeactivateOffline</a> (const wchar_t *deactivation_request_file)=0</td></tr>
+<tr class="memdesc:ac9e4b08e0fd7f2838731b197a650343a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create license deactivation file for offline deactivation.  <a href="struct_ps_standard_authorization.html#ac9e4b08e0fd7f2838731b197a650343a">More...</a><br /></td></tr>
+<tr class="separator:ac9e4b08e0fd7f2838731b197a650343a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5eb72d32d68d61cac40bf0e762489ef"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#ae5eb72d32d68d61cac40bf0e762489ef">Update</a> (bool local)=0</td></tr>
 <tr class="memdesc:ae5eb72d32d68d61cac40bf0e762489ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the autorization state. The method requires internet access .  <a href="struct_ps_standard_authorization.html#ae5eb72d32d68d61cac40bf0e762489ef">More...</a><br /></td></tr>
 <tr class="separator:ae5eb72d32d68d61cac40bf0e762489ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe649ca3a91fd5eaf0d0fd0cfe3c196"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a7fe649ca3a91fd5eaf0d0fd0cfe3c196">UpdateOffline</a> (const wchar_t *update_file)=0</td></tr>
+<tr class="memdesc:a7fe649ca3a91fd5eaf0d0fd0cfe3c196"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the autorization state. The method requires internet access .  <a href="struct_ps_standard_authorization.html#a7fe649ca3a91fd5eaf0d0fd0cfe3c196">More...</a><br /></td></tr>
+<tr class="separator:a7fe649ca3a91fd5eaf0d0fd0cfe3c196"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a210ca70b7207f67f8900f0fbd0d4e4a1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_ps_standard_authorization.html#a210ca70b7207f67f8900f0fbd0d4e4a1">Reset</a> ()=0</td></tr>
 <tr class="memdesc:a210ca70b7207f67f8900f0fbd0d4e4a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the autorization and delete all local data.  <a href="struct_ps_standard_authorization.html#a210ca70b7207f67f8900f0fbd0d4e4a1">More...</a><br /></td></tr>
 <tr class="separator:a210ca70b7207f67f8900f0fbd0d4e4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -204,6 +216,87 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a622c001444483645aa21c6fee2bee918" name="a622c001444483645aa21c6fee2bee918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a622c001444483645aa21c6fee2bee918">&#9670;&#160;</a></span>ActivateOffline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PsStandardAuthorization::ActivateOffline </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>activation_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Activates the library using the activation response file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">activation_file</td><td>path to local license activation file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the library was activated successfuly, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a4d9e04f51e95a29b7e947bb2c5d5707c" name="a4d9e04f51e95a29b7e947bb2c5d5707c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d9e04f51e95a29b7e947bb2c5d5707c">&#9670;&#160;</a></span>CreateOfflineActivationFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PsStandardAuthorization::CreateOfflineActivationFile </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>serial_number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>activation_request_file</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create license activation request file for offline activation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">serial_number</td><td>The license key. </td></tr>
+    <tr><td class="paramname">activation_request_file</td><td>path to local deactivation request file </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the license activation request file was created, false otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a0513ab817043f85bbb3c8122c5e76882" name="a0513ab817043f85bbb3c8122c5e76882"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0513ab817043f85bbb3c8122c5e76882">&#9670;&#160;</a></span>Deactivate()</h2>
 
@@ -228,6 +321,41 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Deactivates the library. The method requires internet access. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if the library was deactivated successfuly, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="ac9e4b08e0fd7f2838731b197a650343a" name="ac9e4b08e0fd7f2838731b197a650343a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9e4b08e0fd7f2838731b197a650343a">&#9670;&#160;</a></span>DeactivateOffline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PsStandardAuthorization::DeactivateOffline </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>deactivation_request_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create license deactivation file for offline deactivation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">deactivation_request_file</td><td>path to local deactivation request file </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the library was deactivated successfuly, false otherwise. </dd></dl>
 
 </div>
@@ -295,13 +423,48 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a7fe649ca3a91fd5eaf0d0fd0cfe3c196" name="a7fe649ca3a91fd5eaf0d0fd0cfe3c196"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fe649ca3a91fd5eaf0d0fd0cfe3c196">&#9670;&#160;</a></span>UpdateOffline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PsStandardAuthorization::UpdateOffline </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>update_file</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Updates the autorization state. The method requires internet access . </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">local</td><td>Update the license from a local file if true, over the internet if false </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the authorization state was updated successfuly, false otherwise. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_ps_standard_authorization.html">PsStandardAuthorization</a></li>
-    <li class="footer">Generated on Thu Feb 15 2024 17:28:32 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Fri Feb 16 2024 23:08:04 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>
