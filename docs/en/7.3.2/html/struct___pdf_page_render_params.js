@@ -1,0 +1,8 @@
+var struct___pdf_page_render_params =
+[
+    [ "clip_box", "struct___pdf_page_render_params.html#a62ac3aae6e104b8d1fe0c11b13431493", null ],
+    [ "device", "struct___pdf_page_render_params.html#a9a99fce9b5689ad311d355b223252f61", null ],
+    [ "image", "struct___pdf_page_render_params.html#add58bd1321cf90682a45998892fba6e6", null ],
+    [ "matrix", "struct___pdf_page_render_params.html#a5e045beeb1437db23613b7c4aa6c20b1", null ],
+    [ "render_flags", "struct___pdf_page_render_params.html#a754daf81e8fe2681281d3374654760b0", null ]
+];

@@ -1,5 +1,13 @@
 # Changelog
 
+## [7.3.2] - 2024-02-27
+
+### Added
+- Append HTML support for PDF to HTML batch command
+
+### Fixed
+- Fixed generation of ToUnicode CMap stream in character unicode mapping
+
 ## [7.3.1] - 2024-02-16
 
 ### Added
