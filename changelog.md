@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.3.3] - 2024-03-13
+
+### Fixed
+- Embed fonts fails when called multiple times
+- Dot filling text marked as artifact when tagging as Table or other tag
+- Multiple MCID assigned for page objects split by artifact when tagging
+
 ## [7.3.2] - 2024-02-27
 
 ### Added
