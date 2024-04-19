@@ -1,5 +1,38 @@
 # Changelog
 
+
+## [8.0.0] - 2024-04-30
+
+### Added
+- Added Batch Commands:
+  - Save validation report into file
+  - Remove standard tags mapping
+  - Set PDF/UA Standard
+  - Set Suspect Value
+  - Fix Optional Content
+  - Remove Standard Tags Mapping
+  - Fix Media Clip
+  - Tag Annotations
+  - Set Tag BBox
+  - Set Alternate Description
+- Added Batch Command Parameters
+  - Set Document Properties
+    - Set Producer
+    - Set Keywords
+  - Set Title
+  - first description tag
+    - Use the first Description Tag
+    - Retrieve the title from the file name
+  - Set Language
+    - Apply Language to Document, Tag, Marked Content
+  - Delete Tags
+    - Invalid Tags
+- Added PsProgressControl class to control long processes
+
+### Changed
+- CancelProc for cancelling processes moved to PsProgressControl, all API functions affected
+
+
 ## [7.3.3] - 2024-03-13
 
 ### Fixed
