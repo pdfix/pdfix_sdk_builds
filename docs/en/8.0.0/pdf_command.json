@@ -213,25 +213,17 @@
     },
     {
       "title": "Validation Report",
-      "desc": "Save validation report into file",
+      "desc": "Save the validation report into a file",
       "name": "validation_report",
       "flags": 2,
       "category": "Validation",
       "params": [   
         {
-          "title": "Set Folder",
-          "desc": "Set save validation report folder. Otherwise save into same folder as source file.",
-          "name": "set_path",
-          "type": "bool",
-          "value": true
-        },
-        {
-          "title": "Report Save Folder",
-          "desc": "Report save folder",
+          "title": "Output Folder",
+          "desc": "Choose a folder to save the validation report, or save it in the same folder as the source file if no folder is specified.",
           "name": "output",
           "type": "folder_path",
-          "value": "",
-          "disable": "(set_path==false)"
+          "value": ""
         },     
         {
           "title": "Profile",
@@ -242,7 +234,7 @@
         },     
         {
           "title": "File Format",
-          "desc": "Saving validation report in selected format",
+          "desc": "Validation report format",
           "name": "file_format",
           "type": "string",
           "set": [
@@ -473,7 +465,7 @@
       "params": [        
         {
           "title": "Part Number",
-          "desc": "The part number of the International Standard to which the file conforms",
+          "desc": "The part number of the International Standard that the file conforms to.",
           "name": "part_number",
           "type": "string",
           "value": "1"
@@ -1274,7 +1266,7 @@
           "desc": "Enter custom text to serve as an alternative description",
           "name": "custom_text",
           "type": "string",
-          "value": "",
+          "value": "Decorative",
           "disable": "(alt_type!=0)"
         },
         {
@@ -1518,7 +1510,7 @@
               "value": 4
             },
             {
-              "desc": "Invalid MCID",
+              "desc": "Invalid Content Marks",
               "value": 8
             },
             {
@@ -1528,10 +1520,6 @@
             {
               "desc": "MCID, if Artifact is presented",
               "value": 32
-            },
-            {
-              "desc": "Inside Form XObjects",
-              "value": 64
             }
           ],
           "type": "flag",

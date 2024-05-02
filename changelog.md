@@ -1,10 +1,12 @@
 # Changelog
 
-
-## [8.0.0] - 2024-04-30
+## [8.0.0] - 2024-05-02
 
 ### Added
-- Added Batch Commands:
+- Added PsProgressControl class to control long processes (replaces cancelProc parameter)
+- Added new PdfDoc enumeration interfaces with custom selection for bookmarks, pages, page objects, fonts, structure elements
+- Added PsCommand.Run function (replaces individual PsCommand methods)
+- Added Batch Commands
   - Save validation report into file
   - Remove standard tags mapping
   - Set PDF/UA Standard
@@ -20,18 +22,18 @@
     - Set Producer
     - Set Keywords
   - Set Title
-  - first description tag
     - Use the first Description Tag
     - Retrieve the title from the file name
   - Set Language
     - Apply Language to Document, Tag, Marked Content
   - Delete Tags
     - Invalid Tags
-- Added PsProgressControl class to control long processes
 
 ### Changed
 - CancelProc for cancelling processes moved to PsProgressControl, all API functions affected
 
+### Fixed 
+- Editing tags and content marks of for XObjects
 
 ## [7.3.3] - 2024-03-13
 

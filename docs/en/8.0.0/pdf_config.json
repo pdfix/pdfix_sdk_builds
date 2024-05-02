@@ -1612,30 +1612,6 @@
         "@remove<value>": ["true", "false"],
         "@remove": false
       }
-    ],
-
-    "@tag_process<type>": "function",
-    "@tag_process<desc>": "tag_process.",
-    "@tag_process<insert>": [{"query": {"param": ["pds_tag"], "$and": []}}],
-    "@tag_process": [
-      {
-        "@disable": false,
-        "@disable<link>": "schema:keywords:disable", 
-
-        "@statement": "$if", 
-        "@statement<link>": "schema:keywords:statement",
-         
-        "@query": {
-          "@param<type>": "query_param",
-          "@param<insert>": ["pds_tag"],
-          "param": [["pds_tag"]]
-        },
-
-        "@remove<desc>": "Remove annotation from the page. Usually used for invalid annotations.",
-        "@remove<type>": "bool",
-        "@remove<value>": ["true", "false"],
-        "@remove": false
-      }
     ]
   },
 
