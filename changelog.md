@@ -1,5 +1,10 @@
 # Changelog
 
+## [8.0.1] - 2024-05-03
+
+### Changed
+- New simplified and customizable command line make-accessible command 
+
 ## [8.0.0] - 2024-05-02
 
 ### Added
