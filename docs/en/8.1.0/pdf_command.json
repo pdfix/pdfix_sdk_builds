@@ -84,7 +84,7 @@
         },
         {
           "title": "Width",
-          "desc": "The width of the rendered page in pixels",
+          "desc": "The width of the rendered page in pixels. Width controls the quality of rendered images.",
           "name": "width",
           "type": "int",
           "value": 1200
@@ -100,11 +100,11 @@
               "value": 0
             },
             {
-              "desc": "Exports document JavaScripts",
+              "desc": "Export document JavaScripts",
               "value": 1
             },
             {
-              "desc": "Exports embedded font files",
+              "desc": "Export embedded font files",
               "value": 2
             },
             {
