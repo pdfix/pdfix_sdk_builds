@@ -83,8 +83,8 @@ __Set PDF/UA Standard__ - Set the PDF/UA part number
 
 - `part_number` (string) __Part Identifier__ - The part number of the International Standard that the file conforms to.
 
-  - 1 - 1
-  - 2 - 2
+  - 1 - PDF/UA part 1
+  - 2 - PDF/UA part 2
 
 
 - `rev_number` (string) __Rev Number__ - Four-digit year of the date of publication or revision. Ignored for part 1.

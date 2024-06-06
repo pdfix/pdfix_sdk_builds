@@ -516,11 +516,11 @@
           "type": "string",
           "set": [
             {
-              "desc": "1",
+              "desc": "PDF/UA part 1",
               "value": "1"
             },
             {
-              "desc": "2",
+              "desc": "PDF/UA part 2",
               "value": "2"
             }
           ],
