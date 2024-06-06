@@ -1,5 +1,17 @@
 # Changelog
 
+## [8.1.0] - 2024-06-06
+
+### Added
+- Added Create URL link from content command
+- Added Replace font by regex command
+
+### Changed
+- CLI pdfix_app overwrites input file if output is not set
+
+### Fixed
+- Fixed Nuget package runtime native libraries load
+
 ## [8.0.1] - 2024-05-03
 
 ### Changed
