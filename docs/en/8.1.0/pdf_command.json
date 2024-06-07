@@ -1,9 +1,9 @@
 {
   "title": "PDFix Batch Commands",
-  "desc": "Custom PDF commands are designed to automatically edit a PDF, or fix various PDF accessibility issues, making document editing and remediation straightforward, easy, and much more efficient without programming skills. With custom created sequence of commands is't possible to process PDF documents tailored for specific requirements.",
+  "desc": "Custom PDF commands are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of commands, it is possible to process PDF documents tailored to specific requirements.",
   "example" : {
     "title": "PDFix Batch Command Example",
-    "desc": "Custom command sequence to re-tag the PDF document and set PDF/UA identifier",
+    "desc": "Custom command sequence to re-tag the PDF document and set PDF/UA-1 identifier",
     "commands" :[
       {
         "name": "clear_structure",
@@ -516,11 +516,11 @@
           "type": "string",
           "set": [
             {
-              "desc": "PDF/UA part 1",
+              "desc": "PDF/UA-1",
               "value": "1"
             },
             {
-              "desc": "PDF/UA part 2",
+              "desc": "PDF/UA-2",
               "value": "2"
             }
           ],

@@ -1,11 +1,11 @@
 # PDFix Batch Commands
 
-Custom PDF commands are designed to automatically edit a PDF, or fix various PDF accessibility issues, making document editing and remediation straightforward, easy, and much more efficient without programming skills. With custom created sequence of commands is't possible to process PDF documents tailored for specific requirements.
+Custom PDF commands are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of commands, it is possible to process PDF documents tailored to specific requirements.
 
 ```
 {
     "title": "PDFix Batch Command Example",
-    "desc": "Custom command sequence to re-tag the PDF document and set PDF/UA identifier",
+    "desc": "Custom command sequence to re-tag the PDF document and set PDF/UA-1 identifier",
     "commands": [
         {
             "name": "clear_structure",
@@ -83,8 +83,8 @@ __Set PDF/UA Standard__ - Set the PDF/UA part number
 
 - `part_number` (string) __Part Identifier__ - The part number of the International Standard that the file conforms to.
 
-  - 1 - PDF/UA part 1
-  - 2 - PDF/UA part 2
+  - __1__ - PDF/UA-1
+  - __2__ - PDF/UA-2
 
 
 - `rev_number` (string) __Rev Number__ - Four-digit year of the date of publication or revision. Ignored for part 1.
@@ -145,9 +145,9 @@ __Set Language__ - Define the document language
 
 - `apply_lang_to` (int) __Apply Language to__ - Select the objects to which you intend to apply the defined language
 
-  - 0 - Document
-  - 1 - Tag
-  - 2 - Marked Content
+  - __0__ - Document
+  - __1__ - Tag
+  - __2__ - Marked Content
 
 
 - `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
@@ -178,9 +178,9 @@ __Set Title__ - Set document title
 
 - `title_type` (int) __Title__ - Define a source for detecting the document title
 
-  - 0 - Define the Custom Title
-  - 1 - Use the first Description Tag
-  - 2 - Retrieve the title from the file name
+  - __0__ - Define the Custom Title
+  - __1__ - Use the first Description Tag
+  - __2__ - Retrieve the title from the file name
 
 
 - `custom_text` (string) __Custom Title__ - Custom title
@@ -291,11 +291,11 @@ __Fix Media Clip__ - Define a MIME type of the media clip annotations file
 
 - `ct_key` (string) __Media Clip__ - CT key
 
-  - text/plain - text/plain
-  - text/html - text/html
-  - image/jpeg - image/jpeg
-  - audio/mp3 - audio/mp3
-  - video/mp4 - video/mp4
+  - __text/plain__ - text/plain
+  - __text/html__ - text/html
+  - __image/jpeg__ - image/jpeg
+  - __audio/mp3__ - audio/mp3
+  - __video/mp4__ - video/mp4
 
 
 #### example:
@@ -344,8 +344,8 @@ __Tag Annotations__ - Tag the untagged annotations
 
 - `flags` (flag) __Flags__ - Skip annotations with specific characteristics
 
-  - 1 - Skip Invisible
-  - 2 - Skip Hidden
+  - __1__ - Skip Invisible
+  - __2__ - Skip Hidden
 
 
 #### example:
@@ -378,15 +378,15 @@ __Set Annotation Contents__ - Set alternative description for an annotation
 
 - `flags` (flag) __Flags__ - Skip annotations with specific characteristics
 
-  - 1 - Skip Invisible
-  - 2 - Skip Hidden
+  - __1__ - Skip Invisible
+  - __2__ - Skip Hidden
 
 
 - `alt_type` (int) __Contents__ - Define a source for detecting the alternative text
 
-  - 0 - Define the Custom Contents text
-  - 1 - Use the text from annotation bounding box
-  - 2 - Use the action destination
+  - __0__ - Define the Custom Contents text
+  - __1__ - Use the text from annotation bounding box
+  - __2__ - Use the action destination
 
 
 - `custom_text` (string) __Custom Contents__ - Enter custom text to serve as an alternative description
@@ -447,8 +447,8 @@ __Flatten Annotations__ - Flatten the visual representation of annotations direc
 
 - `flags` (flag) __Flags__ - Skip annotations with specific characteristics
 
-  - 1 - Skip Invisible
-  - 2 - Skip Hidden
+  - __1__ - Skip Invisible
+  - __2__ - Skip Hidden
 
 
 #### example:
@@ -499,9 +499,9 @@ __Delete Annotations__ - Delete annotations from the document
 
 - `flags` (flag) __Flags__ - Satisfy the characteristics of the annotation
 
-  - 1 - Delete Invisible
-  - 2 - Delete Hidden
-  - 255 - Delete All
+  - __1__ - Delete Invisible
+  - __2__ - Delete Hidden
+  - __255__ - Delete All
 
 
 #### example:
@@ -590,9 +590,9 @@ __Artifact Content__ - Mark defined content as an artifact
 
 - `artifact_type` (int) __Mark as__ - Mark the content as an Artifact, Header or Footer
 
-  - 0 - Artifact
-  - 1 - Header
-  - 2 - Footer
+  - __0__ - Artifact
+  - __1__ - Header
+  - __2__ - Footer
 
 
 #### example:
@@ -625,12 +625,12 @@ __Remove Content Marks__ - Remove atrifact, mcid or any custom tag from page con
 
 - `flags` (flag) __Remove__ - Types of content marks to be removed
 
-  - 1 - MCID
-  - 2 - Artifact
-  - 4 - Custom Content Marks
-  - 8 - Invalid Content Marks
-  - 16 - Artifact, if MCID is presented
-  - 32 - MCID, if Artifact is presented
+  - __1__ - MCID
+  - __2__ - Artifact
+  - __4__ - Custom Content Marks
+  - __8__ - Invalid Content Marks
+  - __16__ - Artifact, if MCID is presented
+  - __32__ - MCID, if Artifact is presented
 
 
 #### example:
@@ -653,9 +653,9 @@ __Convert To HTML__ - Convert PDF to HTML
 
 - `html_type` (int) __Conversion Type__ - HTML layout type
 
-  - 0 - Original layout
-  - 1 - Responsive layout
-  - 2 - Layout defined by PDF Tags
+  - __0__ - Original layout
+  - __1__ - Responsive layout
+  - __2__ - Layout defined by PDF Tags
 
 
 - `output` (folder_path) __Output Folder__ - The destination folder for the output
@@ -664,20 +664,20 @@ __Convert To HTML__ - Convert PDF to HTML
 
 - `flags` (flag) __Conversion Flags__ - HTML conversion flags
 
-  - 0 - Basic html
-  - 1 - Export document JavaScripts
-  - 2 - Export embedded font files
-  - 4 - Ignore font sizes and use standard
-  - 8 - Retain text color
-  - 32 - Use inline css
-  - 64 - Use inline JavaScript
-  - 128 - Use embedded base64 encoded images
-  - 256 - Use embedded base64 encoded fonts
-  - 512 - Display pages on the gray background with margin
-  - 1024 - Do not render the page. Original layout only.
-  - 2048 - Exclude head and body html nodes
-  - 4096 - Exclude pdf-document div element
-  - 8192 - Exclude pdf-page div elements
+  - __0__ - Basic html
+  - __1__ - Export document JavaScripts
+  - __2__ - Export embedded font files
+  - __4__ - Ignore font sizes and use standard
+  - __8__ - Retain text color
+  - __32__ - Use inline css
+  - __64__ - Use inline JavaScript
+  - __128__ - Use embedded base64 encoded images
+  - __256__ - Use embedded base64 encoded fonts
+  - __512__ - Display pages on the gray background with margin
+  - __1024__ - Do not render the page. Original layout only.
+  - __2048__ - Exclude head and body html nodes
+  - __4096__ - Exclude pdf-document div element
+  - __8192__ - Exclude pdf-page div elements
 
 
 #### example:
@@ -926,31 +926,31 @@ __Rotate Page__ - Rotate pages
 
 - `rotation_type` (int) __Rotation Type__ - Type of rotation
 
-  - 0 - Set rotation angle
-  - 1 - Rotate by angle
+  - __0__ - Set rotation angle
+  - __1__ - Rotate by angle
 
 
 - `rotation_angle` (int) __Rotation Angle__ - Rotation angle
 
-  - 0 - 0 degrees
-  - 90 - 90 degrees
-  - 180 - 180 degrees
-  - 270 - 270 degrees
+  - __0__ - 0 degrees
+  - __90__ - 90 degrees
+  - __180__ - 180 degrees
+  - __270__ - 270 degrees
 
 
 - `page_rotation` (int) __Pages With Rotation__ - Pages with defined rotation
 
-  - 0 - 0 degrees
-  - 90 - 90 degrees
-  - 180 - 180 degrees
-  - 270 - 270 degrees
+  - __0__ - 0 degrees
+  - __90__ - 90 degrees
+  - __180__ - 180 degrees
+  - __270__ - 270 degrees
 
 
 - `page_orientation` (int) __Pages With Orientation__ - Pages with defined orientation
 
-  - 0 - Pages With Any Orientation
-  - 1 - Landscape Pages
-  - 2 - Portrait Pages
+  - __0__ - Pages With Any Orientation
+  - __1__ - Landscape Pages
+  - __2__ - Portrait Pages
 
 
 #### example:
@@ -991,11 +991,11 @@ __Delete Tags__ - Delete defined tags
 
 - `flags` (flag) __Delete__ - If checked, delete only defined tags
 
-  - 1 - Empty (no children)
-  - 2 - Invalid (no associated page content)
-  - 4 - Even when Actual Text exists
-  - 8 - Even when Alternate Description exists
-  - 255 - Delete All
+  - __1__ - Empty (no children)
+  - __2__ - Invalid (no associated page content)
+  - __4__ - Even when Actual Text exists
+  - __8__ - Even when Alternate Description exists
+  - __255__ - Delete All
 
 
 #### example:
@@ -1100,11 +1100,11 @@ __Set Alternate Description__ - Set alternative description to the tag
 
 - `alt_type` (int) __Alternative Text__ - Define a source for detecting the alternative text
 
-  - 0 - Define the Custom Alternative text
-  - 1 - Use the first Description Tag above
-  - 2 - Use the first Description Tag below
-  - 3 - Use the first Description Tag from children
-  - 4 - Use the associated tag content
+  - __0__ - Define the Custom Alternative text
+  - __1__ - Use the first Description Tag above
+  - __2__ - Use the first Description Tag below
+  - __3__ - Use the first Description Tag from children
+  - __4__ - Use the associated tag content
 
 
 - `custom_text` (string) __Custom Alternative__ - Enter custom text to serve as an alternative description
@@ -1219,25 +1219,25 @@ __Set Tag Attributes__ - Set the attributes of the tag
 
 - `owner` (string) __Owner__ - Standard attribute owner
 
-  - Layout - Layout
-  - List - List
-  - PrintField - PrintField
-  - Table - Table
+  - __Layout__ - Layout
+  - __List__ - List
+  - __PrintField__ - PrintField
+  - __Table__ - Table
 
 
 - `name` (string) __Name__ - Attribute name
 
 - `value` (string) __Value__ - Arrtibute value
 
-  -  - 
+  - ____ - 
 
 
 - `value_type` (string) __Value Type__ - Attribute value type
 
-  - string - string
-  - name - name
-  - array - array
-  - number - number
+  - __string__ - string
+  - __name__ - name
+  - __array__ - array
+  - __number__ - number
 
 
 - `overwrite` (bool) __Overwrite__ - Replace the current attribute if it already exists
@@ -1320,13 +1320,13 @@ __Fix Headings__ - Assign heading levels properly
 
 - `change_headings_to` (string) __Change Headings to__ - Change Headings to
 
-  - H - H
-  - H1 - H1
-  - H2 - H2
-  - H3 - H3
-  - H4 - H4
-  - H5 - H5
-  - H6 - H6
+  - __H__ - H
+  - __H1__ - H1
+  - __H2__ - H2
+  - __H3__ - H3
+  - __H4__ - H4
+  - __H5__ - H5
+  - __H6__ - H6
 
 
 #### example:
@@ -1421,11 +1421,11 @@ __Validation Report__ - Save the validation report into a file
 
 - `file_format` (string) __File Format__ - Validation report format
 
-  - html - html
-  - xml - xml
-  - json - json
-  - text - text
-  - raw - raw
+  - __html__ - html
+  - __xml__ - xml
+  - __json__ - json
+  - __text__ - text
+  - __raw__ - raw
 
 
 #### example:
