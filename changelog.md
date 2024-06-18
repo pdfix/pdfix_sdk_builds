@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.1.1] - 2024-06-18
+
+### Changed
+- Licensing - page counter updates local consumption upon sucessfull save/export only
+
+### Fixed
+- Support for View Destination defined as a object reference
+- Fixed update of Structure element attributes defined in indirect object
+- Fixed Template alt_text top-bottom reversed position 
+- Support for multiple same owner structure element attributes
+
 ## [8.1.0] - 2024-06-06
 
 ### Added
