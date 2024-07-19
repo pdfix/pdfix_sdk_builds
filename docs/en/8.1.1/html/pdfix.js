@@ -25,7 +25,9 @@ class PdfixDoxygenReleases {
             dataType: 'json',
             success: function(releases, textStatus, response) {
                 for ( let release of releases ) {
-                    $(target).append(new Option(release.tag_name, release.tag_name));
+		    let version = release.tag_name;
+		    version = version.substring(0, version.lastIndexOf(".")) 
+                    $(target).append(new Option(version, version));
                 }
                 let version = $('#projectnumber').text();
                 $(target + ' option').each(function() {
