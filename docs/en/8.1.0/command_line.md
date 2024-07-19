@@ -47,6 +47,17 @@ _Options:_
 | [`tags2json`](#tags2json) | StructTree to JSON| 
 | [`content2json`](#content2json) | Page Content to JSON| 
 | [`dests2json`](#dests2json) | Extract Named Destivations into JSON| 
+| [`test`](#test) | test commands| 
+| [`test-open-document`](#test-open-document) | test open document commands| 
+| [`test-incremental-save`](#test-incremental-save) | test incremental save| 
+| [`create-documents`](#create-documents) | Create new PDF files| 
+| [`render-pages`](#render-pages) | Render Pages| 
+| [`redact`](#redact) | Redact content using all redaction annotations.| 
+| [`pocess-control`](#pocess-control) | test commands| 
+| [`undo-redo`](#undo-redo) | undo-redo test command| 
+| [`tag`](#tag) | Tag operations on PDF| 
+| [`remove-security`](#remove-security) | Add tags to PDF.| 
+| [`test-edit-page-object-mcid`](#test-edit-page-object-mcid) | Edit page object mcid.| 
 ### `[Option Group: ]`
 Internal commands
 
@@ -527,6 +538,143 @@ _Options:_
 ```
   --password TEXT             Open password
 ```
+
+
+
+### `test`
+test commands
+
+
+
+_Options:_
+```
+  -m,--image-path TEXT        Path to image file used for watermark
+```
+
+
+
+### `test-open-document`
+test open document commands
+
+
+
+
+
+### `test-incremental-save`
+test incremental save
+
+
+
+
+
+### `create-documents`
+Create new PDF files
+
+
+_Positionals:_
+```
+  count UINT                  Document count
+  thread-count UINT           Thread count
+```
+
+
+_Options:_
+```
+  -c,--count UINT             Document count
+  -t,--thread-count UINT      Thread count
+```
+
+
+
+### `render-pages`
+Render Pages
+
+
+
+_Options:_
+```
+  -f,--format ENUM:{1,2}      integer value defining the image output format (0-PNG, 1-JPG)
+  -r,--rotate ENUM:{0,90,180,270}
+page rotation in degrees
+  --page-from INT             page number from which rendering will be exectuted
+  --page-to INT               page number to which rendering will be exectuted
+  -l,--left INT               integer value specifying the page left of the clipping region in device units
+  -t,--top INT                integer value specifying the page top of the clipping region in device units
+  -w,--width INT              integer value specifying the width of the page left clipping region in device units
+  -g,--height INT             integer value specifying the height of the page left clipping region in device units
+  -q,--quality INT:INT in [0 - 100]
+integer value defining the image output quality (0-100)
+  -z,--zoom FLOAT             floating point number of zoom level
+  --thread-count UINT         maximal number of threads to be used
+```
+
+
+
+### `redact`
+Redact content using all redaction annotations.
+
+
+
+_Options:_
+```
+  -p,--page-number INT        page number where redaction mark will be created.
+  -l,--left INT               integer value specifying the top of the redaction mark on page
+  -b,--bottom INT             integer value specifying the bottom of the redaction mark on page
+  -w,--width INT              integer value specifying the width of the redaction mark  on page
+  -g,--height INT             integer value specifying the height of the redaction mark  on page
+```
+
+
+
+### `pocess-control`
+test commands
+
+
+
+
+
+### `undo-redo`
+undo-redo test command
+
+
+
+
+
+### `tag`
+Tag operations on PDF
+
+
+
+_Options:_
+```
+  -r,--remove                 
+  -a,--annotation             
+  -f,--artefact               
+  -g,--heading                
+  -d,--reading-order          
+  -s,--read-struct-tree       
+  -e,--edit-struct-tree       
+  -t,--table-as-figure        
+```
+
+
+
+### `remove-security`
+Add tags to PDF.
+
+
+
+_Options:_
+```
+  --password TEXT             Open password
+```
+
+
+
+### `test-edit-page-object-mcid`
+Edit page object mcid.
+
+
 
 
 
