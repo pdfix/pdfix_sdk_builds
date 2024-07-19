@@ -6,7 +6,7 @@
 - Linux aarch64 support
 
 ### Fixed
-- PdfDoc.AddMissingUnicode invalidates makes font PDF/UA compliance
+- PdfDoc.AddMissingUnicode invalidates font PDF/UA compliance
 - PdfDoc.CreateXObjectFrom page from another document
 
 ## [8.1.1] - 2024-06-18
