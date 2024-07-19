@@ -1,5 +1,14 @@
 # Changelog
 
+## [8.1.4] - 2024-07-19
+
+### Added 
+- Linux aarch64 support
+
+### Fixed
+- PdfDoc.AddMissingUnicode invalidates makes font PDF/UA compliance
+- PdfDoc.CreateXObjectFrom page from another document
+
 ## [8.1.1] - 2024-06-18
 
 ### Changed
