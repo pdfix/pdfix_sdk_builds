@@ -1,5 +1,11 @@
 # Changelog
 
+## [8.1.5] - 2024-07-25
+
+### Fixed
+- PdfDoc.AddMissingUnicode invalidates font PDF/UA compliance
+- PdfDoc.AddTags may create diplicate MCID entry on non-text objects
+
 ## [8.1.4] - 2024-07-19
 
 ### Added 
