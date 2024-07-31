@@ -4,6 +4,7 @@
 
 ### Fixed
 - PDF File saves invalid XRefStm in some linux distributions
+- Could not load Windows dll due to missing system dependencies
 
 ## [8.1.5] - 2024-07-25
 
