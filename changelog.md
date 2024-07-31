@@ -1,5 +1,10 @@
 # Changelog
 
+## [8.1.6] - 2024-07-31
+
+### Fixed
+- PDF File saves invalid XRefStm in some linux distributions
+
 ## [8.1.5] - 2024-07-25
 
 ### Fixed
