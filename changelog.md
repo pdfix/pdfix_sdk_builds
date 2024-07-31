@@ -1,24 +1,15 @@
 # Changelog
 
-## [8.1.6] - 2024-07-31
-
-### Fixed
-- PDF File saves invalid XRefStm in some linux distributions
-- Could not load Windows dll due to missing system dependencies
-
-## [8.1.5] - 2024-07-25
-
-### Fixed
-- PdfDoc.AddMissingUnicode invalidates font PDF/UA compliance
-- PdfDoc.AddTags may create diplicate MCID entry on non-text objects
-
-## [8.1.4] - 2024-07-19
+## [8.1.7] - 2024-08-01
 
 ### Added 
 - Linux aarch64 support
 
 ### Fixed
+- PDF File saves invalid XRefStm in some linux distributions
+- Could not load Windows dll due to missing system dependencies
 - PdfDoc.AddMissingUnicode invalidates font PDF/UA compliance
+- PdfDoc.AddTags may create diplicate MCID entry on non-text objects
 - PdfDoc.CreateXObjectFrom page from another document
 
 ## [8.1.1] - 2024-06-18
