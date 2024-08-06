@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.1.9] - 2024-08-07
+### Added 
+- Added option for Delete Tags command to move childs to parent structure element
+
+### Fixed
+- Fixed ToUnicode formatting issues
+
+
 ## [8.1.8] - 2024-08-06
 ### Added 
 - Added Quick Fix command for fixing common accessibility issues
