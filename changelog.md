@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.1.8] - 2024-08-06
+### Added 
+- Added Quick Fix command for fixing common accessibility issues
+
+### Fixed
+- Fixed flattening XObject with text inside causes text to hide
+- Fixed Python function signatures returning string values
+
+### Added 
+- Linux aarch64 support
+
 ## [8.1.7] - 2024-08-01
 
 ### Added 
