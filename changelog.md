@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.1.11] - 2024-08-24
+### Fixed 
+- Fixed dependencies on linux platforms
+
+## [8.1.10] - 2024-08-16
+### Fixed 
+- Fixed Docker compatibility for linux/amd64 and linux/arm64 platforms
+
 ## [8.1.9] - 2024-08-07
 ### Added 
 - Added option for Delete Tags command to move childs to parent structure element
