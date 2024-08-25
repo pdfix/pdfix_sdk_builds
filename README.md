@@ -57,7 +57,6 @@ Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_cpp](h
 import net.pdfix.pdfixlib.*;
 
 public static void main() {
-   System.loadLibrary("pdfix");                       
    Pdfix pdfix = new Pdfix();   
    PdfDoc doc = pdfix.OpenDoc("Sample.pdf", "");      
    // do your stuff
@@ -70,7 +69,7 @@ Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_java](
 Import Python Package [pdfix-sdk](https://pypi.org/project/pdfix-sdk/)
 
 ```python
-from pdfixsdk.Pdfix import *
+from pdfixsdk import *
 
 pdfix  = GetPdfix()
 doc = pdfix.OpenDoc("Sample.pdf", "")
