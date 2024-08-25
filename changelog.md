@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.2.0] - 2024-08-25
+### Added 
+- Added PdsStructElement.GetBBox the union bounding boxes on the page number on which the content items designated by the K entry are rendered
+
+### Changed
+- Changed Java JAR package contains native libraries
+- Renamed kCommand... contants to kAction...
+
+### Fixed
+- Fixed default MakeAccessible action does not specify bookmark levels
+
 ## [8.1.11] - 2024-08-24
 ### Fixed 
 - Fixed dependencies on linux platforms
