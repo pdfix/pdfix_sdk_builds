@@ -12,11 +12,11 @@
 ## General Settings
 General template settings
 
-| key | type | default value | desciption |
+| key | type | value |
 | - | - | - | - |
-| `retain_pdfua` | bool | True | -- |
-| `page_tag` | string | NonStruct | -- |
-| `substructure_form_XObject` | bool | True | -- |
+| `retain_pdfua` | bool | True |
+| `page_tag` | string | NonStruct |
+| `substructure_form_XObject` | bool | True |
 
 Example:
 ```
@@ -34,7 +34,7 @@ Example:
 ## Threshold Values
 --
 
-| key | default value | desciption |
+| key | value | desciption |
 | - | - | - |
 | `preflight_columns` | `1` | Preflight colums druring preflight method. Set to 0 if this information is not required. |
 | `preflight_column_width_distance` | `20` | Columns width detection precision. |
@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "path_object_min": 100,
-        "preflight_artifact_w4": 1,
-        "isolated_element_ratio": 6
+        "sect_table_image_col_w1": 1,
+        "text_line_underline_distance": 2.6,
+        "text_paragraph_similarity": 0.7
       }
     ]
   }
@@ -233,31 +233,31 @@ Example:
 ## Regular Expressions
 --
 
-| key | default value | desciption |
+| key | default value |
 | - | - | - |
-| `regex_hyphen` | `-\$` | -- |
-| `regex_bullet` | `^[\\u2010\\u2011\\u2212\\u005E\\u005B\\ uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8 \\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u22 12\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u 21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\ \u25A1\\u005D\\u25C6]\$` | -- |
-| `regex_bullet_font` | `(Wingdings)\|(Symbol)` | -- |
-| `regex_label` | `^[\\[\\(]?((M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3}))\|(\\d+)\|([a-zA-Z]))[\\)\\]\\. ]\$` | -- |
-| `label_chars` | `.()[]` | -- |
-| `regex_decimal_numbering` | `^[\\[\\(]?(?:\\d{1,4}\\.){0,5}\\d{0,4}\\s?[\\)\\]\\.]?\$` | -- |
-| `regex_roman_numbering` | `^[\\[\\(]?M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3})[\\)\\]\\.]?\$` | -- |
-| `regex_letter_numbering` | `^[\\[\\(]?[A-Za-z][\\)\\]\\.]\$` | -- |
-| `regex_filling` | `[._]{2,}` | -- |
-| `regex_filling_chars` | `._` | -- |
-| `regex_page_number` | `(^\\d+\$)\|(^M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3})\$)` | -- |
-| `regex_first_cap` | `^[A-Z]` | -- |
-| `regex_terminal` | `[\\.\\!\\?]\$` | -- |
-| `regex_table_caption` | `((^table)\|(^tab\\.))` | -- |
-| `regex_image_caption` | `((^image)\|(^img\\.)\|(^figure)\|(^fig\ \.))` | -- |
-| `regex_chart_caption` | `((^chart)\|(^map))` | -- |
-| `regex_note_caption` | `((^source\\:)\|(^note\\:))` | -- |
-| `regex_toc_caption` | `((^content)\|(^toc))` | -- |
-| `regex_colon` | `:\$` | -- |
-| `regex_comma` | `[,;]\$` | -- |
-| `regex_letter` | `^[A-Za-z]\$` | -- |
-| `number_chars` | `-+.,%\\u20AC\$\\u00A5\\u00A3` | -- |
-| `numbering_splitter_chars` | `.()[]` | -- |
+| `regex_hyphen` | `-\$` |
+| `regex_bullet` | `^[\\u2010\\u2011\\u2212\\u005E\\u005B\\ uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8 \\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u22 12\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u 21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\ \u25A1\\u005D\\u25C6]\$` |
+| `regex_bullet_font` | `(Wingdings)\|(Symbol)` |
+| `regex_label` | `^[\\[\\(]?((M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3}))\|(\\d+)\|([a-zA-Z]))[\\)\\]\\. ]\$` |
+| `label_chars` | `.()[]` |
+| `regex_decimal_numbering` | `^[\\[\\(]?(?:\\d{1,4}\\.){0,5}\\d{0,4}\\s?[\\)\\]\\.]?\$` |
+| `regex_roman_numbering` | `^[\\[\\(]?M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3})[\\)\\]\\.]?\$` |
+| `regex_letter_numbering` | `^[\\[\\(]?[A-Za-z][\\)\\]\\.]\$` |
+| `regex_filling` | `[._]{2,}` |
+| `regex_filling_chars` | `._` |
+| `regex_page_number` | `(^\\d+\$)\|(^M{0,4}(CM\|CD\|D?C{0,3})(XC\|XL\|L?X{0,3})(IX\|IV\|V?I{0,3})\$)` |
+| `regex_first_cap` | `^[A-Z]` |
+| `regex_terminal` | `[\\.\\!\\?]\$` |
+| `regex_table_caption` | `((^table)\|(^tab\\.))` |
+| `regex_image_caption` | `((^image)\|(^img\\.)\|(^figure)\|(^fig\ \.))` |
+| `regex_chart_caption` | `((^chart)\|(^map))` |
+| `regex_note_caption` | `((^source\\:)\|(^note\\:))` |
+| `regex_toc_caption` | `((^content)\|(^toc))` |
+| `regex_colon` | `:\$` |
+| `regex_comma` | `[,;]\$` |
+| `regex_letter` | `^[A-Za-z]\$` |
+| `number_chars` | `-+.,%\\u20AC\$\\u00A5\\u00A3` |
+| `numbering_splitter_chars` | `.()[]` |
 
 Example:
 ```
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_colon": ":\$",
-        "regex_bullet": "^[\\u2010\\u2011\\u2212\\u005E\\u005B\\uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8\\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u2212\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\\u25A1\\u005D\\u25C6]\$"
+        "regex_roman_numbering": "^[\\[\\(]?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})[\\)\\]\\.]?\$",
+        "regex_hyphen": "-\$"
       }
     ]
   }
