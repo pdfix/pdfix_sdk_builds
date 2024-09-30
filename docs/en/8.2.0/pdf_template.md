@@ -6,9 +6,11 @@
 - [Threshold Values](#threshold-values)
 - [Regular Expressions](#regular-expressions)
 - [Functions](#functions)
+
 ## General Settings
 General template settings
-| key | type | default value | desciption |
+
+| key | type | default value | description |
 | - | - | - | - |
 | `retain_pdfua` | bool | True | -- |
 | `page_tag` | string | NonStruct | -- |
