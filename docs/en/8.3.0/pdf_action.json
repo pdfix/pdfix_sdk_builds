@@ -1,0 +1,1840 @@
+{
+  "title": "PDFix Batch Actions",
+  "desc": "Custom PDF actions are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of actions, it is possible to process PDF documents tailored to specific requirements",
+  "example": {
+    "title": "PDFix Batch Action Example",
+    "desc": "Custom action sequence to re-tag the PDF document and set PDF/UA-1 identifier",
+    "actions": [
+      {
+        "name": "clear_structure",
+        "params": [
+          {
+            "name": "clear_tags",
+            "value": true
+          },
+          {
+            "name": "clear_struct_tree",
+            "value": true
+          },
+          {
+            "name": "clear_bookmarks",
+            "value": false
+          }
+        ]
+      },
+      {
+        "name": "add_tags",
+        "params": [
+          {
+            "name": "standard_attrs",
+            "value": false
+          },
+          {
+            "name": "sequential_headings",
+            "value": true
+          }
+        ]
+      },
+      {
+        "name": "set_pdf_ua_standard",
+        "params": [
+          {
+            "name": "part_number",
+            "value": 1
+          }
+        ]
+      }
+    ]
+  },
+  "configurations": [
+    {
+      "path": "",
+      "program": "pdfix_app batch --input ${INPUT_PDF} --output ${OUTPUT_PDF} -c ${JSON_PDFIX} --progress",
+      "desc": "Run PDFix CLI",
+      "name": "PDFix CLI"
+    }
+  ],
+  "args": [
+    {
+      "name": "INPUT_PDF",
+      "title": "Input PDF",
+      "desc": "Define the input PDF file path",
+      "flags": 2,
+      "ext": "pdf",
+      "type": "file_path",
+      "value": ""
+    },
+    {
+      "name": "OUTPUT_PDF",
+      "title": "Output PDF",
+      "desc": "Define the output PDF file path",
+      "flags": 4,
+      "ext": "pdf",
+      "type": "file_path",
+      "value": ""
+    },
+    {
+      "name": "JSON_PDFIX",
+      "title": "Json",
+      "desc": "Define the configuration file",
+      "ext": "json",
+      "type": "file_path",
+      "value": ""
+    }
+  ],
+  "actions": [
+    {
+      "title": "PDF To HTML",
+      "desc": "Convert PDF to HTML",
+      "name": "pdf_to_html",
+      "flags": 0,
+      "category": "Conversion",
+      "configurations": [
+        {
+          "path": "",
+          "program": "pdfix_app pdf2html --input ${INPUT_PDF} --output ${OUTPUT_HTML} --type ${html_type} --flags ${Flags}",
+          "name": "Convert PDF to HTML",
+          "desc": "Create HTML from PDF"
+        }
+      ],
+      "args": [
+        {
+          "name": "INPUT_PDF",
+          "title": "Input PDF",
+          "desc": "Define the input PDF file",
+          "ext": "pdf",
+          "flags": 2,
+          "type": "file_path",
+          "value": ""
+        },
+        {
+          "name": "OUTPUT_HTML",
+          "title": "Output File",
+          "desc": "Define the output HTML Index file",
+          "ext": "html",
+          "flags": 4,
+          "type": "file_path",
+          "value": ""
+        },
+        {
+          "title": "HTML Layout",
+          "desc": "HTML layout type",
+          "name": "html_type",
+          "type": "int",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Original layout",
+              "value": 0
+            },
+            {
+              "desc": "Responsive layout",
+              "value": 1
+            },
+            {
+              "desc": "Layout defined by PDF Tags",
+              "value": 2
+            }
+          ],
+          "value": 0
+        },
+        {
+          "title": "Template",
+          "desc": "Load the template from the file as the current template. If the file is empty, the default template will be used",
+          "name": "template",
+          "type": "file_path",
+          "value": ""
+        },
+        {
+          "title": "Preflight",
+          "desc": "Preflight the document and combine the preflight values with the current template",
+          "name": "preflight",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Conversion Flags",
+          "desc": "Define conversion flags",
+          "name": "Flags",
+          "type": "flag",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Export JavaScripts",
+              "value": 1
+            },
+            {
+              "desc": "Export fonts",
+              "value": 2
+            },
+            {
+              "desc": "Default font sizes",
+              "value": 4
+            },
+            {
+              "desc": "Retain text color",
+              "value": 8
+            },
+            {
+              "desc": "Inline CSS",
+              "value": 32
+            },
+            {
+              "desc": "Inline JavaScript",
+              "value": 64
+            },
+            {
+              "desc": "Embed images",
+              "value": 128
+            },
+            {
+              "desc": "Embed fonts",
+              "value": 256
+            },
+            {
+              "desc": "Gray padding",
+              "value": 512
+            }
+          ],
+          "value": 237
+        }
+      ]
+    },
+    {
+      "title": "Convert To JSON",
+      "desc": "Convert PDF to JSON",
+      "name": "pdf_to_json",
+      "flags": 0,
+      "category": "Conversion",
+      "configuration": {
+        "args": [
+          "batch",
+          "--input",
+          "${INPUT_PDF}",
+          "-c",
+          "${OUTPUT_JSON}",
+          "--progress"
+        ],
+        "desc": "Run PDFix action PDF to JSON",
+        "name": "PDF to JSON action"
+      },
+      "args": [
+        {
+          "name": "INPUT_PDF",
+          "title": "Input PDF",
+          "desc": "Input PDF file",
+          "flags": 2,
+          "ext": "pdf",
+          "type": "file_path",
+          "value": "..."
+        },
+        {
+          "name": "OUTPUT_HTML",
+          "title": "Output File",
+          "desc": "Define the output HTML Index file",
+          "ext": "html",
+          "flags": 4,
+          "type": "file_path_save",
+          "value": "..."
+        },
+        {
+          "name": "Json",
+          "title": "Json",
+          "desc": "Conversion config file",
+          "ext": "json",
+          "type": "file_path",
+          "value": "user-defined conversion config file path"
+        }
+      ],
+      "params": [
+        {
+          "title": "Output Folder",
+          "desc": "The destination folder for the output",
+          "name": "output",
+          "type": "folder_path",
+          "value": ""
+        },
+        {
+          "title": "Structure Tree",
+          "desc": "Structure tree",
+          "name": "struct_tree",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "PageMap Objects",
+          "desc": "PageMap objects",
+          "name": "page_map",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Page Content Objects",
+          "desc": "Page content objects",
+          "name": "page_content",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Template",
+          "desc": "Load the template from the file as the current template. If the file is empty, the default template will be used",
+          "name": "template",
+          "type": "file_path",
+          "value": ""
+        },
+        {
+          "title": "Preflight",
+          "desc": "Preflight the document and combine the preflight values with the current template",
+          "name": "preflight",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Export Texts",
+          "desc": "Export texts",
+          "name": "text",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Export Text Styles",
+          "desc": "Export text styles",
+          "name": "text_style",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Export Text States",
+          "desc": "Export text states",
+          "name": "text_state",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Export Images",
+          "desc": "Export images",
+          "name": "images",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Export Bounding Box",
+          "desc": "Export object bounding box",
+          "name": "bbox",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Export Graphics States",
+          "desc": "Export graphics states",
+          "name": "graphics_state",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Export Content Marks",
+          "desc": "Export object content marks",
+          "name": "content_marks",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Get Document Properties",
+      "desc": "Get document metadata and properties",
+      "name": "get_doc_info",
+      "flags": 2,
+      "category": "Metadata",
+      "configurations": [
+        {
+          "path": "",
+          "program": "pdfix_app extract-data --input ${INPUT_PDF} --doc-info --format 0",
+          "desc": "Extract document metadata",
+          "name": "Get Document properties"
+        }
+      ],
+      "args": [
+        {
+          "name": "INPUT_PDF",
+          "title": "Input PDF",
+          "desc": "Input PDF file",
+          "flags": 2,
+          "ext": "pdf",
+          "type": "file_path",
+          "value": "..."
+        }
+      ],
+      "output": [
+        {
+          "title": "Created",
+          "desc": "Creation date",
+          "name": "creation_date",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Modified",
+          "desc": "Modified date",
+          "name": "mod_date",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Author",
+          "desc": "Author name",
+          "name": "author",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Title",
+          "desc": "Title",
+          "name": "title",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Subject",
+          "desc": "Subject",
+          "name": "subject",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Keywords",
+          "desc": "Keywords",
+          "name": "keywords",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Producer",
+          "desc": "Producer name",
+          "name": "producer",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Creator",
+          "desc": "Creator name",
+          "name": "creator",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Pages",
+          "desc": "Number of pages",
+          "name": "num_pages",
+          "type": "int",
+          "value": -1
+        },
+        {
+          "title": "Language",
+          "desc": "Language",
+          "name": "lang",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "PDF Standard",
+          "desc": "PDF standard",
+          "name": "standard",
+          "type": "string",
+          "value": "None"
+        },
+        {
+          "title": "Tagged",
+          "desc": "Tagged",
+          "name": "tagged",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Document Properties",
+      "desc": "Set document metadata and properties",
+      "name": "set_doc_info",
+      "flags": 1,
+      "category": "Metadata",
+      "params": [
+        {
+          "title": "Set Author",
+          "desc": "Set the document author",
+          "name": "set_author",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Author",
+          "desc": "Author",
+          "name": "author",
+          "type": "string",
+          "value": "",
+          "disable": "(set_author==false)"
+        },
+        {
+          "title": "Set Title",
+          "desc": "Set the document title",
+          "name": "set_title",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Title",
+          "desc": "Title",
+          "name": "title",
+          "type": "string",
+          "value": "",
+          "disable": "(set_title==false)"
+        },
+        {
+          "title": "Set Subject",
+          "desc": "Set the document subject",
+          "name": "set_subject",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Subject",
+          "desc": "Subject",
+          "name": "subject",
+          "type": "string",
+          "value": "",
+          "disable": "(set_subject==false)"
+        },
+        {
+          "title": "Set Keywords",
+          "desc": "Set the document keywords",
+          "name": "set_keywords",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Keywords",
+          "desc": "Keywords",
+          "name": "keywords",
+          "type": "string",
+          "value": "",
+          "disable": "(set_keywords==false)"
+        },
+        {
+          "title": "Set Producer",
+          "desc": "Set the document producer",
+          "name": "set_producer",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Producer",
+          "desc": "Producer name",
+          "name": "producer",
+          "type": "string",
+          "value": "",
+          "disable": "(set_producer==false)"
+        },
+        {
+          "title": "Set Creator",
+          "desc": "Set the document creator",
+          "name": "set_creator",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Creator",
+          "desc": "Creator",
+          "name": "creator",
+          "type": "string",
+          "value": "",
+          "disable": "(set_creator==false)"
+        }
+      ]
+    },
+    {
+      "title": "Set PDF Version",
+      "desc": "Set the PDF version",
+      "name": "set_pdf_version",
+      "flags": 1,
+      "category": "Metadata",
+      "params": [
+        {
+          "title": "PDF Version",
+          "desc": "Version designations",
+          "name": "version_number",
+          "type": "int",
+          "set": [
+            {
+              "desc": "PDF 1.4",
+              "value": 14
+            },
+            {
+              "desc": "PDF 1.5",
+              "value": 15
+            },
+            {
+              "desc": "PDF 1.6",
+              "value": 16
+            },
+            {
+              "desc": "PDF 1.7",
+              "value": 17
+            },
+            {
+              "desc": "PDF 2.0",
+              "value": 20
+            }
+          ],
+          "value": 17
+        }
+      ]
+    },
+    {
+      "title": "Set PDF/UA Standard",
+      "desc": "Set the PDF/UA part number",
+      "name": "set_pdf_ua_standard",
+      "flags": 1,
+      "category": "Accessibility",
+      "params": [
+        {
+          "title": "Part Identifier",
+          "desc": "The part number of the International Standard that the file conforms to",
+          "name": "part_number",
+          "type": "string",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "PDF/UA-1",
+              "value": "1"
+            },
+            {
+              "desc": "PDF/UA-2",
+              "value": "2"
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "title": "Rev Number",
+          "desc": "Four-digit year of the date of publication or revision. Ignored for part 1",
+          "name": "rev_number",
+          "type": "string",
+          "value": "2023",
+          "disable": "(part_number!=2)"
+        }
+      ]
+    },
+    {
+      "title": "Set Suspect Value",
+      "desc": "Fix the document Suspects entry",
+      "name": "set_suspect_value",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Fix Optional Content",
+      "desc": "Fix optional content configuration dictionary",
+      "name": "fix_oc_name",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Fix Display Document Title",
+      "desc": "Fix ViewerPreferences dictionary",
+      "name": "set_display_doc_title",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Remove Standard Tags Mapping",
+      "desc": "Remove standard tags mapping",
+      "name": "remove_standard_tags_mapping",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Fix Media Clip",
+      "desc": "Define a MIME type of the media clip annotations file",
+      "name": "fix_media_clip_keys",
+      "flags": 1,
+      "category": "Annotations",
+      "params": [
+        {
+          "title": "Media Clip",
+          "desc": "CT key",
+          "name": "ct_key",
+          "type": "string",
+          "set": [
+            {
+              "desc": "text/plain",
+              "value": "text/plain"
+            },
+            {
+              "desc": "text/html",
+              "value": "text/html"
+            },
+            {
+              "desc": "image/jpeg",
+              "value": "image/jpeg"
+            },
+            {
+              "desc": "audio/mp3",
+              "value": "audio/mp3"
+            },
+            {
+              "desc": "video/mp4",
+              "value": "video/mp4"
+            }
+          ],
+          "value": "text/plain"
+        }
+      ]
+    },
+    {
+      "title": "Set Language",
+      "desc": "Define the document language",
+      "name": "set_language",
+      "flags": 1,
+      "category": "Accessibility",
+      "params": [
+        {
+          "title": "Language",
+          "desc": "Document language",
+          "name": "lang",
+          "type": "lang",
+          "value": "en-US"
+        },
+        {
+          "title": "Apply Language to",
+          "desc": "Select the objects to which you intend to apply the defined language",
+          "name": "apply_lang_to",
+          "type": "int",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Document",
+              "value": 0
+            },
+            {
+              "desc": "Tag",
+              "value": 1
+            },
+            {
+              "desc": "Marked Content",
+              "value": 2
+            }
+          ],
+          "value": 0
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current language if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Title",
+      "desc": "Set document title",
+      "name": "set_title",
+      "flags": 1,
+      "category": "Accessibility",
+      "params": [
+        {
+          "title": "Title",
+          "desc": "Define a source for detecting the document title",
+          "name": "title_type",
+          "type": "int",
+          "value": 2,
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Define the Custom Title",
+              "value": 0
+            },
+            {
+              "desc": "Use the first Description Tag",
+              "value": 1
+            },
+            {
+              "desc": "Retrieve the title from the file name",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "title": "Custom Title",
+          "desc": "Custom title",
+          "name": "custom_text",
+          "type": "string",
+          "value": "",
+          "disable": "(title_type!=0)"
+        },
+        {
+          "title": "Description Tag",
+          "desc": "Define the tags which content is used for title text",
+          "name": "description_tag",
+          "type": "string",
+          "value": "Caption",
+          "disable": "(title_type!=1)"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current title if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Autotag",
+      "desc": "Autotag document",
+      "name": "add_tags",
+      "flags": 1,
+      "category": "Accessibility",
+      "params": [
+        {
+          "title": "Template",
+          "desc": "Load the template from the file as the current template. If the file is empty, the default template will be used",
+          "name": "template",
+          "type": "file_path",
+          "value": ""
+        },
+        {
+          "title": "Preflight",
+          "desc": "Preflight the document and combine the preflight values with the current template",
+          "name": "preflight",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Add Layout Attributes",
+          "desc": "Add all detected layout attributes",
+          "name": "standard_attrs",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Sequential Heading Levels",
+          "desc": "Keep headings in sequentially-descending order",
+          "name": "sequential_headings",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "title": "Clear Document Structure",
+      "desc": "Clear document structure",
+      "name": "clear_structure",
+      "flags": 1,
+      "category": "Accessibility",
+      "params": [
+        {
+          "title": "Clear Content Marks",
+          "desc": "Clear content marks",
+          "name": "clear_tags",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Clear Structure Tree",
+          "desc": "Clear structure tree",
+          "name": "clear_struct_tree",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Clear Bookmarks",
+          "desc": "Clear bookmarks",
+          "name": "clear_bookmarks",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "title": "Embed Fonts",
+      "desc": "Embed font",
+      "name": "embed_font",
+      "flags": 1,
+      "category": "Fonts"
+    },
+    {
+      "title": "Replace Font",
+      "desc": "Replace font",
+      "name": "replace_font",
+      "flags": 1,
+      "category": "Fonts",
+      "params": [
+        {
+          "title": "Font Name",
+          "desc": "The PDF font name that will replaced. Regular expression is supported",
+          "name": "font_name",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Font Family",
+          "desc": "The font family name that will be used for replacement",
+          "name": "font_family",
+          "type": "system_font",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Add Missing Unicodes",
+      "desc": "Add missing unicode mapping",
+      "name": "add_missing_unicode",
+      "flags": 1,
+      "category": "Fonts"
+    },
+    {
+      "title": "Fix ID Tree",
+      "desc": "Fix ID tree",
+      "name": "fix_id_tree",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Fix Parent Tree",
+      "desc": "Fix parent tree",
+      "name": "fix_parent_tree",
+      "flags": 1,
+      "category": "Accessibility"
+    },
+    {
+      "title": "Create Bookmarks",
+      "desc": "Create bookmarks from the tag tree hierarchy",
+      "name": "create_bookmarks",
+      "flags": 1,
+      "category": "Bookmarks",
+      "params": [
+        {
+          "title": "Level 1",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_1",
+          "type": "tag",
+          "value": "^H1$"
+        },
+        {
+          "title": "Level 2",
+          "desc": "Define the tag that represents second level",
+          "name": "tag_2",
+          "type": "tag",
+          "value": "^H2$"
+        },
+        {
+          "title": "Level 3",
+          "desc": "Define the tag that represents third level",
+          "name": "tag_3",
+          "type": "tag",
+          "value": "^H3$"
+        },
+        {
+          "title": "Level 4",
+          "desc": "Define the tag that represents fourth level",
+          "name": "tag_4",
+          "type": "tag",
+          "value": "^H4$"
+        },
+        {
+          "title": "Level 5",
+          "desc": "Define the tag that represents fifth level",
+          "name": "tag_5",
+          "type": "tag",
+          "value": "^H5$"
+        },
+        {
+          "title": "Level 6",
+          "desc": "Define the tag that represents sixth level",
+          "name": "tag_6",
+          "type": "tag",
+          "value": "^H6$"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current bookmarks it already exist",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Artifact Content",
+      "desc": "Mark defined content as an artifact",
+      "name": "artifact_content",
+      "flags": 1,
+      "category": "Content",
+      "params": [
+        {
+          "title": "Untagged content only",
+          "desc": "Mark the content as Artifact only if it's untagged",
+          "name": "artifact_untagged",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Mark as",
+          "desc": "Mark the content as an Artifact, Header or Footer",
+          "name": "artifact_type",
+          "type": "int",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Artifact",
+              "value": 0
+            },
+            {
+              "desc": "Header",
+              "value": 1
+            },
+            {
+              "desc": "Footer",
+              "value": 2
+            }
+          ],
+          "value": 0
+        }
+      ]
+    },
+    {
+      "title": "Flatten Form XObjects",
+      "desc": "Flatten Form XObjects",
+      "name": "flatten_xobject",
+      "flags": 1,
+      "category": "Content"
+    },
+    {
+      "title": "Set Tab Order",
+      "desc": "Sets the tab order key for every page",
+      "name": "set_tabs_key",
+      "flags": 1,
+      "category": "Annotations",
+      "params": [
+        {
+          "title": "Tabs Key",
+          "desc": "Tabs key",
+          "name": "tabs_key",
+          "type": "string",
+          "value": "S"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current Tabs Key if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "title": "Tag Annotations",
+      "desc": "Tag the untagged annotations",
+      "name": "tag_annot",
+      "flags": 1,
+      "category": "Annotations",
+      "params": [
+        {
+          "title": "Annotations",
+          "desc": "Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot",
+          "name": "annot_types",
+          "type": "annot",
+          "value": "^(?!.*Popup).*$"
+        }
+      ]
+    },
+    {
+      "title": "Delete Tags",
+      "desc": "Delete defined tags",
+      "name": "delete_tags",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": {
+            "template": {
+              "tag_update": [
+                {
+                  "query": {
+                    "$and": [
+                      {
+                        "$0_tag_type": {
+                          "$regex": "^(?!H$|H1$|H2$|H3$|H4$|H5$|H6$|TH$|TD$|TR$|LI$|Lbl$|LBody$).*"
+                        }
+                      },
+                      {
+                        "$0_children_num": "0"
+                      },
+                      {
+                        "$0_actual_text": ""
+                      },
+                      {
+                        "$0_expansion": ""
+                      }
+                    ],
+                    "param": [
+                      "pds_struct_elem"
+                    ]
+                  },
+                  "statement": "$if"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "title": "Content",
+          "desc": "Handle the content of the tag",
+          "name": "tag_content",
+          "type": "string",
+          "set": [
+            {
+              "desc": "Leave untagged",
+              "value": "none"
+            },
+            {
+              "desc": "Move to parent tag",
+              "value": "move"
+            }
+          ],
+          "value": "none"
+        }
+      ]
+    },
+    {
+      "title": "Apply Standard Tags",
+      "desc": "Apply standard tag names according to their role mapping",
+      "name": "apply_standard_tags",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": ".*"
+        },
+        {
+          "title": "Clear Role Map",
+          "desc": "Clear the role map specified in the structure tree root",
+          "name": "rolemap",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "title": "Rename Tags",
+      "desc": "Rename tag names",
+      "name": "rename_tags",
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^P$"
+        },
+        {
+          "title": "Replace with",
+          "desc": "Type a new tag name",
+          "name": "tag_name",
+          "type": "string",
+          "value": "P"
+        }
+      ]
+    },
+    {
+      "title": "Set Tag ID",
+      "desc": "Generate a unique identifier for the tag",
+      "name": "set_tag_id",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^Note$|^TH$"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current Tag ID if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Tag BBox",
+      "desc": "Calculate the tag bbox from it's content",
+      "name": "set_tag_bbox",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^Figure$|^Formula$|^Form$|^Table$"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current Tag ID if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Alternate Description",
+      "desc": "Set alternative description to the tag",
+      "name": "set_alt",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^Figure$|^Formula$"
+        },
+        {
+          "title": "Alternative Description",
+          "desc": "Define a source for detecting the alternative text",
+          "name": "alt_type",
+          "type": "int",
+          "value": 4,
+          "set": [
+            {
+              "desc": "Define the Custom Alternative text",
+              "value": 0
+            },
+            {
+              "desc": "Use the first Description Tag above",
+              "value": 1
+            },
+            {
+              "desc": "Use the first Description Tag below",
+              "value": 2
+            },
+            {
+              "desc": "Use the first Description Tag from children",
+              "value": 3
+            },
+            {
+              "desc": "Use the associated tag content",
+              "value": 4
+            }
+          ]
+        },
+        {
+          "title": "Custom Alternative",
+          "desc": "Enter custom text to serve as an alternative description",
+          "name": "custom_text",
+          "type": "string",
+          "value": "Decorative",
+          "disable": "(alt_type!=0)"
+        },
+        {
+          "title": "Description Tag",
+          "desc": "Define the tags which content is used for alternative description",
+          "name": "description_tag",
+          "type": "string",
+          "value": "Caption",
+          "disable": "(alt_type==0)||(alt_type==4)"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the alternative description if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Actual Text",
+      "desc": "Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content",
+      "name": "set_actual",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^Figure$|^Formula$"
+        },
+        {
+          "title": "Actual Text",
+          "desc": "Define a source for detecting the replacement text",
+          "name": "actual_type",
+          "type": "int",
+          "value": 0,
+          "set": [
+            {
+              "desc": "Define the Custom Actual text",
+              "value": 0
+            },
+            {
+              "desc": "Use the associated tag content",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "title": "Custom Actual",
+          "desc": "Enter custom text to serve as a replacement text",
+          "name": "custom_text",
+          "type": "string",
+          "value": "",
+          "disable": "(actual_type!=0)"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the actual text if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Fix Placement",
+      "desc": "Fix placement",
+      "name": "fix_placement",
+      "flags": 1,
+      "category": "Tags"
+    },
+    {
+      "title": "Fix Document Tag",
+      "desc": "Fix Document tag ",
+      "name": "fix_document_tag",
+      "flags": 1,
+      "category": "Tags"
+    },
+    {
+      "title": "Fix List Tag",
+      "desc": "Fix List tag ",
+      "name": "fix_list_tag",
+      "flags": 1,
+      "category": "Tags"
+    },
+    {
+      "title": "Remove Tag Properties",
+      "desc": "Remove properties from the defined tags",
+      "name": "remove_tag_data",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": ".*"
+        },
+        {
+          "title": "Remove Alternate",
+          "desc": "Remove Alt key",
+          "name": "accept_alternate_desc",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Remove Actual Text",
+          "desc": "Remove ActualText key",
+          "name": "accept_actual_text",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Remove ID",
+          "desc": "Remove ID key",
+          "name": "accept_id",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Remove Language",
+          "desc": "Remove Lang key",
+          "name": "accept_lang",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Remove Title",
+          "desc": "Remove T key",
+          "name": "accept_title",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Set Contents",
+      "desc": "Set alternative description for an annotation to Contents key",
+      "name": "set_annot_contents",
+      "flags": 1,
+      "category": "Annotations",
+      "params": [
+        {
+          "title": "Annotations",
+          "desc": "Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot",
+          "name": "annot_types",
+          "type": "annot",
+          "value": "^Link$|^Highlight$|^Underline$|^Squiggly$|^StrikeOut$"
+        },
+        {
+          "title": "Contents",
+          "desc": "Define a source for detecting the alternative text",
+          "name": "alt_type",
+          "type": "int",
+          "value": 1,
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Define the Custom Text",
+              "value": 0
+            },
+            {
+              "desc": "Use the text from annotation bounding box",
+              "value": 1
+            },
+            {
+              "desc": "Use the action destination",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "title": "Custom Text",
+          "desc": "Enter custom text to Contents key",
+          "name": "custom_text",
+          "type": "string",
+          "value": "Decorative",
+          "disable": "(alt_type!=0)"
+        },
+        {
+          "title": "BBox X padding",
+          "desc": "Bounding box padding in horizontal direction",
+          "name": "bbox_padding_x",
+          "type": "float",
+          "value": 4,
+          "disable": "(alt_type!=1)"
+        },
+        {
+          "title": "BBox Y padding",
+          "desc": "Bounding box padding in vertical direction",
+          "name": "bbox_padding_y",
+          "type": "float",
+          "value": 4,
+          "disable": "(alt_type!=1)"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current alternative description if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "title": "Flatten Annotations",
+      "desc": "Flatten the visual representation of annotations directly into the content layer",
+      "name": "flatten_annot",
+      "category": "Annotations",
+      "flags": 1,
+      "params": [
+        {
+          "title": "Annotations",
+          "desc": "Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot",
+          "name": "annot_types",
+          "type": "annot",
+          "value": "^(?!.*Link|.*Widget|.*Popup).*$"
+        }
+      ]
+    },
+    {
+      "title": "Create Web Links",
+      "desc": "Create link annotations from web links in the page content",
+      "name": "create_web_links",
+      "category": "Annotations",
+      "flags": 1,
+      "params": [
+        {
+          "title": "URL",
+          "desc": "Regular expression used for searching web links",
+          "name": "url_regex",
+          "type": "string",
+          "value": "^(((http(s)?|ftp):\\/\\/)|(mailto:)|www.)[^\\s\\/$.?#].[^\\s]*"
+        }
+      ]
+    },
+    {
+      "title": "Delete Annotations",
+      "desc": "Delete annotations from the document",
+      "name": "delete_annot",
+      "category": "Annotations",
+      "flags": 1,
+      "params": [
+        {
+          "title": "Annotations",
+          "desc": "Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot",
+          "name": "annot_types",
+          "type": "annot",
+          "value": "^TrapNet$"
+        }
+      ]
+    },
+    {
+      "title": "Set Tag Attributes",
+      "desc": "Set the attributes of the tag",
+      "name": "set_structure_attribute",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag",
+          "name": "tag_names",
+          "type": "tag",
+          "value": ".*"
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current Tag ID if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Owner",
+          "desc": "Standard attribute owner",
+          "name": "owner",
+          "set": [
+            {
+              "desc": "Layout",
+              "value": "Layout"
+            },
+            {
+              "desc": "List",
+              "value": "List"
+            },
+            {
+              "desc": "PrintField",
+              "value": "PrintField"
+            },
+            {
+              "desc": "Table",
+              "value": "Table"
+            }
+          ],
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Name",
+          "desc": "Attribute name",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "title": "Value",
+          "desc": "Arrtibute value",
+          "name": "value",
+          "set": [
+            {
+              "value": "",
+              "desc": ""
+            }
+          ],
+          "type": "string"
+        },
+        {
+          "title": "Value Type",
+          "desc": "Attribute value type",
+          "name": "value_type",
+          "set": [
+            {
+              "desc": "string",
+              "value": "string"
+            },
+            {
+              "desc": "name",
+              "value": "name"
+            },
+            {
+              "desc": "array",
+              "value": "array"
+            },
+            {
+              "desc": "number",
+              "value": "number"
+            }
+          ],
+          "type": "string",
+          "value": ""
+        },
+        {
+          "title": "Overwrite",
+          "desc": "Replace the current attribute if it already exists",
+          "name": "overwrite",
+          "type": "bool",
+          "value": "false"
+        }
+      ]
+    },
+    {
+      "title": "Remove Content Marks",
+      "name": "remove_content_marks",
+      "desc": "Remove atrifact, mcid or any custom tag from page content objects",
+      "flags": 1,
+      "category": "Content",
+      "params": [
+        {
+          "title": "Remove",
+          "desc": "Types of content marks to be removed",
+          "name": "flags",
+          "set": [
+            {
+              "desc": "MCID",
+              "value": 1
+            },
+            {
+              "desc": "Artifact",
+              "value": 2
+            },
+            {
+              "desc": "Custom Content Marks",
+              "value": 4
+            },
+            {
+              "desc": "Invalid Content Marks",
+              "value": 8
+            },
+            {
+              "desc": "Artifact, if MCID is presented",
+              "value": 16
+            },
+            {
+              "desc": "MCID, if Artifact is presented",
+              "value": 32
+            }
+          ],
+          "type": "flag",
+          "value": 8
+        }
+      ]
+    },
+    {
+      "title": "Fix Spaces",
+      "desc": "Add missing or resolve duplicate white spaces within a structure element",
+      "name": "fix_structure_spaces",
+      "flags": 1,
+      "category": "Content",
+      "params": [
+        {
+          "title": "Add Missing Spaces",
+          "desc": "Identify words in the structure and add missing spaces",
+          "name": "add_missing_spaces",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Remove Unnecessary Spaces",
+          "desc": "Remove duplicite spaces after each word",
+          "name": "remove_unnecessary_spaces",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Artifact Unnecessary Spaces",
+          "desc": "Mark duplicite spaces after each word as an Artifact",
+          "name": "artifact_unnecessary_spaces",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "title": "Fix Headings",
+      "desc": "Assign heading levels properly",
+      "name": "fix_headings",
+      "flags": 1,
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Renumber Headings",
+          "desc": "Renumber all headings",
+          "name": "renumber_headings",
+          "type": "int",
+          "value": 2,
+          "set": [
+            {
+              "desc": "Change headings to",
+              "value": 0
+            },
+            {
+              "desc": "Move headings up a level",
+              "value": 1
+            },
+            {
+              "desc": "Add empty headings",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "title": "Change Headings to",
+          "desc": "Change Headings to",
+          "name": "change_headings_to",
+          "set": [
+            {
+              "desc": "H",
+              "value": "H"
+            },
+            {
+              "desc": "H1",
+              "value": "H1"
+            },
+            {
+              "desc": "H2",
+              "value": "H2"
+            },
+            {
+              "desc": "H3",
+              "value": "H3"
+            },
+            {
+              "desc": "H4",
+              "value": "H4"
+            }
+          ],
+          "type": "string",
+          "value": "H",
+          "disable": "(renumber_headings!=0)"
+        }
+      ]
+    },
+    {
+      "title": "Rotate Page",
+      "desc": "Rotate pages",
+      "name": "rotate_pages",
+      "flags": 1,
+      "category": "Pages",
+      "params": [
+        {
+          "title": "Rotation Type",
+          "desc": "Type of rotation",
+          "name": "rotation_type",
+          "type": "int",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Set rotation angle",
+              "value": 0
+            },
+            {
+              "desc": "Rotate by angle",
+              "value": 1
+            }
+          ],
+          "value": 1
+        },
+        {
+          "title": "Rotation Angle",
+          "desc": "Rotation angle",
+          "name": "rotation_angle",
+          "type": "int",
+          "set": [
+            {
+              "desc": "0 degrees",
+              "value": 0
+            },
+            {
+              "desc": "90 degrees",
+              "value": 90
+            },
+            {
+              "desc": "180 degrees",
+              "value": 180
+            },
+            {
+              "desc": "270 degrees",
+              "value": 270
+            }
+          ],
+          "value": 0
+        },
+        {
+          "title": "Pages With Rotation",
+          "desc": "Pages with defined rotation",
+          "name": "page_rotation",
+          "type": "int",
+          "set": [
+            {
+              "desc": "0 degrees",
+              "value": 0
+            },
+            {
+              "desc": "90 degrees",
+              "value": 90
+            },
+            {
+              "desc": "180 degrees",
+              "value": 180
+            },
+            {
+              "desc": "270 degrees",
+              "value": 270
+            }
+          ],
+          "value": 0
+        },
+        {
+          "title": "Pages With Orientation",
+          "desc": "Pages with defined orientation",
+          "name": "page_orientation",
+          "type": "int",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Pages With Any Orientation",
+              "value": 0
+            },
+            {
+              "desc": "Landscape Pages",
+              "value": 1
+            },
+            {
+              "desc": "Portrait Pages",
+              "value": 2
+            }
+          ],
+          "value": 0
+        }
+      ]
+    }
+  ]
+}
