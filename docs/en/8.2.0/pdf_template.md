@@ -13,7 +13,7 @@
 General template settings
 
 | key | type | value |
-| - | - | - | - |
+| - | - | - |
 | `retain_pdfua` | bool | True |
 | `page_tag` | string | NonStruct |
 | `substructure_form_XObject` | bool | True |
@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "sect_table_image_col_w1": 1,
-        "text_line_underline_distance": 2.6,
-        "text_paragraph_similarity": 0.7
+        "path_object_max": 2000,
+        "graphic_table_alignment_distance": 0.8,
+        "rotation_detect": 1
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_roman_numbering": "^[\\[\\(]?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})[\\)\\]\\.]?\$",
-        "regex_hyphen": "-\$"
+        "regex_filling": "[._]{2,}",
+        "statement": "\$if"
       }
     ]
   }
