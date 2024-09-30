@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "path_object_max": 2000,
-        "graphic_table_alignment_distance": 0.8,
-        "rotation_detect": 1
+        "graphic_table_split_w3": 1,
+        "text_chunk_distance_ratio": 0.42,
+        "preflight_column_width_distance": 20
       }
     ]
   }
@@ -233,8 +233,8 @@ Example:
 ## Regular Expressions
 --
 
-| key | default value |
-| - | - | - |
+| key | value |
+| - | - |
 | `regex_hyphen` | `-\$` |
 | `regex_bullet` | `^[\\u2010\\u2011\\u2212\\u005E\\u005B\\ uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8 \\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u22 12\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u 21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\ \u25A1\\u005D\\u25C6]\$` |
 | `regex_bullet_font` | `(Wingdings)\|(Symbol)` |
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_filling": "[._]{2,}",
-        "statement": "\$if"
+        "statement": "\$if",
+        "regex_image_caption": "((^image)|(^img\\.)|(^figure)|(^fig\\.))"
       }
     ]
   }
