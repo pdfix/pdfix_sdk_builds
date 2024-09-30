@@ -1,7 +1,9 @@
 # PDFix Template
 
 --
+
 ## Table of Contents
+
 - [Settings](#Settings)
 - [Threshold Values](#threshold-values)
 - [Regular Expressions](#regular-expressions)
@@ -10,7 +12,7 @@
 ## General Settings
 General template settings
 
-| key | type | default value | description |
+| key | type | default value | desciption |
 | - | - | - | - |
 | `retain_pdfua` | bool | True | -- |
 | `page_tag` | string | NonStruct | -- |
@@ -28,8 +30,10 @@ Example:
   }
 }
 ```
+
 ## Threshold Values
 --
+
 | key | default value | desciption |
 | - | - | - |
 | `preflight_columns` | `1` | Preflight colums druring preflight method. Set to 0 if this information is not required. |
@@ -217,15 +221,18 @@ Example:
   "template": {
     "pagemap": [
       {
-        "isolated_element_ratio": 6,
-        "sect_table_text_col_width_min": 0,
-        "sect_table_row_alignment_type": 1
+        "path_object_min": 100,
+        "preflight_artifact_w4": 1,
+        "isolated_element_ratio": 6
       }
     ]
   }
 }
 ```
+
 ## Regular Expressions
+--
+
 | key | default value | desciption |
 | - | - | - |
 | `regex_hyphen` | `-\$` | -- |
@@ -258,18 +265,19 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "statement": "\$if",
-        "number_chars": "-+.,%\\u20AC\$\\u00A5\\u00A3"
+        "regex_colon": ":\$",
+        "regex_bullet": "^[\\u2010\\u2011\\u2212\\u005E\\u005B\\uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8\\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u2212\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\\u25A1\\u005D\\u25C6]\$"
       }
     ]
   }
 }
 ```
+
 ## Functions
+
 ### test_function
+
 Test function just for development use
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -279,9 +287,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### form_object_process
+
 Test is called when page form object is parsed.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -291,9 +298,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### path_object_process
+
 Test is called when page path object is parsed.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -303,9 +309,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### image_object_process
+
 Test is called when page image object is parsed.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -315,9 +320,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### line_update
+
 Updates a line after horizontal and vertical lines detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -327,9 +331,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### rect_update
+
 Updates a rect after rectangles detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -339,9 +342,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### word_update
+
 Updates a word after words detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -351,9 +353,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### word_spacing
+
 Detect word spacing between two words.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -363,9 +364,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### text_line_add_word
+
 Test is called when creating text lines from words.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -375,9 +375,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### text_line_update
+
 Updates a line after lines detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -387,9 +386,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### text_line_split_filling
+
 Splits a text line based on filling.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -399,9 +397,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### text_line_neighbours
+
 Test if two neighbours lines can create a paragraph.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -411,9 +408,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### text_update
+
 Updates a text after paragraps detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -423,9 +419,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### element_create
+
 Create pre-defined elements.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -435,9 +430,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### element_update
+
 Updates an element after basic elements detection.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -447,9 +441,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### table_recognize
+
 Test is called during table recognition process - columns and rows detection. This test is called multiple times!
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -459,9 +452,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### caption_join
+
 Finds element for text that was marked as a caption.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -471,9 +463,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### table_update
+
 Updates a table after the whole process od table detection is done.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -483,9 +474,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### table_detect_header
+
 Defines rules for table headers detection. Tests if text is a header in a table.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -495,9 +485,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### table_split
+
 Updates a table after the whole process od table detection is done.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -507,9 +496,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### single_instance_detect
+
 Handles elements that require a single occurence only.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -519,9 +507,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### alt_update
+
 Sets alternate description for the element. Alternate description for the element is set in an order! If you want to skip some step, set false as default value for such step!
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -531,9 +518,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### actual_text_update
+
 Sets actual text for the element. Actual text for the element is set in an order! If you want to skip some step, set false as default value for such step!
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -543,9 +529,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### artifact_update
+
 Iterates detected artifact and update them.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -555,9 +540,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### reading_order_detect
+
 Detect reading order options
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -567,9 +551,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### label_update
+
 Update elements that are marked as labels to make them a part of the list.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -579,9 +562,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### list_update
+
 Tests if a list is correct.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -591,9 +573,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### tag_list
+
 Handles process of list tagging.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -603,9 +584,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### tag_image
+
 Handles process of image tagging. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are missing, default behaviour is tagged Figure with empty alt.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -615,9 +595,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### tag_table
+
 Handles process of table tagging. For repurposing and accessibility purposes, a Table should have headers. If there are no headers detected, default behaviour is leave the table without TH.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -627,9 +606,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### tag_annot
+
 Handles process of annotation tagging.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -639,9 +617,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### tag_update
+
 Tag update.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -651,9 +628,8 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ### annot_update
+
 Annotation update.
-
-
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -663,7 +639,9 @@ _keys and values:_
 - "[flag](#flag)" : ""
 
 ## Schema
+
 ### statement
+
 The it-statement type of the query. Possible values are \$if (default), \$elif, \$else. According to the statement the query evaluation stops upon pass or not.
 
 - _values:_ ["[\$if](#\$if)", "[\$elif](#\$elif)", "[\$else](#\$else)"]
@@ -673,23 +651,27 @@ _keys and values:_
 - "[\$if](#\$if)"
 - "[\$elif](#\$elif)"
 - "[\$else](#\$else)"
+
 ### \$if
+
 Can by used in all functions. General logic of IF statement.
 
 - _type:_ statement
 
 ### \$elif
+
 Can by used in all functions. General logic of ELSE IF statement.
 
 - _type:_ statement
 
 ### \$else
+
 Can by used in all functions. General logic of ELSE statement.
 
 - _type:_ statement
 
-
 ### query
+
 The query defines thresholds and operations for a pagemap detection.
 
 - _type:_ query
@@ -712,7 +694,9 @@ _params:_
   - "[arithmetic_operator](#arithmetic_operator)" : ""
   - "0_value" : ""
 - "[logical_operators](#logical_operators)"
+
 ### param
+
 Define the number and type of input parameters.
 
 - _type:_ query_param
@@ -728,28 +712,33 @@ _keys and values:_
 - "[bool](#bool)"
 - "[float](#float)"
 - "[string](#string)"
+
 ### int
+
 Parameter that represents integer.
 
 - _type:_ int
 
 ### bool
+
 Parameter that represents boolean value.
 
 - _type:_ bool
 
 ### float
+
 Parameter that represents floating value.
 
 - _type:_ float
 
 ### string
+
 Parameter that represents string value.
 
 - _type:_ string
 
-
 ### var
+
 User defined variables. Use scheme:arithmetic_operators to define variables
 
 - _type:_ var
@@ -758,8 +747,8 @@ _keys and values:_
 - "[arithmetic_operator](#arithmetic_operator)"
 - "0_value"
 
-
 ### logical_operators
+
 Available logical operators.
 
 - _type:_ string
@@ -784,7 +773,9 @@ _params:_
   - "[\$or](#\$or)" : ""
   - "[\$not](#\$not)" : ""
   - "[condition](#condition)" : ""
+
 ### \$and
+
 Logical AND.
 
 - _type:_ logical_operator
@@ -796,6 +787,7 @@ _keys and values:_
 - "[condition](#condition)"
 
 ### \$or
+
 Logical OR.
 
 - _type:_ logical_operator
@@ -807,6 +799,7 @@ _keys and values:_
 - "[condition](#condition)"
 
 ### \$not
+
 Logical NOT.
 
 - _type:_ logical_operator
@@ -817,8 +810,8 @@ _keys and values:_
 - "[\$not](#\$not)"
 - "[condition](#condition)"
 
-
 ### comparison_operators
+
 Available comparison operators.
 
 - _type:_ string
@@ -834,62 +827,72 @@ _keys and values:_
 - "[\$regex](#\$regex)"
 - "[\$in](#\$in)"
 - "[\$nin](#\$nin)"
+
 ### \$eq
+
 Equality comparison operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)", "[string](#string)"]
 
 ### \$ne
+
 Nequality comparator operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)", "[string](#string)"]
 
 ### \$lt
+
 Less than comparison operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)"]
 
 ### \$lte
+
 Less than or equals operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)"]
 
 ### \$gt
+
 Greater than operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)"]
 
 ### \$gte
+
 Greater than or equals operator.
 
 - _type:_ comparison_operator
 - _types:_ ["[int](#int)", "[float](#float)"]
 
 ### \$regex
+
 Regular expression predicate.
 
 - _type:_ comparison_operator
 - _types:_ ["[string](#string)"]
 
 ### \$in
+
 Contain value operator.
 
 - _type:_ comparison_operator
 - _types:_ []
 
 ### \$nin
+
 Not contain value operator.
 
 - _type:_ comparison_operator
 - _types:_ []
 
-
 ### arithmetic_operators
+
 Available arithmetic_operators.
 
 - _type:_ string
@@ -935,7 +938,9 @@ _params:_
   - "[arithmetic_operator](#arithmetic_operator)" : "[\$mod](#\$mod)"
   - "[0]" : "0"
   - "[1]" : "2"
+
 ### \$sum
+
 Sum of two numbers.
 
 - _type:_ arithmetic_operator
@@ -947,6 +952,7 @@ _keys and values:_
 - "[1]"
 
 ### \$diff
+
 Difference of two numbers.
 
 - _type:_ arithmetic_operator
@@ -958,6 +964,7 @@ _keys and values:_
 - "[1]"
 
 ### \$abs
+
 Absolute value of a single number.
 
 - _type:_ arithmetic_operator
@@ -968,6 +975,7 @@ _keys and values:_
 - "[0]"
 
 ### \$mul
+
 Multiply two numbers.
 
 - _type:_ arithmetic_operator
@@ -979,6 +987,7 @@ _keys and values:_
 - "[1]"
 
 ### \$div
+
 division two numbers.
 
 - _type:_ arithmetic_operator
@@ -990,6 +999,7 @@ _keys and values:_
 - "[1]"
 
 ### \$min
+
 Get minimal value from any number of values.
 
 - _type:_ arithmetic_operator
@@ -1001,6 +1011,7 @@ _keys and values:_
 - "[1]"
 
 ### \$max
+
 Get maximal value from any number of values.
 
 - _type:_ arithmetic_operator
@@ -1012,6 +1023,7 @@ _keys and values:_
 - "[1]"
 
 ### \$mod
+
 Get the modulus from a division of values.
 
 - _type:_ arithmetic_operator
@@ -1022,8 +1034,8 @@ _keys and values:_
 - "[0]"
 - "[1]"
 
-
 ### pds_object_params
+
 List of all pds_object types, can be used as parameter in QUERY->PARAM.
 
 
@@ -1065,7 +1077,9 @@ _params:_
   - "[fill_color](#fill_color)" : ""
   - "[stroke_color](#stroke_color)" : ""
   - "[children_num](#children_num)" : ""
+
 ### pds_text
+
 Text page object
 
 
@@ -1080,8 +1094,8 @@ _keys and values:_
 - "[fill_color](#fill_color)"
 - "[stroke_color](#stroke_color)"
 
-
 ### pds_struct_elem_params
+
 List of all pds_tag types, can be used as parameter in QUERY->PARAM.
 
 
@@ -1113,6 +1127,7 @@ _params:_
   - "[has_content](#has_content)" : ""
 
 ### pdf_annot_params
+
 List of all pdf_annot types, can be used as parameter in QUERY->PARAM.
 
 
@@ -1134,6 +1149,7 @@ _params:_
   - "[annot_flag](#annot_flag)" : ""
 
 ### pde_element_params
+
 List of all pde_element types, can be used as parameter in QUERY->PARAM.
 
 
@@ -1246,6 +1262,7 @@ _params:_
   - "[flag](#flag)" : ""
 
 ### general_vars
+
 General variables can be used without parameters. It represents general state during the processing. It contains information about the current page and the document and can be used in any query.
 
 - _type:_ string
@@ -1258,44 +1275,52 @@ _keys and values:_
 - "[\$doc_num_pages](#\$doc_num_pages)"
 - "[\$doc_lang](#\$doc_lang)"
 - "[\$doc_title](#\$doc_title)"
+
 ### \$page_num
+
 Page number.
 
 - _type:_ int
 
 ### \$page_width
+
 Page cropbox width.
 
 - _type:_ float
 
 ### \$page_height
+
 Page cropbox height.
 
 - _type:_ float
 
 ### \$page_rotation
+
 Page rotation.
 
 - _type:_ int
 - _values:_ [0, 90, 180, 270]
 
 ### \$doc_num_pages
+
 Document number of pages.
 
 - _type:_ int
 
 ### \$doc_lang
+
 Document language.
 
 - _type:_ string
 
 ### \$doc_title
+
 Document title.
 
 - _type:_ string
 
-
 ### values
+
 General values used in JSON default template.
 
 
@@ -1367,71 +1392,85 @@ _params:_
 - "[type](#type)"
 - "[width](#width)"
 - "[word_flag](#word_flag)"
+
 ### actual_text
+
 Actual text.
 
 - _type:_ string
 
 ### alt
+
 Alternate description.
 
 - _type:_ string
 
 ### lang
+
 Language.
 
 - _type:_ string
 
 ### id
+
 Identifier.
 
 - _type:_ string
 
 ### expansion
+
 The expanded form of an abbreviation.
 
 - _type:_ string
 
 ### has_content
+
 True if the tag has an associated page content.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### tag_type
+
 Tag type. Use regex .* for all tags.
 
 - _type:_ string
 - _values:_ ['Annot', 'Art', 'Artifact', 'Aside', 'BibEntry', 'BlockQuote', 'Caption', 'Code', 'Div', 'Document', 'DocumentFragment', 'Em', 'FENote', 'Figure', 'Form', 'Formula', 'H', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Index', 'L', 'Lbl', 'LBody', 'LI', 'Link', 'NonStruct', 'Note', 'P', 'Part', 'Private', 'Quote', 'RB', 'Reference', 'RP', 'RT', 'Ruby', 'Sect', 'Span', 'Strong', 'Sub', 'Table', 'TBody', 'TD', 'TFoot', 'TH', 'THead', 'Title', 'TOC', 'TOCI', 'TR', 'Warichu', 'WP', 'WT']
 
 ### annot_type
+
 Annotation type. Use regex .* for all annotations.
 
 - _type:_ string
 - _values:_ ['Text', 'Link', 'FreeText', 'Line', 'Square', 'Circle', 'Polygon', 'PolyLine', 'Highlight', 'Underline', 'Squiggly', 'StrikeOut', 'Stamp', 'Caret', 'Ink', 'Popup', 'FileAttachment', 'Sound', 'Movie', 'Widget', 'Screen', 'PrinterMark', 'TrapNet', 'Watermark', '3D', 'Redact', 'Projection', 'RichMedia']
 
 ### contents
+
 Annotation contents.
 
 - _type:_ string
 
 ### annot_flag
+
 Annotation flags.
 
 - _type:_ string
 - _values:_ ['invisible', 'hidden', 'print', 'no_zoom', 'no_rotate', 'no_view', 'read_only', 'locked', 'toggle', "[contents](#contents)"]
 
 ### title
+
 Title.
 
 - _type:_ string
 
 ### angle
+
 Angle.
 
 - _type:_ float
 
 ### bbox
+
 Bounding box array: [left, bottom, right, top]
 
 - _type:_ bbox
@@ -1443,36 +1482,43 @@ _keys and values:_
 - "[top](#top)"
 
 ### blue
+
 Blue component of an RGB color.
 
 - _type:_ int
 
 ### bottom
+
 Bottom coordinate of the bounding box.
 
 - _type:_ float
 
 ### cell_column
+
 Column number of the cell in the table.
 
 - _type:_ int
 
 ### cell_row
+
 Row number of the cell in the table.
 
 - _type:_ int
 
 ### col_num
+
 Number of columns in the table.
 
 - _type:_ int
 
 ### children_num
+
 Number of associated page objects.
 
 - _type:_ int
 
 ### fill_color
+
 Fill color.
 
 - _type:_ rgb
@@ -1483,55 +1529,65 @@ _keys and values:_
 - "[blue](#blue)"
 
 ### flag
+
 Flag.!!!!!!!
 
 - _type:_ string
 - _values:_ ['no_join', 'no_split', 'artifact', "[header](#header)", 'footer', 'splitter', 'no_table', 'table']
 
 ### font_name
+
 Font name.
 
 - _type:_ string
 
 ### font_size
+
 Font size.
 
 - _type:_ float
 
 ### green
+
 Green component of an RGB color.
 
 - _type:_ int
 
 ### header
+
 Table header.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### heading
+
 Sets text heading style.
 
 - _type:_ string
 - _values:_ ['normal', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'note', "[title](#title)"]
 
 ### height
+
 Height of the bounding box.
 
 - _type:_ float
 
 ### label
+
 Marks the element as a label.
 
 - _type:_ string
 - _values:_ ['', "[label](#label)", 'li_1', 'li_2', 'li_3', 'li_4', 'label_no']
 
 ### left
+
 Left coordinate of the bounding box.
 
 - _type:_ float
 
 ### pdf_rect
+
 Parameter that represents PdsObject. array: [left, bottom, right, top]
 
 - _type:_ rec
@@ -1543,6 +1599,7 @@ _keys and values:_
 - "[top](#top)"
 
 ### pdf_rgb
+
 Parameter that represents PdfRgb values: [red, green, blue].
 
 - _type:_ rgb
@@ -1553,27 +1610,32 @@ _keys and values:_
 - "[blue](#blue)"
 
 ### red
+
 Red component of an RGB color.
 
 - _type:_ int
 
 ### reflow
+
 Text reflow. If reflow is set to false, each line is treated as a new line.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### right
+
 Right coordinate of the bounding box.
 
 - _type:_ float
 
 ### row_num
+
 Number of rows in the table.
 
 - _type:_ int
 
 ### stroke_color
+
 Stroke color.
 
 - _type:_ rgb
@@ -1584,63 +1646,73 @@ _keys and values:_
 - "[blue](#blue)"
 
 ### table_type
+
 Table type [int]. Values: PdfTableType.
 
 - _type:_ string
 - _values:_ ['graphic', 'isolated', 'row', 'col', 'form']
 
 ### tag
+
 Default tag name.
 
 - _type:_ string
 
 ### text
+
 Text.
 
 - _type:_ string
 
 ### text_flag
+
 Text regex flag.
 
 - _type:_ string
 - _values:_ ['table_caption', 'image_caption', 'chart_caption', 'note_caption', 'filling', 'uppercase']
 
 ### text_line_flag
+
 Text line regex flag.
 
 - _type:_ string
 - _values:_ ['hyphen', 'new_line', 'indent', 'terminal', 'drop_cap', 'filling', 'uppercase']
 
 ### top
+
 Top coordinate of the bounding box.
 
 - _type:_ float
 
 ### type
+
 Mark object or element as type. It helps to recognize correct element type.
 
 - _type:_ string
 - _values:_ ["[pds_object](#pds_object)", "[pds_text](#pds_text)", "[pds_path](#pds_path)", "[pds_image](#pds_image)", "[pds_shading](#pds_shading)", "[pds_form](#pds_form)", "[pde_element](#pde_element)", "[pde_text](#pde_text)", "[pde_text_line](#pde_text_line)", "[pde_word](#pde_word)", "[pde_text_run](#pde_text_run)", "[pde_image](#pde_image)", "[pde_container](#pde_container)", "[pde_list](#pde_list)", "[pde_line](#pde_line)", "[pde_rect](#pde_rect)", "[pde_table](#pde_table)", "[pde_cell](#pde_cell)", "[pde_toc](#pde_toc)", "[pde_header](#pde_header)", "[pde_footer](#pde_footer)", "[pde_form_field](#pde_form_field)", "[pde_annot](#pde_annot)"]
 
 ### width
+
 Width of the bounding box.
 
 - _type:_ float
 
 ### word_flag
+
 Word regex flag.
 
 - _type:_ string
 - _values:_ ['hyphen', 'bullet', 'colon', 'number', 'subscript', 'superscript', 'terminal', 'capital', 'image', 'decimal_num', 'roman_num', 'letter_num', 'page_num', 'filling', 'uppercase', 'comma', 'no_unicode']
 
-
 ### suffix
+
 Container holding all unique suffixes used for naming in JSON default template
 
 
 _keys and values:_
 
 ### condition
+
 Conditions types used in query
 
 
@@ -1653,11 +1725,14 @@ _params:_
 _params:_
   - "[\$gt](#\$gt)" : "0"
   - "[\$lt](#\$lt)" : "0"
+
 ### condition_value
+
 {0_width : 100}
 
 
 ### comparison
+
 {0_width : {\$lt : 100}
 
 
@@ -1665,6 +1740,7 @@ _keys and values:_
 - "[\$eq](#\$eq)"
 
 ### comparison_array
+
 {0_width : [{\$lt : 100}, {\$gt : 100}, ...]}
 
 
@@ -1672,8 +1748,8 @@ _keys and values:_
 - "[\$gt](#\$gt)"
 - "[\$lt](#\$lt)"
 
-
 ### keywords
+
 Container holding all unique keywords used in JSON default template
 
 
@@ -1685,42 +1761,50 @@ _keys and values:_
 - "[statement](#statement)"
 - "[disable](#disable)"
 - "[purpose](#purpose)"
+
 ### general
+
 Holding general data like: version, date, id, SDK version, ...
 
 
 ### template
+
 Holding all functions.
 
 
 ### query
+
 Can be used in all functions. Each QUERY must have child PARAM, which holding array of parameters to specified query objects.
 
 
 ### param
+
 Child of QUERY. Each QUERY must have PARAM. Holding array of parameters to specified query objects.
 
 - _type:_ array_param
 
 ### statement
+
 Should by used in all main functions nodes. The it-statement type of the query. According to the statement the query evaluation stops upon pass or not. If statment is not present, the condition is considered as disabled.
 
 - _type:_ string
 - _values:_ ["[\$if](#\$if)", "[\$elif](#\$elif)", "[\$else](#\$else)"]
 
 ### disable
+
 Can by used in all main functions nodes. If value is false, node is not executed by SDK. If this keyword is not present, is used default value disabled = false.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### purpose
+
 Describes for what is used QUERY
 
 - _type:_ string
 
-
 ### insert
+
 Values to be added as a default value for node
 
 
