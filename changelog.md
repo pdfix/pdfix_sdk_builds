@@ -1,5 +1,78 @@
 # Changelog
 
+## [8.2.0] - 2024-08-25
+### Added 
+- Added PdsStructElement.GetBBox the union bounding boxes on the page number on which the content items designated by the K entry are rendered
+
+### Changed
+- Changed Java JAR package contains native libraries
+- Renamed kCommand... contants to kAction...
+
+### Fixed
+- Fixed default MakeAccessible action does not specify bookmark levels
+
+## [8.1.11] - 2024-08-24
+### Fixed 
+- Fixed dependencies on linux platforms
+
+## [8.1.10] - 2024-08-16
+### Fixed 
+- Fixed Docker compatibility for linux/amd64 and linux/arm64 platforms
+
+## [8.1.9] - 2024-08-07
+### Added 
+- Added option for Delete Tags command to move childs to parent structure element
+
+### Fixed
+- Fixed ToUnicode formatting issues
+
+
+## [8.1.8] - 2024-08-06
+### Added 
+- Added Quick Fix command for fixing common accessibility issues
+
+### Fixed
+- Fixed flattening XObject with text inside causes text to hide
+- Fixed Python function signatures returning string values
+
+### Added 
+- Linux aarch64 support
+
+## [8.1.7] - 2024-08-01
+
+### Added 
+- Linux aarch64 support
+
+### Fixed
+- PDF File saves invalid XRefStm in some linux distributions
+- Could not load Windows dll due to missing system dependencies
+- PdfDoc.AddMissingUnicode invalidates font PDF/UA compliance
+- PdfDoc.AddTags may create diplicate MCID entry on non-text objects
+- PdfDoc.CreateXObjectFrom page from another document
+
+## [8.1.1] - 2024-06-18
+
+### Changed
+- Licensing - page counter updates local consumption upon sucessfull save/export only
+
+### Fixed
+- Support for View Destination defined as a object reference
+- Fixed update of Structure element attributes defined in indirect object
+- Fixed Template alt_text top-bottom reversed position 
+- Support for multiple same owner structure element attributes
+
+## [8.1.0] - 2024-06-06
+
+### Added
+- Added Create URL link from content command
+- Added Replace font by regex command
+
+### Changed
+- CLI pdfix_app overwrites input file if output is not set
+
+### Fixed
+- Fixed Nuget package runtime native libraries load
+
 ## [8.0.1] - 2024-05-03
 
 ### Changed

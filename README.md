@@ -8,15 +8,15 @@ Developers can use the PDFix SDK with [programming languages](#Integration-using
 Check the [system requirements](#Prerequisites) to avoid any problems with running PDFix SDK on your system. 
 
 ## Integration using the CLI
-PDFix provides simple, fast and automated PDF processing through the
-command-line. PDFix CLI is the easiest way to integrate the PDFix SDK
-functionality into your solutions.
+PDFix offers straightforward, rapid, and automated PDF processing via the command-line interface. 
+
 
 ```console
-$ ./pdfix_app make-accessible -i test.pdf -o output.pdf --preflight
+$ ./pdfix_app make-accessible -i test.pdf -o output.pdf
 ```
 
-For more CLI options please check the [PDFix SDK Command-line interface](https://pdfix.net/support/pdfix-command-line/).
+For more CLI options please check the [PDFix SDK Command-line interface](https://pdfix.net/support/pdfix-command-line/). The CLI application is part of the downloadable package available on [website](https://pdfix.net/download/).
+
 
 ## Integration using the SDK
 
@@ -32,7 +32,7 @@ static void Main() {
    doc.Close();                                       
 }
 ```
-Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_dotnet](https://github.com/pdfix/pdfix_sdk_example_dotnet)
+Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_dotnet](https://github.com/pdfix/pdfix_sdk_example_dotnet)
 
 ### c++
 ```cpp
@@ -50,34 +50,39 @@ int main() {
    }
 }
 ``````
-Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_cpp](https://github.com/pdfix/pdfix_sdk_example_cpp)
+Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_cpp](https://github.com/pdfix/pdfix_sdk_example_cpp)
 
 ### java
 ```java
 import net.pdfix.pdfixlib.*;
 
 public static void main() {
-   System.loadLibrary("pdfix");                       
    Pdfix pdfix = new Pdfix();   
    PdfDoc doc = pdfix.OpenDoc("Sample.pdf", "");      
    // do your stuff
    doc.Close();
 }
 ``````
-Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_java](https://github.com/pdfix/pdfix_sdk_example_java)
+Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_java](https://github.com/pdfix/pdfix_sdk_example_java)
 
 ### python
 Import Python Package [pdfix-sdk](https://pypi.org/project/pdfix-sdk/)
 
 ```python
-from pdfixsdk.Pdfix import *
+from pdfixsdk import *
 
 pdfix  = GetPdfix()
 doc = pdfix.OpenDoc("Sample.pdf", "")
 // do your stuff
 doc.close()
 ```
-Check the full github sample [https://github.com/pdfix/pdfix_sdk_example_python](https://github.com/pdfix/pdfix_sdk_example_python)
+Check more github examples on [https://github.com/pdfix/pdfix_sdk_example_python](https://github.com/pdfix/pdfix_sdk_example_python)
+
+## Multi-threaded environments
+
+The SDK is designed for single-threaded processing, meaning only one API method can be executed at a time within a single process. Any methods invoked from other threads will wait until the preceding one completes.
+
+If there's a need to handle multiple concurrent calls, it's advised to utilize separate processes instead.
 
 
 ## Prerequisites
@@ -96,10 +101,6 @@ PDFix SDK can be autorized using an activation key or using the name, key pair.
 
 ### Standard License Activation
 Software can be authorized using an activation key. After activating the software operates on the computer according to the license. Internet connection is necessary for occasional license updates.
-
-#### Windows Virtual Machines
-In the case of error: 1239 "VM detection dll not found or tempered" download the [VM detection dll](https://drive.google.com/file/d/1K8XpGc7NLSkWHzdLcd2ZZSfVSY3j4wZk/view?usp=drive_link) and copy to the same directory as pdfix_app. 
-
 
 #### Online Activation
 Using the command line:
