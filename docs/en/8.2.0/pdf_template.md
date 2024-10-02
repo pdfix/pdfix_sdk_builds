@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "graphic_table_split_w3": 1,
-        "text_chunk_distance_ratio": 0.42,
-        "preflight_column_width_distance": 20
+        "label_image_w4": 0.25,
+        "sect_table_alignment_distance": 0.4,
+        "word_space_type": 0
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "statement": "\$if",
-        "regex_image_caption": "((^image)|(^img\\.)|(^figure)|(^fig\\.))"
+        "regex_filling": "[._]{2,}",
+        "regex_bullet_font": "(Wingdings)|(Symbol)"
       }
     ]
   }
@@ -277,7 +277,7 @@ Example:
 
 ### test_function
 
-Test function just for development use
+This function is intended for development purposes only
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -288,7 +288,7 @@ _keys and values:_
 
 ### form_object_process
 
-Test is called when page form object is parsed.
+The test is triggered when the page form object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -299,7 +299,7 @@ _keys and values:_
 
 ### path_object_process
 
-Test is called when page path object is parsed.
+The test is triggered when the page path object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -310,7 +310,7 @@ _keys and values:_
 
 ### image_object_process
 
-Test is called when page image object is parsed.
+The test is triggered when the page image object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -321,7 +321,7 @@ _keys and values:_
 
 ### line_update
 
-Updates a line after horizontal and vertical lines detection.
+Updates a line element after detecting horizontal and vertical lines.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -332,7 +332,7 @@ _keys and values:_
 
 ### rect_update
 
-Updates a rect after rectangles detection.
+Updates a rectangle element after detecting rectangles.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -343,7 +343,7 @@ _keys and values:_
 
 ### word_update
 
-Updates a word after words detection.
+Updates a word element after detecting words.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -354,7 +354,7 @@ _keys and values:_
 
 ### word_spacing
 
-Detect word spacing between two words.
+Detects the spacing between two words.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -365,7 +365,7 @@ _keys and values:_
 
 ### text_line_add_word
 
-Test is called when creating text lines from words.
+The test is triggered when forming text lines from words.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -376,7 +376,7 @@ _keys and values:_
 
 ### text_line_update
 
-Updates a line after lines detection.
+Updates a text line element after detecting text lines.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -398,7 +398,7 @@ _keys and values:_
 
 ### text_line_neighbours
 
-Test if two neighbours lines can create a paragraph.
+Test if two neighbours text lines can form a paragraph.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -409,7 +409,7 @@ _keys and values:_
 
 ### text_update
 
-Updates a text after paragraps detection.
+Updates the text element after detecting paragraphs.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -420,7 +420,7 @@ _keys and values:_
 
 ### element_create
 
-Create pre-defined elements.
+Create user-defined elements.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -431,7 +431,7 @@ _keys and values:_
 
 ### element_update
 
-Updates an element after basic elements detection.
+Updates an element after detecting basic elements.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -442,7 +442,7 @@ _keys and values:_
 
 ### table_recognize
 
-Test is called during table recognition process - columns and rows detection. This test is called multiple times!
+The test is triggered during the table recognition process for detecting columns and rows. This test can be called multiple times!
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -453,7 +453,7 @@ _keys and values:_
 
 ### caption_join
 
-Finds element for text that was marked as a caption.
+Finds the element for text that has been marked as a caption.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -475,7 +475,7 @@ _keys and values:_
 
 ### table_detect_header
 
-Defines rules for table headers detection. Tests if text is a header in a table.
+Defines the rules for detecting table headers and tests whether the text is a header in a table.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -486,7 +486,7 @@ _keys and values:_
 
 ### table_split
 
-Updates a table after the whole process od table detection is done.
+Updates the table after the entire table detection process is completed.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -497,7 +497,7 @@ _keys and values:_
 
 ### single_instance_detect
 
-Handles elements that require a single occurence only.
+Detects handles for elements that require a single occurrence only.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -508,7 +508,7 @@ _keys and values:_
 
 ### alt_update
 
-Sets alternate description for the element. Alternate description for the element is set in an order! If you want to skip some step, set false as default value for such step!
+Sets an alternate description for the element. The alternate description is established in a specific order. To skip a step, set the default value to false for that step.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -519,7 +519,7 @@ _keys and values:_
 
 ### actual_text_update
 
-Sets actual text for the element. Actual text for the element is set in an order! If you want to skip some step, set false as default value for such step!
+Sets the actual text for the element. The actual text is established in a specific order. To skip a step, set the default value to false for that step.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -530,7 +530,7 @@ _keys and values:_
 
 ### artifact_update
 
-Iterates detected artifact and update them.
+Marks an element as an artifact.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -552,7 +552,7 @@ _keys and values:_
 
 ### label_update
 
-Update elements that are marked as labels to make them a part of the list.
+Update elements marked as labels to include them as part of the list.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -574,7 +574,7 @@ _keys and values:_
 
 ### tag_list
 
-Handles process of list tagging.
+Handles the process of tagging lists.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -585,7 +585,7 @@ _keys and values:_
 
 ### tag_image
 
-Handles process of image tagging. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are missing, default behaviour is tagged Figure with empty alt.
+Handles the process of tagging images. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are absent, the default behavior is to tag the Figure with an empty alt attribute.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -596,7 +596,7 @@ _keys and values:_
 
 ### tag_table
 
-Handles process of table tagging. For repurposing and accessibility purposes, a Table should have headers. If there are no headers detected, default behaviour is leave the table without TH.
+Handles the process of tagging tables. For repurposing and accessibility purposes, a table should have headers. If no headers are detected, the default behavior is to leave the table without any `<th>` elements.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -607,7 +607,7 @@ _keys and values:_
 
 ### tag_annot
 
-Handles process of annotation tagging.
+Handles the process of tagging annotations.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -618,7 +618,7 @@ _keys and values:_
 
 ### tag_update
 
-Tag update.
+Updates the tag after it has been created..
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -629,7 +629,7 @@ _keys and values:_
 
 ### annot_update
 
-Annotation update.
+Updates the annotation tag after it has been created.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -1343,8 +1343,6 @@ _params:_
   - "[bottom](#bottom)" : "0"
   - "[right](#right)" : "0"
   - "[top](#top)" : "0"
-- "[blue](#blue)"
-- "[bottom](#bottom)"
 - "[cell_column](#cell_column)"
 - "[cell_row](#cell_row)"
 - "[col_num](#col_num)"
@@ -1354,15 +1352,26 @@ _params:_
   - "[red](#red)" : "0"
   - "[green](#green)" : "0"
   - "[blue](#blue)" : "0"
+- "[stroke_color](#stroke_color)"
+_params:_
+  - "[red](#red)" : "0"
+  - "[green](#green)" : "0"
+  - "[blue](#blue)" : "0"
 - "[flag](#flag)"
 - "[font_name](#font_name)"
 - "[font_size](#font_size)"
+- "[red](#red)"
 - "[green](#green)"
+- "[blue](#blue)"
 - "[header](#header)"
 - "[heading](#heading)"
+- "[width](#width)"
 - "[height](#height)"
 - "[label](#label)"
 - "[left](#left)"
+- "[right](#right)"
+- "[top](#top)"
+- "[bottom](#bottom)"
 - "[pdf_rect](#pdf_rect)"
 _params:_
   - "[left](#left)" : "0"
@@ -1374,23 +1383,14 @@ _params:_
   - "[red](#red)" : "0"
   - "[green](#green)" : "0"
   - "[blue](#blue)" : "0"
-- "[red](#red)"
 - "[reflow](#reflow)"
-- "[right](#right)"
 - "[row_num](#row_num)"
-- "[stroke_color](#stroke_color)"
-_params:_
-  - "[red](#red)" : "0"
-  - "[green](#green)" : "0"
-  - "[blue](#blue)" : "0"
 - "[table_type](#table_type)"
 - "[tag](#tag)"
 - "[text](#text)"
 - "[text_flag](#text_flag)"
 - "[text_line_flag](#text_line_flag)"
-- "[top](#top)"
 - "[type](#type)"
-- "[width](#width)"
 - "[word_flag](#word_flag)"
 
 ### actual_text
@@ -1401,19 +1401,19 @@ Actual text.
 
 ### alt
 
-Alternate description.
+Alternate description typically used for Figure tags.
 
 - _type:_ string
 
 ### lang
 
-Language.
+The language identifier of the document or tag.
 
 - _type:_ string
 
 ### id
 
-Identifier.
+The unique identifier of the tag.
 
 - _type:_ string
 
@@ -1425,34 +1425,34 @@ The expanded form of an abbreviation.
 
 ### has_content
 
-True if the tag has an associated page content.
+A value identifying whether the object or tag has associated page content.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### tag_type
 
-Tag type. Use regex .* for all tags.
+Tag type defined by a string or regular expression. Use `.*` to match all tags.
 
 - _type:_ string
 - _values:_ ['Annot', 'Art', 'Artifact', 'Aside', 'BibEntry', 'BlockQuote', 'Caption', 'Code', 'Div', 'Document', 'DocumentFragment', 'Em', 'FENote', 'Figure', 'Form', 'Formula', 'H', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'Index', 'L', 'Lbl', 'LBody', 'LI', 'Link', 'NonStruct', 'Note', 'P', 'Part', 'Private', 'Quote', 'RB', 'Reference', 'RP', 'RT', 'Ruby', 'Sect', 'Span', 'Strong', 'Sub', 'Table', 'TBody', 'TD', 'TFoot', 'TH', 'THead', 'Title', 'TOC', 'TOCI', 'TR', 'Warichu', 'WP', 'WT']
 
 ### annot_type
 
-Annotation type. Use regex .* for all annotations.
+Annotation type defined by a string or regular expression. Use `.*` to match all annotations.
 
 - _type:_ string
 - _values:_ ['Text', 'Link', 'FreeText', 'Line', 'Square', 'Circle', 'Polygon', 'PolyLine', 'Highlight', 'Underline', 'Squiggly', 'StrikeOut', 'Stamp', 'Caret', 'Ink', 'Popup', 'FileAttachment', 'Sound', 'Movie', 'Widget', 'Screen', 'PrinterMark', 'TrapNet', 'Watermark', '3D', 'Redact', 'Projection', 'RichMedia']
 
 ### contents
 
-Annotation contents.
+A string value specifying the annotation contents.
 
 - _type:_ string
 
 ### annot_flag
 
-Annotation flags.
+A comma-delimited string value specifying the annotation flags.
 
 - _type:_ string
 - _values:_ ['invisible', 'hidden', 'print', 'no_zoom', 'no_rotate', 'no_view', 'read_only', 'locked', 'toggle', "[contents](#contents)"]
@@ -1471,7 +1471,7 @@ Angle.
 
 ### bbox
 
-Bounding box array: [left, bottom, right, top]
+Parameter that represents the bounding box of an object, formatted as an array: `[left, bottom, right, top]`.
 
 - _type:_ bbox
 
@@ -1481,27 +1481,15 @@ _keys and values:_
 - "[right](#right)"
 - "[top](#top)"
 
-### blue
-
-Blue component of an RGB color.
-
-- _type:_ int
-
-### bottom
-
-Bottom coordinate of the bounding box.
-
-- _type:_ float
-
 ### cell_column
 
-Column number of the cell in the table.
+The column number of the cell in the table.
 
 - _type:_ int
 
 ### cell_row
 
-Row number of the cell in the table.
+The row number of the cell in the table.
 
 - _type:_ int
 
@@ -1513,13 +1501,24 @@ Number of columns in the table.
 
 ### children_num
 
-Number of associated page objects.
+Number of associated child page objects.
 
 - _type:_ int
 
 ### fill_color
 
-Fill color.
+The fill color of an object.
+
+- _type:_ rgb
+
+_keys and values:_
+- "[red](#red)"
+- "[green](#green)"
+- "[blue](#blue)"
+
+### stroke_color
+
+The stroke color of an object.
 
 - _type:_ rgb
 
@@ -1530,65 +1529,101 @@ _keys and values:_
 
 ### flag
 
-Flag.!!!!!!!
+The flag value defines a specific property for an object, which is essential for further processing.
 
 - _type:_ string
 - _values:_ ['no_join', 'no_split', 'artifact', "[header](#header)", 'footer', 'splitter', 'no_table', 'table']
 
 ### font_name
 
-Font name.
+The name of the font used in the text object.
 
 - _type:_ string
 
 ### font_size
 
-Font size.
+The size of the font used in the text object.
 
 - _type:_ float
 
+### red
+
+The red component of an RGB color.
+
+- _type:_ int
+
 ### green
 
-Green component of an RGB color.
+The green component of an RGB color.
+
+- _type:_ int
+
+### blue
+
+The blue component of an RGB color.
 
 - _type:_ int
 
 ### header
 
-Table header.
+Marks the object as a table header.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### heading
 
-Sets text heading style.
+Sets the text heading style.
 
 - _type:_ string
 - _values:_ ['normal', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'note', "[title](#title)"]
 
+### width
+
+The object's width dimension.
+
+- _type:_ float
+
 ### height
 
-Height of the bounding box.
+The object's height dimension.
 
 - _type:_ float
 
 ### label
 
-Marks the element as a label.
+Marks the element as a list label.
 
 - _type:_ string
 - _values:_ ['', "[label](#label)", 'li_1', 'li_2', 'li_3', 'li_4', 'label_no']
 
 ### left
 
-Left coordinate of the bounding box.
+The left coordinate of the object.
+
+- _type:_ float
+
+### right
+
+The left coordinate of the object.
+
+- _type:_ float
+
+### top
+
+The top coordinate of the object.
+
+- _type:_ float
+
+### bottom
+
+The bottom coordinate of the object.
 
 - _type:_ float
 
 ### pdf_rect
 
-Parameter that represents PdsObject. array: [left, bottom, right, top]
+Parameter that represents the bounding box of an object, formatted as an array: `[left, bottom, right, top]`.
 
 - _type:_ rec
 
@@ -1600,7 +1635,7 @@ _keys and values:_
 
 ### pdf_rgb
 
-Parameter that represents PdfRgb values: [red, green, blue].
+Parameter that represents the RGB color of an object, formatted as an array: `[red, green, blue]`.
 
 - _type:_ rgb
 
@@ -1609,97 +1644,62 @@ _keys and values:_
 - "[green](#green)"
 - "[blue](#blue)"
 
-### red
-
-Red component of an RGB color.
-
-- _type:_ int
-
 ### reflow
 
-Text reflow. If reflow is set to false, each line is treated as a new line.
+Text reflow. If set to false, each line is treated as a new line.
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
-### right
-
-Right coordinate of the bounding box.
-
-- _type:_ float
-
 ### row_num
 
-Number of rows in the table.
+The number of rows in the table.
 
 - _type:_ int
 
-### stroke_color
-
-Stroke color.
-
-- _type:_ rgb
-
-_keys and values:_
-- "[red](#red)"
-- "[green](#green)"
-- "[blue](#blue)"
-
 ### table_type
 
-Table type [int]. Values: PdfTableType.
+The table type represented as a value from the `PdfTableType` enum.
 
 - _type:_ string
 - _values:_ ['graphic', 'isolated', 'row', 'col', 'form']
 
 ### tag
 
-Default tag name.
+The tag name to be used.
 
 - _type:_ string
 
 ### text
 
-Text.
+The text to be used as a value.
 
 - _type:_ string
 
 ### text_flag
 
-Text regex flag.
+The flag to be used for the text element, specifying a value similar to the regex flags.
 
 - _type:_ string
 - _values:_ ['table_caption', 'image_caption', 'chart_caption', 'note_caption', 'filling', 'uppercase']
 
 ### text_line_flag
 
-Text line regex flag.
+The flag to be used for the text line element, specifying a value similar to the regex flags.
 
 - _type:_ string
 - _values:_ ['hyphen', 'new_line', 'indent', 'terminal', 'drop_cap', 'filling', 'uppercase']
 
-### top
-
-Top coordinate of the bounding box.
-
-- _type:_ float
-
 ### type
 
-Mark object or element as type. It helps to recognize correct element type.
+Marks the object or element with a type, aiding in the recognition of the correct element type.
 
 - _type:_ string
 - _values:_ ["[pds_object](#pds_object)", "[pds_text](#pds_text)", "[pds_path](#pds_path)", "[pds_image](#pds_image)", "[pds_shading](#pds_shading)", "[pds_form](#pds_form)", "[pde_element](#pde_element)", "[pde_text](#pde_text)", "[pde_text_line](#pde_text_line)", "[pde_word](#pde_word)", "[pde_text_run](#pde_text_run)", "[pde_image](#pde_image)", "[pde_container](#pde_container)", "[pde_list](#pde_list)", "[pde_line](#pde_line)", "[pde_rect](#pde_rect)", "[pde_table](#pde_table)", "[pde_cell](#pde_cell)", "[pde_toc](#pde_toc)", "[pde_header](#pde_header)", "[pde_footer](#pde_footer)", "[pde_form_field](#pde_form_field)", "[pde_annot](#pde_annot)"]
 
-### width
-
-Width of the bounding box.
-
-- _type:_ float
-
 ### word_flag
 
-Word regex flag.
+The flag to be used for the word element, specifying a value similar to the regex flags.
 
 - _type:_ string
 - _values:_ ['hyphen', 'bullet', 'colon', 'number', 'subscript', 'superscript', 'terminal', 'capital', 'image', 'decimal_num', 'roman_num', 'letter_num', 'page_num', 'filling', 'uppercase', 'comma', 'no_unicode']
@@ -1713,7 +1713,7 @@ _keys and values:_
 
 ### condition
 
-Conditions types used in query
+Conditions types used in the query
 
 
 _keys and values:_
@@ -1779,33 +1779,33 @@ Can be used in all functions. Each QUERY must have child PARAM, which holding ar
 
 ### param
 
-Child of QUERY. Each QUERY must have PARAM. Holding array of parameters to specified query objects.
+Child of the QUERY. Each QUERY must include a PARAM that specifies the object types used for evaluation.
 
 - _type:_ array_param
 
 ### statement
 
-Should by used in all main functions nodes. The it-statement type of the query. According to the statement the query evaluation stops upon pass or not. If statment is not present, the condition is considered as disabled.
+The `if` statement should be used in function nodes. Based on the statement, the query evaluation stops upon pass or fail. If the `if` statement is not present, the condition is considered disabled.
 
 - _type:_ string
 - _values:_ ["[\$if](#\$if)", "[\$elif](#\$elif)", "[\$else](#\$else)"]
 
 ### disable
 
-Can by used in all main functions nodes. If value is false, node is not executed by SDK. If this keyword is not present, is used default value disabled = false.
+Can by used in all main functions nodes. If value is true, node is not executed. Default value is false
 
 - _type:_ bool
 - _values:_ ['true', 'false']
 
 ### purpose
 
-Describes for what is used QUERY
+Describes the user-defined purpose or description of the QUERY.
 
 - _type:_ string
 
 ### insert
 
-Values to be added as a default value for node
+Values to be added as the default for the node.
 
 
 _keys and values:_
