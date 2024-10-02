@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "label_image_w4": 0.25,
-        "sect_table_alignment_distance": 0.4,
-        "word_space_type": 0
+        "text_split_distance": 0.2,
+        "sect_table_image_col_width_max": 0,
+        "text_line_distance_max": 0
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_filling": "[._]{2,}",
-        "regex_bullet_font": "(Wingdings)|(Symbol)"
+        "regex_label": "^[\\[\\(]?((M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))|(\\d+)|([a-zA-Z]))[\\)\\]\\.]\$",
+        "regex_note_caption": "((^source\\:)|(^note\\:))"
       }
     ]
   }
@@ -281,7 +281,7 @@ This function is intended for development purposes only
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -292,7 +292,7 @@ The test is triggered when the page form object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -303,7 +303,7 @@ The test is triggered when the page path object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -314,7 +314,7 @@ The test is triggered when the page image object is parsed.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -325,7 +325,7 @@ Updates a line element after detecting horizontal and vertical lines.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -336,7 +336,7 @@ Updates a rectangle element after detecting rectangles.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -347,7 +347,7 @@ Updates a word element after detecting words.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -358,7 +358,7 @@ Detects the spacing between two words.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -369,7 +369,7 @@ The test is triggered when forming text lines from words.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -380,7 +380,7 @@ Updates a text line element after detecting text lines.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -391,7 +391,7 @@ Splits a text line based on filling.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -402,7 +402,7 @@ Test if two neighbours text lines can form a paragraph.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -413,7 +413,7 @@ Updates the text element after detecting paragraphs.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -424,7 +424,7 @@ Create user-defined elements.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -435,7 +435,7 @@ Updates an element after detecting basic elements.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -446,7 +446,7 @@ The test is triggered during the table recognition process for detecting columns
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -457,7 +457,7 @@ Finds the element for text that has been marked as a caption.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -468,7 +468,7 @@ Updates a table after the whole process od table detection is done.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -479,7 +479,7 @@ Defines the rules for detecting table headers and tests whether the text is a he
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -490,7 +490,7 @@ Updates the table after the entire table detection process is completed.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -501,7 +501,7 @@ Detects handles for elements that require a single occurrence only.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -512,7 +512,7 @@ Sets an alternate description for the element. The alternate description is esta
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -523,7 +523,7 @@ Sets the actual text for the element. The actual text is established in a specif
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -534,7 +534,7 @@ Marks an element as an artifact.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -545,7 +545,7 @@ Detect reading order options
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -556,7 +556,7 @@ Update elements marked as labels to include them as part of the list.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -567,7 +567,7 @@ Tests if a list is correct.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -578,7 +578,7 @@ Handles the process of tagging lists.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -589,7 +589,7 @@ Handles the process of tagging images. For repurposing and accessibility purpose
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -600,7 +600,7 @@ Handles the process of tagging tables. For repurposing and accessibility purpose
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -611,7 +611,7 @@ Handles the process of tagging annotations.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -622,7 +622,7 @@ Updates the tag after it has been created..
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -633,7 +633,7 @@ Updates the annotation tag after it has been created.
 
 _keys and values:_
 - "[disable](#disable)" : false
-- "[statement](#statement)" : "[\$if](#\$if)"
+- "[statement](#statement)" : "\$if"
 - "[query](#query)" :
   - "[param](#param)" : [["[pds_form](#pds_form)"]]
 - "[flag](#flag)" : ""
@@ -644,13 +644,13 @@ _keys and values:_
 
 The it-statement type of the query. Possible values are \$if (default), \$elif, \$else. According to the statement the query evaluation stops upon pass or not.
 
-- _values:_ ["[\$if](#\$if)", "[\$elif](#\$elif)", "[\$else](#\$else)"]
+- _values:_ ['\$if', '\$elif', '\$else']
 - _defaule value:_ \$if
 
 _keys and values:_
-- "[\$if](#\$if)"
-- "[\$elif](#\$elif)"
-- "[\$else](#\$else)"
+- "\$if"
+- "\$elif"
+- "\$else"
 
 ### \$if
 
@@ -752,26 +752,26 @@ _keys and values:_
 Available logical operators.
 
 - _type:_ string
-- _values:_ ["[\$and](#\$and)", "[\$or](#\$or)", "[\$not](#\$not)"]
+- _values:_ ['\$and', '\$or', '\$not']
 
 _keys and values:_
-- "[\$and](#\$and)"
+- "\$and"
 _params:_
-  - "[\$and](#\$and)" : ""
-  - "[\$or](#\$or)" : ""
-  - "[\$not](#\$not)" : ""
+  - "\$and" : ""
+  - "\$or" : ""
+  - "\$not" : ""
   - "[condition](#condition)" : ""
-- "[\$or](#\$or)"
+- "\$or"
 _params:_
-  - "[\$and](#\$and)" : ""
-  - "[\$or](#\$or)" : ""
-  - "[\$not](#\$not)" : ""
+  - "\$and" : ""
+  - "\$or" : ""
+  - "\$not" : ""
   - "[condition](#condition)" : ""
-- "[\$not](#\$not)"
+- "\$not"
 _params:_
-  - "[\$and](#\$and)" : ""
-  - "[\$or](#\$or)" : ""
-  - "[\$not](#\$not)" : ""
+  - "\$and" : ""
+  - "\$or" : ""
+  - "\$not" : ""
   - "[condition](#condition)" : ""
 
 ### \$and
@@ -781,9 +781,9 @@ Logical AND.
 - _type:_ logical_operator
 
 _keys and values:_
-- "[\$and](#\$and)"
-- "[\$or](#\$or)"
-- "[\$not](#\$not)"
+- "\$and"
+- "\$or"
+- "\$not"
 - "[condition](#condition)"
 
 ### \$or
@@ -793,9 +793,9 @@ Logical OR.
 - _type:_ logical_operator
 
 _keys and values:_
-- "[\$and](#\$and)"
-- "[\$or](#\$or)"
-- "[\$not](#\$not)"
+- "\$and"
+- "\$or"
+- "\$not"
 - "[condition](#condition)"
 
 ### \$not
@@ -805,9 +805,9 @@ Logical NOT.
 - _type:_ logical_operator
 
 _keys and values:_
-- "[\$and](#\$and)"
-- "[\$or](#\$or)"
-- "[\$not](#\$not)"
+- "\$and"
+- "\$or"
+- "\$not"
 - "[condition](#condition)"
 
 ### comparison_operators
@@ -815,18 +815,18 @@ _keys and values:_
 Available comparison operators.
 
 - _type:_ string
-- _values:_ ["[\$eq](#\$eq)", "[\$ne](#\$ne)", "[\$lt](#\$lt)", "[\$lte](#\$lte)", "[\$gt](#\$gt)", "[\$gte](#\$gte)", "[\$regex](#\$regex)", "[\$in](#\$in)", "[\$nin](#\$nin)"]
+- _values:_ ['\$eq', '\$ne', '\$lt', '\$lte', '\$gt', '\$gte', '\$regex', '\$in', '\$nin']
 
 _keys and values:_
-- "[\$eq](#\$eq)"
-- "[\$ne](#\$ne)"
-- "[\$lt](#\$lt)"
-- "[\$lte](#\$lte)"
-- "[\$gt](#\$gt)"
-- "[\$gte](#\$gte)"
-- "[\$regex](#\$regex)"
-- "[\$in](#\$in)"
-- "[\$nin](#\$nin)"
+- "\$eq"
+- "\$ne"
+- "\$lt"
+- "\$lte"
+- "\$gt"
+- "\$gte"
+- "\$regex"
+- "\$in"
+- "\$nin"
 
 ### \$eq
 
@@ -896,46 +896,46 @@ Not contain value operator.
 Available arithmetic_operators.
 
 - _type:_ string
-- _values:_ ["[\$sum](#\$sum)", "[\$diff](#\$diff)", "[\$abs](#\$abs)", "[\$mul](#\$mul)", "[\$div](#\$div)", "[\$min](#\$min)", "[\$max](#\$max)", "[\$mod](#\$mod)"]
+- _values:_ ['\$sum', '\$diff', '\$abs', '\$mul', '\$div', '\$min', '\$max', '\$mod']
 
 _keys and values:_
-- "[\$sum](#\$sum)"
+- "\$sum"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$sum](#\$sum)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$sum"
   - "[0]" : "0"
   - "[1]" : "0"
-- "[\$diff](#\$diff)"
+- "\$diff"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$diff](#\$diff)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$diff"
   - "[0]" : "0"
   - "[1]" : "0"
-- "[\$abs](#\$abs)"
+- "\$abs"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$abs](#\$abs)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$abs"
   - "[0]" : "0"
-- "[\$mul](#\$mul)"
+- "\$mul"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$mul](#\$mul)"
-  - "[0]" : "0"
-  - "[1]" : "0"
-- "[\$div](#\$div)"
-_params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$div](#\$div)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$mul"
   - "[0]" : "0"
   - "[1]" : "0"
-- "[\$min](#\$min)"
+- "\$div"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$min](#\$min)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$div"
   - "[0]" : "0"
   - "[1]" : "0"
-- "[\$max](#\$max)"
+- "\$min"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$max](#\$max)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$min"
   - "[0]" : "0"
   - "[1]" : "0"
-- "[\$mod](#\$mod)"
+- "\$max"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "[\$mod](#\$mod)"
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$max"
+  - "[0]" : "0"
+  - "[1]" : "0"
+- "\$mod"
+_params:_
+  - "[arithmetic_operator](#arithmetic_operator)" : "\$mod"
   - "[0]" : "0"
   - "[1]" : "2"
 
@@ -1268,13 +1268,13 @@ General variables can be used without parameters. It represents general state du
 - _type:_ string
 
 _keys and values:_
-- "[\$page_num](#\$page_num)"
-- "[\$page_width](#\$page_width)"
-- "[\$page_height](#\$page_height)"
-- "[\$page_rotation](#\$page_rotation)"
-- "[\$doc_num_pages](#\$doc_num_pages)"
-- "[\$doc_lang](#\$doc_lang)"
-- "[\$doc_title](#\$doc_title)"
+- "\$page_num"
+- "\$page_width"
+- "\$page_height"
+- "\$page_rotation"
+- "\$doc_num_pages"
+- "\$doc_lang"
+- "\$doc_title"
 
 ### \$page_num
 
@@ -1720,11 +1720,11 @@ _keys and values:_
 - "[condition_value](#condition_value)"
 - "[comparison](#comparison)"
 _params:_
-  - "[\$eq](#\$eq)" : "0"
+  - "\$eq" : "0"
 - "[comparison_array](#comparison_array)"
 _params:_
-  - "[\$gt](#\$gt)" : "0"
-  - "[\$lt](#\$lt)" : "0"
+  - "\$gt" : "0"
+  - "\$lt" : "0"
 
 ### condition_value
 
@@ -1737,7 +1737,7 @@ _params:_
 
 
 _keys and values:_
-- "[\$eq](#\$eq)"
+- "\$eq"
 
 ### comparison_array
 
@@ -1745,8 +1745,8 @@ _keys and values:_
 
 
 _keys and values:_
-- "[\$gt](#\$gt)"
-- "[\$lt](#\$lt)"
+- "\$gt"
+- "\$lt"
 
 ### keywords
 
@@ -1788,7 +1788,7 @@ Child of the QUERY. Each QUERY must include a PARAM that specifies the object ty
 The `if` statement should be used in function nodes. Based on the statement, the query evaluation stops upon pass or fail. If the `if` statement is not present, the condition is considered disabled.
 
 - _type:_ string
-- _values:_ ["[\$if](#\$if)", "[\$elif](#\$elif)", "[\$else](#\$else)"]
+- _values:_ ['\$if', '\$elif', '\$else']
 
 ### disable
 
