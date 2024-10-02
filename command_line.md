@@ -22,6 +22,7 @@ _Options:_
 | [`pdf2image`](#pdf2image) | Extract images from PDF| 
 | [`extract-highlighted-text`](#extract-highlighted-text) | Extract highlighted text from PDF| 
 | [`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file.| 
+| [`pdf2json`](#pdf2json) | Extract PDF data into JSON| 
 | [`preflight`](#preflight) | Preflight document template and output the config| 
 | [`ocr`](#ocr) | Converts scans or images-only PDF documents into searchable, editable PDF files.| 
 | [`import-data`](#import-data) | Import form data from JSON| 
@@ -50,6 +51,7 @@ _Options:_
 | [`test`](#test) | test commands| 
 | [`test-open-document`](#test-open-document) | test open document commands| 
 | [`test-incremental-save`](#test-incremental-save) | test incremental save| 
+| [`test-imposition`](#test-imposition) | test imposition| 
 | [`create-documents`](#create-documents) | Create new PDF files| 
 | [`render-pages`](#render-pages) | Render Pages| 
 | [`redact`](#redact) | Redact content using all redaction annotations.| 
@@ -173,7 +175,7 @@ Extract images from PDF
 _Options:_
 ```
   -w,--page-width INT         with of the rendered page in pixels used for scaling the images
-  -f,--format ENUM:{1,2}      integer value defining the image output format (0-PNG, 1-JPG)
+  -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -q,--quality INT:INT in [0 - 100]
 image quality. For JPG means the compression level otherwise it’s ignored
 ```
@@ -200,10 +202,11 @@ Converts PDF to HTML , output is the HTML file created duringconversion.  All ne
 _Options:_
 ```
   --password TEXT             Open password
-  -c,--config-path TEXT       path to config file.
+  -c,--config-path TEXT       Path to config file
   -w,--page-width INT         Page width
   -a,--append-html TEXT       Append HTML code from file
-  --preflight                 Preflight document template before processing
+  -p,--page INT               Convert specific page
+  -f,--flags INT              Conversion flags
   --export-js                 exports document JavaScript into HTML.
   --text-size                 retain original text size in created HTML.
   --text-color                page number from which image will be created.
@@ -214,17 +217,25 @@ _Options:_
   --no-external-font          use embedded based encoded fonts.
   --gray-background           use gray background and page padding.
   --no-page-render            do not render page.
-  --responsive                creates responsive HTML, creates fixed layout if not set.
-  --derivation                creates HTML derived from PDF tags.
-  --export-fonts Needs: --responsive
-exports embedded TrueType fonts into HTML using CSS3.
-  --format ENUM:{1,2}         integer value defining the image output format (0-PNG, 1-JPG)
-  --quality INT:INT in [0 - 100]
-integer value defining the image output quality (0-100)
-  -j,--js                     
-  -s,--css                    
-  -d,--doc                    
-  -p,--page INT               
+  --export-fonts              exports embedded TrueType fonts into HTML using CSS3.
+  --preflight                 Preflight document template before processing
+  --type ENUM:{0,1,2}         integer value defining the conversion type (0-Original content layout type, 1-Responsive content layout type, 2-Derivation)
+  --format ENUM:{1,2}         integer value defining the image output format (1-PNG, 2-JPG)
+```
+
+
+
+### `pdf2json`
+Extract PDF data into JSON
+
+
+
+_Options:_
+```
+  --password TEXT             Open password
+  -c,--config_path TEXT:FILE  Config file path
+  --preflight                 Preflight document template before processing
+  -f,--flags INT              Conversion flags
 ```
 
 
@@ -300,7 +311,7 @@ Render Page
 
 _Options:_
 ```
-  -f,--format ENUM:{1,2}      integer value defining the image output format (0-PNG, 1-JPG)
+  -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -r,--rotate ENUM:{0,90,180,270}
 page rotation in degrees
   --password TEXT             Open password
@@ -567,6 +578,13 @@ test incremental save
 
 
 
+### `test-imposition`
+test imposition
+
+
+
+
+
 ### `create-documents`
 Create new PDF files
 
@@ -593,7 +611,7 @@ Render Pages
 
 _Options:_
 ```
-  -f,--format ENUM:{1,2}      integer value defining the image output format (0-PNG, 1-JPG)
+  -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -r,--rotate ENUM:{0,90,180,270}
 page rotation in degrees
   --page-from INT             page number from which rendering will be exectuted

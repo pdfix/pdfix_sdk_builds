@@ -1,76 +1,3 @@
-# PDFix Batch Actions
-
-Custom PDF actions are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of actions, it is possible to process PDF documents tailored to specific requirements
-
-```
-{
-    "title": "PDFix Batch Action Example",
-    "desc": "Custom action sequence to re-tag the PDF document and set PDF/UA-1 identifier",
-    "actions": [
-        {
-            "name": "clear_structure",
-            "params": [
-                {
-                    "name": "clear_tags",
-                    "value": true
-                },
-                {
-                    "name": "clear_struct_tree",
-                    "value": true
-                },
-                {
-                    "name": "clear_bookmarks",
-                    "value": false
-                }
-            ]
-        },
-        {
-            "name": "add_tags",
-            "params": [
-                {
-                    "name": "standard_attrs",
-                    "value": false
-                },
-                {
-                    "name": "sequential_headings",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "name": "set_pdf_ua_standard",
-            "params": [
-                {
-                    "name": "part_number",
-                    "value": 1
-                }
-            ]
-        }
-    ]
-}
-```
-## Index
-
-
-__Accessibility__: [set_pdf_ua_standard](#set_pdf_ua_standard), [set_suspect_value](#set_suspect_value), [fix_oc_name](#fix_oc_name), [set_display_doc_title](#set_display_doc_title), [remove_standard_tags_mapping](#remove_standard_tags_mapping), [set_language](#set_language), [set_title](#set_title), [add_tags](#add_tags), [clear_structure](#clear_structure), [fix_id_tree](#fix_id_tree), [fix_parent_tree](#fix_parent_tree)
-
-__Annotations__: [fix_media_clip_keys](#fix_media_clip_keys), [set_tabs_key](#set_tabs_key), [tag_annot](#tag_annot), [set_annot_contents](#set_annot_contents), [flatten_annot](#flatten_annot), [create_web_links](#create_web_links), [delete_annot](#delete_annot)
-
-__Bookmarks__: [create_bookmarks](#create_bookmarks)
-
-__Content__: [artifact_content](#artifact_content), [flatten_xobject](#flatten_xobject), [remove_content_marks](#remove_content_marks), [fix_structure_spaces](#fix_structure_spaces)
-
-__Conversion__: [pdf_to_html](#pdf_to_html), [pdf_to_json](#pdf_to_json)
-
-__Fonts__: [embed_font](#embed_font), [replace_font](#replace_font), [add_missing_unicode](#add_missing_unicode)
-
-__Metadata__: [get_doc_info](#get_doc_info), [set_doc_info](#set_doc_info), [set_pdf_version](#set_pdf_version)
-
-__Pages__: [rotate_pages](#rotate_pages)
-
-__Tags__: [delete_tags](#delete_tags), [apply_standard_tags](#apply_standard_tags), [rename_tags](#rename_tags), [set_tag_id](#set_tag_id), [set_tag_bbox](#set_tag_bbox), [set_alt](#set_alt), [set_actual](#set_actual), [fix_placement](#fix_placement), [fix_document_tag](#fix_document_tag), [fix_list_tag](#fix_list_tag), [remove_tag_data](#remove_tag_data), [set_structure_attribute](#set_structure_attribute), [fix_headings](#fix_headings)
-
-
 ## Accessibility
 
 ### `set_pdf_ua_standard`
@@ -629,93 +556,11 @@ __PDF To HTML__ - Convert PDF to HTML
 }
 ```
 ### `pdf_to_json`
-__Convert To JSON__ - Convert PDF to JSON
-#### params:
-
-- `output` (folder_path) __Output Folder__ - The destination folder for the output
-
-- `struct_tree` (bool) __Structure Tree__ - Structure tree
-
-- `page_map` (bool) __PageMap Objects__ - PageMap objects
-
-- `page_content` (bool) __Page Content Objects__ - Page content objects
-
-- `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
-
-- `preflight` (bool) __Preflight__ - Preflight the document and combine the preflight values with the current template
-
-- `text` (bool) __Export Texts__ - Export texts
-
-- `text_style` (bool) __Export Text Styles__ - Export text styles
-
-- `text_state` (bool) __Export Text States__ - Export text states
-
-- `images` (bool) __Export Images__ - Export images
-
-- `bbox` (bool) __Export Bounding Box__ - Export object bounding box
-
-- `graphics_state` (bool) __Export Graphics States__ - Export graphics states
-
-- `content_marks` (bool) __Export Content Marks__ - Export object content marks
-
+__PDF To JSON__ - Convert PDF to JSON
 #### example:
 ```
 {
-    "name": "pdf_to_json",
-    "params": [
-        {
-            "name": "output",
-            "value": ""
-        },
-        {
-            "name": "struct_tree",
-            "value": false
-        },
-        {
-            "name": "page_map",
-            "value": true
-        },
-        {
-            "name": "page_content",
-            "value": true
-        },
-        {
-            "name": "template",
-            "value": ""
-        },
-        {
-            "name": "preflight",
-            "value": false
-        },
-        {
-            "name": "text",
-            "value": true
-        },
-        {
-            "name": "text_style",
-            "value": true
-        },
-        {
-            "name": "text_state",
-            "value": false
-        },
-        {
-            "name": "images",
-            "value": false
-        },
-        {
-            "name": "bbox",
-            "value": false
-        },
-        {
-            "name": "graphics_state",
-            "value": false
-        },
-        {
-            "name": "content_marks",
-            "value": false
-        }
-    ]
+    "name": "pdf_to_json"
 }
 ```
 ## Fonts
@@ -762,14 +607,6 @@ __Add Missing Unicodes__ - Add missing unicode mapping
 ```
 ## Metadata
 
-### `get_doc_info`
-__Get Document Properties__ - Get document metadata and properties
-#### example:
-```
-{
-    "name": "get_doc_info"
-}
-```
 ### `set_doc_info`
 __Set Document Properties__ - Set document metadata and properties
 #### params:

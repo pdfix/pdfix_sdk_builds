@@ -1,5 +1,5 @@
 {
-  "@metadata<desc>": "Contains template metadata.",
+  "@metadata<desc>": "Template metadata",
   "metadata": {
     "author": "name",
     "version": "1.0",
@@ -19,14 +19,14 @@
     "substructure_form_XObject": true
   },
 
-  "@template<desc>": "Contains template info.",
+  "@template<desc>": "Template configuration",
   "template":
   {  
     "@test_function<type>": "function",
-    "@test_function<desc>": "Test function just for development use",
+    "@test_function<desc>": "This function is intended for development purposes only",
     "@test_function": [
       {
-        "@purpose": "For what is used the QUERY below", 
+        "@purpose": "A section to provide the description or purpose of the query.", 
         "@query": {
           "@param<type>": "query_param",
           "@param<insert>": ["param_0_0", "param_1_0", "param_2_0"],
@@ -47,7 +47,7 @@
     ],
 
     "@pagemap<type>": "unknown",
-    "@pagemap<desc>": "Pagemap node contains general thresholds for the pagemap recognition.",
+    "@pagemap<desc>": "The pagemap node includes overall thresholds for pagemap recognition.",
     "pagemap": [
       {
         "statement":"$if",
@@ -629,7 +629,7 @@
     ],
     
     "@pagemap_regex<type>": "string",
-    "@pagemap_regex<desc>": "The `pagemap_regex` node contains regular expression patters for the recognition algorithm. Key values prefixed with `regex` are evaluated using regular expressions. Other key values represent a set of acceptable characters.",
+    "@pagemap_regex<desc>": "The `pagemap_regex` node contains patterns for the recognition algorithm. Keys prefixed with `regex` use regular expressions; others define acceptable characters.",
     "@pagemap_regex<value>": ["regex_hyphen", "regex_bullet", "regex_bullet_font", "regex_decimal_numbering", "regex_roman_numbering", "regex_letter_numbering", "regex_filling", "regex_filling_char", "regex_page_number", "regex_first_cap", "regex_terminal",
                               "regex_table_caption", "regex_image_caption", "regex_chart_caption", "regex_note_caption", "regex_toc_caption", "regex_colon", "regex_comma", "regex_letter", "number_chars", "numbering_splitter_chars"],
     "pagemap_regex": [
@@ -664,7 +664,7 @@
     ],
 
     "@form_object_process<type>": "function",
-    "@form_object_process<desc>": "Test is called when page form object is parsed.",
+    "@form_object_process<desc>": "The test is triggered when the page form object is parsed.",
     "@form_object_process<insert>": [{"query": {"param": ["pds_form"], "$and": []}}],
     "@form_object_process": [
       {
@@ -686,7 +686,7 @@
     ],
 
     "@path_object_process<type>": "function",
-    "@path_object_process<desc>": "Test is called when page path object is parsed.",
+    "@path_object_process<desc>": "The test is triggered when the page path object is parsed.",
     "@path_object_process<insert>": [{"query": {"param": ["pds_path"], "$and": []}}],
     "@path_object_process": [
       {
@@ -711,7 +711,7 @@
     ],
 
     "@image_object_process<type>": "function",
-    "@image_object_process<desc>": "Test is called when page image object is parsed.",
+    "@image_object_process<desc>": "The test is triggered when the page image object is parsed.",
     "@image_object_process<insert>": [{"query": {"param": ["pds_image"], "$and": []}}],
     "@image_object_process": [
       {
@@ -733,7 +733,7 @@
     ],
 
     "@line_update<type>": "function",
-    "@line_update<desc>": "Updates a line after horizontal and vertical lines detection.",
+    "@line_update<desc>": "Updates a line element after detecting horizontal and vertical lines.",
     "@line_update<insert>": [{"query": {"param": ["pde_line"], "$and": []}}],
     "@line_update": [
       {
@@ -761,7 +761,7 @@
     ],
 
     "@rect_update<type>": "function",
-    "@rect_update<desc>": "Updates a rect after rectangles detection.",
+    "@rect_update<desc>": "Updates a rectangle element after detecting rectangles.",
     "@rect_update<insert>": [{"query": {"param": ["pde_rect"], "$and": []}}],
     "@rect_update": [
       {
@@ -789,7 +789,7 @@
     ],
 
     "@word_update<type>": "function",
-    "@word_update<desc>": "Updates a word after words detection.",
+    "@word_update<desc>": "Updates a word element after detecting words.",
     "@word_update<insert>": [{"query": {"param": ["pde_word"], "$and": []}}],
     "@word_update": [
       {
@@ -826,7 +826,7 @@
     ],
 
     "@word_spacing<type>": "function",
-    "@word_spacing<desc>": "Detect word spacing between two words.",
+    "@word_spacing<desc>": "Detects the spacing between two words.",
     "@word_spacing<insert>": [{"query": {"param": ["pde_word", "pde_word"], "$and": []}}],
     "@word_spacing": [
       {
@@ -846,15 +846,15 @@
         "@width<type>": "float",
         "@width": 40,
 
-        "@ratio<desc>": "Word spacing beween two words multiplied with the  points.",
+        "@ratio<desc>": "Word spacing ratio between two words multiplied by the points.",
         "@ratio<type>": "float",
         "@ratio": 1.5
       }
     ],
 
     "@text_line_add_word<type>": "function",
-    "@text_line_add_word<desc>": "Test is called when creating text lines from words.",
-    "@text_line_add_word<rule>": "FIRST param pde_text_line starting from right side and adding SECOND param pde_word from left side, DIRECTION from right to left",
+    "@text_line_add_word<desc>": "The test is triggered when forming text lines from words.",
+    "@text_line_add_word<rule>": "The FIRST parameter, `pde_text_line`, starts from the right side and the SECOND parameter, `pde_word`, is added from the left side, with the DIRECTION moving from right to left.",
     "@text_line_add_word<insert>": [{"query": {"param": ["pde_text_line", "pde_word"], "$and": []}}],
     "@text_line_add_word": [
       {
@@ -870,7 +870,7 @@
           "param": [["pde_text_line"], ["pde_word"]]
         },
 
-        "@join<desc>": "If join is set to 'true', insert word into the current text line. If it's set to false, do not add the word into it.",
+        "@join<desc>": "If `join` is set to 'true', the word is inserted into the current text line; if set to 'false', the word is not added.",
         "@join<type>": "bool",
         "@join<value>": ["true", "false"],
         "@join": true
@@ -878,7 +878,7 @@
     ],
 
     "@text_line_update<type>": "function",
-    "@text_line_update<desc>": "Updates a line after lines detection.",
+    "@text_line_update<desc>": "Updates a text line element after detecting text lines.",
     "@text_line_update<insert>": [{"query": {"param": ["pde_text_line"], "$and": []}}],
     "@text_line_update": [
       {
@@ -906,7 +906,7 @@
         "@heading<link>": "schema:values:heading", 
         "@heading": "normal",
         
-        "@text_line_flag<desc>" : "Sets line regex flag. hyphen - Hyphen. new_line - New line. indent - Line has indentation. terminal - Line ended with terminal character. drop_cap - First char on the line is drop cap. filling - Line is filling only. justified- Line has large wordspacing and is probably justified.",
+        "@text_line_flag<desc>" : "Sets the line regex flags:\n- **hyphen**: Hyphenated line.\n- **new_line**: Line contains a new line.\n- **indent**: Line has indentation.\n- **terminal**: Line ends with a terminal character.\n- **drop_cap**: The first character on the line is a drop cap.\n- **filling**: Line contains only filling text.\n- **justified**: Line has excessive word spacing and is likely justified.",
         "@text_line_flag<type>": "string",
         "@text_line_flag<value>": ["", "hyphen", "new_line", "indent", "terminal", "drop_cap", "filling", "uppercase"],
         "@text_line_flag": ""
@@ -938,8 +938,8 @@
     ],
     
     "@text_line_neighbours<type>": "function",
-    "@text_line_neighbours<desc>": "Test if two neighbours lines can create a paragraph.",
-    "@text_line_neighbours<rule>": "FIRST param pde_text_line is above and SECOND param pde_text_line is below, DIRECTION from top to bottom",
+    "@text_line_neighbours<desc>": "Test if two neighbours text lines can form a paragraph.",
+    "@text_line_neighbours<rule>": "The FIRST parameter, `pde_text_line`, is above, and the SECOND parameter, `pde_text_line`, is below, with the DIRECTION moving from top to bottom.",
     "@text_line_neighbours<insert>": [{"query": {"param": ["pde_text_line", "pde_text_line"], "$and": []}}],
     "@text_line_neighbours": [
       {
@@ -955,12 +955,12 @@
           "param": [["pde_text_line"], ["pde_text_line"]]
         },
 
-        "@join<desc>": "If join is set to 'true', these lines can be a part of one paragraph. If false, paragraph is split. If the node is not presented, lines are joined based on font size and other properties.",
+        "@join<desc>": "If `join` is set to 'true', these lines can be part of the same paragraph; if set to 'false', the paragraph is split. If the node is not present, the lines are joined based on font size and other properties.",
         "@join<type>": "bool",
         "@join<value>": ["true", "false"],
         "@join": true,
      
-        "@split<desc>": "If split is set to 'true', text is split in between these lines.",
+        "@split<desc>": "If `split` is set to 'true', the text is divided between these lines.",
         "@split<type>": "bool",
         "@split<value>": ["true", "false"],
         "@split": true
@@ -968,7 +968,7 @@
     ],
 
     "@text_update<type>": "function",
-    "@text_update<desc>": "Updates a text after paragraps detection.",
+    "@text_update<desc>": "Updates the text element after detecting paragraphs.",
     "@text_update<insert>": [{"query": {"param": ["pde_text"], "$and": []}}],
     "@text_update": [
       {
@@ -1007,7 +1007,7 @@
     ],
 
     "@element_create<type>": "function",
-    "@element_create<desc>": "Create pre-defined elements.",
+    "@element_create<desc>": "Create user-defined elements.",
     "@element_create<insert>": [{"query": {"$and": []}, "elements": [{ "type": "pde_element", "bbox": {"left": 0, "bottom": 0, "right": 0, "top": 0}}]}],
     "@element_create": [
       {
@@ -1045,7 +1045,7 @@
     ],
 
     "@element_update<type>": "function",
-    "@element_update<desc>": "Updates an element after basic elements detection.",
+    "@element_update<desc>": "Updates an element after detecting basic elements.",
     "@element_update<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@element_update": [
       {
@@ -1076,7 +1076,7 @@
     ],
 
     "@table_recognize<type>": "function",
-    "@table_recognize<desc>": "Test is called during table recognition process - columns and rows detection. This test is called multiple times!",
+    "@table_recognize<desc>": "The test is triggered during the table recognition process for detecting columns and rows. This test can be called multiple times!",
     "@table_recognize<insert>": [{"query": {"param": ["pde_table"], "$and": []}}],
     "@table_recognize": [
       {
@@ -1092,7 +1092,7 @@
           "param": [["pde_table"]]
         },
 
-        "@isolated<desc>": "If isolated is set to 'true', isolated elements determine additional table coordinates. Otherwise process stops when graphic table coordinates are recognized.",
+        "@isolated<desc>": "If `isolated` is set to `true`, isolated elements determine additional table coordinates; otherwise, the process stops when graphic table coordinates are recognized.",
         "@isolated<type>": "bool",
         "@isolated<value>": ["true", "false"],
         "@isolated": true
@@ -1100,7 +1100,7 @@
     ],
 
     "@caption_join<type>": "function",
-    "@caption_join<desc>": "Finds element for text that was marked as a caption.",
+    "@caption_join<desc>": "Finds the element for text that has been marked as a caption.",
     "@caption_join<insert>": [{"query": {"param": ["pde_text"], "$and": []}}],
     "@caption_join": [
       {
@@ -1116,11 +1116,11 @@
           "param": [["pde_text"]]
         },
 
-        "@distance<desc>": "Defines a maximum distance of caption from the element. This value updates 'caption_dist' default threshold.",
+        "@distance<desc>": "Defines the maximum distance of the caption from the element. This value updates the default threshold for 'caption_dist'.",
         "@distance<type>": "float",
         "@distance": 80,
         
-        "@position<desc>": "Defines a position of caption regarding to the nearest element.",
+        "@position<desc>": "Defines the caption's location in relation to the nearest element.",
         "@position<type>": "string",
         "@position<value>": ["left", "right", "top", "bottom"],
         "@position": ""
@@ -1144,37 +1144,37 @@
           "param": [["pde_table"]]
         },
 
-        "@delete_empty<desc>": "If true, empty rows and columns are deleted.",
+        "@delete_empty<desc>": "If set to true, empty rows and columns are removed.",
         "@delete_empty<type>": "bool",
         "@delete_empty<value>": ["true", "false"],
         "@delete_empty": true,
 
-        "@split<desc>": "If true, all table elements are split to fit to cells.",
+        "@split<desc>": "If set to true, all table elements are split to fit into the cells.",
         "@split<type>": "bool",
         "@split<value>": ["true", "false"],
         "@split": true,
 
-        "@span_empty<desc>": "If true, empty cells are spanned together.",
+        "@span_empty<desc>": "If set to true, empty cells are merged together using a span.",
         "@span_empty<type>": "bool",
         "@span_empty<value>": ["true", "false"],
         "@span_empty": true,
 
-        "@span_empty_rows_first<desc>": "If true, empty rows are spanned together first then columns. False othervise",
+        "@span_empty_rows_first<desc>": "If set to true, empty rows are merged together first using span, followed by columns; otherwise, they are merged in the opposite order.",
         "@span_empty_rows_first<type>": "bool",
         "@span_empty_rows_first<value>": ["true", "false"],
         "@span_empty_rows_first": false,
 
-        "@span_row<desc>": "If true, rows are joined based on the maximum row span.",
+        "@span_row<desc>": "If set to true, rows are merged based on the maximum available row span.",
         "@span_row<type>": "bool",
         "@span_row<value>": ["true", "false"],
         "@span_row": false,
 
-        "@join<desc>": "If true, all texts elements in a single cell are joined into one paragraph.",
+        "@join<desc>": "If set to true, all text elements in a single cell are combined into one paragraph.",
         "@join<type>": "bool",
         "@join<value>": ["true", "false"],
         "@join": false,
 
-        "@header<desc>": "If true, table headers are detected. It's important for table tagging.",
+        "@header<desc>": "If set to true, table headers are detected, which is essential for table tagging.",
         "@header<type>": "bool",
         "@header<value>": ["true", "false"],
         "@header": true
@@ -1182,7 +1182,7 @@
     ],
 
     "@table_detect_header<type>": "function",
-    "@table_detect_header<desc>": "Defines rules for table headers detection. Tests if text is a header in a table.",
+    "@table_detect_header<desc>": "Defines the rules for detecting table headers and tests whether the text is a header in a table.",
     "@table_detect_header<insert>": [{"query": {"param": ["pde_table", "pde_text"], "$and": []}}],
     "@table_detect_header": [
       {
@@ -1198,28 +1198,28 @@
           "param": [["pde_table"], ["pde_text", "pde_cell"]]
         },
 
-        "@col<desc>": "If true and query passed, input text is set as a column table header.",
+        "@col<desc>": "If set to true and the query is passed, the input text is designated as a column table header.",
         "@col<type>": "bool",
         "@col<value>": ["true", "false"],
         "@col": false,
 
-        "@row<desc>": "If true and query passed, inout text is set as a row table header.",
+        "@row<desc>": "If set to true and the query is passed, the input text is designated as a row table header.",
         "@row<type>": "bool",
         "@row<value>": ["true", "false"],
         "@row": false,
 
-        "@row_num<desc>": "If there is a number > 0 and no headers were detected, set row_num's row as table header.",
+        "@row_num<desc>": "If a number greater than 0 is present and no headers have been detected, set the row indicated by `row_num` as the table header.",
         "@row_num<type>": "int",
         "@row_num": 0,
 
-        "@col_num<desc>": "If there is a number > 0 and no headers were detected, set col_num's column as table header.",
+        "@col_num<desc>": "If a number greater than 0 is present and no headers have been detected, set the column indicated by `col_num` as the table header.",
         "@col_num<type>": "int",
         "@col_num": 0
       }
     ],
    
     "@table_split<type>": "function",
-    "@table_split<desc>": "Updates a table after the whole process od table detection is done.",
+    "@table_split<desc>": "Updates the table after the entire table detection process is completed.",
     "@table_split<insert>": [{"query": {"param": ["pde_table", "pde_element"], "$and": []}}],
     "@table_split": [
       {
@@ -1235,7 +1235,7 @@
           "param": [["pde_table"], ["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]]
         },
 
-        "@row<desc>": "If true, table is split by row that contains element from query.",
+        "@row<desc>": "If set to true, the table is split by the row that contains an element from the query.",
         "@row<type>": "bool",
         "@row<default>": false,
         "@row": false        
@@ -1243,7 +1243,7 @@
     ],
 
     "@single_instance_detect<type>": "function",
-    "@single_instance_detect<desc>": "Handles elements that require a single occurence only.",
+    "@single_instance_detect<desc>": "Detects handles for elements that require a single occurrence only.",
     "@single_instance_detect<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@single_instance_detect": [
       {
@@ -1259,27 +1259,27 @@
           "param": [["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]]
         },
 
-        "@text<desc>": "If true, compare texts buffers to identify single instance.",
+        "@text<desc>": "If set to true, compare text buffers to identify a single instance.",
         "@text<type>": "bool",
         "@text<value>": ["true", "false"],
         "@text": false,
 
-        "@left<desc>": "If true, compare left coordinate to identify single instance.",
+        "@left<desc>": "If set to true, compare the left coordinate to identify a single instance.",
         "@left<type>": "bool",
         "@left<value>": ["true", "false"],
         "@left": false,
 
-        "@top<desc>": "If true, compare top coordinate to identify single instance.",
+        "@top<desc>": "If set to true, compare the top coordinate to identify a single instance.",
         "@top<type>": "bool",
         "@top<value>": ["true", "false"],
         "@top": false,
 
-        "@widht<desc>": "If true, compare element width to identify single instance.",
+        "@widht<desc>": "If set to true, compare the element width to identify a single instance.",
         "@widht<type>": "bool",
         "@widht<value>": ["true", "false"],
         "@widht": false,
 
-        "@height<desc>": "If true, compare element height to identify single instance.",
+        "@height<desc>": "If set to true, compare the element height to identify a single instance.",
         "@height<type>": "bool",
         "@height<value>": ["true", "false"],
         "@height": false
@@ -1287,7 +1287,7 @@
     ],
 
     "@alt_update<type>": "function",
-    "@alt_update<desc>": "Sets alternate description for the element. Alternate description for the element is set in an order! If you want to skip some step, set false as default value for such step!",
+    "@alt_update<desc>": "Sets an alternate description for the element. The alternate description is established in a specific order. To skip a step, set the default value to false for that step.",
     "@alt_update<rule>": "If existing Alternate Text is not EMPTY, new text will be not apply",
     "@alt_update<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@alt_update": [
@@ -1304,7 +1304,7 @@
           "param": [["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]]
         },
 
-        "@mc<desc>": "If true, alternate description is taken from the original marked content and Alt tag. If there is no marked content or mc is set to false, continue to the next step.",
+        "@mc<desc>": "If set to true, the alternate description is taken from the original marked content and the Alt tag. If there is no marked content or if marked content is set to false, proceed to the next step.",
         "@mc<type>": "bool",
         "@mc<value>": ["true", "false"],
         "@mc": true,
@@ -1314,28 +1314,28 @@
         "@children<value>": ["true", "false"],
         "@children": true,
 
-        "@caption<desc>": "If true, alternate description is taken from the nearest caption if exists.",
+        "@caption<desc>": "If set to true, the alternate description is taken from the nearest caption, if it exists.",
         "@caption<type>": "bool",
         "@caption<value>": ["true", "false"],
         "@caption": true,
 
-        "@distance<desc>": "Defines a maximum distance of alternate from the element. This value updates 'caption_dist' default threshold. If you want to skip this step, set value to 0.",
+        "@distance<desc>": "Defines the maximum distance of the alternate description from the element. This value updates the default threshold for 'caption_dist'. To skip this step, set the value to 0.",
         "@distance<type>": "float",
         "@distance": 80,
 
-        "@position<desc>": "Defines a position of alternate regarding to the element. You can use this, if setup distance more than 0",
+        "@position<desc>": "Defines the position of the alternate description in relation to the element. This can be used if the distance is set to more than 0.",
         "@position<type>": "string",
         "@position<value>": ["left", "right", "top", "bottom"],
         "@position": "",
 
-        "@alt<desc>": "If exists, alternate description is taken from this node.",
+        "@alt<desc>": "The alternate description is set to this value if it is present.",
         "@alt<type>": "string",
         "@alt": ""
       }
     ],
 
     "@actual_text_update<type>": "function",
-    "@actual_text_update<desc>": "Sets actual text for the element. Actual text for the element is set in an order! If you want to skip some step, set false as default value for such step!",
+    "@actual_text_update<desc>": "Sets the actual text for the element. The actual text is established in a specific order. To skip a step, set the default value to false for that step.",
     "@actual_text_update<rule>": "If existing Actual Text is not EMPTY, new text will be not apply",
     "@actual_text_update<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@actual_text_update": [
@@ -1352,38 +1352,38 @@
           "param": [["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]]
         },
 
-        "@mc<desc>": "If true, actual text is taken from the original marked content and Alt tag. If there is no marked content or mc is set to false, continue to the next step.",
+        "@mc<desc>": "If set to true, the actual text is taken from the original marked content and the Alt tag. If there is no marked content or if marked content is set to false, proceed to the next step.",
         "@mc<type>": "bool",
         "@mc<value>": ["true", "false"],
         "@mc": true,
 
-        "@children<desc>": "If true, actual text is taken from the children of the element. Currently only PdeImage is supported. All texts from PdeTexts children inside the image are joined into the output alternate description. If there are no children node is set to false, continue to the next step.",
+        "@children<desc>": "If set to true, the actual text is taken from the children of the element, currently supporting only `PdeImage`. All text from `PdeText` children within the image is combined into the output description. If there are no child nodes, set it to false and proceed to the next step.",
         "@children<type>": "bool",
         "@children<value>": ["true", "false"],
         "@children": true,
 
-        "@caption<desc>": "If true, actual text is taken from the nearest caption if exists.",
+        "@caption<desc>": "If set to true, the actual text is taken from the nearest caption, if it exists.",
         "@caption<type>": "bool",
         "@caption<value>": ["true", "false"],
         "@caption": true,
 
-        "@distance<desc>": "Defines a maximum distance of alternate from the element. This value updates 'caption_dist' default threshold. If you want to skip this step, set value to 0.",
+        "@distance<desc>": "Defines the maximum distance of the alternate description from the element. This value updates the default threshold for 'caption_dist'. To skip this step, set the value to 0.",
         "@distance<type>": "float",
         "@distance": 80,
 
-        "@position<desc>": "Defines a position of alternate regarding to the element. You can use this, if setup distance more than 0.",
+        "@position<desc>": "Defines the position of the alternate description in relation to the element. This can be used if the distance is set to more than 0.",
         "@position<type>": "string",
         "@position<value>": ["left", "right", "top", "bottom"],
         "@position": "",
 
-        "@actual_text<desc>": "If exists, actual text is taken from this node.",
+        "@actual_text<desc>": "The actual text is set to this value if it is present.",
         "@actual_text<type>": "string",
         "@actual_text": ""
       }
     ],
 
     "@artifact_update<type>": "function",
-    "@artifact_update<desc>": "Iterates detected artifact and update them.",
+    "@artifact_update<desc>": "Marks an element as an artifact.",
     "@artifact_update<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@artifact_update": [
       {
@@ -1399,7 +1399,7 @@
           "param": [["pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"]]
         },
 
-        "@artifact<desc>": "If false, the artifact is moved back to elements - for example a background image can be moved into meaningful element.",
+        "@artifact<desc>": "If set to false, the artifact is moved back to elements; for example, a background image can be relocated into a meaningful element.",
         "@artifact<type>": "bool",
         "@artifact<value>": ["true", "false"],
         "@artifact": true
@@ -1418,7 +1418,7 @@
          
         "@query": {}, 
 
-        "@type<desc>": "Reading order detection type.",
+        "@type<desc>": "Type of reading order detection.\n- tsp: Using a TSP algorithm\n- xy: Using the x-y coordinates\n-n content: Using the order defined by the page content",
         "@type<type>": "string",
         "@type<value>": ["tsp", "xy", "content"],
         "@type": "tsp"
@@ -1426,7 +1426,7 @@
     ],
 
     "@label_update<type>": "function",
-    "@label_update<desc>": "Update elements that are marked as labels to make them a part of the list.",
+    "@label_update<desc>": "Update elements marked as labels to include them as part of the list.",
     "@label_update<insert>": [{"query": {"param": ["pde_element"], "$and": []}}],
     "@label_update": [
       {
@@ -1464,7 +1464,7 @@
           "param": [["pde_list", "pde_word"]]
         },
 
-        "@split<desc>": "If true, splits the list back to elements. Label flag still remains on each list item.",
+        "@split<desc>": "If set to true, splits the list back into individual elements. The label flag remains on each list item.",
         "@split<type>": "bool",
         "@split<value>": ["true", "false"],
         "@split": false
@@ -1472,7 +1472,7 @@
     ],  
 
     "@tag_list<type>": "function",
-    "@tag_list<desc>": "Handles process of list tagging.",
+    "@tag_list<desc>": "Handles the process of tagging lists.",
     "@tag_list<insert>": [{"query": {"param": ["pde_list", "pde_word"], "$and": []}}],
     "@tag_list": [
       {
@@ -1488,12 +1488,12 @@
           "param": [["pde_list"], ["pde_word"]]
         },
 
-        "@numbering<desc>": "Set list numbering attribute.",
+        "@numbering<desc>": "Set the list numbering attribute.",
         "@numbering<type>": "string",
         "@numbering<value>": ["None", "Unordered", "Disc", "Circle", "Square", "Ordered", "Decimal", "UpperRoman", "LowerRoman", "UpperAlpha", "LowerAlpha", "Description"],
         "@numbering": "",
 
-        "@continued<desc>": "Set continued list attribute.",
+        "@continued<desc>": "Set the continued list attribute.",
         "@continued<type>": "bool",
         "@continued<value>": ["true", "false"],
         "@continued": false
@@ -1501,7 +1501,7 @@
     ],
 
     "@tag_image<type>": "function",
-    "@tag_image<desc>": "Handles process of image tagging. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are missing, default behaviour is tagged Figure with empty alt.",
+    "@tag_image<desc>": "Handles the process of tagging images. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are absent, the default behavior is to tag the Figure with an empty alt attribute.",
     "@tag_image<insert>": [{"query": {"param": ["pde_image"], "$and": []}}],
     "@tag_image": [
       {
@@ -1517,20 +1517,20 @@
           "param": [["pde_image"]]
         },
 
-        "@alt<desc>": "If image alternate description is presented, this value allows to set alt during the process of tagging.",
+        "@alt<desc>": "Sets the value of the alt text if it is present.",
         "@alt<type>": "string",
         "@alt": "",
 
-        "@actual_text<desc>": "If image actual text is presented, this value allows to set actual text during the process of tagging.",
+        "@actual_text<desc>": "Sets the value of the actual text if it is present.",
         "@actual_text<type>": "string",
         "@actual_text": "",
 
-        "@artifact<desc>": "If there is no alt or actual text presented, a Figure element should be tagged as an artifact. Setting this node to false allows tag this image with empty alt/actual even if it's not PDF/UA compliant!",
+        "@artifact<desc>": "If set to true and there is no alt or actual text present, a Figure element should be tagged as an artifact. Setting this node to false allows tagging this image with empty alt/actual text, even if it is not PDF/UA compliant!",
         "@artifact<type>": "bool",
         "@artifact<value>": ["true", "false"],
         "@artifact": false,
 
-        "@children<desc>": "If false, all children are tagged as artifacts. If true, all image children (texts and form fields) are properly tagged (from PDF v2.0 a Figure tag can contain other tags as well).",
+        "@children<desc>": "If set to true, all image children (texts and form fields) are properly tagged. Since PDF 2.0, a Figure tag can also contain other tags. If set to false, all children are tagged as artifacts.",
         "@children<type>": "bool",
         "@children<value>": ["true", "false"],
         "@children": false
@@ -1538,7 +1538,7 @@
     ],
 
     "@tag_table<type>": "function",
-    "@tag_table<desc>": "Handles process of table tagging. For repurposing and accessibility purposes, a Table should have headers. If there are no headers detected, default behaviour is leave the table without TH.",
+    "@tag_table<desc>": "Handles the process of tagging tables. For repurposing and accessibility purposes, a table should have headers. If no headers are detected, the default behavior is to leave the table without any `<th>` elements.",
     "@tag_table<insert>": [{"query": {"param": ["pde_table"], "$and": []}}],
     "@tag_table": [
       {
@@ -1554,29 +1554,29 @@
           "param": [["pde_table"]]
         },
 
-        "@split<desc>": "If there are no headers detected, a Table should be split into cells and each cell is tagged individually. Setting this node to false allows tag this table with no headers even if it's not PDF/UA compliant!",
+        "@split<desc>": "If set to true and no headers are detected, the table should be split into cells, with each cell tagged individually. Setting this node to false allows tagging the table without headers, even if it is not PDF/UA compliant!",
         "@split<type>": "bool",
         "@split<value>": ["true", "false"],
         "@split": false,
         
-        "@row<desc>": "If table needs to be split and row is true, split table to cells and use rows reading order.",
+        "@row<desc>": "If set to true and the table needs to be split, the table should be divided into cells using the row reading order.",
         "@row<type>": "bool",
         "@row<value>": ["true", "false"],
         "@row": true,
 
-        "@col<desc>": "If table needs to be split and col is true, split table to cells and use cols reading order.",
+        "@col<desc>": "If set to true and the table needs to be split, the table should be divided into cells using the column reading order.",
         "@col<type>": "bool",
         "@col<value>": ["true", "false"],
         "@col": false,
 
-        "@summary<desc>": "A summary of the table’s purpose and structure. For use in non-visual rendering such as speech or braille.",
+        "@summary<desc>": "A table summary for use in non-visual rendering, such as speech or braille.",
         "@summary<type>": "string",
         "@summary": ""
       }
     ],
 
     "@tag_annot<type>": "function",
-    "@tag_annot<desc>": "Handles process of annotation tagging.",
+    "@tag_annot<desc>": "Handles the process of tagging annotations.",
     "@tag_annot<insert>": [{"query": {"param": ["pde_annot"], "$and": []}}],
     "@tag_annot": [
       {
@@ -1592,7 +1592,7 @@
           "param": [["pde_annot"]]
         },
 
-        "@remove<desc>": "Remove annotation from the page. Usually used for invalid annotations.",
+        "@remove<desc>": "Removes the annotation from the page, typically used for invalid annotations.",
         "@remove<type>": "bool",
         "@remove<value>": ["true", "false"],
         "@remove": false
@@ -1600,7 +1600,7 @@
     ],
 
     "@tag_update<type>": "function",
-    "@tag_update<desc>": "Tag update.",
+    "@tag_update<desc>": "Updates the tag after it has been created..",
     "@tag_update<insert>": [{"query": {"param": ["pds_struct_elem"], "$and": []}}], 
     "@tag_update": [
       {
@@ -1619,7 +1619,7 @@
     ],
 
     "@annot_update<type>": "function",
-    "@annot_update<desc>": "Annotation update.",
+    "@annot_update<desc>": "Updates the annotation tag after it has been created.",
     "@annot_update<insert>": [{"query": {"param": ["pdf_annot"], "$and": []}}], 
     "@annot_update": [
       {
@@ -1639,7 +1639,7 @@
   },
 
   "@schema": {
-    "statement<desc>": "The it-statement type of the query. Possible values are $if (default), $elif, $else. According to the statement the query evaluation stops upon pass or not.", 
+    "statement<desc>": "The `if` statement type of the query. According to the statement the query evaluation stops upon pass or not.", 
     "statement<use>": "Can by used in all functions. The it-statement type of the query. According to the statement the query evaluation stops upon pass or not. If statment is not present, is set to default.",
     "statement<value>": ["$if", "$elif", "$else"],
     "statement<default>": "$if",
@@ -2476,15 +2476,15 @@
       "actual_text<type>": "string",
       
       "alt": "", 
-      "alt<desc>": "Alternate description.",
+      "alt<desc>": "Alternate description typically used for Figure tags.",
       "alt<type>": "string",
 
       "lang": "", 
-      "lang<desc>": "Language.",
+      "lang<desc>": "The language identifier of the document or tag.",
       "lang<type>": "string",
 
       "id": "", 
-      "id<desc>": "Identifier.",
+      "id<desc>": "The unique identifier of the tag.",
       "id<type>": "string",
 
       "expansion": "", 
@@ -2492,12 +2492,12 @@
       "expansion<type>": "string",
 
       "has_content": "",
-      "has_content<desc>": "True if the tag has an associated page content.",
+      "has_content<desc>": "A value identifying whether the object or tag has associated page content.",
       "has_content<type>": "bool",
       "has_content<value>": ["true", "false"],
 
       "tag_type": "", 
-      "tag_type<desc>": "Tag type. Use regex .* for all tags.",
+      "tag_type<desc>": "Tag type defined by a string or regular expression. Use `.*` to match all tags.",
       "tag_type<type>": "string",
       "tag_type<value>": [
         "Annot", 
@@ -2560,7 +2560,7 @@
       ],
 
       "annot_type": "", 
-      "annot_type<desc>": "Annotation type. Use regex .* for all annotations.",
+      "annot_type<desc>": "Annotation type defined by a string or regular expression. Use `.*` to match all annotations.",
       "annot_type<type>": "string",
       "annot_type<value>": [
         "Text", 
@@ -2594,11 +2594,11 @@
       ],
         
       "contents": "", 
-      "contents<desc>": "Annotation contents.",
+      "contents<desc>": "A string value specifying the annotation contents.",
       "contents<type>": "string",
 
       "annot_flag": 0,
-      "annot_flag<desc>": "Annotation flags.",
+      "annot_flag<desc>": "A comma-delimited string value specifying the annotation flags.",
       "annot_flag<type>": "string",
       "annot_flag<value>": ["invisible", "hidden", "print", "no_zoom", "no_rotate", "no_view", "read_only", "locked", "toggle", "contents"],
 
@@ -2610,7 +2610,7 @@
       "angle<desc>": "Angle.",
       "angle<type>": "float",
 
-      "bbox<desc>": "Bounding box array: [left, bottom, right, top]",
+      "bbox<desc>": "Parameter that represents the bounding box of an object, formatted as an array: `[left, bottom, right, top]`.",
       "bbox<type>": "bbox",
       "bbox": {
         "left": 0,
@@ -2619,20 +2619,12 @@
         "top": 0
       },
 
-      "blue": 0,
-      "blue<desc>": "Blue component of an RGB color.",
-      "blue<type>": "int",
-
-      "bottom": "",
-      "bottom<desc>": "Bottom coordinate of the bounding box.",
-      "bottom<type>": "float",
-
       "cell_column": "",
-      "cell_column<desc>": "Column number of the cell in the table.",
+      "cell_column<desc>": "The column number of the cell in the table.",
       "cell_column<type>": "int",
 
       "cell_row": "",
-      "cell_row<desc>": "Row number of the cell in the table.",
+      "cell_row<desc>": "The row number of the cell in the table.",
       "cell_row<type>": "int",
 
       "col_num": "",
@@ -2640,10 +2632,10 @@
       "col_num<type>": "int",
 
       "children_num": "",
-      "children_num<desc>": "Number of associated page objects.",
+      "children_num<desc>": "Number of associated child page objects.",
       "children_num<type>": "int",
 
-      "fill_color<desc>": "Fill color.",
+      "fill_color<desc>": "The fill color of an object.",
       "fill_color<type>": "rgb",
       "fill_color": {
         "red": 0,
@@ -2651,47 +2643,79 @@
         "blue": 0      
       },
 
+      "stroke_color<desc>": "The stroke color of an object.",
+      "stroke_color<type>": "rgb",
+      "stroke_color": {
+        "red": 0,
+        "green": 0,
+        "blue": 0      
+      },      
+
       "flag": "",
-      "flag<desc>": "Flag.!!!!!!!",
+      "flag<desc>": "The flag value defines a specific property for an object, which is essential for further processing.",
       "flag<type>": "string",
       "flag<value>": ["no_join", "no_split", "artifact", "header", "footer", "splitter", "no_table", "table"],
 
       "font_name": "",
-      "font_name<desc>": "Font name.",
+      "font_name<desc>": "The name of the font used in the text object.",
       "font_name<type>": "string",
 
       "font_size": "",
-      "font_size<desc>": "Font size.",
+      "font_size<desc>": "The size of the font used in the text object.",
       "font_size<type>": "float",
 
+      "red": 0,
+      "red<desc>": "The red component of an RGB color.",
+      "red<type>": "int",
+
       "green": 0,
-      "green<desc>": "Green component of an RGB color.",
+      "green<desc>": "The green component of an RGB color.",
       "green<type>": "int",
+
+      "blue": 0,
+      "blue<desc>": "The blue component of an RGB color.",
+      "blue<type>": "int",
        
       "header": "",
-      "header<desc>": "Table header.",
+      "header<desc>": "Marks the object as a table header.",
       "header<type>": "bool",
       "header<value>": ["true", "false"],
 
       "heading": "",
-      "heading<desc>": "Sets text heading style.",
+      "heading<desc>": "Sets the text heading style.",
       "heading<type>": "string",
       "heading<value>": ["normal", "h1", "h2", "h3", "h4", "h5", "h6", "h7", "h8", "note", "title"],
 
+      "width": "",
+      "width<desc>": "The object's width dimension.",
+      "width<type>": "float",
+
       "height": "",
-      "height<desc>": "Height of the bounding box.",
+      "height<desc>": "The object's height dimension.",
       "height<type>": "float",
       
       "label": "",
-      "label<desc>": "Marks the element as a label.",
+      "label<desc>": "Marks the element as a list label.",
       "label<type>": "string",
       "label<value>": ["", "label", "li_1", "li_2", "li_3", "li_4", "label_no"],
 
       "left": "",
-      "left<desc>": "Left coordinate of the bounding box.",
+      "left<desc>": "The left coordinate of the object.",
       "left<type>": "float",
 
-      "pdf_rect<desc>": "Parameter that represents PdsObject. array: [left, bottom, right, top]",
+      "right": "",
+      "right<desc>": "The left coordinate of the object.",
+      "right<type>": "float",
+
+      "top": "",
+      "top<desc>": "The top coordinate of the object.",
+      "top<type>": "float",
+
+      "bottom": "",
+      "bottom<desc>": "The bottom coordinate of the object.",
+      "bottom<type>": "float",
+
+      "pdf_rect<desc>": "Parameter that represents the bounding box of an object, formatted as an array: `[left, bottom, right, top]`.",
       "pdf_rect<type>": "rec",
       "pdf_rect": {
         "left": 0,
@@ -2700,80 +2724,56 @@
         "top": 0      
       },
 
-      "pdf_rgb<desc>": "Parameter that represents PdfRgb values: [red, green, blue].",
+      "pdf_rgb<desc>": "Parameter that represents the RGB color of an object, formatted as an array: `[red, green, blue]`.",
       "pdf_rgb<type>": "rgb",
       "pdf_rgb": {
         "red": 0,
         "green": 0,
         "blue": 0      
       },
-
-      "red": 0,
-      "red<desc>": "Red component of an RGB color.",
-      "red<type>": "int",
       
       "reflow": "",
-      "reflow<desc>": "Text reflow. If reflow is set to false, each line is treated as a new line.",
+      "reflow<desc>": "Text reflow. If set to false, each line is treated as a new line.",
       "reflow<type>": "bool",
       "reflow<value>": ["true", "false"],
 
-      "right": "",
-      "right<desc>": "Right coordinate of the bounding box.",
-      "right<type>": "float",
-
       "row_num": "",
-      "row_num<desc>": "Number of rows in the table.",
+      "row_num<desc>": "The number of rows in the table.",
       "row_num<type>": "int",
 
-      "stroke_color<desc>": "Stroke color.",
-      "stroke_color<type>": "rgb",
-      "stroke_color": {
-        "red": 0,
-        "green": 0,
-        "blue": 0      
-      },
-
       "table_type": "",
-      "table_type<desc>": "Table type [int]. Values: PdfTableType.",
+      "table_type<desc>": "The table type represented as a value from the `PdfTableType` enum.",
       "table_type<type>": "string",
       "table_type<value>": ["graphic", "isolated", "row", "col", "form"],
 
       "tag": "",
-      "tag<desc>": "Default tag name.",
+      "tag<desc>": "The tag name to be used.",
       "tag<type>": "string", 
 
       "text": "",
-      "text<desc>": "Text.",
+      "text<desc>": "The text to be used as a value.",
       "text<type>": "string",
 
       "text_flag": "",
-      "text_flag<desc>": "Text regex flag.",
+      "text_flag<desc>": "The flag to be used for the text element, specifying a value similar to the regex flags.",
       "text_flag<type>": "string",
       "text_flag<value>": ["table_caption", "image_caption", "chart_caption", "note_caption", "filling", "uppercase"],
 
       "text_line_flag": "",
-      "text_line_flag<desc>": "Text line regex flag.",
+      "text_line_flag<desc>": "The flag to be used for the text line element, specifying a value similar to the regex flags.",
       "text_line_flag<type>": "string",
       "text_line_flag<value>": ["hyphen", "new_line", "indent", "terminal", "drop_cap", "filling", "uppercase"],
       
-      "top": "",
-      "top<desc>": "Top coordinate of the bounding box.",
-      "top<type>": "float",
-
       "type": "",
-      "type<desc>": "Mark object or element as type. It helps to recognize correct element type.",
+      "type<desc>": "Marks the object or element with a type, aiding in the recognition of the correct element type.",
       "type<type>": "string",   
       "type<value>": [
         "pds_object", "pds_text", "pds_path", "pds_image", "pds_shading", "pds_form",
         "pde_element", "pde_text", "pde_text_line", "pde_word", "pde_text_run", "pde_image", "pde_container", "pde_list", "pde_line", "pde_rect", "pde_table", "pde_cell", "pde_toc", "pde_header", "pde_footer", "pde_form_field", "pde_annot"
       ],
 
-      "width": "",
-      "width<desc>": "Width of the bounding box.",
-      "width<type>": "float",
-
       "word_flag": "",
-      "word_flag<desc>": "Word regex flag.",
+      "word_flag<desc>": "The flag to be used for the word element, specifying a value similar to the regex flags.",
       "word_flag<type>": "string",
       "word_flag<value>": ["hyphen", "bullet", "colon", "number", "subscript", "superscript", "terminal", "capital", "image", "decimal_num", "roman_num", "letter_num", "page_num", "filling", "uppercase", "comma", "no_unicode"]
     },
@@ -2794,7 +2794,7 @@
       "<insert>": "Value will be used as TreeItem for inserting into TreeView JSON structer"
     },
 
-    "condition<desc>": "Conditions types used in query",
+    "condition<desc>": "Conditions types used in the query",
     "condition": {
       "condition_value<desc>": "{0_width : 100}",
       "condition_value": 0,
@@ -2819,25 +2819,25 @@
       "query<desc>": "Can be used in all functions. Each QUERY must have child PARAM, which holding array of parameters to specified query objects.",
 
       "param": "",
-      "param<desc>": "Child of QUERY. Each QUERY must have PARAM. Holding array of parameters to specified query objects.",
+      "param<desc>": "Child of the QUERY. Each QUERY must include a PARAM that specifies the object types used for evaluation.",
       "param<type>": "array_param",
      
       "statement": "$if",
-      "statement<desc>": "Should by used in all main functions nodes. The it-statement type of the query. According to the statement the query evaluation stops upon pass or not. If statment is not present, the condition is considered as disabled.",
+      "statement<desc>": "The `if` statement should be used in function nodes. Based on the statement, the query evaluation stops upon pass or fail. If the `if` statement is not present, the condition is considered disabled.",
       "statement<type>": "string",
       "statement<value>": ["$if", "$elif", "$else"],
 
       "disable": false,
-      "disable<desc>": "Can by used in all main functions nodes. If value is false, node is not executed by SDK. If this keyword is not present, is used default value disabled = false.",
+      "disable<desc>": "Can by used in all main functions nodes. If value is true, node is not executed. Default value is false",
       "disable<type>": "bool",
       "disable<values>": ["true", "false"],
 
       "purpose": "",
-      "purpose<desc>": "Describes for what is used QUERY",
+      "purpose<desc>": "Describes the user-defined purpose or description of the QUERY.",
       "purpose<type>": "string"
     },
     
-    "insert<desc>": "Values to be added as a default value for node",
+    "insert<desc>": "Values to be added as the default for the node.",
     "insert": {
       "elements_add_value": "",
       "elements_add_value<insert>": { 

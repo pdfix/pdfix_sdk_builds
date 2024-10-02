@@ -44,13 +44,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group___enumerations___p_d_fix___s_d_k.html#gga2175c96d14cb7833e09b0ae49e719f97abc86e23a7f2537e21c6b6cabb837a071",
-"group___enumerations___p_d_fix___s_d_k.html#ggab7f41c15de69ac2b0d25f00d103118dca14e07c6b69af8761340579cc1599175f",
-"group___structures___p_d_fix___s_d_k.html#ga3e62e5dfdea0d849f3d08afeda17e1f6",
-"struct_pde_table.html#a93f937a0460468b6492f1f107ffe61cf",
-"struct_pdf_doc.html#abe9bed97f1d6b877844f219bbf6844a0",
-"struct_pds_class_map.html#a07a2ed5063d0e29c0e840de123f64234",
-"struct_ps_progress_control.html#aa28e705bb7f4f333937c6932ac428f5b"
+"group___enumerations___p_d_fix___s_d_k.html#gga2175c96d14cb7833e09b0ae49e719f97a59a5aa7efd940dc8c38d9ee78a3923c1",
+"group___enumerations___p_d_fix___s_d_k.html#ggab437186364c1d6a87ca08fed176549b9ab421ef4126782b69e6bd84f5e5a3b5e5",
+"group___pde___p_d_fix___s_d_k.html",
+"struct_pde_page_map.html#a49fb61ea00cef6c6f88dcc630c1d54ed",
+"struct_pdf_doc.html#ab4e2b3334ffab2674afec441d767194a",
+"struct_pds_array.html#a868d5793be659b165a04bf113393b8c1",
+"struct_ps_image.html#a4f359af10c621b62ca2d69c8ed7d67d3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
