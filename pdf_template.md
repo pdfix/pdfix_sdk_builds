@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "table_alignment_h": 1,
-        "isolated_element_ratio": 6,
-        "element_isolated_width_max": 0
+        "sect_table_image_similarity_w1": 1,
+        "graphic_table_split_layout_similarity": 0.7,
+        "graphic_table_image_w5": 1
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_chart_caption": "((^chart)|(^map))",
-        "label_chars": ".()[]"
+        "statement": "$if",
+        "regex_comma": "[,;]$"
       }
     ]
   }
@@ -680,20 +680,32 @@ The query defines thresholds and operations for a pagemap detection.
 _keys and values:_
 - "[param](#param)"
 _params:_
-  - "[pds_object_params](#pds_object_params)" : ""
-  - "[pde_element_params](#pde_element_params)" : ""
-  - "[pds_struct_elem_params](#pds_struct_elem_params)" : ""
-  - "[pdf_annot_params](#pdf_annot_params)" : ""
-  - "[pdf_rect](#pdf_rect)" : ""
-  - "[pdf_rgb](#pdf_rgb)" : ""
-  - "[int](#int)" : ""
-  - "[bool](#bool)" : ""
-  - "[float](#float)" : ""
-  - "[string](#string)" : ""
+  - "[pds_object_params](#pds_object_params)" 
+    - A parameter that represents PdsObject. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.
+  - "[pde_element_params](#pde_element_params)" 
+    - A parameter that represents PdeElement. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.
+  - "[pds_struct_elem_params](#pds_struct_elem_params)" 
+    - A parameter that represents PdsStructElem. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.
+  - "[pdf_annot_params](#pdf_annot_params)" 
+    - A parameter that represents PdfAnnots. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.
+  - "[pdf_rect](#pdf_rect)" 
+
+  - "[pdf_rgb](#pdf_rgb)" 
+
+  - "[int](#int)" 
+    - Parameter that represents integer.
+  - "[bool](#bool)" 
+    - Parameter that represents boolean value.
+  - "[float](#float)" 
+    - Parameter that represents floating value.
+  - "[string](#string)" 
+    - Parameter that represents string value.
 - "[var](#var)"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : ""
-  - "0_value" : ""
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "0_value" 
+
 - "[logical_operators](#logical_operators)"
 
 ### param
@@ -759,22 +771,34 @@ Available logical operators.
 _keys and values:_
 - "$and"
 _params:_
-  - "$and" : ""
-  - "$or" : ""
-  - "$not" : ""
-  - "[condition](#condition)" : ""
+  - "$and" 
+
+  - "$or" 
+
+  - "$not" 
+
+  - "[condition](#condition)" 
+
 - "$or"
 _params:_
-  - "$and" : ""
-  - "$or" : ""
-  - "$not" : ""
-  - "[condition](#condition)" : ""
+  - "$and" 
+
+  - "$or" 
+
+  - "$not" 
+
+  - "[condition](#condition)" 
+
 - "$not"
 _params:_
-  - "$and" : ""
-  - "$or" : ""
-  - "$not" : ""
-  - "[condition](#condition)" : ""
+  - "$and" 
+
+  - "$or" 
+
+  - "$not" 
+
+  - "[condition](#condition)" 
+
 
 ### $and
 
@@ -905,43 +929,66 @@ Available arithmetic_operators.
 _keys and values:_
 - "$sum"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$sum"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$diff"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$diff"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$abs"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$abs"
-  - "[0]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
 - "$mul"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$mul"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$div"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$div"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$min"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$min"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$max"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$max"
-  - "[0]" : "0"
-  - "[1]" : "0"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 - "$mod"
 _params:_
-  - "[arithmetic_operator](#arithmetic_operator)" : "$mod"
-  - "[0]" : "0"
-  - "[1]" : "2"
+  - "[arithmetic_operator](#arithmetic_operator)" 
+
+  - "[0]" 
+
+  - "[1]" 
+
 
 ### $sum
 
@@ -1046,41 +1093,69 @@ List of all pds_object types, can be used as parameter in QUERY->PARAM.
 _keys and values:_
 - "[pds_text](#pds_text)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
 - "[pds_path](#pds_path)"
 - "[pds_image](#pds_image)"
 - "[pds_shading](#pds_shading)"
 - "[pds_form](#pds_form)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[children_num](#children_num)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[children_num](#children_num)" 
+
 - "[pds_object](#pds_object)"
 _params:_
-  - "[type](#type)" : ""
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[children_num](#children_num)" : ""
+  - "[type](#type)" 
+    - Type of PdsObject.
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[children_num](#children_num)" 
+
 
 ### pds_text
 
@@ -1106,29 +1181,52 @@ List of all pds_tag types, can be used as parameter in QUERY->PARAM.
 _keys and values:_
 - "[pds_struct_elem](#pds_struct_elem)"
 _params:_
-  - "[type](#type)" : ""
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[tag_type](#tag_type)" : ""
-  - "[parent_tag_type](#parent_tag_type)" : ""
-  - "[id](#id)" : ""
-  - "[title](#title)" : ""
-  - "[lang](#lang)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
-  - "[text](#text)" : ""
-  - "[expansion](#expansion)" : ""
-  - "[children_num](#children_num)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[font_size](#font_size)" : ""
-  - "[font_name](#font_name)" : ""
-  - "[has_content](#has_content)" : ""
+  - "[type](#type)" 
+    - Type of PdsTag.
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[tag_type](#tag_type)" 
+
+  - "[parent_tag_type](#parent_tag_type)" 
+
+  - "[id](#id)" 
+
+  - "[title](#title)" 
+
+  - "[lang](#lang)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
+  - "[text](#text)" 
+
+  - "[expansion](#expansion)" 
+
+  - "[children_num](#children_num)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[font_size](#font_size)" 
+
+  - "[font_name](#font_name)" 
+
+  - "[has_content](#has_content)" 
+
 
 ### pdf_annot_params
 
@@ -1138,19 +1236,32 @@ List of all pdf_annot types, can be used as parameter in QUERY->PARAM.
 _keys and values:_
 - "[pdf_annot](#pdf_annot)"
 _params:_
-  - "[type](#type)" : ""
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[annot_type](#annot_type)" : ""
-  - "[font_size](#font_size)" : ""
-  - "[font_name](#font_name)" : ""
-  - "[contents](#contents)" : ""
-  - "[annot_flag](#annot_flag)" : ""
+  - "[type](#type)" 
+    - Type of PdfAnnot.
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[annot_type](#annot_type)" 
+
+  - "[font_size](#font_size)" 
+
+  - "[font_name](#font_name)" 
+
+  - "[contents](#contents)" 
+
+  - "[annot_flag](#annot_flag)" 
+
 
 ### pde_element_params
 
@@ -1160,110 +1271,193 @@ List of all pde_element types, can be used as parameter in QUERY->PARAM.
 _keys and values:_
 - "[pde_text](#pde_text)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[label](#label)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
-  - "[font_size](#font_size)" : ""
-  - "[font_name](#font_name)" : ""
-  - "[text](#text)" : ""
-  - "[angle](#angle)" : ""
-  - "[heading](#heading)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[label](#label)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
+  - "[font_size](#font_size)" 
+
+  - "[font_name](#font_name)" 
+
+  - "[text](#text)" 
+
+  - "[angle](#angle)" 
+
+  - "[heading](#heading)" 
+
 - "[pde_text_line](#pde_text_line)"
 - "[pde_word](#pde_word)"
 - "[pde_text_run](#pde_text_run)"
 - "[pde_image](#pde_image)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[label](#label)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
-  - "[children_num](#children_num)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[label](#label)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
+  - "[children_num](#children_num)" 
+
 - "[pde_container](#pde_container)"
 - "[pde_list](#pde_list)"
 - "[pde_rect](#pde_rect)"
 - "[pde_cell](#pde_cell)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[cell_column](#cell_column)" : ""
-  - "[cell_row](#cell_row)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[cell_column](#cell_column)" 
+
+  - "[cell_row](#cell_row)" 
+
 - "[pde_toc](#pde_toc)"
 - "[pde_header](#pde_header)"
 - "[pde_footer](#pde_footer)"
 - "[pde_line](#pde_line)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[label](#label)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[label](#label)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
 - "[pde_form_field](#pde_form_field)"
 - "[pde_annot](#pde_annot)"
 - "[pde_table](#pde_table)"
 _params:_
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[label](#label)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
-  - "[row_num](#row_num)" : ""
-  - "[col_num](#col_num)" : ""
-  - "[header](#header)" : ""
-  - "[table_type](#table_type)" : ""
-  - "[isolated_num](#isolated_num)" : ""
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[label](#label)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
+  - "[row_num](#row_num)" 
+
+  - "[col_num](#col_num)" 
+
+  - "[header](#header)" 
+
+  - "[table_type](#table_type)" 
+
+  - "[isolated_num](#isolated_num)" 
+    - Number of isolated elements in the table.
 - "[pde_element](#pde_element)"
 _params:_
-  - "[type](#type)" : ""
-  - "[width](#width)" : ""
-  - "[height](#height)" : ""
-  - "[left](#left)" : ""
-  - "[right](#right)" : ""
-  - "[top](#top)" : ""
-  - "[bottom](#bottom)" : ""
-  - "[bbox](#bbox)" : ""
-  - "[label](#label)" : ""
-  - "[fill_color](#fill_color)" : ""
-  - "[stroke_color](#stroke_color)" : ""
-  - "[angle](#angle)" : ""
-  - "[alt](#alt)" : ""
-  - "[actual_text](#actual_text)" : ""
-  - "[flag](#flag)" : ""
+  - "[type](#type)" 
+    - Type of PdeElement.
+  - "[width](#width)" 
+
+  - "[height](#height)" 
+
+  - "[left](#left)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[bbox](#bbox)" 
+
+  - "[label](#label)" 
+
+  - "[fill_color](#fill_color)" 
+
+  - "[stroke_color](#stroke_color)" 
+
+  - "[angle](#angle)" 
+
+  - "[alt](#alt)" 
+
+  - "[actual_text](#actual_text)" 
+
+  - "[flag](#flag)" 
+
 
 ### general_vars
 
@@ -1344,24 +1538,34 @@ _keys and values:_
 - "[angle](#angle)"
 - "[bbox](#bbox)"
 _params:_
-  - "[left](#left)" : "0"
-  - "[bottom](#bottom)" : "0"
-  - "[right](#right)" : "0"
-  - "[top](#top)" : "0"
+  - "[left](#left)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
 - "[cell_column](#cell_column)"
 - "[cell_row](#cell_row)"
 - "[col_num](#col_num)"
 - "[children_num](#children_num)"
 - "[fill_color](#fill_color)"
 _params:_
-  - "[red](#red)" : "0"
-  - "[green](#green)" : "0"
-  - "[blue](#blue)" : "0"
+  - "[red](#red)" 
+
+  - "[green](#green)" 
+
+  - "[blue](#blue)" 
+
 - "[stroke_color](#stroke_color)"
 _params:_
-  - "[red](#red)" : "0"
-  - "[green](#green)" : "0"
-  - "[blue](#blue)" : "0"
+  - "[red](#red)" 
+
+  - "[green](#green)" 
+
+  - "[blue](#blue)" 
+
 - "[flag](#flag)"
 - "[font_name](#font_name)"
 - "[font_size](#font_size)"
@@ -1379,15 +1583,22 @@ _params:_
 - "[bottom](#bottom)"
 - "[pdf_rect](#pdf_rect)"
 _params:_
-  - "[left](#left)" : "0"
-  - "[bottom](#bottom)" : "0"
-  - "[right](#right)" : "0"
-  - "[top](#top)" : "0"
+  - "[left](#left)" 
+
+  - "[bottom](#bottom)" 
+
+  - "[right](#right)" 
+
+  - "[top](#top)" 
+
 - "[pdf_rgb](#pdf_rgb)"
 _params:_
-  - "[red](#red)" : "0"
-  - "[green](#green)" : "0"
-  - "[blue](#blue)" : "0"
+  - "[red](#red)" 
+
+  - "[green](#green)" 
+
+  - "[blue](#blue)" 
+
 - "[reflow](#reflow)"
 - "[row_num](#row_num)"
 - "[table_type](#table_type)"
@@ -1739,11 +1950,14 @@ _keys and values:_
 - "[condition_value](#condition_value)"
 - "[comparison](#comparison)"
 _params:_
-  - "$eq" : "0"
+  - "$eq" 
+
 - "[comparison_array](#comparison_array)"
 _params:_
-  - "$gt" : "0"
-  - "$lt" : "0"
+  - "$gt" 
+
+  - "$lt" 
+
 
 ### condition_value
 
