@@ -1,7 +1,9 @@
 ## Bookmarks
 
-### `create_bookmarks`
-__Create Bookmarks__ - Create bookmarks from the tag tree hierarchy
+### Create Bookmarks
+`create_bookmarks`
+
+Create bookmarks from the tag tree hierarchy
 #### params:
 
 - `tag_1` (tag) __Level 1__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag

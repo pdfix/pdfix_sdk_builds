@@ -1,7 +1,9 @@
 ## Annotations
 
-### `fix_media_clip_keys`
-__Fix Media Clip__ - Define a MIME type of the media clip annotations file
+### Fix Media Clip
+`fix_media_clip_keys`
+
+Define a MIME type of the media clip annotations file
 #### params:
 
 - `ct_key` (string) __Media Clip__ - CT key
@@ -25,8 +27,10 @@ __Fix Media Clip__ - Define a MIME type of the media clip annotations file
     ]
 }
 ```
-### `set_tabs_key`
-__Set Tab Order__ - Sets the tab order key for every page
+### Set Tab Order
+`set_tabs_key`
+
+Sets the tab order key for every page
 #### params:
 
 - `tabs_key` (string) __Tabs Key__ - Tabs key
@@ -49,8 +53,10 @@ __Set Tab Order__ - Sets the tab order key for every page
     ]
 }
 ```
-### `tag_annot`
-__Tag Annotations__ - Tag the untagged annotations
+### Tag Annotations
+`tag_annot`
+
+Tag the untagged annotations
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -67,8 +73,10 @@ __Tag Annotations__ - Tag the untagged annotations
     ]
 }
 ```
-### `set_annot_contents`
-__Set Contents__ - Set alternative description for an annotation to Contents key
+### Set Contents
+`set_annot_contents`
+
+Set alternative description for an annotation to Contents key
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -120,8 +128,10 @@ __Set Contents__ - Set alternative description for an annotation to Contents key
     ]
 }
 ```
-### `flatten_annot`
-__Flatten Annotations__ - Flatten the visual representation of annotations directly into the content layer
+### Flatten Annotations
+`flatten_annot`
+
+Flatten the visual representation of annotations directly into the content layer
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -138,8 +148,10 @@ __Flatten Annotations__ - Flatten the visual representation of annotations direc
     ]
 }
 ```
-### `create_web_links`
-__Create Web Links__ - Create link annotations from web links in the page content
+### Create Web Links
+`create_web_links`
+
+Create link annotations from web links in the page content
 #### params:
 
 - `url_regex` (string) __URL__ - Regular expression used for searching web links
@@ -156,8 +168,10 @@ __Create Web Links__ - Create link annotations from web links in the page conten
     ]
 }
 ```
-### `delete_annot`
-__Delete Annotations__ - Delete annotations from the document
+### Delete Annotations
+`delete_annot`
+
+Delete annotations from the document
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot

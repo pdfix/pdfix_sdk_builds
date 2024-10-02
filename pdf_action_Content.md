@@ -1,7 +1,9 @@
 ## Content
 
-### `artifact_content`
-__Artifact Content__ - Mark defined content as an artifact
+### Artifact Content
+`artifact_content`
+
+Mark defined content as an artifact
 #### params:
 
 - `artifact_untagged` (bool) __Untagged content only__ - Mark the content as Artifact only if it's untagged
@@ -29,16 +31,20 @@ __Artifact Content__ - Mark defined content as an artifact
     ]
 }
 ```
-### `flatten_xobject`
-__Flatten Form XObjects__ - Flatten Form XObjects
+### Flatten Form XObjects
+`flatten_xobject`
+
+Flatten Form XObjects
 #### example:
 ```
 {
     "name": "flatten_xobject"
 }
 ```
-### `remove_content_marks`
-__Remove Content Marks__ - Remove atrifact, mcid or any custom tag from page content objects
+### Remove Content Marks
+`remove_content_marks`
+
+Remove atrifact, mcid or any custom tag from page content objects
 #### params:
 
 - `flags` (flag) __Remove__ - Types of content marks to be removed
@@ -63,8 +69,10 @@ __Remove Content Marks__ - Remove atrifact, mcid or any custom tag from page con
     ]
 }
 ```
-### `fix_structure_spaces`
-__Fix Spaces__ - Add missing or resolve duplicate white spaces within a structure element
+### Fix Spaces
+`fix_structure_spaces`
+
+Add missing or resolve duplicate white spaces within a structure element
 #### params:
 
 - `add_missing_spaces` (bool) __Add Missing Spaces__ - Identify words in the structure and add missing spaces

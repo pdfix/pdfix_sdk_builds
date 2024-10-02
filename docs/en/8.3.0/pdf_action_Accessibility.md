@@ -1,7 +1,9 @@
 ## Accessibility
 
-### `set_pdf_ua_standard`
-__Set PDF/UA Standard__ - Set the PDF/UA part number
+### Set PDF/UA Standard
+`set_pdf_ua_standard`
+
+Set the PDF/UA part number
 #### params:
 
 - `part_number` (string) __Part Identifier__ - The part number of the International Standard that the file conforms to
@@ -28,40 +30,50 @@ __Set PDF/UA Standard__ - Set the PDF/UA part number
     ]
 }
 ```
-### `set_suspect_value`
-__Set Suspect Value__ - Fix the document Suspects entry
+### Set Suspect Value
+`set_suspect_value`
+
+Fix the document Suspects entry
 #### example:
 ```
 {
     "name": "set_suspect_value"
 }
 ```
-### `fix_oc_name`
-__Fix Optional Content__ - Fix optional content configuration dictionary
+### Fix Optional Content
+`fix_oc_name`
+
+Fix optional content configuration dictionary
 #### example:
 ```
 {
     "name": "fix_oc_name"
 }
 ```
-### `set_display_doc_title`
-__Fix Display Document Title__ - Fix ViewerPreferences dictionary
+### Fix Display Document Title
+`set_display_doc_title`
+
+Fix ViewerPreferences dictionary
 #### example:
 ```
 {
     "name": "set_display_doc_title"
 }
 ```
-### `remove_standard_tags_mapping`
-__Remove Standard Tags Mapping__ - Remove standard tags mapping
+### Remove Standard Tags Mapping
+`remove_standard_tags_mapping`
+
+Remove standard tags mapping
 #### example:
 ```
 {
     "name": "remove_standard_tags_mapping"
 }
 ```
-### `set_language`
-__Set Language__ - Define the document language
+### Set Language
+`set_language`
+
+Define the document language
 #### params:
 
 - `lang` (lang) __Language__ - Document language
@@ -95,8 +107,10 @@ __Set Language__ - Define the document language
     ]
 }
 ```
-### `set_title`
-__Set Title__ - Set document title
+### Set Title
+`set_title`
+
+Set document title
 #### params:
 
 - `title_type` (int) __Title__ - Define a source for detecting the document title
@@ -136,8 +150,10 @@ __Set Title__ - Set document title
     ]
 }
 ```
-### `add_tags`
-__Autotag__ - Autotag document
+### Autotag
+`add_tags`
+
+Autotag document
 #### params:
 
 - `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
@@ -172,8 +188,10 @@ __Autotag__ - Autotag document
     ]
 }
 ```
-### `clear_structure`
-__Clear Document Structure__ - Clear document structure
+### Clear Document Structure
+`clear_structure`
+
+Clear document structure
 #### params:
 
 - `clear_tags` (bool) __Clear Content Marks__ - Clear content marks
@@ -202,16 +220,20 @@ __Clear Document Structure__ - Clear document structure
     ]
 }
 ```
-### `fix_id_tree`
-__Fix ID Tree__ - Fix ID tree
+### Fix ID Tree
+`fix_id_tree`
+
+Fix ID tree
 #### example:
 ```
 {
     "name": "fix_id_tree"
 }
 ```
-### `fix_parent_tree`
-__Fix Parent Tree__ - Fix parent tree
+### Fix Parent Tree
+`fix_parent_tree`
+
+Fix parent tree
 #### example:
 ```
 {

@@ -1,15 +1,19 @@
 ## Fonts
 
-### `embed_font`
-__Embed Fonts__ - Embed font
+### Embed Fonts
+`embed_font`
+
+Embed font
 #### example:
 ```
 {
     "name": "embed_font"
 }
 ```
-### `replace_font`
-__Replace Font__ - Replace font
+### Replace Font
+`replace_font`
+
+Replace font
 #### params:
 
 - `font_name` (string) __Font Name__ - The PDF font name that will replaced. Regular expression is supported
@@ -32,8 +36,10 @@ __Replace Font__ - Replace font
     ]
 }
 ```
-### `add_missing_unicode`
-__Add Missing Unicodes__ - Add missing unicode mapping
+### Add Missing Unicodes
+`add_missing_unicode`
+
+Add missing unicode mapping
 #### example:
 ```
 {

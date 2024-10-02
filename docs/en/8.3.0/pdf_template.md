@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "text_line_join_distance": 2,
-        "isolated_element_ratio": 6,
-        "element_isolated_image_similarity": 0.7
+        "element_isolated_width_min": 0,
+        "graphic_table_image_w1": -1,
+        "sect_table_image_col_width_max": 0
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_first_cap": "^[A-Z]",
-        "regex_roman_numbering": "^[\\[\\(]?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})[\\)\\]\\.]?$"
+        "numbering_splitter_chars": ".()[]",
+        "regex_bullet_font": "(Wingdings)|(Symbol)"
       }
     ]
   }

@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "sect_table_image_similarity_w1": 1,
-        "graphic_table_split_layout_similarity": 0.7,
-        "graphic_table_image_w5": 1
+        "element_isolated_width_min": 0,
+        "graphic_table_image_w1": -1,
+        "sect_table_image_col_width_max": 0
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "statement": "$if",
-        "regex_comma": "[,;]$"
+        "numbering_splitter_chars": ".()[]",
+        "regex_bullet_font": "(Wingdings)|(Symbol)"
       }
     ]
   }

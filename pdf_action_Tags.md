@@ -1,7 +1,9 @@
 ## Tags
 
-### `delete_tags`
-__Delete Tags__ - Delete defined tags
+### Delete Tags
+`delete_tags`
+
+Delete defined tags
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -57,8 +59,10 @@ __Delete Tags__ - Delete defined tags
     ]
 }
 ```
-### `apply_standard_tags`
-__Apply Standard Tags__ - Apply standard tag names according to their role mapping
+### Apply Standard Tags
+`apply_standard_tags`
+
+Apply standard tag names according to their role mapping
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -81,8 +85,10 @@ __Apply Standard Tags__ - Apply standard tag names according to their role mappi
     ]
 }
 ```
-### `rename_tags`
-__Rename Tags__ - Rename tag names
+### Rename Tags
+`rename_tags`
+
+Rename tag names
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -105,8 +111,10 @@ __Rename Tags__ - Rename tag names
     ]
 }
 ```
-### `set_tag_id`
-__Set Tag ID__ - Generate a unique identifier for the tag
+### Set Tag ID
+`set_tag_id`
+
+Generate a unique identifier for the tag
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -129,8 +137,10 @@ __Set Tag ID__ - Generate a unique identifier for the tag
     ]
 }
 ```
-### `set_tag_bbox`
-__Set Tag BBox__ - Calculate the tag bbox from it's content
+### Set Tag BBox
+`set_tag_bbox`
+
+Calculate the tag bbox from it's content
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -153,8 +163,10 @@ __Set Tag BBox__ - Calculate the tag bbox from it's content
     ]
 }
 ```
-### `set_alt`
-__Set Alternate Description__ - Set alternative description to the tag
+### Set Alternate Description
+`set_alt`
+
+Set alternative description to the tag
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -202,8 +214,10 @@ __Set Alternate Description__ - Set alternative description to the tag
     ]
 }
 ```
-### `set_actual`
-__Set Actual Text__ - Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content
+### Set Actual Text
+`set_actual`
+
+Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -242,32 +256,40 @@ __Set Actual Text__ - Set a replacement for the content, providing text that is 
     ]
 }
 ```
-### `fix_placement`
-__Fix Placement__ - Fix placement
+### Fix Placement
+`fix_placement`
+
+Fix placement
 #### example:
 ```
 {
     "name": "fix_placement"
 }
 ```
-### `fix_document_tag`
-__Fix Document Tag__ - Fix Document tag 
+### Fix Document Tag
+`fix_document_tag`
+
+Fix Document tag 
 #### example:
 ```
 {
     "name": "fix_document_tag"
 }
 ```
-### `fix_list_tag`
-__Fix List Tag__ - Fix List tag 
+### Fix List Tag
+`fix_list_tag`
+
+Fix List tag 
 #### example:
 ```
 {
     "name": "fix_list_tag"
 }
 ```
-### `remove_tag_data`
-__Remove Tag Properties__ - Remove properties from the defined tags
+### Remove Tag Properties
+`remove_tag_data`
+
+Remove properties from the defined tags
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -314,8 +336,10 @@ __Remove Tag Properties__ - Remove properties from the defined tags
     ]
 }
 ```
-### `set_structure_attribute`
-__Set Tag Attributes__ - Set the attributes of the tag
+### Set Tag Attributes
+`set_structure_attribute`
+
+Set the attributes of the tag
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -383,8 +407,10 @@ __Set Tag Attributes__ - Set the attributes of the tag
     ]
 }
 ```
-### `fix_headings`
-__Fix Headings__ - Assign heading levels properly
+### Fix Headings
+`fix_headings`
+
+Assign heading levels properly
 #### params:
 
 - `renumber_headings` (int) __Renumber Headings__ - Renumber all headings

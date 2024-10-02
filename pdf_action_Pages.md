@@ -1,7 +1,9 @@
 ## Pages
 
-### `rotate_pages`
-__Rotate Page__ - Rotate pages
+### Rotate Page
+`rotate_pages`
+
+Rotate pages
 #### params:
 
 - `rotation_type` (int) __Rotation Type__ - Type of rotation

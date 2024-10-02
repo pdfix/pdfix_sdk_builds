@@ -1,7 +1,9 @@
 ## Metadata
 
-### `set_doc_info`
-__Set Document Properties__ - Set document metadata and properties
+### Set Document Properties
+`set_doc_info`
+
+Set document metadata and properties
 #### params:
 
 - `set_author` (bool) __Set Author__ - Set the document author
@@ -84,8 +86,10 @@ __Set Document Properties__ - Set document metadata and properties
     ]
 }
 ```
-### `set_pdf_version`
-__Set PDF Version__ - Set the PDF version
+### Set PDF Version
+`set_pdf_version`
+
+Set the PDF version
 #### params:
 
 - `version_number` (int) __PDF Version__ - Version designations
