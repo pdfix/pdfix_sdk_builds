@@ -1,3 +1,5 @@
+<div id="md-title">
+
 # PDFix Batch Actions
 
 Custom PDF actions are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of actions, it is possible to process PDF documents tailored to specific requirements
@@ -49,34 +51,79 @@ Custom PDF actions are engineered to automate the editing of PDFs and resolve va
     ]
 }
 ```
+</div>
+
+<div id="md-toc">
+
 ## Index
 
 
+</div>
+
+<div id="md-toc-accessibility">
+
 __Accessibility__: [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix Display Document Title](#fix-display-document-title), [Remove Standard Tags Mapping](#remove-standard-tags-mapping), [Set Language](#set-language), [Set Title](#set-title), [Autotag](#autotag), [Clear Document Structure](#clear-document-structure), [Fix ID Tree](#fix-id-tree), [Fix Parent Tree](#fix-parent-tree)
+
+</div>
+
+<div id="md-toc-annotations">
 
 __Annotations__: [Fix Media Clip](#fix-media-clip), [Set Tab Order](#set-tab-order), [Tag Annotations](#tag-annotations), [Set Contents](#set-contents), [Flatten Annotations](#flatten-annotations), [Create Web Links](#create-web-links), [Delete Annotations](#delete-annotations)
 
+</div>
+
+<div id="md-toc-bookmarks">
+
 __Bookmarks__: [Create Bookmarks](#create-bookmarks)
+
+</div>
+
+<div id="md-toc-content">
 
 __Content__: [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Remove Content Marks](#remove-content-marks), [Fix Spaces](#fix-spaces)
 
+</div>
+
+<div id="md-toc-conversion">
+
 __Conversion__: [PDF to HTML](#pdf-to-html), [PDF to JSON](#pdf-to-json)
+
+</div>
+
+<div id="md-toc-fonts">
 
 __Fonts__: [Embed Fonts](#embed-fonts), [Replace Font](#replace-font), [Add Missing Unicodes](#add-missing-unicodes)
 
+</div>
+
+<div id="md-toc-metadata">
+
 __Metadata__: [Set Document Properties](#set-document-properties), [Set PDF Version](#set-pdf-version)
+
+</div>
+
+<div id="md-toc-pages">
 
 __Pages__: [Rotate Page](#rotate-page)
 
+</div>
+
+<div id="md-toc-tags">
+
 __Tags__: [Delete Tags](#delete-tags), [Apply Standard Tags](#apply-standard-tags), [Rename Tags](#rename-tags), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Fix Headings](#fix-headings)
 
+</div>
+
+<div id="md-accessibility">
 
 ## Accessibility
 
 ### Set PDF/UA Standard
+
 `set_pdf_ua_standard`
 
 Set the PDF/UA part number
+
 #### params:
 
 - `part_number` (string) __Part Identifier__ - The part number of the International Standard that the file conforms to
@@ -104,9 +151,11 @@ Set the PDF/UA part number
 }
 ```
 ### Set Suspect Value
+
 `set_suspect_value`
 
 Fix the document Suspects entry
+
 #### example:
 ```
 {
@@ -114,9 +163,11 @@ Fix the document Suspects entry
 }
 ```
 ### Fix Optional Content
+
 `fix_oc_name`
 
 Fix optional content configuration dictionary
+
 #### example:
 ```
 {
@@ -124,9 +175,11 @@ Fix optional content configuration dictionary
 }
 ```
 ### Fix Display Document Title
+
 `set_display_doc_title`
 
 Fix ViewerPreferences dictionary
+
 #### example:
 ```
 {
@@ -134,9 +187,11 @@ Fix ViewerPreferences dictionary
 }
 ```
 ### Remove Standard Tags Mapping
+
 `remove_standard_tags_mapping`
 
 Remove standard tags mapping
+
 #### example:
 ```
 {
@@ -144,9 +199,11 @@ Remove standard tags mapping
 }
 ```
 ### Set Language
+
 `set_language`
 
 Define the document language
+
 #### params:
 
 - `lang` (lang) __Language__ - Document language
@@ -181,9 +238,11 @@ Define the document language
 }
 ```
 ### Set Title
+
 `set_title`
 
 Set document title
+
 #### params:
 
 - `title_type` (int) __Title__ - Define a source for detecting the document title
@@ -224,9 +283,11 @@ Set document title
 }
 ```
 ### Autotag
+
 `add_tags`
 
 Autotag document
+
 #### params:
 
 - `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
@@ -262,9 +323,11 @@ Autotag document
 }
 ```
 ### Clear Document Structure
+
 `clear_structure`
 
 Clear document structure
+
 #### params:
 
 - `clear_tags` (bool) __Clear Content Marks__ - Clear content marks
@@ -294,9 +357,11 @@ Clear document structure
 }
 ```
 ### Fix ID Tree
+
 `fix_id_tree`
 
 Fix ID tree
+
 #### example:
 ```
 {
@@ -304,21 +369,29 @@ Fix ID tree
 }
 ```
 ### Fix Parent Tree
+
 `fix_parent_tree`
 
 Fix parent tree
+
 #### example:
 ```
 {
     "name": "fix_parent_tree"
 }
 ```
+</div>
+
+<div id="md-annotations">
+
 ## Annotations
 
 ### Fix Media Clip
+
 `fix_media_clip_keys`
 
 Define a MIME type of the media clip annotations file
+
 #### params:
 
 - `ct_key` (string) __Media Clip__ - CT key
@@ -343,9 +416,11 @@ Define a MIME type of the media clip annotations file
 }
 ```
 ### Set Tab Order
+
 `set_tabs_key`
 
 Sets the tab order key for every page
+
 #### params:
 
 - `tabs_key` (string) __Tabs Key__ - Tabs key
@@ -369,9 +444,11 @@ Sets the tab order key for every page
 }
 ```
 ### Tag Annotations
+
 `tag_annot`
 
 Tag the untagged annotations
+
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -389,9 +466,11 @@ Tag the untagged annotations
 }
 ```
 ### Set Contents
+
 `set_annot_contents`
 
 Set alternative description for an annotation to Contents key
+
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -444,9 +523,11 @@ Set alternative description for an annotation to Contents key
 }
 ```
 ### Flatten Annotations
+
 `flatten_annot`
 
 Flatten the visual representation of annotations directly into the content layer
+
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -464,9 +545,11 @@ Flatten the visual representation of annotations directly into the content layer
 }
 ```
 ### Create Web Links
+
 `create_web_links`
 
 Create link annotations from web links in the page content
+
 #### params:
 
 - `url_regex` (string) __URL__ - Regular expression used for searching web links
@@ -484,9 +567,11 @@ Create link annotations from web links in the page content
 }
 ```
 ### Delete Annotations
+
 `delete_annot`
 
 Delete annotations from the document
+
 #### params:
 
 - `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
@@ -503,12 +588,18 @@ Delete annotations from the document
     ]
 }
 ```
+</div>
+
+<div id="md-bookmarks">
+
 ## Bookmarks
 
 ### Create Bookmarks
+
 `create_bookmarks`
 
 Create bookmarks from the tag tree hierarchy
+
 #### params:
 
 - `tag_1` (tag) __Level 1__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -561,12 +652,18 @@ Create bookmarks from the tag tree hierarchy
     ]
 }
 ```
+</div>
+
+<div id="md-content">
+
 ## Content
 
 ### Artifact Content
+
 `artifact_content`
 
 Mark defined content as an artifact
+
 #### params:
 
 - `artifact_untagged` (bool) __Untagged content only__ - Mark the content as Artifact only if it's untagged
@@ -595,9 +692,11 @@ Mark defined content as an artifact
 }
 ```
 ### Flatten Form XObjects
+
 `flatten_xobject`
 
 Flatten Form XObjects
+
 #### example:
 ```
 {
@@ -605,9 +704,11 @@ Flatten Form XObjects
 }
 ```
 ### Remove Content Marks
+
 `remove_content_marks`
 
 Remove atrifact, mcid or any custom tag from page content objects
+
 #### params:
 
 - `flags` (flag) __Remove__ - Types of content marks to be removed
@@ -633,9 +734,11 @@ Remove atrifact, mcid or any custom tag from page content objects
 }
 ```
 ### Fix Spaces
+
 `fix_structure_spaces`
 
 Add missing or resolve duplicate white spaces within a structure element
+
 #### params:
 
 - `add_missing_spaces` (bool) __Add Missing Spaces__ - Identify words in the structure and add missing spaces
@@ -664,12 +767,18 @@ Add missing or resolve duplicate white spaces within a structure element
     ]
 }
 ```
+</div>
+
+<div id="md-conversion">
+
 ## Conversion
 
 ### PDF to HTML
+
 `pdf_to_html`
 
 Convert PDF to HTML
+
 #### params:
 
 - `input_pdf` (file_path) __Input PDF__ - Input PDF file path
@@ -707,28 +816,30 @@ Convert PDF to HTML
 }
 ```
 ### PDF to JSON
+
 `pdf_to_json`
 
 Convert PDF to JSON
+
 #### params:
 
 - `input_pdf` (file_path) __Input PDF__ - Input PDF file path
 
 - `output_json` (file_path) __Output JSON file path__ - Define the output JSON file
 
-- `flags` (flags) __Conversion Flags__ - Flags specifying the extracted content
+- `flags` (flag) __Conversion Flags__ - Flags specifying the extracted content
 
-  - __1__ - Export Basic Document Information
-  - __2__ - Export Basic Page Information
-  - __16__ - Export page content
-  - __32__ - Export document structure tree
-  - __64__ - Export document layout recognition PageMap
-  - __256__ - Export object bounding box
-  - __512__ - Export page object marks when available
-  - __4096__ - Export text for all exported text objects
-  - __8192__ - Export text style when available
-  - __16384__ - Export text state from  the page content
-  - __65536__ - Export base64 encoded images
+  - __1__ - Document Metadata
+  - __2__ - Page Information
+  - __16__ - Page Content
+  - __32__ - Document Structure Tree
+  - __64__ - Layout Recognition PageMap
+  - __256__ - Bounding Box
+  - __512__ - Content Marks
+  - __4096__ - Text Content
+  - __8192__ - Text Style
+  - __16384__ - Text State
+  - __65536__ - Images (base64)
 
 
 #### example:
@@ -737,12 +848,18 @@ Convert PDF to JSON
     "name": "pdf_to_json"
 }
 ```
+</div>
+
+<div id="md-fonts">
+
 ## Fonts
 
 ### Embed Fonts
+
 `embed_font`
 
 Embed font
+
 #### example:
 ```
 {
@@ -750,9 +867,11 @@ Embed font
 }
 ```
 ### Replace Font
+
 `replace_font`
 
 Replace font
+
 #### params:
 
 - `font_name` (string) __Font Name__ - The PDF font name that will replaced. Regular expression is supported
@@ -776,21 +895,29 @@ Replace font
 }
 ```
 ### Add Missing Unicodes
+
 `add_missing_unicode`
 
 Add missing unicode mapping
+
 #### example:
 ```
 {
     "name": "add_missing_unicode"
 }
 ```
+</div>
+
+<div id="md-metadata">
+
 ## Metadata
 
 ### Set Document Properties
+
 `set_doc_info`
 
 Set document metadata and properties
+
 #### params:
 
 - `set_author` (bool) __Set Author__ - Set the document author
@@ -874,9 +1001,11 @@ Set document metadata and properties
 }
 ```
 ### Set PDF Version
+
 `set_pdf_version`
 
 Set the PDF version
+
 #### params:
 
 - `version_number` (int) __PDF Version__ - Version designations
@@ -900,12 +1029,18 @@ Set the PDF version
     ]
 }
 ```
+</div>
+
+<div id="md-pages">
+
 ## Pages
 
 ### Rotate Page
+
 `rotate_pages`
 
 Rotate pages
+
 #### params:
 
 - `rotation_type` (int) __Rotation Type__ - Type of rotation
@@ -961,12 +1096,18 @@ Rotate pages
     ]
 }
 ```
+</div>
+
+<div id="md-tags">
+
 ## Tags
 
 ### Delete Tags
+
 `delete_tags`
 
 Delete defined tags
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1023,9 +1164,11 @@ Delete defined tags
 }
 ```
 ### Apply Standard Tags
+
 `apply_standard_tags`
 
 Apply standard tag names according to their role mapping
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1049,9 +1192,11 @@ Apply standard tag names according to their role mapping
 }
 ```
 ### Rename Tags
+
 `rename_tags`
 
 Rename tag names
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1075,9 +1220,11 @@ Rename tag names
 }
 ```
 ### Set Tag ID
+
 `set_tag_id`
 
 Generate a unique identifier for the tag
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1101,9 +1248,11 @@ Generate a unique identifier for the tag
 }
 ```
 ### Set Tag BBox
+
 `set_tag_bbox`
 
 Calculate the tag bbox from it's content
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1127,9 +1276,11 @@ Calculate the tag bbox from it's content
 }
 ```
 ### Set Alternate Description
+
 `set_alt`
 
 Set alternative description to the tag
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1178,9 +1329,11 @@ Set alternative description to the tag
 }
 ```
 ### Set Actual Text
+
 `set_actual`
 
 Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1220,9 +1373,11 @@ Set a replacement for the content, providing text that is equivalent to what a p
 }
 ```
 ### Fix Placement
+
 `fix_placement`
 
 Fix placement
+
 #### example:
 ```
 {
@@ -1230,9 +1385,11 @@ Fix placement
 }
 ```
 ### Fix Document Tag
+
 `fix_document_tag`
 
 Fix Document tag 
+
 #### example:
 ```
 {
@@ -1240,9 +1397,11 @@ Fix Document tag
 }
 ```
 ### Fix List Tag
+
 `fix_list_tag`
 
 Fix List tag 
+
 #### example:
 ```
 {
@@ -1250,9 +1409,11 @@ Fix List tag
 }
 ```
 ### Remove Tag Properties
+
 `remove_tag_data`
 
 Remove properties from the defined tags
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1300,9 +1461,11 @@ Remove properties from the defined tags
 }
 ```
 ### Set Tag Attributes
+
 `set_structure_attribute`
 
 Set the attributes of the tag
+
 #### params:
 
 - `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
@@ -1371,9 +1534,11 @@ Set the attributes of the tag
 }
 ```
 ### Fix Headings
+
 `fix_headings`
 
 Assign heading levels properly
+
 #### params:
 
 - `renumber_headings` (int) __Renumber Headings__ - Renumber all headings
@@ -1408,3 +1573,5 @@ Assign heading levels properly
     ]
 }
 ```
+</div>
+
