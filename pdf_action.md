@@ -57,9 +57,6 @@ Custom PDF actions are engineered to automate the editing of PDFs and resolve va
 
 ## Index
 
-
-</div>
-
 <div id="md-toc-accessibility">
 
 __Accessibility__: [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix Display Document Title](#fix-display-document-title), [Remove Standard Tags Mapping](#remove-standard-tags-mapping), [Set Language](#set-language), [Set Title](#set-title), [Autotag](#autotag), [Clear Document Structure](#clear-document-structure), [Fix ID Tree](#fix-id-tree), [Fix Parent Tree](#fix-parent-tree)
@@ -111,6 +108,8 @@ __Pages__: [Rotate Page](#rotate-page)
 <div id="md-toc-tags">
 
 __Tags__: [Delete Tags](#delete-tags), [Apply Standard Tags](#apply-standard-tags), [Rename Tags](#rename-tags), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Fix Headings](#fix-headings)
+
+</div>
 
 </div>
 
