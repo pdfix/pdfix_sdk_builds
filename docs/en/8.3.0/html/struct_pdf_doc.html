@@ -349,6 +349,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab67604d585778f38dc1e5a02e0050aaf"><td class="memItemLeft" align="right" valign="top">virtual PdfDocFlags&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_doc.html#ab67604d585778f38dc1e5a02e0050aaf">GetFlags</a> ()=0</td></tr>
 <tr class="memdesc:ab67604d585778f38dc1e5a02e0050aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the document flags.  <a href="struct_pdf_doc.html#ab67604d585778f38dc1e5a02e0050aaf">More...</a><br /></td></tr>
 <tr class="separator:ab67604d585778f38dc1e5a02e0050aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3b1e91d3cad113fd30a4027f745b438"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_doc.html#ad3b1e91d3cad113fd30a4027f745b438">SetFlags</a> (PdfDocFlags flags)=0</td></tr>
+<tr class="memdesc:ad3b1e91d3cad113fd30a4027f745b438"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the document flags.  <a href="struct_pdf_doc.html#ad3b1e91d3cad113fd30a4027f745b438">More...</a><br /></td></tr>
+<tr class="separator:ad3b1e91d3cad113fd30a4027f745b438"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06ef02543bd0e9dfb7c1de73b015e667"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_doc.html#a06ef02543bd0e9dfb7c1de73b015e667">ClearFlags</a> ()=0</td></tr>
 <tr class="memdesc:a06ef02543bd0e9dfb7c1de73b015e667"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the document flags. This method marks a modified document as clean.  <a href="struct_pdf_doc.html#a06ef02543bd0e9dfb7c1de73b015e667">More...</a><br /></td></tr>
 <tr class="separator:a06ef02543bd0e9dfb7c1de73b015e667"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -3491,6 +3494,41 @@ PdfDoc::GetNumFormFieldCounts </dd>
 
 </div>
 </div>
+<a id="ad3b1e91d3cad113fd30a4027f745b438" name="ad3b1e91d3cad113fd30a4027f745b438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad3b1e91d3cad113fd30a4027f745b438">&#9670;&#160;</a></span>SetFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdfDoc::SetFlags </td>
+          <td>(</td>
+          <td class="paramtype">PdfDocFlags&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the document flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Flags field, containing an OR of the PdfDocFlags values </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the flags was set successfuly </dd></dl>
+
+</div>
+</div>
 <a id="a1eb6bda173fac409b4fff367b6794b64" name="a1eb6bda173fac409b4fff367b6794b64"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1eb6bda173fac409b4fff367b6794b64">&#9670;&#160;</a></span>SetInfo()</h2>
 
@@ -3693,7 +3731,7 @@ PdfDoc::GetNumFormFieldCounts </dd>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_pdf_doc.html">PdfDoc</a></li>
-    <li class="footer">Generated on Mon Sep 30 2024 11:48:16 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Oct 30 2024 19:32:52 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

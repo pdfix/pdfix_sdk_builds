@@ -40,7 +40,7 @@ var searchData=
   ['setengine_37',['SetEngine',['../struct_ocr_tesseract.html#ad01221d8e4b3af82d27aca4574104ee8',1,'OcrTesseract']]],
   ['seterror_38',['SetError',['../struct_pdfix.html#a3dfc06c427ee56918b90ea7866d1fd04',1,'Pdfix']]],
   ['setfilltype_39',['SetFillType',['../struct_pds_path.html#a2f56e194fd0ae9bb10f9d26d63da650c',1,'PdsPath']]],
-  ['setflags_40',['SetFlags',['../struct_pde_element.html#aacbaeec8b367178bb9eb1e4e101b0561',1,'PdeElement::SetFlags()'],['../struct_pdf_annot.html#a1633ed66ee0de729a0451608d6f1d52e',1,'PdfAnnot::SetFlags()'],['../struct_pdf_form_field.html#a3a42280b7ff77cefac6ebe2de69c95ea',1,'PdfFormField::SetFlags()']]],
+  ['setflags_40',['SetFlags',['../struct_pde_element.html#aacbaeec8b367178bb9eb1e4e101b0561',1,'PdeElement::SetFlags()'],['../struct_pdf_annot.html#a1633ed66ee0de729a0451608d6f1d52e',1,'PdfAnnot::SetFlags()'],['../struct_pdf_doc.html#ad3b1e91d3cad113fd30a4027f745b438',1,'PdfDoc::SetFlags()'],['../struct_pdf_form_field.html#a3a42280b7ff77cefac6ebe2de69c95ea',1,'PdfFormField::SetFlags()'],['../struct_pdf_page.html#afee07d375257c44b6838a543994cc3c0',1,'PdfPage::SetFlags()']]],
   ['setgetdecryptsizeproc_41',['SetGetDecryptSizeProc',['../struct_pdf_custom_security_handler.html#afb34b64820cb923d981ebe8f1a7216c9',1,'PdfCustomSecurityHandler']]],
   ['setgetencryptsizeproc_42',['SetGetEncryptSizeProc',['../struct_pdf_custom_security_handler.html#abf7cd2e73b605027f65a835d4a50f8bb',1,'PdfCustomSecurityHandler']]],
   ['setgetpermissionsproc_43',['SetGetPermissionsProc',['../struct_pdf_custom_security_handler.html#ada234cde082754831c77d4292c44af48',1,'PdfCustomSecurityHandler']]],

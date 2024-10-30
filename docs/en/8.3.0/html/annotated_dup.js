@@ -4,6 +4,7 @@ var annotated_dup =
     [ "_PdeGraphicState", "struct___pde_graphic_state.html", "struct___pde_graphic_state" ],
     [ "_PdfAnnotAppearance", "struct___pdf_annot_appearance.html", "struct___pdf_annot_appearance" ],
     [ "_PdfBookmarkAppearance", "struct___pdf_bookmark_appearance.html", "struct___pdf_bookmark_appearance" ],
+    [ "_PdfCellParams", "struct___pdf_cell_params.html", null ],
     [ "_PdfCMYK", "struct___pdf_c_m_y_k.html", "struct___pdf_c_m_y_k" ],
     [ "_PdfColorState", "struct___pdf_color_state.html", "struct___pdf_color_state" ],
     [ "_PdfDevPoint", "struct___pdf_dev_point.html", "struct___pdf_dev_point" ],

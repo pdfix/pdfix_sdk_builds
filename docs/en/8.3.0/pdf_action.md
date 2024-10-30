@@ -1,3 +1,5 @@
+<div id="md-title">
+
 # PDFix Batch Actions
 
 Custom PDF actions are engineered to automate the editing of PDFs and resolve various accessibility issues, thereby streamlining the processes of document editing and remediation. This approach enhances efficiency and simplifies tasks, eliminating the need for programming skills. By utilizing a bespoke sequence of actions, it is possible to process PDF documents tailored to specific requirements
@@ -49,32 +51,85 @@ Custom PDF actions are engineered to automate the editing of PDFs and resolve va
     ]
 }
 ```
+
+</div>
+
+<div id="md-toc">
+
 ## Index
 
+<div id="md-toc-accessibility">
 
-__Accessibility__: [set_pdf_ua_standard](#set_pdf_ua_standard), [set_suspect_value](#set_suspect_value), [fix_oc_name](#fix_oc_name), [set_display_doc_title](#set_display_doc_title), [remove_standard_tags_mapping](#remove_standard_tags_mapping), [set_language](#set_language), [set_title](#set_title), [add_tags](#add_tags), [clear_structure](#clear_structure), [fix_id_tree](#fix_id_tree), [fix_parent_tree](#fix_parent_tree)
+__Accessibility__: [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix Display Document Title](#fix-display-document-title), [Remove Standard Tags Mapping](#remove-standard-tags-mapping), [Autotag](#autotag), [Clear Document Structure](#clear-document-structure), [Fix ID Tree](#fix-id-tree), [Fix Parent Tree](#fix-parent-tree)
 
-__Annotations__: [fix_media_clip_keys](#fix_media_clip_keys), [set_tabs_key](#set_tabs_key), [tag_annot](#tag_annot), [set_annot_contents](#set_annot_contents), [flatten_annot](#flatten_annot), [create_web_links](#create_web_links), [delete_annot](#delete_annot)
+</div>
 
-__Bookmarks__: [create_bookmarks](#create_bookmarks)
+<div id="md-toc-annotations">
 
-__Content__: [artifact_content](#artifact_content), [flatten_xobject](#flatten_xobject), [remove_content_marks](#remove_content_marks), [fix_structure_spaces](#fix_structure_spaces)
+__Annotations__: [Fix Media Clip](#fix-media-clip), [Set Tab Order](#set-tab-order), [Tag Annotations](#tag-annotations), [Set Contents](#set-contents), [Flatten Annotations](#flatten-annotations), [Create Web Links](#create-web-links), [Delete Annotations](#delete-annotations)
 
-__Conversion__: [pdf_to_html](#pdf_to_html), [pdf_to_json](#pdf_to_json)
+</div>
 
-__Fonts__: [embed_font](#embed_font), [replace_font](#replace_font), [add_missing_unicode](#add_missing_unicode)
+<div id="md-toc-bookmarks">
 
-__Metadata__: [get_doc_info](#get_doc_info), [set_doc_info](#set_doc_info), [set_pdf_version](#set_pdf_version)
+__Bookmarks__: [Create Bookmarks](#create-bookmarks)
 
-__Pages__: [rotate_pages](#rotate_pages)
+</div>
 
-__Tags__: [delete_tags](#delete_tags), [apply_standard_tags](#apply_standard_tags), [rename_tags](#rename_tags), [set_tag_id](#set_tag_id), [set_tag_bbox](#set_tag_bbox), [set_alt](#set_alt), [set_actual](#set_actual), [fix_placement](#fix_placement), [fix_document_tag](#fix_document_tag), [fix_list_tag](#fix_list_tag), [remove_tag_data](#remove_tag_data), [set_structure_attribute](#set_structure_attribute), [fix_headings](#fix_headings)
+<div id="md-toc-content">
 
+__Content__: [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Remove Content Marks](#remove-content-marks)
+
+</div>
+
+<div id="md-toc-conversion">
+
+__Conversion__: [PDF to HTML](#pdf-to-html), [PDF to JSON](#pdf-to-json)
+
+</div>
+
+<div id="md-toc-fonts">
+
+__Fonts__: [Embed Fonts](#embed-fonts), [Replace Font](#replace-font), [Add Missing Unicodes](#add-missing-unicodes)
+
+</div>
+
+<div id="md-toc-metadata">
+
+__Metadata__: [Set Document Properties](#set-document-properties), [Set PDF Version](#set-pdf-version), [Set Language](#set-language), [Set Title](#set-title)
+
+</div>
+
+<div id="md-toc-pages">
+
+__Pages__: [Rotate Page](#rotate-page)
+
+</div>
+
+<div id="md-toc-table">
+
+__Table__: [Set Table Headers](#set-table-headers), [Set Table Summary](#set-table-summary), [Fix Table Tag](#fix-table-tag)
+
+</div>
+
+<div id="md-toc-tags">
+
+__Tags__: [Delete Tags](#delete-tags), [Apply Standard Tags](#apply-standard-tags), [Rename Tags](#rename-tags), [Clone XObjects](#clone-xobjects), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Fix Spaces](#fix-spaces), [Fix Headings](#fix-headings)
+
+</div>
+
+</div>
+
+<div id="md-accessibility">
 
 ## Accessibility
 
-### `set_pdf_ua_standard`
-__Set PDF/UA Standard__ - Set the PDF/UA part number
+### Set PDF/UA Standard
+
+`set_pdf_ua_standard`
+
+Set the PDF/UA part number
+
 #### params:
 
 - `part_number` (string) __Part Identifier__ - The part number of the International Standard that the file conforms to
@@ -101,116 +156,60 @@ __Set PDF/UA Standard__ - Set the PDF/UA part number
     ]
 }
 ```
-### `set_suspect_value`
-__Set Suspect Value__ - Fix the document Suspects entry
+### Set Suspect Value
+
+`set_suspect_value`
+
+Fix the document Suspects entry
+
 #### example:
 ```
 {
     "name": "set_suspect_value"
 }
 ```
-### `fix_oc_name`
-__Fix Optional Content__ - Fix optional content configuration dictionary
+### Fix Optional Content
+
+`fix_oc_name`
+
+Fix optional content configuration dictionary
+
 #### example:
 ```
 {
     "name": "fix_oc_name"
 }
 ```
-### `set_display_doc_title`
-__Fix Display Document Title__ - Fix ViewerPreferences dictionary
+### Fix Display Document Title
+
+`set_display_doc_title`
+
+Fix ViewerPreferences dictionary
+
 #### example:
 ```
 {
     "name": "set_display_doc_title"
 }
 ```
-### `remove_standard_tags_mapping`
-__Remove Standard Tags Mapping__ - Remove standard tags mapping
+### Remove Standard Tags Mapping
+
+`remove_standard_tags_mapping`
+
+Remove standard tags mapping
+
 #### example:
 ```
 {
     "name": "remove_standard_tags_mapping"
 }
 ```
-### `set_language`
-__Set Language__ - Define the document language
-#### params:
+### Autotag
 
-- `lang` (lang) __Language__ - Document language
+`add_tags`
 
-- `apply_lang_to` (int) __Apply Language to__ - Select the objects to which you intend to apply the defined language
+Autotag document
 
-  - __0__ - Document
-  - __1__ - Tag
-  - __2__ - Marked Content
-
-
-- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
-
-#### example:
-```
-{
-    "name": "set_language",
-    "params": [
-        {
-            "name": "lang",
-            "value": "en-US"
-        },
-        {
-            "name": "apply_lang_to",
-            "value": 0
-        },
-        {
-            "name": "overwrite",
-            "value": false
-        }
-    ]
-}
-```
-### `set_title`
-__Set Title__ - Set document title
-#### params:
-
-- `title_type` (int) __Title__ - Define a source for detecting the document title
-
-  - __0__ - Define the Custom Title
-  - __1__ - Use the first Description Tag
-  - __2__ - Retrieve the title from the file name
-
-
-- `custom_text` (string) __Custom Title__ - Custom title
-
-- `description_tag` (string) __Description Tag__ - Define the tags which content is used for title text
-
-- `overwrite` (bool) __Overwrite__ - Replace the current title if it already exists
-
-#### example:
-```
-{
-    "name": "set_title",
-    "params": [
-        {
-            "name": "title_type",
-            "value": 2
-        },
-        {
-            "name": "custom_text",
-            "value": ""
-        },
-        {
-            "name": "description_tag",
-            "value": "Caption"
-        },
-        {
-            "name": "overwrite",
-            "value": false
-        }
-    ]
-}
-```
-### `add_tags`
-__Autotag__ - Autotag document
 #### params:
 
 - `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
@@ -245,8 +244,12 @@ __Autotag__ - Autotag document
     ]
 }
 ```
-### `clear_structure`
-__Clear Document Structure__ - Clear document structure
+### Clear Document Structure
+
+`clear_structure`
+
+Clear document structure
+
 #### params:
 
 - `clear_tags` (bool) __Clear Content Marks__ - Clear content marks
@@ -275,26 +278,42 @@ __Clear Document Structure__ - Clear document structure
     ]
 }
 ```
-### `fix_id_tree`
-__Fix ID Tree__ - Fix ID tree
+### Fix ID Tree
+
+`fix_id_tree`
+
+Fix ID tree
+
 #### example:
 ```
 {
     "name": "fix_id_tree"
 }
 ```
-### `fix_parent_tree`
-__Fix Parent Tree__ - Fix parent tree
+### Fix Parent Tree
+
+`fix_parent_tree`
+
+Fix parent tree
+
 #### example:
 ```
 {
     "name": "fix_parent_tree"
 }
 ```
+</div>
+
+<div id="md-annotations">
+
 ## Annotations
 
-### `fix_media_clip_keys`
-__Fix Media Clip__ - Define a MIME type of the media clip annotations file
+### Fix Media Clip
+
+`fix_media_clip_keys`
+
+Define a MIME type of the media clip annotations file
+
 #### params:
 
 - `ct_key` (string) __Media Clip__ - CT key
@@ -318,8 +337,12 @@ __Fix Media Clip__ - Define a MIME type of the media clip annotations file
     ]
 }
 ```
-### `set_tabs_key`
-__Set Tab Order__ - Sets the tab order key for every page
+### Set Tab Order
+
+`set_tabs_key`
+
+Sets the tab order key for every page. Every page on which there is an annotation shall contain in its page dictionary the key Tabs, and its value shall be S
+
 #### params:
 
 - `tabs_key` (string) __Tabs Key__ - Tabs key
@@ -342,11 +365,15 @@ __Set Tab Order__ - Sets the tab order key for every page
     ]
 }
 ```
-### `tag_annot`
-__Tag Annotations__ - Tag the untagged annotations
+### Tag Annotations
+
+`tag_annot`
+
+Tag the untagged annotations. Annotations are placed to the closest tag if such tag was founded
+
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
+- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template annot_update
 
 #### example:
 ```
@@ -360,11 +387,15 @@ __Tag Annotations__ - Tag the untagged annotations
     ]
 }
 ```
-### `set_annot_contents`
-__Set Contents__ - Set alternative description for an annotation to Contents key
+### Set Contents
+
+`set_annot_contents`
+
+Set alternative description for an annotation to Contents key.
+
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
+- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template annot_update
 
 - `alt_type` (int) __Contents__ - Define a source for detecting the alternative text
 
@@ -388,7 +419,7 @@ __Set Contents__ - Set alternative description for an annotation to Contents key
     "params": [
         {
             "name": "annot_types",
-            "value": "^Link$|^Highlight$|^Underline$|^Squiggly$|^StrikeOut$"
+            "value": ".*$"
         },
         {
             "name": "alt_type",
@@ -413,11 +444,15 @@ __Set Contents__ - Set alternative description for an annotation to Contents key
     ]
 }
 ```
-### `flatten_annot`
-__Flatten Annotations__ - Flatten the visual representation of annotations directly into the content layer
+### Flatten Annotations
+
+`flatten_annot`
+
+Flatten the visual representation of annotations directly into the content layer. Use this feature to avoid problems with annotation tagging when your document doesn’t need to be interactive after publishing as PDF/UA compliant
+
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
+- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template annot_update
 
 #### example:
 ```
@@ -431,8 +466,12 @@ __Flatten Annotations__ - Flatten the visual representation of annotations direc
     ]
 }
 ```
-### `create_web_links`
-__Create Web Links__ - Create link annotations from web links in the page content
+### Create Web Links
+
+`create_web_links`
+
+Create link annotations from web links in the page content
+
 #### params:
 
 - `url_regex` (string) __URL__ - Regular expression used for searching web links
@@ -449,11 +488,15 @@ __Create Web Links__ - Create link annotations from web links in the page conten
     ]
 }
 ```
-### `delete_annot`
-__Delete Annotations__ - Delete annotations from the document
+### Delete Annotations
+
+`delete_annot`
+
+Completly remove annotation from PDF. Use this action when annotation with specific subtype is not permitted in the PDF/UA compliant output, for example TrapNet.
+
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template update_annot
+- `annot_types` (annot) __Annotations__ - Define the annotations types using a regular expression format (https://regex101.com/) or define by the template annot_update
 
 #### example:
 ```
@@ -467,13 +510,21 @@ __Delete Annotations__ - Delete annotations from the document
     ]
 }
 ```
+</div>
+
+<div id="md-bookmarks">
+
 ## Bookmarks
 
-### `create_bookmarks`
-__Create Bookmarks__ - Create bookmarks from the tag tree hierarchy
+### Create Bookmarks
+
+`create_bookmarks`
+
+Create bookmarks from the tag tree hierarchy
+
 #### params:
 
-- `tag_1` (tag) __Level 1__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_1` (tag) __Level 1__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `tag_2` (tag) __Level 2__ - Define the tag that represents second level
 
@@ -523,13 +574,21 @@ __Create Bookmarks__ - Create bookmarks from the tag tree hierarchy
     ]
 }
 ```
+</div>
+
+<div id="md-content">
+
 ## Content
 
-### `artifact_content`
-__Artifact Content__ - Mark defined content as an artifact
+### Artifact Content
+
+`artifact_content`
+
+Mark defined content as an artifact
+
 #### params:
 
-- `artifact_untagged` (bool) __Untagged content only__ - Mark the content as Artifact only if it's untagged
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
 
 - `artifact_type` (int) __Mark as__ - Mark the content as an Artifact, Header or Footer
 
@@ -544,8 +603,29 @@ __Artifact Content__ - Mark defined content as an artifact
     "name": "artifact_content",
     "params": [
         {
-            "name": "artifact_untagged",
-            "value": true
+            "name": "object_types",
+            "value": {
+                "template": {
+                    "object_update": [
+                        {
+                            "query": {
+                                "$and": [
+                                    {
+                                        "$0_artifact": "false"
+                                    },
+                                    {
+                                        "$0_mcid": "-1"
+                                    }
+                                ],
+                                "param": [
+                                    "pds_object"
+                                ]
+                            },
+                            "statement": "$if"
+                        }
+                    ]
+                }
+            }
         },
         {
             "name": "artifact_type",
@@ -554,26 +634,32 @@ __Artifact Content__ - Mark defined content as an artifact
     ]
 }
 ```
-### `flatten_xobject`
-__Flatten Form XObjects__ - Flatten Form XObjects
+### Flatten Form XObjects
+
+`flatten_xobject`
+
+Flatten Form XObjects
+
 #### example:
 ```
 {
     "name": "flatten_xobject"
 }
 ```
-### `remove_content_marks`
-__Remove Content Marks__ - Remove atrifact, mcid or any custom tag from page content objects
+### Remove Content Marks
+
+`remove_content_marks`
+
+Remove atrifact, mcid or any custom tag from page content objects
+
 #### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
 
 - `flags` (flag) __Remove__ - Types of content marks to be removed
 
-  - __1__ - MCID
-  - __2__ - Artifact
-  - __4__ - Custom Content Marks
   - __8__ - Invalid Content Marks
-  - __16__ - Artifact, if MCID is presented
-  - __32__ - MCID, if Artifact is presented
+  - __4__ - Custom Content Marks
 
 
 #### example:
@@ -582,154 +668,121 @@ __Remove Content Marks__ - Remove atrifact, mcid or any custom tag from page con
     "name": "remove_content_marks",
     "params": [
         {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
             "name": "flags",
             "value": 8
         }
     ]
 }
 ```
-### `fix_structure_spaces`
-__Fix Spaces__ - Add missing or resolve duplicate white spaces within a structure element
-#### params:
+</div>
 
-- `add_missing_spaces` (bool) __Add Missing Spaces__ - Identify words in the structure and add missing spaces
+<div id="md-conversion">
 
-- `remove_unnecessary_spaces` (bool) __Remove Unnecessary Spaces__ - Remove duplicite spaces after each word
-
-- `artifact_unnecessary_spaces` (bool) __Artifact Unnecessary Spaces__ - Mark duplicite spaces after each word as an Artifact
-
-#### example:
-```
-{
-    "name": "fix_structure_spaces",
-    "params": [
-        {
-            "name": "add_missing_spaces",
-            "value": true
-        },
-        {
-            "name": "remove_unnecessary_spaces",
-            "value": false
-        },
-        {
-            "name": "artifact_unnecessary_spaces",
-            "value": true
-        }
-    ]
-}
-```
 ## Conversion
 
-### `pdf_to_html`
-__PDF To HTML__ - Convert PDF to HTML
+### PDF to HTML
+
+`pdf_to_html`
+
+Convert PDF to HTML
+
+#### params:
+
+- `input_pdf` (file_path) __Input PDF__ - Input PDF file path
+
+- `output_html` (file_path) __Ouput HTML file path__ - Define the output HTML Index file
+
+- `html_type` (int) __HTML Layout__ - HTML layout type
+
+  - __0__ - Original layout
+  - __1__ - Responsive layout
+  - __2__ - Layout defined by PDF Tags
+
+
+- `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
+
+- `preflight` (bool) __Preflight__ - Preflight the document and combine the preflight values with the current template
+
+- `flags` (flag) __Conversion Flags__ - Define conversion flags
+
+  - __1__ - Export JavaScripts
+  - __2__ - Export fonts
+  - __4__ - Default font sizes
+  - __8__ - Retain text color
+  - __32__ - Inline CSS
+  - __64__ - Inline JavaScript
+  - __128__ - Embed images
+  - __256__ - Embed fonts
+  - __512__ - Gray padding
+
+
 #### example:
 ```
 {
     "name": "pdf_to_html"
 }
 ```
-### `pdf_to_json`
-__Convert To JSON__ - Convert PDF to JSON
+### PDF to JSON
+
+`pdf_to_json`
+
+Convert PDF to JSON
+
 #### params:
 
-- `output` (folder_path) __Output Folder__ - The destination folder for the output
+- `input_pdf` (file_path) __Input PDF__ - Input PDF file path
 
-- `struct_tree` (bool) __Structure Tree__ - Structure tree
+- `output_json` (file_path) __Output JSON file path__ - Define the output JSON file
 
-- `page_map` (bool) __PageMap Objects__ - PageMap objects
+- `flags` (flag) __Conversion Flags__ - Flags specifying the extracted content
 
-- `page_content` (bool) __Page Content Objects__ - Page content objects
+  - __1__ - Document Metadata
+  - __2__ - Page Information
+  - __16__ - Page Content
+  - __32__ - Document Structure Tree
+  - __64__ - Layout Recognition PageMap
+  - __256__ - Bounding Box
+  - __512__ - Content Marks
+  - __4096__ - Text Content
+  - __8192__ - Text Style
+  - __16384__ - Text State
+  - __65536__ - Images (base64)
 
-- `template` (file_path) __Template__ - Load the template from the file as the current template. If the file is empty, the default template will be used
-
-- `preflight` (bool) __Preflight__ - Preflight the document and combine the preflight values with the current template
-
-- `text` (bool) __Export Texts__ - Export texts
-
-- `text_style` (bool) __Export Text Styles__ - Export text styles
-
-- `text_state` (bool) __Export Text States__ - Export text states
-
-- `images` (bool) __Export Images__ - Export images
-
-- `bbox` (bool) __Export Bounding Box__ - Export object bounding box
-
-- `graphics_state` (bool) __Export Graphics States__ - Export graphics states
-
-- `content_marks` (bool) __Export Content Marks__ - Export object content marks
 
 #### example:
 ```
 {
-    "name": "pdf_to_json",
-    "params": [
-        {
-            "name": "output",
-            "value": ""
-        },
-        {
-            "name": "struct_tree",
-            "value": false
-        },
-        {
-            "name": "page_map",
-            "value": true
-        },
-        {
-            "name": "page_content",
-            "value": true
-        },
-        {
-            "name": "template",
-            "value": ""
-        },
-        {
-            "name": "preflight",
-            "value": false
-        },
-        {
-            "name": "text",
-            "value": true
-        },
-        {
-            "name": "text_style",
-            "value": true
-        },
-        {
-            "name": "text_state",
-            "value": false
-        },
-        {
-            "name": "images",
-            "value": false
-        },
-        {
-            "name": "bbox",
-            "value": false
-        },
-        {
-            "name": "graphics_state",
-            "value": false
-        },
-        {
-            "name": "content_marks",
-            "value": false
-        }
-    ]
+    "name": "pdf_to_json"
 }
 ```
+</div>
+
+<div id="md-fonts">
+
 ## Fonts
 
-### `embed_font`
-__Embed Fonts__ - Embed font
+### Embed Fonts
+
+`embed_font`
+
+Embed font
+
 #### example:
 ```
 {
     "name": "embed_font"
 }
 ```
-### `replace_font`
-__Replace Font__ - Replace font
+### Replace Font
+
+`replace_font`
+
+Replace font
+
 #### params:
 
 - `font_name` (string) __Font Name__ - The PDF font name that will replaced. Regular expression is supported
@@ -752,26 +805,30 @@ __Replace Font__ - Replace font
     ]
 }
 ```
-### `add_missing_unicode`
-__Add Missing Unicodes__ - Add missing unicode mapping
+### Add Missing Unicodes
+
+`add_missing_unicode`
+
+Add missing unicode mapping
+
 #### example:
 ```
 {
     "name": "add_missing_unicode"
 }
 ```
+</div>
+
+<div id="md-metadata">
+
 ## Metadata
 
-### `get_doc_info`
-__Get Document Properties__ - Get document metadata and properties
-#### example:
-```
-{
-    "name": "get_doc_info"
-}
-```
-### `set_doc_info`
-__Set Document Properties__ - Set document metadata and properties
+### Set Document Properties
+
+`set_doc_info`
+
+Set document metadata and properties
+
 #### params:
 
 - `set_author` (bool) __Set Author__ - Set the document author
@@ -854,8 +911,12 @@ __Set Document Properties__ - Set document metadata and properties
     ]
 }
 ```
-### `set_pdf_version`
-__Set PDF Version__ - Set the PDF version
+### Set PDF Version
+
+`set_pdf_version`
+
+Set the PDF version
+
 #### params:
 
 - `version_number` (int) __PDF Version__ - Version designations
@@ -879,10 +940,102 @@ __Set PDF Version__ - Set the PDF version
     ]
 }
 ```
+### Set Language
+
+`set_language`
+
+Define the document language
+
+#### params:
+
+- `lang` (lang) __Language__ - Document language
+
+- `apply_lang_to` (int) __Apply Language to__ - Select the objects to which you intend to apply the defined language
+
+  - __0__ - Document
+  - __1__ - Tag
+  - __2__ - Marked Content
+
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_language",
+    "params": [
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "apply_lang_to",
+            "value": 0
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Title
+
+`set_title`
+
+Set document title
+
+#### params:
+
+- `title_type` (int) __Title__ - Define a source for detecting the document title
+
+  - __0__ - Define the Custom Title
+  - __1__ - Use the first Description Tag
+  - __2__ - Retrieve the title from the file name
+
+
+- `custom_text` (string) __Custom Title__ - Custom title
+
+- `description_tag` (string) __Description Tag__ - Define the tags which content is used for title text
+
+- `overwrite` (bool) __Overwrite__ - Replace the current title if it already exists
+
+#### example:
+```
+{
+    "name": "set_title",
+    "params": [
+        {
+            "name": "title_type",
+            "value": 2
+        },
+        {
+            "name": "custom_text",
+            "value": ""
+        },
+        {
+            "name": "description_tag",
+            "value": "Caption"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-pages">
+
 ## Pages
 
-### `rotate_pages`
-__Rotate Page__ - Rotate pages
+### Rotate Page
+
+`rotate_pages`
+
+Rotate pages
+
 #### params:
 
 - `rotation_type` (int) __Rotation Type__ - Type of rotation
@@ -938,18 +1091,152 @@ __Rotate Page__ - Rotate pages
     ]
 }
 ```
-## Tags
+</div>
 
-### `delete_tags`
-__Delete Tags__ - Delete defined tags
+<div id="md-table">
+
+## Table
+
+### Set Table Headers
+
+`set_table_header`
+
+Set table header cells
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
-- `tag_content` (string) __Content__ - Handle the content of the tag
+- `scope` (string) __Scope__ - Reflects whether the header cell applies to the rest of the cells in the row, column or both that contain it
 
-  - __none__ - Leave untagged
-  - __move__ - Move to parent tag
+  - __None__ - None
+  - __Row__ - Row
+  - __Column__ - Column
+  - __Both__ - Both
+
+
+- `row_span` (int) __RowSpan__ - The number of rows in the enclosing table that shall be spanned by the cell. Use -1 to do not change existing RowSpan
+
+- `col_span` (int) __ColSpan__ - The number of columns in the enclosing table that shall be spanned by the cell. Use -1 to do not change existing ColSpan
+
+- `overwrite` (bool) __Overwrite__ - Replace the current TH properties if they already exist
+
+#### example:
+```
+{
+    "name": "set_table_header",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^TD$"
+        },
+        {
+            "name": "scope",
+            "value": "None"
+        },
+        {
+            "name": "row_span",
+            "value": -1
+        },
+        {
+            "name": "col_span",
+            "value": -1
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Table Summary
+
+`set_table_summary`
+
+A summary of the table’s purpose and structure. This entry shall only be used within Table tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
+
+- `summary_type` (int) __Summary__ - Define a source for detecting the summary
+
+  - __0__ - Define the Custom Summary
+  - __1__ - Use the associated TH content
+  - __2__ - Use the associated tag content
+
+
+- `custom_text` (string) __Custom Summary__ - Enter custom text to serve as the table summary
+
+- `overwrite` (bool) __Overwrite__ - Replace the table summary if it already exists
+
+#### example:
+```
+{
+    "name": "set_table_summary",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Table$"
+        },
+        {
+            "name": "summary_type",
+            "value": 2
+        },
+        {
+            "name": "custom_text",
+            "value": "Summary"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Fix Table Tag
+
+`fix_table_tag`
+
+Fix Table tag errors
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the tags by the template tag_update
+
+#### example:
+```
+{
+    "name": "fix_table_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Table$"
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-tags">
+
+## Tags
+
+### Delete Tags
+
+`delete_tags`
+
+Delete defined tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
+
+- `tag_content` (string) __Content__ - Handle the content of the deleted tag
+
+  - __none__ - Leave content untagged
+  - __move__ - Move nested tags to parent
+  - __artifact__ - Artifact content
 
 
 #### example:
@@ -967,17 +1254,11 @@ __Delete Tags__ - Delete defined tags
                                 "$and": [
                                     {
                                         "$0_tag_type": {
-                                            "$regex": "^(?!H$|H1$|H2$|H3$|H4$|H5$|H6$|TH$|TD$|TR$|LI$|Lbl$|LBody$).*"
+                                            "$regex": "^(?!H$|H\\d$|TH$|TD$|TR$|LBody$).*"
                                         }
                                     },
                                     {
-                                        "$0_children_num": "0"
-                                    },
-                                    {
-                                        "$0_actual_text": ""
-                                    },
-                                    {
-                                        "$0_expansion": ""
+                                        "$0_has_content": "false"
                                     }
                                 ],
                                 "param": [
@@ -997,11 +1278,15 @@ __Delete Tags__ - Delete defined tags
     ]
 }
 ```
-### `apply_standard_tags`
-__Apply Standard Tags__ - Apply standard tag names according to their role mapping
+### Apply Standard Tags
+
+`apply_standard_tags`
+
+Apply standard tag names according to their role mapping
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `rolemap` (bool) __Clear Role Map__ - Clear the role map specified in the structure tree root
 
@@ -1021,11 +1306,15 @@ __Apply Standard Tags__ - Apply standard tag names according to their role mappi
     ]
 }
 ```
-### `rename_tags`
-__Rename Tags__ - Rename tag names
+### Rename Tags
+
+`rename_tags`
+
+Rename tag names
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `tag_name` (string) __Replace with__ - Type a new tag name
 
@@ -1045,11 +1334,27 @@ __Rename Tags__ - Rename tag names
     ]
 }
 ```
-### `set_tag_id`
-__Set Tag ID__ - Generate a unique identifier for the tag
+### Clone XObjects
+
+`clone_xobject`
+
+Clone Form XObjects in tags
+
+#### example:
+```
+{
+    "name": "clone_xobject"
+}
+```
+### Set Tag ID
+
+`set_tag_id`
+
+Generate a unique ID key for specific tags. For example, PDF/UA1 requires a unique ID for the Note tag
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current Tag ID if it already exists
 
@@ -1069,11 +1374,15 @@ __Set Tag ID__ - Generate a unique identifier for the tag
     ]
 }
 ```
-### `set_tag_bbox`
-__Set Tag BBox__ - Calculate the tag bbox from it's content
+### Set Tag BBox
+
+`set_tag_bbox`
+
+Calculate the bounding box from the tag content and sets it to the Layout attributes
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current Tag ID if it already exists
 
@@ -1093,11 +1402,15 @@ __Set Tag BBox__ - Calculate the tag bbox from it's content
     ]
 }
 ```
-### `set_alt`
-__Set Alternate Description__ - Set alternative description to the tag
+### Set Alternate Description
+
+`set_alt`
+
+Set alternative description to the tag. These text alternatives are crucial for accessibility, as they enable users with vision disabilities to understand the content
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `alt_type` (int) __Alternative Description__ - Define a source for detecting the alternative text
 
@@ -1105,7 +1418,7 @@ __Set Alternate Description__ - Set alternative description to the tag
   - __1__ - Use the first Description Tag above
   - __2__ - Use the first Description Tag below
   - __3__ - Use the first Description Tag from children
-  - __4__ - Use the associated tag content
+  - __4__ - Use the associated tag content. If there is an Annotation among the children, its Contents key is used
 
 
 - `custom_text` (string) __Custom Alternative__ - Enter custom text to serve as an alternative description
@@ -1142,11 +1455,15 @@ __Set Alternate Description__ - Set alternative description to the tag
     ]
 }
 ```
-### `set_actual`
-__Set Actual Text__ - Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content
+### Set Actual Text
+
+`set_actual`
+
+Set a replacement for the content, providing text that is equivalent to what a person would see when viewing the content
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `actual_type` (int) __Actual Text__ - Define a source for detecting the replacement text
 
@@ -1165,7 +1482,7 @@ __Set Actual Text__ - Set a replacement for the content, providing text that is 
     "params": [
         {
             "name": "tag_names",
-            "value": "^Figure$|^Formula$"
+            "value": "^Span$"
         },
         {
             "name": "actual_type",
@@ -1182,35 +1499,61 @@ __Set Actual Text__ - Set a replacement for the content, providing text that is 
     ]
 }
 ```
-### `fix_placement`
-__Fix Placement__ - Fix placement
+### Fix Placement
+
+`fix_placement`
+
+Fix Placement corrects incorrect Placement attributes for the Figure, Formula, Form and Note tags
+
 #### example:
 ```
 {
     "name": "fix_placement"
 }
 ```
-### `fix_document_tag`
-__Fix Document Tag__ - Fix Document tag 
+### Fix Document Tag
+
+`fix_document_tag`
+
+Fix Document tag 
+
 #### example:
 ```
 {
     "name": "fix_document_tag"
 }
 ```
-### `fix_list_tag`
-__Fix List Tag__ - Fix List tag 
+### Fix List Tag
+
+`fix_list_tag`
+
+Fix List tag errors
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the tags by the template tag_update
+
 #### example:
 ```
 {
-    "name": "fix_list_tag"
+    "name": "fix_list_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^L$"
+        }
+    ]
 }
 ```
-### `remove_tag_data`
-__Remove Tag Properties__ - Remove properties from the defined tags
+### Remove Tag Properties
+
+`remove_tag_data`
+
+Remove properties from the defined tags
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `accept_alternate_desc` (bool) __Remove Alternate__ - Remove Alt key
 
@@ -1221,6 +1564,17 @@ __Remove Tag Properties__ - Remove properties from the defined tags
 - `accept_lang` (bool) __Remove Language__ - Remove Lang key
 
 - `accept_title` (bool) __Remove Title__ - Remove T key
+
+- `owner` (string) __Remove Attribute Owner__ - Remove standard attribute owner. If Attribute Name is not specified, it removes the whole group of attributes
+
+  - __None__ - None
+  - __Layout__ - Layout Attributes governing the layout of content
+  - __List__ - List Attributes governing the numbering of lists
+  - __PrintField__ - PrintField Attributes governing Form structure elements for non-interactive form fields
+  - __Table__ - Table Attributes governing the organisation of cells in tables
+
+
+- `name` (string) __Remove Attribute Name__ - Removes only the attribute with defined name e.g. Headers from the previously defined Attribute Owner
 
 #### example:
 ```
@@ -1250,32 +1604,41 @@ __Remove Tag Properties__ - Remove properties from the defined tags
         {
             "name": "accept_title",
             "value": false
+        },
+        {
+            "name": "owner",
+            "value": ""
+        },
+        {
+            "name": "name",
+            "value": ""
         }
     ]
 }
 ```
-### `set_structure_attribute`
-__Set Tag Attributes__ - Set the attributes of the tag
+### Set Tag Attributes
+
+`set_structure_attribute`
+
+Set the standard structure attributes for tags. Each attribute object has an owner.
+
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template update_tag
+- `tag_names` (tag) __Tags__ - Define the tags types using a regular expression format (https://regex101.com/) or define by the template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current Tag ID if it already exists
 
 - `owner` (string) __Owner__ - Standard attribute owner
 
-  - __Layout__ - Layout
-  - __List__ - List
-  - __PrintField__ - PrintField
-  - __Table__ - Table
+  - __Layout__ - Layout Attributes governing the layout of content
+  - __List__ - List Attributes governing the numbering of lists
+  - __PrintField__ - PrintField Attributes governing Form structure elements for non-interactive form fields
+  - __Table__ - Table Attributes governing the organisation of cells in tables
 
 
 - `name` (string) __Name__ - Attribute name
 
 - `value` (string) __Value__ - Arrtibute value
-
-  - ____ - 
-
 
 - `value_type` (string) __Value Type__ - Attribute value type
 
@@ -1323,8 +1686,46 @@ __Set Tag Attributes__ - Set the attributes of the tag
     ]
 }
 ```
-### `fix_headings`
-__Fix Headings__ - Assign heading levels properly
+### Fix Spaces
+
+`fix_structure_spaces`
+
+Add missing or resolve duplicate white spaces within a structure element
+
+#### params:
+
+- `add_missing_spaces` (bool) __Add Missing Spaces__ - Identify words in the structure and add missing spaces
+
+- `remove_unnecessary_spaces` (bool) __Remove Unnecessary Spaces__ - Remove duplicite spaces after each word
+
+- `artifact_unnecessary_spaces` (bool) __Artifact Unnecessary Spaces__ - Mark duplicite spaces after each word as an Artifact
+
+#### example:
+```
+{
+    "name": "fix_structure_spaces",
+    "params": [
+        {
+            "name": "add_missing_spaces",
+            "value": true
+        },
+        {
+            "name": "remove_unnecessary_spaces",
+            "value": false
+        },
+        {
+            "name": "artifact_unnecessary_spaces",
+            "value": true
+        }
+    ]
+}
+```
+### Fix Headings
+
+`fix_headings`
+
+Correct an invalid heading structure mo maintain headings in sequentially-descending order
+
 #### params:
 
 - `renumber_headings` (int) __Renumber Headings__ - Renumber all headings
@@ -1359,3 +1760,5 @@ __Fix Headings__ - Assign heading levels properly
     ]
 }
 ```
+</div>
+

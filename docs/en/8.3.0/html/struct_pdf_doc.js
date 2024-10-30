@@ -84,6 +84,7 @@ var struct_pdf_doc =
     [ "ReplaceFont", "struct_pdf_doc.html#abb64b61d54f9742593846bcd4fb05c93", null ],
     [ "Save", "struct_pdf_doc.html#a6ad4dc48914edd5d4e0717bea77593a7", null ],
     [ "SaveToStream", "struct_pdf_doc.html#ad0dea43e862c09b9b418ae4326c936e7", null ],
+    [ "SetFlags", "struct_pdf_doc.html#ad3b1e91d3cad113fd30a4027f745b438", null ],
     [ "SetInfo", "struct_pdf_doc.html#a1eb6bda173fac409b4fff367b6794b64", null ],
     [ "SetLang", "struct_pdf_doc.html#abdcd6fdbc329ff270b625fad14cc99f0", null ],
     [ "SetPdfStandard", "struct_pdf_doc.html#abcd4b4075cf2a438caed8b5eb9e01397", null ],

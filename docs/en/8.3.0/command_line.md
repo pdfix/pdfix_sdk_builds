@@ -22,6 +22,7 @@ _Options:_
 | [`pdf2image`](#pdf2image) | Extract images from PDF| 
 | [`extract-highlighted-text`](#extract-highlighted-text) | Extract highlighted text from PDF| 
 | [`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file.| 
+| [`pdf2json`](#pdf2json) | Extract PDF data into JSON| 
 | [`preflight`](#preflight) | Preflight document template and output the config| 
 | [`ocr`](#ocr) | Converts scans or images-only PDF documents into searchable, editable PDF files.| 
 | [`import-data`](#import-data) | Import form data from JSON| 
@@ -97,6 +98,8 @@ _Options:_
 ```
   --password TEXT             Open password
   -c,--command-path TEXT      Command file path. Default make accessible command will be used if it's empty.
+  -l,--lang TEXT              The language to assign to the PDF document
+  -t,--title TEXT             The title to assign to the PDF document
 ```
 
 
@@ -220,6 +223,21 @@ _Options:_
   --preflight                 Preflight document template before processing
   --type ENUM:{0,1,2}         integer value defining the conversion type (0-Original content layout type, 1-Responsive content layout type, 2-Derivation)
   --format ENUM:{1,2}         integer value defining the image output format (1-PNG, 2-JPG)
+```
+
+
+
+### `pdf2json`
+Extract PDF data into JSON
+
+
+
+_Options:_
+```
+  --password TEXT             Open password
+  -c,--config_path TEXT:FILE  Config file path
+  --preflight                 Preflight document template before processing
+  -f,--flags INT              Conversion flags
 ```
 
 

@@ -8,7 +8,7 @@ var searchData=
   ['activate_5',['Activate',['../struct_ps_standard_authorization.html#a700df34e0ba2ce560d3a0b9c779e18a2',1,'PsStandardAuthorization']]],
   ['activateoffline_6',['ActivateOffline',['../struct_ps_standard_authorization.html#a622c001444483645aa21c6fee2bee918',1,'PsStandardAuthorization']]],
   ['addannot_7',['AddAnnot',['../struct_pdf_page.html#a3165cb6a40e84fbfca3c84ab671ae38b',1,'PdfPage::AddAnnot()'],['../struct_pds_struct_element.html#ad3b4ea35ec86db15ebd6fd76ecb40ea3',1,'PdsStructElement::AddAnnot()']]],
-  ['addassociatedheader_8',['AddAssociatedHeader',['../struct_pde_cell.html#ae62e001f17e0bf407fe5ca7e29077213',1,'PdeCell']]],
+  ['addassociatedheader_8',['AddAssociatedHeader',['../struct_pde_cell.html#ae62e001f17e0bf407fe5ca7e29077213',1,'PdeCell::AddAssociatedHeader()'],['../struct_pds_struct_element.html#a6334c8b0d339d56d9ce6a8a5571c8ba0',1,'PdsStructElement::AddAssociatedHeader(int index, PdsStructElement *header, bool create)=0']]],
   ['addattrobj_9',['AddAttrObj',['../struct_pds_struct_element.html#a1d2007ec5a663805b284984f19250ab3',1,'PdsStructElement']]],
   ['addchild_10',['AddChild',['../struct_pdf_bookmark.html#a28f9a9138c9c4cae0ce1afb331daf395',1,'PdfBookmark::AddChild()'],['../struct_pds_struct_element.html#abc7942e30b2590273e30066fbe491fc6',1,'PdsStructElement::AddChild()'],['../struct_pds_struct_tree.html#a40cab618a76442a36d8f022147aa5ac4',1,'PdsStructTree::AddChild()']]],
   ['addfontmissingunicode_11',['AddFontMissingUnicode',['../struct_pdf_doc.html#ab881a423ee35ea8c7c4947101520707c',1,'PdfDoc']]],

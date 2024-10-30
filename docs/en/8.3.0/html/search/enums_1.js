@@ -47,8 +47,9 @@ var searchData=
   ['pdftextstyle_44',['PdfTextStyle',['../group___enumerations___p_d_fix___s_d_k.html#ga2cf28478abc1d02dcfe6520b9c886630',1,'pdfix.h']]],
   ['pdfwordfinderalgorithm_45',['PdfWordFinderAlgorithm',['../group___enumerations___p_d_fix___s_d_k.html#gac85c76f0155ca41dd1c004473fed57f1',1,'pdfix.h']]],
   ['pdspathpointtype_46',['PdsPathPointType',['../group___enumerations___p_d_fix___s_d_k.html#gad6fded43a64a9d23f5adcddd31c8e888',1,'pdfix.h']]],
-  ['psdataformat_47',['PsDataFormat',['../group___enumerations___p_d_fix___s_d_k.html#gab4ff31131204bf1a7cae7d0e4ce532d2',1,'pdfix.h']]],
-  ['psfilemode_48',['PsFileMode',['../group___enumerations___p_d_fix___s_d_k.html#ga9fc9b420229ff7fe7d1edc1b11e136a5',1,'pdfix.h']]],
-  ['psimagedibformat_49',['PsImageDIBFormat',['../group___enumerations___p_d_fix___s_d_k.html#ga606c83e379d17b4677867b7dc476c362',1,'pdfix.h']]],
-  ['psrenderdevicetype_50',['PsRenderDeviceType',['../group___enumerations___p_d_fix___s_d_k.html#ga859a04a2d256f803092062ce02efd2d0',1,'pdfix.h']]]
+  ['pscommandtype_47',['PsCommandType',['../group___enumerations___p_d_fix___s_d_k.html#ga36167b375094eb2d2786bc0100e2d26b',1,'pdfix.h']]],
+  ['psdataformat_48',['PsDataFormat',['../group___enumerations___p_d_fix___s_d_k.html#gab4ff31131204bf1a7cae7d0e4ce532d2',1,'pdfix.h']]],
+  ['psfilemode_49',['PsFileMode',['../group___enumerations___p_d_fix___s_d_k.html#ga9fc9b420229ff7fe7d1edc1b11e136a5',1,'pdfix.h']]],
+  ['psimagedibformat_50',['PsImageDIBFormat',['../group___enumerations___p_d_fix___s_d_k.html#ga606c83e379d17b4677867b7dc476c362',1,'pdfix.h']]],
+  ['psrenderdevicetype_51',['PsRenderDeviceType',['../group___enumerations___p_d_fix___s_d_k.html#ga859a04a2d256f803092062ce02efd2d0',1,'pdfix.h']]]
 ];

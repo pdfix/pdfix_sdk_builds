@@ -33,5 +33,6 @@ var struct_pdf_page =
     [ "Release", "struct_pdf_page.html#ab58514db443bf07f52fcbf76d29d4a4e", null ],
     [ "RemoveAnnot", "struct_pdf_page.html#ab3c6ed26da5357b8d41c29ef2413302f", null ],
     [ "SetContent", "struct_pdf_page.html#ab05f6791b1c442b01fb51828c8637b39", null ],
+    [ "SetFlags", "struct_pdf_page.html#afee07d375257c44b6838a543994cc3c0", null ],
     [ "SetRotate", "struct_pdf_page.html#a14e4140d1970b5baa108a8f133a24069", null ]
 ];

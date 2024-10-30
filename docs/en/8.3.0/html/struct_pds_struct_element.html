@@ -146,6 +146,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa21163be43a32e0baa17295af3d9c0f1"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#aa21163be43a32e0baa17295af3d9c0f1">SetTitle</a> (const wchar_t *title)=0</td></tr>
 <tr class="memdesc:aa21163be43a32e0baa17295af3d9c0f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the title associated with an element.  <a href="struct_pds_struct_element.html#aa21163be43a32e0baa17295af3d9c0f1">More...</a><br /></td></tr>
 <tr class="separator:aa21163be43a32e0baa17295af3d9c0f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c21aa6acc6ea59bd9b96dd0e3e77f24"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a7c21aa6acc6ea59bd9b96dd0e3e77f24">GetText</a> (int max, wchar_t *buffer, int len) const =0</td></tr>
+<tr class="memdesc:a7c21aa6acc6ea59bd9b96dd0e3e77f24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the page content of the specified element, returning the number of bytes in the content.  <a href="struct_pds_struct_element.html#a7c21aa6acc6ea59bd9b96dd0e3e77f24">More...</a><br /></td></tr>
+<tr class="separator:a7c21aa6acc6ea59bd9b96dd0e3e77f24"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f2aa04bcbdf06e4f8e0a568259e0b6f"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a0f2aa04bcbdf06e4f8e0a568259e0b6f">GetAbbreviation</a> (wchar_t *buffer, int len) const =0</td></tr>
 <tr class="memdesc:a0f2aa04bcbdf06e4f8e0a568259e0b6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the expanded form of an abbreviation.  <a href="struct_pds_struct_element.html#a0f2aa04bcbdf06e4f8e0a568259e0b6f">More...</a><br /></td></tr>
 <tr class="separator:a0f2aa04bcbdf06e4f8e0a568259e0b6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,6 +216,36 @@ Public Member Functions</h2></td></tr>
 virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>GetStructTree</b> ()=0</td></tr>
 <tr class="memdesc:af3753224a616d3427a2756e2d6cde047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get pointer to the parent struct tree object. <br /></td></tr>
 <tr class="separator:af3753224a616d3427a2756e2d6cde047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac0abf6a9f44edccb36f65d0fd5b87c9"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#aac0abf6a9f44edccb36f65d0fd5b87c9">RecognizeTable</a> ()=0</td></tr>
+<tr class="memdesc:aac0abf6a9f44edccb36f65d0fd5b87c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recreates a Table structure from the Table structure element.  <a href="struct_pds_struct_element.html#aac0abf6a9f44edccb36f65d0fd5b87c9">More...</a><br /></td></tr>
+<tr class="separator:aac0abf6a9f44edccb36f65d0fd5b87c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a003d9b9b4e51e9306e5537c792c5ff2c"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a003d9b9b4e51e9306e5537c792c5ff2c">GetNumRow</a> () const =0</td></tr>
+<tr class="memdesc:a003d9b9b4e51e9306e5537c792c5ff2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of table row.  <a href="struct_pds_struct_element.html#a003d9b9b4e51e9306e5537c792c5ff2c">More...</a><br /></td></tr>
+<tr class="separator:a003d9b9b4e51e9306e5537c792c5ff2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bfd6e1178d2283697c66cb29dd8a87e"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a2bfd6e1178d2283697c66cb29dd8a87e">GetNumCol</a> () const =0</td></tr>
+<tr class="memdesc:a2bfd6e1178d2283697c66cb29dd8a87e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of table column.  <a href="struct_pds_struct_element.html#a2bfd6e1178d2283697c66cb29dd8a87e">More...</a><br /></td></tr>
+<tr class="separator:a2bfd6e1178d2283697c66cb29dd8a87e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e376879321ebb4d31740a5adde45662"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a0e376879321ebb4d31740a5adde45662">GetCell</a> (int row, int col)=0</td></tr>
+<tr class="memdesc:a0e376879321ebb4d31740a5adde45662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the table cell.  <a href="struct_pds_struct_element.html#a0e376879321ebb4d31740a5adde45662">More...</a><br /></td></tr>
+<tr class="separator:a0e376879321ebb4d31740a5adde45662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e9e3a8a60852ffbe19dc3b35dca6674"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a6e9e3a8a60852ffbe19dc3b35dca6674">GetCellParams</a> (int row, int col, <a class="el" href="group___structures___p_d_fix___s_d_k.html#gafd44f323d9043678aa8d559d56b51446">PdfCellParams</a> *params)=0</td></tr>
+<tr class="memdesc:a6e9e3a8a60852ffbe19dc3b35dca6674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the cell's parameters.  <a href="struct_pds_struct_element.html#a6e9e3a8a60852ffbe19dc3b35dca6674">More...</a><br /></td></tr>
+<tr class="separator:a6e9e3a8a60852ffbe19dc3b35dca6674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c2377ee3698b02c794e2522d0f07ad0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a0c2377ee3698b02c794e2522d0f07ad0">GetCellElemParams</a> (<a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *cell, <a class="el" href="group___structures___p_d_fix___s_d_k.html#gafd44f323d9043678aa8d559d56b51446">PdfCellParams</a> *params)=0</td></tr>
+<tr class="memdesc:a0c2377ee3698b02c794e2522d0f07ad0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the cell's parameters.  <a href="struct_pds_struct_element.html#a0c2377ee3698b02c794e2522d0f07ad0">More...</a><br /></td></tr>
+<tr class="separator:a0c2377ee3698b02c794e2522d0f07ad0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f5950c317a26b8b94b5a88254c573f0"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a2f5950c317a26b8b94b5a88254c573f0">GetNumAssociatedHeaders</a> ()=0</td></tr>
+<tr class="memdesc:a2f5950c317a26b8b94b5a88254c573f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of associated headers for a cell.  <a href="struct_pds_struct_element.html#a2f5950c317a26b8b94b5a88254c573f0">More...</a><br /></td></tr>
+<tr class="separator:a2f5950c317a26b8b94b5a88254c573f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5cac2afedc5c3147103f2ef57464eeb"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#ad5cac2afedc5c3147103f2ef57464eeb">GetAssociatedHeader</a> (int index)=0</td></tr>
+<tr class="memdesc:ad5cac2afedc5c3147103f2ef57464eeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the requested child associated header.  <a href="struct_pds_struct_element.html#ad5cac2afedc5c3147103f2ef57464eeb">More...</a><br /></td></tr>
+<tr class="separator:ad5cac2afedc5c3147103f2ef57464eeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6334c8b0d339d56d9ce6a8a5571c8ba0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a6334c8b0d339d56d9ce6a8a5571c8ba0">AddAssociatedHeader</a> (int index, <a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *header, bool create)=0</td></tr>
+<tr class="memdesc:a6334c8b0d339d56d9ce6a8a5571c8ba0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the associated header to cell.  <a href="struct_pds_struct_element.html#a6334c8b0d339d56d9ce6a8a5571c8ba0">More...</a><br /></td></tr>
+<tr class="separator:a6334c8b0d339d56d9ce6a8a5571c8ba0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a272b3aeeb389f32837d1905cf533da09"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pds_struct_element.html#a272b3aeeb389f32837d1905cf533da09">RemoveAssociatedHeader</a> (int index)=0</td></tr>
+<tr class="memdesc:a272b3aeeb389f32837d1905cf533da09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the specified child froma an action.  <a href="struct_pds_struct_element.html#a272b3aeeb389f32837d1905cf533da09">More...</a><br /></td></tr>
+<tr class="separator:a272b3aeeb389f32837d1905cf533da09"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p ><a class="el" href="struct_pds_struct_element.html" title="PdsStructElement class.">PdsStructElement</a> class. </p>
@@ -260,6 +293,61 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Created <a class="el" href="struct_pds_struct_element.html" title="PdsStructElement class.">PdsStructElement</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a6334c8b0d339d56d9ce6a8a5571c8ba0" name="a6334c8b0d339d56d9ce6a8a5571c8ba0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6334c8b0d339d56d9ce6a8a5571c8ba0">&#9670;&#160;</a></span>AddAssociatedHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdsStructElement::AddAssociatedHeader </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *&#160;</td>
+          <td class="paramname"><em>header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>create</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds the associated header to cell. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Cell structure element. </td></tr>
+    <tr><td class="paramname">index</td><td>Position where the header is inserted. </td></tr>
+    <tr><td class="paramname">header</td><td>The associated header to add. </td></tr>
+    <tr><td class="paramname">create</td><td>If true, TD cell will be changed to TH. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the header was successfully added. false otherwise </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>PdsStructTable::GetNumAssociatedHeaders </dd></dl>
 
 </div>
 </div>
@@ -570,6 +658,43 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 
 </div>
 </div>
+<a id="ad5cac2afedc5c3147103f2ef57464eeb" name="ad5cac2afedc5c3147103f2ef57464eeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5cac2afedc5c3147103f2ef57464eeb">&#9670;&#160;</a></span>GetAssociatedHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> * PdsStructElement::GetAssociatedHeader </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the requested child associated header. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Cell structure element. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of associated header to obtain. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Requested associated header. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>PdsStructTable::GetNumAssociatedHeaders </dd></dl>
+
+</div>
+</div>
 <a id="a0ba4a4e76480e77a1ab8c43dd830037a" name="a0ba4a4e76480e77a1ab8c43dd830037a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0ba4a4e76480e77a1ab8c43dd830037a">&#9670;&#160;</a></span>GetAttrObject()</h2>
 
@@ -639,6 +764,151 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 </div><div class="memdoc">
 <p >Returns the union bounding boxes on the page number on which the content items designated by the K entry are rendered.</p>
 <dl class="section return"><dt>Returns</dt><dd>The number of pages. </dd></dl>
+
+</div>
+</div>
+<a id="a0e376879321ebb4d31740a5adde45662" name="a0e376879321ebb4d31740a5adde45662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e376879321ebb4d31740a5adde45662">&#9670;&#160;</a></span>GetCell()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual <a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> * PdsStructElement::GetCell </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the table cell. </p>
+<dl class="section return"><dt>Returns</dt><dd>Table cell. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>Cell row index. </td></tr>
+    <tr><td class="paramname">col</td><td>Cell column index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0c2377ee3698b02c794e2522d0f07ad0" name="a0c2377ee3698b02c794e2522d0f07ad0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2377ee3698b02c794e2522d0f07ad0">&#9670;&#160;</a></span>GetCellElemParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdsStructElement::GetCellElemParams </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_pds_struct_element.html">PdsStructElement</a> *&#160;</td>
+          <td class="paramname"><em>cell</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___structures___p_d_fix___s_d_k.html#gafd44f323d9043678aa8d559d56b51446">PdfCellParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the cell's parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Cell structure element. </td></tr>
+    <tr><td class="paramname">params</td><td>(filled by method) Pointer to a PdfCellParams structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the params was successfully retrieved. false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a6e9e3a8a60852ffbe19dc3b35dca6674" name="a6e9e3a8a60852ffbe19dc3b35dca6674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6e9e3a8a60852ffbe19dc3b35dca6674">&#9670;&#160;</a></span>GetCellParams()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdsStructElement::GetCellParams </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>row</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>col</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="group___structures___p_d_fix___s_d_k.html#gafd44f323d9043678aa8d559d56b51446">PdfCellParams</a> *&#160;</td>
+          <td class="paramname"><em>params</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the cell's parameters. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">row</td><td>Cell row index. </td></tr>
+    <tr><td class="paramname">col</td><td>Cell column index. </td></tr>
+    <tr><td class="paramname">params</td><td>(filled by method) Pointer to a PdfCellParams structure. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the params was successfully retrieved. false otherwise </dd></dl>
 
 </div>
 </div>
@@ -870,6 +1140,41 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 
 </div>
 </div>
+<a id="a2f5950c317a26b8b94b5a88254c573f0" name="a2f5950c317a26b8b94b5a88254c573f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5950c317a26b8b94b5a88254c573f0">&#9670;&#160;</a></span>GetNumAssociatedHeaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int PdsStructElement::GetNumAssociatedHeaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the number of associated headers for a cell. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Cell structure element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of associated headers. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>PdsStructTable::GetAssociatedHeader </dd></dl>
+
+</div>
+</div>
 <a id="a4b84e758b2dbf38363f94faa143a8b5c" name="a4b84e758b2dbf38363f94faa143a8b5c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b84e758b2dbf38363f94faa143a8b5c">&#9670;&#160;</a></span>GetNumAttrObjects()</h2>
 
@@ -926,6 +1231,34 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 
 </div>
 </div>
+<a id="a2bfd6e1178d2283697c66cb29dd8a87e" name="a2bfd6e1178d2283697c66cb29dd8a87e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bfd6e1178d2283697c66cb29dd8a87e">&#9670;&#160;</a></span>GetNumCol()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int PdsStructElement::GetNumCol </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the number of table column. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of column. </dd></dl>
+
+</div>
+</div>
 <a id="ad87ee5c7529489982b477d9665885418" name="ad87ee5c7529489982b477d9665885418"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad87ee5c7529489982b477d9665885418">&#9670;&#160;</a></span>GetNumPages()</h2>
 
@@ -951,6 +1284,34 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 
 <p>Returns the number of pages on which the content items designated by the K entry are rendered. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of pages. </dd></dl>
+
+</div>
+</div>
+<a id="a003d9b9b4e51e9306e5537c792c5ff2c" name="a003d9b9b4e51e9306e5537c792c5ff2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a003d9b9b4e51e9306e5537c792c5ff2c">&#9670;&#160;</a></span>GetNumRow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int PdsStructElement::GetNumRow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the number of table row. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of row. </dd></dl>
 
 </div>
 </div>
@@ -1040,6 +1401,59 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Element's parent object. If the element's parent is the structure tree root, return value is nullptr. </dd></dl>
+
+</div>
+</div>
+<a id="a7c21aa6acc6ea59bd9b96dd0e3e77f24" name="a7c21aa6acc6ea59bd9b96dd0e3e77f24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c21aa6acc6ea59bd9b96dd0e3e77f24">&#9670;&#160;</a></span>GetText()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int PdsStructElement::GetText </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the page content of the specified element, returning the number of bytes in the content. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>(filled by method) If the buffer is null function returns required length of string </td></tr>
+    <tr><td class="paramname">len</td><td>Length of a buffer to be filled in. </td></tr>
+    <tr><td class="paramname">max</td><td>Maximum length of the content. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters written into buffer of required length. </dd></dl>
 
 </div>
 </div>
@@ -1188,6 +1602,71 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if successfull, falsw otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aac0abf6a9f44edccb36f65d0fd5b87c9" name="aac0abf6a9f44edccb36f65d0fd5b87c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac0abf6a9f44edccb36f65d0fd5b87c9">&#9670;&#160;</a></span>RecognizeTable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdsStructElement::RecognizeTable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Recreates a Table structure from the Table structure element. </p>
+<dl class="section return"><dt>Returns</dt><dd>true if pagemap was generated successfuly, false otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="a272b3aeeb389f32837d1905cf533da09" name="a272b3aeeb389f32837d1905cf533da09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a272b3aeeb389f32837d1905cf533da09">&#9670;&#160;</a></span>RemoveAssociatedHeader()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdsStructElement::RemoveAssociatedHeader </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes the specified child froma an action. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cell</td><td>Cell structure element. </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the associated header to remove. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if header was removed sucessfully, false otherwise. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd>PdsStructTable::GetNumAssociatedHeaders </dd></dl>
 
 </div>
 </div>
@@ -1467,7 +1946,7 @@ virtual <a class="el" href="struct_pds_struct_tree.html">PdsStructTree</a> *&#16
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_pds_struct_element.html">PdsStructElement</a></li>
-    <li class="footer">Generated on Mon Sep 30 2024 11:48:16 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Oct 30 2024 19:32:52 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

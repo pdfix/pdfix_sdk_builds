@@ -1,5 +1,33 @@
 # Changelog
 
+## [8.3.0] - 2024-10-31
+### Added
+- New Actions (previously Commands)
+  - __Add Table Summary__ action
+  - __Set PDF Version__ action
+  - __Set Actual Text__ action
+  - __Set Associated Headers__ action
+  - __Rename Tags__ action
+  - Add extended Tag properties support to PSCommand
+- Added methods `PdfDoc.SetFlags`, `PdfPage.SetFlags`
+- Added `PdsStructTable` class for handling Table structure elements
+
+### Modified
+- Updated __PDF to HTML__ and __PDF to JSON__ conversion for pipeline-runner
+- __Set PDF modification date__ when saving
+- __Create Bookmarks Action__ now allows defining multiple tags for bookmark levels
+- __Deleted rolemap__ after applying standard tags
+- __Set Annotation Contents Action__ changed default value to "text in bbox"
+- Added `--lang` and `--title` parameters to the `make-accessible` CLI command
+
+### Fixed
+- Issues with Artifact and Set Content Marks in Form XObjects
+- Incorrect order in list and table elements after autotagging
+- `PdsStructElement.MoveChild` now correctly updates the StructElement page number
+
+### General
+- Performance and stability improvements
+
 ## [8.2.0] - 2024-08-25
 ### Added 
 - Added PdsStructElement.GetBBox the union bounding boxes on the page number on which the content items designated by the K entry are rendered

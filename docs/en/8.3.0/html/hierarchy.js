@@ -4,6 +4,7 @@ var hierarchy =
     [ "_PdeGraphicState", "struct___pde_graphic_state.html", null ],
     [ "_PdfAnnotAppearance", "struct___pdf_annot_appearance.html", null ],
     [ "_PdfBookmarkAppearance", "struct___pdf_bookmark_appearance.html", null ],
+    [ "_PdfCellParams", "struct___pdf_cell_params.html", null ],
     [ "_PdfCMYK", "struct___pdf_c_m_y_k.html", null ],
     [ "_PdfColorState", "struct___pdf_color_state.html", null ],
     [ "_PdfDevPoint", "struct___pdf_dev_point.html", null ],

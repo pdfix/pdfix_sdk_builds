@@ -210,6 +210,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab0bd2057a58e6e330462a81e81c01505"><td class="memItemLeft" align="right" valign="top">virtual PdfPageFlags&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_page.html#ab0bd2057a58e6e330462a81e81c01505">GetFlags</a> ()=0</td></tr>
 <tr class="memdesc:ab0bd2057a58e6e330462a81e81c01505"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the page flags.  <a href="struct_pdf_page.html#ab0bd2057a58e6e330462a81e81c01505">More...</a><br /></td></tr>
 <tr class="separator:ab0bd2057a58e6e330462a81e81c01505"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afee07d375257c44b6838a543994cc3c0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_page.html#afee07d375257c44b6838a543994cc3c0">SetFlags</a> (PdfPageFlags flags)=0</td></tr>
+<tr class="memdesc:afee07d375257c44b6838a543994cc3c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the page flags.  <a href="struct_pdf_page.html#afee07d375257c44b6838a543994cc3c0">More...</a><br /></td></tr>
+<tr class="separator:afee07d375257c44b6838a543994cc3c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0cee130e607f4d1e17205c6d0c3a0f7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_pdf_page.html#aa0cee130e607f4d1e17205c6d0c3a0f7">ClearFlags</a> ()=0</td></tr>
 <tr class="memdesc:aa0cee130e607f4d1e17205c6d0c3a0f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the page flags.  <a href="struct_pdf_page.html#aa0cee130e607f4d1e17205c6d0c3a0f7">More...</a><br /></td></tr>
 <tr class="separator:aa0cee130e607f4d1e17205c6d0c3a0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1353,6 +1356,41 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="afee07d375257c44b6838a543994cc3c0" name="afee07d375257c44b6838a543994cc3c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afee07d375257c44b6838a543994cc3c0">&#9670;&#160;</a></span>SetFlags()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool PdfPage::SetFlags </td>
+          <td>(</td>
+          <td class="paramtype">PdfPageFlags&#160;</td>
+          <td class="paramname"><em>flags</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the page flags. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">flags</td><td>Flags field, containing an OR of the PdfPageFlags values </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the flags was set successfuly </dd></dl>
+
+</div>
+</div>
 <a id="a14e4140d1970b5baa108a8f133a24069" name="a14e4140d1970b5baa108a8f133a24069"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14e4140d1970b5baa108a8f133a24069">&#9670;&#160;</a></span>SetRotate()</h2>
 
@@ -1394,7 +1432,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="struct_pdf_page.html">PdfPage</a></li>
-    <li class="footer">Generated on Mon Sep 30 2024 11:48:16 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
+    <li class="footer">Generated on Wed Oct 30 2024 19:32:52 for PDFix SDK by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.5 </li>
   </ul>
 </div>
 </body>

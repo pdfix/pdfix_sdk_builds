@@ -232,6 +232,7 @@ var group___pdf___p_d_fix___s_d_k =
       [ "ReplaceFont", "struct_pdf_doc.html#abb64b61d54f9742593846bcd4fb05c93", null ],
       [ "Save", "struct_pdf_doc.html#a6ad4dc48914edd5d4e0717bea77593a7", null ],
       [ "SaveToStream", "struct_pdf_doc.html#ad0dea43e862c09b9b418ae4326c936e7", null ],
+      [ "SetFlags", "struct_pdf_doc.html#ad3b1e91d3cad113fd30a4027f745b438", null ],
       [ "SetInfo", "struct_pdf_doc.html#a1eb6bda173fac409b4fff367b6794b64", null ],
       [ "SetLang", "struct_pdf_doc.html#abdcd6fdbc329ff270b625fad14cc99f0", null ],
       [ "SetPdfStandard", "struct_pdf_doc.html#abcd4b4075cf2a438caed8b5eb9e01397", null ],
@@ -338,6 +339,7 @@ var group___pdf___p_d_fix___s_d_k =
       [ "Release", "struct_pdf_page.html#ab58514db443bf07f52fcbf76d29d4a4e", null ],
       [ "RemoveAnnot", "struct_pdf_page.html#ab3c6ed26da5357b8d41c29ef2413302f", null ],
       [ "SetContent", "struct_pdf_page.html#ab05f6791b1c442b01fb51828c8637b39", null ],
+      [ "SetFlags", "struct_pdf_page.html#afee07d375257c44b6838a543994cc3c0", null ],
       [ "SetRotate", "struct_pdf_page.html#a14e4140d1970b5baa108a8f133a24069", null ]
     ] ],
     [ "PdfPageView", "struct_pdf_page_view.html", [
