@@ -2,7 +2,7 @@
 
 ## [8.3.1] - 2024-11-05
 ### Fixed
-- Fixed PsProgressControl raise exception is initiating with zero steps
+- Fixed PsProgressControl raises an exception if initiating with zero steps
 - Fixed Modification Date format in document Metadata
 
 ### General
