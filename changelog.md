@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.3.1] - 2024-11-05
+### Fixed
+- Fixed PsProgressControl raise exception is initiating with zero steps
+- Fixed Modification Date format in document Metadata
+
+### General
+- Performance and stability improvements
+
 ## [8.3.0] - 2024-10-31
 ### Added
 - New Actions (previously Commands)
