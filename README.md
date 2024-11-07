@@ -116,7 +116,7 @@ _Note to PHP users: Depending on the configuration the PHP may operate in a safe
 ```
 ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX --request --license-path license.req
 ```
-**Step 2:** Send the `license.req` file to [support@pdfix.net](mailto:support@pdfix.net) along with the license key to create a license activation file. Once you receive the `license.lic` file follow to the next step.
+**Step 2:** Upload the `license.req` file to https://pdfix.net/offline-licensing/ to create a license activation file. You receive a `license.lic` upon submission and follow to the next step.
 
 **Step 3:** Activate the license from file
 ```
