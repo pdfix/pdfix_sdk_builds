@@ -221,9 +221,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "image_overlap_distance": 1,
-        "label_image_w3": 1,
-        "graphic_table_image_similarity": 0.7
+        "table_detect_sect": 1,
+        "sect_table_image_col_gs": 1,
+        "preflight_artifact_distance": 0.7
       }
     ]
   }
@@ -265,8 +265,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_chart_caption": "((^chart)|(^map))",
-        "regex_comma": "[,;]$"
+        "regex_table_caption": "((^table)|(^tab\\.))",
+        "regex_letter_numbering": "^[\\[\\(]?[A-Za-z][\\)\\]\\.]$"
       }
     ]
   }
@@ -1560,6 +1560,7 @@ _keys and values:_
 - "[expansion](#expansion)"
 - "[has_content](#has_content)"
 - "[tag_type](#tag_type)"
+- "[parent_tag_type](#parent_tag_type)"
 - "[annot_type](#annot_type)"
 - "[contents](#contents)"
 - "[annot_flag](#annot_flag)"

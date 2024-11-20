@@ -1,5 +1,17 @@
 # Changelog
 
+## [8.4.0] - 2024-11-20
+
+### Added 
+- Added command Clone tagged and non-tagged XObjects
+
+### Fixed
+- Fixed duplicid MCID error when auto-tagging
+- Fixed reversed flags for marking headers/footers in template
+
+### General
+- Performance and stability improvements
+
 ## [8.3.1] - 2024-11-05
 ### Fixed
 - Fixed PsProgressControl raises an exception if initiating with zero steps
