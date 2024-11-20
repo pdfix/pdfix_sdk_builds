@@ -6,7 +6,7 @@
 - Added command Clone tagged and non-tagged XObjects
 
 ### Fixed
-- Fixed duplicid MCID error when auto-tagging
+- Fixed duplicit MCID error when auto-tagging
 - Fixed reversed flags for marking headers/footers in template
 
 ### General
