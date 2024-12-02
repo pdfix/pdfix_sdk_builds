@@ -1,5 +1,11 @@
 # Changelog
 
+## [8.4.1] - 2024-12-02
+
+### General
+- Integration udpate for PDFix Pipeline
+- Performance and stability improvements
+
 ## [8.4.0] - 2024-11-20
 
 ### Added 
