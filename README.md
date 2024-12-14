@@ -193,7 +193,7 @@ Command line example:
 ```
 $ ./pdfix_app license --status 
 ```
-Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/LicenseStatus.cpp)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/LicenseStatus.cpp), [Python](https://github.com/pdfix/pdfix_sdk_example_python/blob/master/src/License.py)
 
 Satus output:
 ```
