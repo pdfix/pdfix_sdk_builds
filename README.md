@@ -107,7 +107,7 @@ Using the command line:
 ```
 $ ./pdfix_app license --activate XXXX-XXXX-XXXX-XXXX
 ```
-Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseActivate.cpp), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseActivate.cpp), [c#](https://github.com/pdfix/pdfix_sdk_example_dotnet/blob/master/src/Initialization.cs), [Python](https://github.com/pdfix/pdfix_sdk_example_python/blob/master/src/License.py)
 
 _Note to PHP users: Depending on the configuration the PHP may operate in a safe mode under a virtual user (e.g. www-data). In such a case the license should be activated separately with PHP._
 
