@@ -143,7 +143,7 @@ Command line example:
 ```
 $ ./pdfix_app license --deactivate --license-path deactivate.req
 ```
-Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivateOffline.cpp)
+Code example: [c++](https://github.com/pdfix/pdfix_sdk_example_cpp/blob/master/src/StandardLicenseDeactivateOffline.cpp), [Python](https://github.com/pdfix/pdfix_sdk_example_python/blob/master/src/License.py)
 
 
 ### License file local storage
