@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.4.3] - 2024-12-17
+
+### General
+- Java 8 support, library built with JDK version 1.8.0
+
+
+### General
+- Fixed python module initialization on Windows
+
+## [8.4.2] - 2024-12-12
+
+### General
+- Fixed python module initialization on Windows
+
 ## [8.4.1] - 2024-12-02
 
 ### General
