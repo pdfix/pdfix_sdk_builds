@@ -41,11 +41,11 @@ Layout analysis is executed using the object `PdePageMap`. Any process operating
 
 ### List of Functions Using Layout Analysis:
 - `PdePageMap.CreateElements()`
-- `PdfPage.AddTags()`
-- `PdfDoc.AddTags()`
-- `PdfHtmlConversion.Save()` *when converting to a responsive HTML layout*
-- `PdfJsonConversion.Save()` *when converting a page map*
-- `PsCommand.Run()` *when the action `add_tags` is used*
+- `PdfPage.AddTags()`             *enterprise only*
+- `PdfDoc.AddTags()`              *enterprise only*
+- `PdfHtmlConversion.Save()`      *when converting to a responsive HTML layout*
+- `PdfJsonConversion.Save()`      *when converting a page map*
+- `PsCommand.Run()`               *when the action `add_tags` is used*
 
 ### List of CLI Commands Using Layout Analysis:
 - `pdfix_app add-tags`
@@ -157,6 +157,39 @@ GetPdfix().GetStandardAuthorization().SaveToStream(mem_stm, kDataFormatJson)
 ```
 Code example: [Python](https://github.com/pdfix/pdfix_sdk_example_python/blob/master/src/License.py)
 
+The example status:
+```
+{
+    "product": {
+        "name": "PDFix SDK",
+        "option": "Enterprise",
+        "version": "8.4.0"
+    },
+    "status": {
+        "authorized": "true"
+    },
+    "license": {
+        "type": "standard",
+        "active": "true",
+        "key": "XXXX-XXXX-XXXX-XXXX",
+        "max_activations": "5",
+        "total_activations": "2",
+        "days_remaining": "51",
+        "expired": "false",
+        "expiration_date": "2024-01-09",
+        "days_since_last_check": "1",
+        "pages": {
+            "type": "2",
+            "max_consumption": "30000",
+            "total_consumption": "3024",
+            "local_consumption": "5"
+        },
+        "enterprise": {
+            "type": "1"
+        }
+    }
+}
+```
 
 ### Local License File Storage
 The activated license information is stored on computer under the current user account. The default local license storage is in the following directories:
