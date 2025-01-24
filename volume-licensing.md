@@ -4,8 +4,9 @@ Volume licensing allows users to set up flexible plans based on the number of pr
 
 The default plans offered are 2,000, 5,000, 10,000, 30,000 or more pages per month. For higher volumes, a custom or flat-rate license can be arranged upon request.
 
-- Exceeding the limits is not allowed by default, but can be set upon a custom request
+- Once the page limit is hit, the the SDK returns error 428, "Consupmtion limit reached."
 - Page counter resets to zero every month
+- Exceeding the limits is not allowed by default, but can be set upon request
 
 For any inquiries, please contact us at support@pdfix.net.
 
