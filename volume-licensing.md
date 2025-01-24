@@ -35,6 +35,8 @@ The SDK counts only pages processed with layout recognition. The total number of
 - Auto-tagging the whole document and saving increases the counter by 8 pages. Re-tagging the same opened document does not count additional pages.
 - Auto-tagging, saving, and closing the document increases the counter by 8 pages. Re-opening and re-tagging the document counts another 8 pages.
 
+- Document editing that does not involve functions above has no affect on page counting. 
+
 ## Which Functions Count Pages
 
 Layout analysis is executed using the object `PdePageMap`. Any process operating with this object counts pages.
@@ -49,7 +51,7 @@ Layout analysis is executed using the object `PdePageMap`. Any process operating
 
 ### List of CLI Commands Using Layout Analysis:
 - `pdfix_app add-tags`
-- `pdfix_app batch` *when the action `add_tags` is used*
+- `pdfix_app batch` *when the actions `add_tags`, `tag_as` is used*
 
 ## Using the license with PDFix SDK
 
