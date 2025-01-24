@@ -99,10 +99,9 @@ For concurrent processing, use separate processes instead of threads.
 
 ## License Management
 
-For volume licensing, refer to [Volume Licensing](https://github.com/pdfix/pdfix_sdk_builds/blob/main/volume-licensing.md).
-For high-volume or custom licensing, contact us at **support@pdfix.net**.
+- For volume licensing, refer to [Volume Licensing](https://github.com/pdfix/pdfix_sdk_builds/blob/main/volume-licensing.md).
+- For high-volume or custom licensing, contact us at **support@pdfix.net**.
 
 ## Support
 
 For any questions, visit our [Support Page](https://pdfix.net/support).
-
