@@ -85,22 +85,22 @@ PDFix SDK is designed for single-threaded processing, meaning only one API metho
 
 For concurrent processing, use separate processes instead of threads.
 
-## Prerequisites
+## Licensing
 
-- **Windows**: Windows 7 and newer, Windows Server 2016 and newer (_Requires the latest [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)_)  
-- **macOS**: macOS 10.15 and newer  
-- **Linux**: Ubuntu 16.04 and newer, Debian 10 and newer, CentOS 8 and newer  
+- For volume licensing, refer to [Volume Licensing](https://github.com/pdfix/pdfix_sdk_builds/blob/main/volume-licensing.md).
+- For high-volume or custom licensing, contact us at **support@pdfix.net**.
 
-## Trial/Lite License Limitations
+### Trial/Lite License Limitations
 
 - Extracted text may have randomly replaced characters with "*".
 - Rasterized images may contain a watermark.
 - Saved PDFs may have redacted content.
 
-## License Management
+## Prerequisites
 
-- For volume licensing, refer to [Volume Licensing](https://github.com/pdfix/pdfix_sdk_builds/blob/main/volume-licensing.md).
-- For high-volume or custom licensing, contact us at **support@pdfix.net**.
+- **Windows**: Windows 7 and newer, Windows Server 2016 and newer (_Requires the latest [Microsoft Visual C++ Redistributable for Visual Studio 2019](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)_)  
+- **macOS**: macOS 10.15 and newer  
+- **Linux**: Ubuntu 16.04 and newer, Debian 10 and newer, CentOS 8 and newer  
 
 ## Support
 
