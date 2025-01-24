@@ -1,5 +1,27 @@
 # PDFix SDK Volume Licensing
 
+- [PDFix SDK Volume Licensing](#pdfix-sdk-volume-licensing)
+  - [Volume Licensing Plans](#volume-licensing-plans)
+  - [License Deployment](#license-deployment)
+    - [Deployment to Computers with Internet Connection](#deployment-to-computers-with-internet-connection)
+    - [Deployment to Computers without Internet Connection](#deployment-to-computers-without-internet-connection)
+  - [Page Counting](#page-counting)
+  - [Which Functions Count Pages](#which-functions-count-pages)
+    - [List of Functions Using Layout Analysis:](#list-of-functions-using-layout-analysis)
+    - [List of CLI Commands Using Layout Analysis:](#list-of-cli-commands-using-layout-analysis)
+  - [Using the license with PDFix SDK](#using-the-license-with-pdfix-sdk)
+    - [Standard License Activation](#standard-license-activation)
+      - [Online Activation](#online-activation)
+      - [Offline activation](#offline-activation)
+    - [Deactivating the standard license](#deactivating-the-standard-license)
+      - [Online deactivation](#online-deactivation)
+      - [Offline deactivation](#offline-deactivation)
+    - [Updating the standard license](#updating-the-standard-license)
+    - [Reading the license status](#reading-the-license-status)
+    - [Local License File Storage](#local-license-file-storage)
+
+## Volume Licensing Plans
+
 Volume licensing allows users to set up flexible plans based on the number of processed pages. Volume licensing is applicable to PDFix SDK Professional and Enterprise.
 
 The default plans offered are 2,000, 5,000, 10,000, 30,000 or more pages per month. For higher volumes, a custom or flat-rate license can be arranged upon request.
