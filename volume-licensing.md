@@ -58,7 +58,7 @@ The SDK counts only pages processed with layout recognition. The total number of
 - Auto-tagging the whole document and saving increases the counter by 8 pages. Re-tagging the same opened document does not count additional pages.
 - Auto-tagging, saving, and closing the document increases the counter by 8 pages. Re-opening and re-tagging the document counts another 8 pages.
 
-- Document editing that does not involve functions above has no affect on page counting. 
+- Document editing that does not involve functions below has no affect on page counting. 
 
 ## Which Functions Count Pages
 
