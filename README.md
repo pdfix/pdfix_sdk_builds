@@ -17,73 +17,50 @@ $ ./pdfix_app make-accessible -i test.pdf -o output.pdf
 
 For additional CLI options, refer to the [PDFix SDK Command-Line Interface documentation](https://pdfix.net/support/pdfix-command-line/). The CLI application is included in the downloadable package available on the [PDFix website](https://pdfix.net/download/).
 
-## Integration Using the SDK
+## Integration the SDK programatically
 
-### C&#35;
-To integrate PDFix with C#, install the NuGet package [PDFix.SDK](https://www.nuget.org/packages/PDFix.SDK/):
+To integrate the PDFix SDK programmatically, refer to the code examples on GitHub for your preferred programming language:
 
-```cs
-using PDFixSDK.Pdfix;
+- [C++](https://github.com/pdfix/pdfix_sdk_example_cpp) – Native applications
+- [.NET](https://github.com/pdfix/pdfix_sdk_example_dotnet) – For .NET Framework, .NET Core, and .NET 5+
+- [Java](https://github.com/pdfix/pdfix_sdk_example_java) – For Maven or Gradle projects
+- [Python](https://github.com/pdfix/pdfix_sdk_example_python) – Applications
+- [JavaScript](https://github.com/pdfix/pdfix_sdk_example_npm) – For frameworks like Node.js, React.js, Angular, and similar
 
-static void Main() {
-   var pdfix = new Pdfix();
-   var doc = pdfix.OpenDoc("Sample.pdf", "");
-   // Perform PDF operations
-   doc.Close();                                       
-}
-```
-Find more examples on [GitHub](https://github.com/pdfix/pdfix_sdk_example_dotnet).
+## How to
 
-### C++
+### Fix Accessibility Issues
 
-```cpp
-#include "Pdfix.h"
+To fix PDF/UA compliance issues in a PDF document use methods available in:
 
-Pdfix_statics;
+- **PDFix Actions for Accessibility** - a flexible pdf manipulation without coding 
+- **SDK API methods** to access and edit
+  - Structure Tree and its Elements
+  - Page Objects and their Content Marks
+  - Annotations
+  - Document Metadata
 
-int main() {
-   if (Pdfix_init(Pdfix_MODULE_NAME)) {
-      auto pdfix = GetPdfix();
-      auto doc = pdfix->OpenDoc(L"Sample.pdf", L"");
-      // Perform PDF operations
-      doc->Close();                                   
-   }
-}
-```
-Find more examples on [GitHub](https://github.com/pdfix/pdfix_sdk_example_cpp).
+### Extract PDF Content
 
-### Java
+To extract the data from a PDF document a conversion to JSON. The data extraction can methods can provide:
 
-```java
-import net.pdfix.pdfixlib.*;
+- **Raw Document Extraction** to access
+  - Document Metadata, Form Fields, and classification such as tagged, signed, secured
+  - Page Size, Rotation, Annotations, Content including text content, images, positions, colors
+- **Layout Recognition** to access the logical content such as
+  - Paragraphs, Headings, Figures, Tables, Headers, Footers
+  - 
+- **Document Structure Tags** to access
+  - Complete document structure tree with element properties, attributes, position, and content
 
-public static void main() {
-   Pdfix pdfix = new Pdfix();   
-   PdfDoc doc = pdfix.OpenDoc("Sample.pdf", "");      
-   // Perform PDF operations
-   doc.Close();
-}
-```
-Find more examples on [GitHub](https://github.com/pdfix/pdfix_sdk_example_java).
 
-### Python
-To integrate PDFix with Python, install the package [pdfix-sdk](https://pypi.org/project/pdfix-sdk/):
 
-```python
-from pdfixsdk import *
-
-pdfix  = GetPdfix()
-doc = pdfix.OpenDoc("Sample.pdf", "")
-# Perform PDF operations
-doc.close()
-```
-Find more examples on [GitHub](https://github.com/pdfix/pdfix_sdk_example_python).
 
 ## Multi-Threaded Environments
 
-PDFix SDK is designed for single-threaded processing, meaning only one API method can be executed at a time within a single process. Any method calls from other threads will wait until the preceding one completes.
+PDFix SDK operates in a single-threaded manner, allowing only one API method to run at a time within a single process. Any additional method calls from other threads will be queued until the current operation finishes.
 
-For concurrent processing, use separate processes instead of threads.
+For parallel processing, use separate processes rather than threads.
 
 ## Licensing
 
@@ -92,9 +69,8 @@ For concurrent processing, use separate processes instead of threads.
 
 ### Trial/Lite License Limitations
 
-- Extracted text may have randomly replaced characters with "*".
-- Rasterized images may contain a watermark.
-- Saved PDFs may have redacted content.
+- Extracted text may include randomly replaced characters with "*".
+- Saved PDFs may contain redacted content with watermark.
 
 ## Prerequisites
 
