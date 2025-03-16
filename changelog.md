@@ -1,17 +1,35 @@
 # Changelog
 
+## [8.5.0] - 2025-03-16
+
+### Added
+- Added `PdfDoc.SetPath` and `PdfDoc.GetPath` to control the document path when loading from memory or a custom stream
+- Added support for updating invalid document metadata
+
+### Fixed
+- Fixed failure to load on macOS Intel in Java
+- Fixed PDF-to-JSON export of text from structure elements, Base64 images, and annotations
+- Fixed updating of the document modified flag after running the set_pdf_version action
+- Fixed reloading of `PdePageMap` after a change in `PdfDocTemplate`
+- Fixed `ModDate` format in metadata
+- Fixed `remove_content_marks` action when removing invalid MCID in MCR structure elements
+- Fixed soft/hard hyphenation tagging
+- Fixed auto-tagging of text spans with annotations
+
+### Modified
+- Updated subscript/superscript detection in layout recognition
+
 ## [8.4.3] - 2024-12-17
 
 ### General
 - Java 8 support, library built with JDK version 1.8.0
 
-
-### General
+### Fixed
 - Fixed python module initialization on Windows
 
 ## [8.4.2] - 2024-12-12
 
-### General
+### Fixed
 - Fixed python module initialization on Windows
 
 ## [8.4.1] - 2024-12-02
