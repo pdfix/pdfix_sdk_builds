@@ -11,7 +11,7 @@
 - Fixed PDF-to-JSON export of text from structure elements, Base64 images, and annotations
 - Fixed updating of the document modified flag after running the set_pdf_version action
 - Fixed reloading of `PdePageMap` after a change in `PdfDocTemplate`
-- Fixed `ModDate` format in metadata
+- Fixed `xmp:ModifyDate` format in metadata
 - Fixed `remove_content_marks` action when removing invalid MCID in MCR structure elements
 - Fixed soft/hard hyphenation tagging
 - Fixed auto-tagging of text spans with annotations
