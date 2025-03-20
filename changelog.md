@@ -16,7 +16,7 @@
 - Fixed soft/hard hyphenation tagging
 - Fixed auto-tagging of text spans with annotations
 
-### Modified
+### Changed
 - Updated subscript/superscript detection in layout recognition
 
 ## [8.4.3] - 2024-12-17
@@ -70,7 +70,7 @@
 - Added methods `PdfDoc.SetFlags`, `PdfPage.SetFlags`
 - Added `PdsStructTable` class for handling Table structure elements
 
-### Modified
+### Changed
 - Updated __PDF to HTML__ and __PDF to JSON__ conversion for pipeline-runner
 - __Set PDF modification date__ when saving
 - __Create Bookmarks Action__ now allows defining multiple tags for bookmark levels
