@@ -1,5 +1,14 @@
 # Changelog
 
+## [8.5.1] - 2025-03-28
+
+### Fixed
+- Fixed duplicate MCID generated in content with nested content marks
+- Fixed missing tag name in BDC content mark in text content
+
+### Changed
+- Enhanced precision in matching annotations with text content
+
 ## [8.5.0] - 2025-03-16
 
 ### Added
