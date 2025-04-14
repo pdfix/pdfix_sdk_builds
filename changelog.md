@@ -1,5 +1,11 @@
 # Changelog
 
+## [8.5.2] - 2025-04-14
+
+### Fixed
+- Fixed tagging overlapping annotations over text content
+- Fixed embedding TrueType fonts containing non-ansi characters
+
 ## [8.5.1] - 2025-03-28
 
 ### Fixed
