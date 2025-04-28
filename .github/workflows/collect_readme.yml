@@ -1,0 +1,32 @@
+name: Collect README files
+
+on:
+  workflow_dispatch:  # allows you to run it manually from GitHub UI
+  push:
+    branches: [ main ] # optional, if you want to auto-run on push
+
+jobs:
+  collect-readmes:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Find and combine README files
+      run: |
+        echo "# All README files" > all_readmes.md
+        echo "" >> all_readmes.md
+        find. -iname "README.md" | while read file; do
+          echo "## File: $file" >> all_readmes.md
+          echo '```markdown' >> all_readmes.md
+          cat "$file" >> all_readmes.md
+          echo '```' >> all_readmes.md
+          echo "" >> all_readmes.md
+        done
+
+    - name: Upload combined README as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: combined-readmes
+        path: all_readmes.md
