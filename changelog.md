@@ -6,8 +6,8 @@
 - Added creating mailto: links in the Create Web Links Action
 
 ### Fixed
-- Fixed Fix Spaces Action sometimes does not process all tags in PDF
-- Fixed path content writer issues when mofying page content
+- Fixed Fix Spaces Action sometimes does not process all tags in the PDF
+- Fixed path content writer issues causing content loss
 
 ## [8.5.3] - 2025-04-15
 
