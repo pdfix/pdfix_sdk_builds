@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.5.4] - 2025-05-16
+
+### Added 
+- Added creating mailto: links in the Create Web Links Action
+
+### Fixed
+- Fixed Spaces Action sometimes does not process all tags in PDF
+- Fixed path content writer issues when mofying page content
+
+## [8.5.3] - 2025-04-15
+
+### Fixed
+- Font Embedding of base 14 fonts
+
 ## [8.5.2] - 2025-04-14
 
 ### Fixed
