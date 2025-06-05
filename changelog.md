@@ -1,5 +1,25 @@
 # Changelog
 
+## [8.6.0] - 2025-06-05
+
+**Accessibility**
+- Support for re-tagging content defined by template with `add_tags` action
+
+**PdfDocTemplate**
+- Added support for dynamic element definition using anchors and start/end positions
+- Added support for nested templates for pre-defined elements
+- Added MATH expressions support in values
+
+**Document Assembly**
+- Support for `split_pages` based on the template
+
+**Annotations**
+- Added support to create web links from emails
+
+**General Updates**
+- Debugging support for the template creation process
+- Performance and stability updates
+
 ## [8.5.4] - 2025-05-16
 
 ### Added 
