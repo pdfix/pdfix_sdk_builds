@@ -1,5 +1,17 @@
 # Changelog
 
+## [8.6.1] - 2025-06-16
+
+**Accessibility**
+- Set Actual text, Language, ID, and Alt to structure elements when auto-tagging text content
+
+**PdfDocTemplate**
+- Updated thresholds for word and line detection
+
+**General Updates**
+- Fixed processing files with special characters in the Command-Line application
+- Performance and stability updates
+
 ## [8.6.0] - 2025-06-05
 
 **Accessibility**
