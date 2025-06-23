@@ -1,5 +1,18 @@
 # Changelog
 
+## [8.7.0] - 2025-06-23
+
+**Accessibility**
+- Added AddAssociatedFile, GetAssociatedFile to manage the structure element's associated files
+
+**PdfDocTemplate**
+- Layout recognition reading order updates
+- Hyphen detection regular expression update
+
+**General Updates**
+- Added PdsFileSpec object to manage embedded files
+- Performance and stability updates
+
 ## [8.6.1] - 2025-06-16
 
 **Accessibility**
