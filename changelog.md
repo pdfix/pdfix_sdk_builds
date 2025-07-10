@@ -1,5 +1,17 @@
 # Changelog
 
+## [8.7.1] - 2025-07-10
+
+**PdfDocTemplate**
+- Always create a List tag if the list label is set
+- Fixed math functions in the query
+
+**Annotations**
+- Create Web Links support for user-defined URI address
+
+**General Updates**
+- Performance, memory allocation, and stability updates
+
 ## [8.7.0] - 2025-06-23
 
 **Accessibility**
