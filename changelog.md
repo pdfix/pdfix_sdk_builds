@@ -1,5 +1,19 @@
 # Changelog
 
+## [8.7.2] - 2025-07-18
+
+**Accessibility**
+- Fixed circular role mapping errors
+- Fixed tagging of inline images in paragraphs
+- Added action Remove Annotation Properties
+- Removed generic annotation contents during autotagging
+  
+**PdfDocTemplate**
+- Fixed evaluation of `$child_tag_type` of the struct element object
+
+**General Updates**
+- Performance, memory allocation, and stability updates
+
 ## [8.7.1] - 2025-07-10
 
 **PdfDocTemplate**
