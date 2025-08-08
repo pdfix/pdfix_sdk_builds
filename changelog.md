@@ -1,5 +1,18 @@
 # Changelog
 
+## [8.7.3] - 2025-07-18
+
+**Accessibility**
+- New action Set Content Color
+- New action Fix Page Orientation
+- Add a missing URL prefix support in Create Web Links 
+- Associated headers support in the layout template
+- Fixed Create Bookmarks from Headings with nested tags
+- Fixed Create Alternate description for Widget annotations
+
+**General Updates**
+- Performance, memory allocation, and stability updates
+
 ## [8.7.2] - 2025-07-18
 
 **Accessibility**
