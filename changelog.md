@@ -1,6 +1,6 @@
 # Changelog
 
-## [8.7.3] - 2025-07-18
+## [8.7.3] - 2025-08-11
 
 **Accessibility**
 - New action Set Content Color
