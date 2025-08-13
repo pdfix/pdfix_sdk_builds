@@ -1,15 +1,17 @@
-PDFix SDK CLI
-```
-Usage: ./pdfix_app [OPTIONS] [SUBCOMMAND]
+PDFix SDK CLI 
 ```
 
-_Options:_
+./pdfix_app [OPTIONS] [SUBCOMMAND]
+
+```
+
+_OPTIONS:_
 ```
   -h,--help                   Print this help message and exit
   --help-all-md               Show all help in MD format
   -v,--version                
 ```
-## Subcommands
+## SUBCOMMANDS
 
 | name | description |
 | - | - |
@@ -21,10 +23,9 @@ _Options:_
 | [`pdf2txt`](#pdf2txt) | Extract text from PDF| 
 | [`pdf2image`](#pdf2image) | Extract images from PDF| 
 | [`extract-highlighted-text`](#extract-highlighted-text) | Extract highlighted text from PDF| 
-| [`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file.| 
+| [`pdf2html`](#pdf2html) | Converts PDF to HTML , output is the HTML file created during conversion.  All necessary files generated during the conversion are saved in the same folder as the output file.| 
 | [`pdf2json`](#pdf2json) | Extract PDF data into JSON| 
 | [`preflight`](#preflight) | Preflight document template and output the config| 
-| [`ocr`](#ocr) | Converts scans or images-only PDF documents into searchable, editable PDF files.| 
 | [`import-data`](#import-data) | Import form data from JSON| 
 | [`acroform2json`](#acroform2json) | Extract PDF Form Fields into JSON| 
 | [`json2acroform`](#json2acroform) | Import PDF Form Fields from JSON| 
@@ -65,7 +66,7 @@ Internal commands
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -m,--email TEXT             Registration e-mail address
   -k,--key TEXT               License key
@@ -80,7 +81,7 @@ Run commands in a batch. The document is not saved to the output path if a comma
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -p,--password TEXT          Open password
   -c,--command TEXT           Batch command JSON file
@@ -94,7 +95,7 @@ Makes PDF Accessible. Converts PDF to fully compliant PDF/UA.If you have image-o
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -c,--command-path TEXT      Command file path. Default make accessible command will be used if it's empty.
@@ -109,7 +110,7 @@ Add tags to PDF.
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -c,--config-path TEXT       Config file path.
@@ -123,7 +124,7 @@ Extract PDF data into JSON/XML
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -c,--config_path TEXT:FILE  Config file path
@@ -161,7 +162,7 @@ Extract text from PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -c,--config_path TEXT:FILE  Config file path
   -p,--page INT               Page number from which text will be extracted (Default value -1 extract all pages
@@ -174,7 +175,7 @@ Extract images from PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -w,--page-width INT         with of the rendered page in pixels used for scaling the images
   -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
@@ -189,7 +190,7 @@ Extract highlighted text from PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -c,--config-path TEXT       path to config file
 ```
@@ -197,11 +198,11 @@ _Options:_
 
 
 ### `pdf2html`
-Converts PDF to HTML , output is the HTML file created duringconversion.  All necessary files generated during the conversion aresaved in the same folder as the output file.
+Converts PDF to HTML , output is the HTML file created during conversion.  All necessary files generated during the conversion are saved in the same folder as the output file.
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -c,--config-path TEXT       Path to config file
@@ -232,7 +233,7 @@ Extract PDF data into JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -c,--config_path TEXT:FILE  Config file path
@@ -247,22 +248,9 @@ Preflight document template and output the config
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -f,--format ENUM:{0,1}      integer value defining the data file output format (0-JSON, 1-XML)
-```
-
-
-
-### `ocr`
-Converts scans or images-only PDF documents into searchable, editable PDF files.
-
-
-
-_Options:_
-```
-  -l,--lang TEXT              OCR language
-  -d,--data-path TEXT:DIR     path to Tesseract ORC data.
 ```
 
 
@@ -272,7 +260,7 @@ Import form data from JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -j,--json-path TEXT:FILE    Path to JSON file
@@ -286,7 +274,7 @@ Extract PDF Form Fields into JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   --widgets                   include information about the form field annotations - widgets.
@@ -299,7 +287,7 @@ Import PDF Form Fields from JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -j,--json-path TEXT:FILE    Path to JSON file
 ```
@@ -311,7 +299,7 @@ Render Page
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -r,--rotate ENUM:{0,90,180,270}
@@ -334,7 +322,7 @@ Sign PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -x,--pfx-path TEXT:FILE     Path to .pfx file with signature.
   -p,--pfx-password TEXT      Password for .pfx file.
@@ -375,19 +363,17 @@ Add watermark to PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -m,--image-path TEXT:FILE   Path to image file used for watermark
   -s,--start-page INT         First page where the watermark is placed [0].
   -e,--end-page INT           Last page where the watermark is placed [last page].
   --order-top INT:NUMBER      Control watermark z-order (0-bottom, [1]-top)
   --percentage                Use percentage values instead of points
-  --h-align ENUM:{1,2,3,6}:NUMBER
-Horizontal alignment ([1]-left, 2-right, 3-justify, 6-center)
-  --v-align ENUM:{4,5,6}:NUMBER
-Vertical alignment ([4]-top, 5-bottom, 6-center)
-  --h-value FLOAT:NUMBER      Horizontal image offset [0]
-  --v-value FLOAT:NUMBER      Vertical image offset [0]
+  --h-align ENUM:NUMBER       Horizontal alignment ([1]-left, 2-right, 3-justify, 6-center)
+  --v-align ENUM:NUMBER       Vertical alignment ([4]-top, 5-bottom, 6-center)
+  --h-value FLOAT:{1,2,3,6}   Horizontal image offset [0]
+  --v-value FLOAT:{4,5,6}     Vertical image offset [0]
   --scale FLOAT:NUMBER        Image scale [1]
   --rotation FLOAT:NUMBER     Image counter-clockwise rotation in degrees [0]
   --opacity FLOAT:NUMBER      Image opacity [1]
@@ -400,7 +386,7 @@ Tag operations on PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
 ```
@@ -419,7 +405,7 @@ Create new page in PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -p,--after-page INT         page number after which the new page will be inserted.
 ```
@@ -431,7 +417,7 @@ Move one page in document
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -f,--from INT               page number of the page to move
   -t,--to INT                 new location of the page to move.
@@ -444,7 +430,7 @@ Delete pages from PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -f,--from INT               page number of first page to delete.
   -t,--to INT                 page number of the last page to delete.
@@ -457,7 +443,7 @@ Insert pages from PDF to another
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -s,--src TEXT:FILE          Source file
   -a,--after INT              Page number after which pages will be inserted
@@ -472,7 +458,7 @@ Get and set document metadata as XML
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -x,--xml-path TEXT          Path to .xml file with metadata.
 ```
@@ -484,7 +470,7 @@ License related commands
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -a,--activate TEXT          activate license using the key online or offline if --license-path is set, or request activation if --request-path is set
   --request                   create activation request, --license-path should be set to write request to, used only in combination with --activate
@@ -502,7 +488,7 @@ Convert PDF Pages into JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
   -p,--page-number INT        page number, [0] default all pages)
@@ -516,7 +502,7 @@ Convert PDF Bookmarks into JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
 ```
@@ -535,7 +521,7 @@ Page Content to JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -p,--page-number INT        page number.
 ```
@@ -547,7 +533,7 @@ Extract Named Destivations into JSON
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
 ```
@@ -559,7 +545,7 @@ test commands
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -m,--image-path TEXT        Path to image file used for watermark
 ```
@@ -591,14 +577,14 @@ test imposition
 Create new PDF files
 
 
-_Positionals:_
+_POSITIONALS:_
 ```
   count UINT                  Document count
   thread-count UINT           Thread count
 ```
 
 
-_Options:_
+_OPTIONS:_
 ```
   -c,--count UINT             Document count
   -t,--thread-count UINT      Thread count
@@ -611,7 +597,7 @@ Render Pages
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -r,--rotate ENUM:{0,90,180,270}
@@ -635,7 +621,7 @@ Redact content using all redaction annotations.
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -p,--page-number INT        page number where redaction mark will be created.
   -l,--left INT               integer value specifying the top of the redaction mark on page
@@ -665,7 +651,7 @@ Tag operations on PDF
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   -r,--remove                 
   -a,--annotation             
@@ -684,7 +670,7 @@ Add tags to PDF.
 
 
 
-_Options:_
+_OPTIONS:_
 ```
   --password TEXT             Open password
 ```
