@@ -1,5 +1,25 @@
 # Changelog
 
+## [8.7.4] - 2025-09-05
+
+**Accessibility**
+- Added action *Set Language* for Tag and the Content
+- Fixed untagged elements remaining when tagging tables
+- Fixed duplicate Metadata entries being created in rdf:Description
+- Fixed *Remove Content Marks* action when removing invalid MCIDs
+- Improved tagging of Lists and Tables
+
+**PdfDocTemplate**
+- Added `has_fill` and `has_stroke` properties to identify objects by graphical appearance
+- Added support for ECMAScript regular expression case-insensitivity switch `/i` 
+- Fixed parsing of RGB color values from templates
+
+**Command Line**
+- Added render-pages command to export document pages as images (PNG, JPEG)
+
+**General Updates**
+- Improved performance, memory management, and overall stability
+
 ## [8.7.3] - 2025-08-11
 
 **Accessibility**
