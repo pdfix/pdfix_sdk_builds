@@ -7,7 +7,10 @@
 - Fixed untagged elements remaining when tagging tables
 - Fixed duplicate Metadata entries being created in rdf:Description
 - Fixed *Remove Content Marks* action when removing invalid MCIDs
-- Improved tagging of Lists and Tables
+- Updated *Fix Link Tag* action to fix link destinations
+- Improved contionuous tables tagging
+- Improved *Add Associated Headers* support in layout template
+
 
 **PdfDocTemplate**
 - Added `has_fill` and `has_stroke` properties to identify objects by graphical appearance
