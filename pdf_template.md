@@ -202,11 +202,12 @@ Example:
 | `text_table_image_similarity` | `0.7` | Minimum similarity value when text table is image normalized to interval [0,1]. |
 | `text_table_paragraph_similarity` | `0.7` | Minimum similarity value when text table is paragraph normalized to interval [0,1]. |
 | `table_update_delete_empty` | `1` | Delete empty rows and cols. |
-| `table_update_split_by_cell` | `1` | Split elements that should be originally splitted, It usually happens when some paragraph is recognized instead of single lines or images(bullets) are joined together. |
+| `table_update_split_by_cell` | `0` | Split elements that should be originally splitted, It usually happens when some paragraph is recognized instead of single lines or images(bullets) are joined together. |
 | `table_update_split_by_row` | `0` | Split table texts to lines. |
 | `table_update_split_label` | `0` | Split labels in tables. |
 | `table_update_span_empty` | `1` | Span empty cells. |
 | `table_update_span_row` | `0` | Join rows based on the maximum row span |
+| `table_update_span_row_first` | `0` | If set to true, rows are merged together first using span |
 | `table_update_join` | `0` | Join texts in a single cell. |
 | `table_update_cell_header` | `1` | Detect headers. |
 | `table_span_col_ratio` | `0.1` | Intersection percentage of colspan element. Possible values from interval [0,1]. |
@@ -229,9 +230,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "background_color_blue": 255,
-        "element_isolated_image_w1": 1,
-        "graphic_table_split_similarity": 0.7
+        "text_table_similarity": 0.65,
+        "text_table_text_col_w2": 1,
+        "word_overlap": 0.9
       }
     ]
   }
@@ -273,8 +274,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "regex_filling_chars": "._",
-        "regex_toc_caption": "((^content)|(^toc))"
+        "regex_letter_numbering": "^[\\[\\(]?[A-Za-z][\\)\\]\\.]$",
+        "regex_filling": "[._]{2,}"
       }
     ]
   }
@@ -462,17 +463,6 @@ _keys and values:_
 ### cell_update
 
 Updates a table cell after the whole process od table detection is done.
-
-_keys and values:_
-- "[disable](#disable)" : false
-- "[statement](#statement)" : "$if"
-- "[query](#query)" :
-  - "[param](#param)" : [["[pds_form](#pds_form)"]]
-- "[flag](#flag)" : ""
-
-### cell_neighbours
-
-This test is triggered when table cells are tested.
 
 _keys and values:_
 - "[disable](#disable)" : false
@@ -810,14 +800,14 @@ _keys and values:_
 Equal to value.
 
 - _type:_ comparison_operator
-- _types:_ ["[int](#int)", "[float](#float)", "[string](#string)"]
+- _types:_ ["[int](#int)", "[float](#float)", "[string](#string)", "[bool](#bool)"]
 
 ### $ne
 
 Not equal to value.
 
 - _type:_ comparison_operator
-- _types:_ ["[int](#int)", "[float](#float)", "[string](#string)"]
+- _types:_ ["[int](#int)", "[float](#float)", "[string](#string)", "[bool](#bool)"]
 
 ### $lt
 
@@ -890,6 +880,10 @@ _params:_
 
   - "[bbox](#bbox)" 
 
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
+
   - "[fill_color](#fill_color)" 
 
   - "[stroke_color](#stroke_color)" 
@@ -927,6 +921,10 @@ _params:_
   - "[bottom](#bottom)" 
 
   - "[bbox](#bbox)" 
+
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
 
   - "[fill_color](#fill_color)" 
 
@@ -967,6 +965,8 @@ _params:_
 
   - "[top](#top)" 
 
+- "[has_fill](#has_fill)"
+- "[has_stroke](#has_stroke)"
 - "[fill_color](#fill_color)"
 - "[stroke_color](#stroke_color)"
 - "[children_num](#children_num)"
@@ -1023,6 +1023,10 @@ _params:_
   - "[expansion](#expansion)" 
 
   - "[children_num](#children_num)" 
+
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
 
   - "[fill_color](#fill_color)" 
 
@@ -1112,6 +1116,10 @@ _params:_
 
   - "[label](#label)" 
 
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
+
   - "[fill_color](#fill_color)" 
 
   - "[stroke_color](#stroke_color)" 
@@ -1157,6 +1165,10 @@ _params:_
 
   - "[label](#label)" 
 
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
+
   - "[fill_color](#fill_color)" 
 
   - "[stroke_color](#stroke_color)" 
@@ -1189,6 +1201,10 @@ _params:_
   - "[bottom](#bottom)" 
 
   - "[bbox](#bbox)" 
+
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
 
   - "[fill_color](#fill_color)" 
 
@@ -1235,6 +1251,10 @@ _params:_
 
   - "[label](#label)" 
 
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
+
   - "[fill_color](#fill_color)" 
 
   - "[stroke_color](#stroke_color)" 
@@ -1264,6 +1284,10 @@ _params:_
   - "[bbox](#bbox)" 
 
   - "[label](#label)" 
+
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
 
   - "[fill_color](#fill_color)" 
 
@@ -1308,6 +1332,10 @@ _params:_
   - "[bbox](#bbox)" 
 
   - "[label](#label)" 
+
+  - "[has_fill](#has_fill)" 
+
+  - "[has_stroke](#has_stroke)" 
 
   - "[fill_color](#fill_color)" 
 
@@ -1468,6 +1496,7 @@ _params:_
 - "[object_num](#object_num)"
 - "[artifact](#artifact)"
 - "[mcid](#mcid)"
+- "[has_fill](#has_fill)"
 - "[fill_color](#fill_color)"
 _params:_
   - "[red](#red)" 
@@ -1476,6 +1505,7 @@ _params:_
 
   - "[blue](#blue)" 
 
+- "[has_stroke](#has_stroke)"
 - "[stroke_color](#stroke_color)"
 _params:_
   - "[red](#red)" 
@@ -1708,6 +1738,14 @@ MCID content mark number is exists, -1 otherwise.
 
 - _type:_ int
 
+### has_fill
+
+True if fill color is set
+
+- _type:_ bool
+- _values:_ 
+  - `['true', 'false']`
+
 ### fill_color
 
 The fill color of an object.
@@ -1718,6 +1756,14 @@ _keys and values:_
 - "[red](#red)"
 - "[green](#green)"
 - "[blue](#blue)"
+
+### has_stroke
+
+True if stroke color is set
+
+- _type:_ bool
+- _values:_ 
+  - `['true', 'false']`
 
 ### stroke_color
 

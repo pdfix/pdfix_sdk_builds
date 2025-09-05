@@ -49,18 +49,7 @@ _OPTIONS:_
 | [`tags2json`](#tags2json) | StructTree to JSON| 
 | [`content2json`](#content2json) | Page Content to JSON| 
 | [`dests2json`](#dests2json) | Extract Named Destivations into JSON| 
-| [`test`](#test) | test commands| 
-| [`test-open-document`](#test-open-document) | test open document commands| 
-| [`test-incremental-save`](#test-incremental-save) | test incremental save| 
-| [`test-imposition`](#test-imposition) | test imposition| 
-| [`create-documents`](#create-documents) | Create new PDF files| 
-| [`render-pages`](#render-pages) | Render Pages| 
-| [`redact`](#redact) | Redact content using all redaction annotations.| 
-| [`pocess-control`](#pocess-control) | test commands| 
-| [`undo-redo`](#undo-redo) | undo-redo test command| 
-| [`tag`](#tag) | Tag operations on PDF| 
-| [`remove-security`](#remove-security) | Add tags to PDF.| 
-| [`test-edit-page-object-mcid`](#test-edit-page-object-mcid) | Edit page object mcid.| 
+| [`render-pages`](#render-pages) | Render PDF pages into images. Expects the path to a PDF file as input and the path to an output folder where the rendered pages will be saved.| 
 ### `[Option Group: ]`
 Internal commands
 
@@ -540,60 +529,8 @@ _OPTIONS:_
 
 
 
-### `test`
-test commands
-
-
-
-_OPTIONS:_
-```
-  -m,--image-path TEXT        Path to image file used for watermark
-```
-
-
-
-### `test-open-document`
-test open document commands
-
-
-
-
-
-### `test-incremental-save`
-test incremental save
-
-
-
-
-
-### `test-imposition`
-test imposition
-
-
-
-
-
-### `create-documents`
-Create new PDF files
-
-
-_POSITIONALS:_
-```
-  count UINT                  Document count
-  thread-count UINT           Thread count
-```
-
-
-_OPTIONS:_
-```
-  -c,--count UINT             Document count
-  -t,--thread-count UINT      Thread count
-```
-
-
-
 ### `render-pages`
-Render Pages
+Render PDF pages into images. Expects the path to a PDF file as input and the path to an output folder where the rendered pages will be saved.
 
 
 
@@ -602,8 +539,8 @@ _OPTIONS:_
   -f,--format ENUM:{1,2}      integer value defining the image output format (1-PNG, 2-JPG)
   -r,--rotate ENUM:{0,90,180,270}
 page rotation in degrees
-  --page-from INT             page number from which rendering will be exectuted
-  --page-to INT               page number to which rendering will be exectuted
+  --page-from INT             page number from which to render (default page 1)
+  --page-to INT               page number to which to render (default -1 last page)
   -l,--left INT               integer value specifying the page left of the clipping region in device units
   -t,--top INT                integer value specifying the page top of the clipping region in device units
   -w,--width INT              integer value specifying the width of the page left clipping region in device units
@@ -613,74 +550,6 @@ integer value defining the image output quality (0-100)
   -z,--zoom FLOAT             floating point number of zoom level
   --thread-count UINT         maximal number of threads to be used
 ```
-
-
-
-### `redact`
-Redact content using all redaction annotations.
-
-
-
-_OPTIONS:_
-```
-  -p,--page-number INT        page number where redaction mark will be created.
-  -l,--left INT               integer value specifying the top of the redaction mark on page
-  -b,--bottom INT             integer value specifying the bottom of the redaction mark on page
-  -w,--width INT              integer value specifying the width of the redaction mark  on page
-  -g,--height INT             integer value specifying the height of the redaction mark  on page
-```
-
-
-
-### `pocess-control`
-test commands
-
-
-
-
-
-### `undo-redo`
-undo-redo test command
-
-
-
-
-
-### `tag`
-Tag operations on PDF
-
-
-
-_OPTIONS:_
-```
-  -r,--remove                 
-  -a,--annotation             
-  -f,--artefact               
-  -g,--heading                
-  -d,--reading-order          
-  -s,--read-struct-tree       
-  -e,--edit-struct-tree       
-  -t,--table-as-figure        
-```
-
-
-
-### `remove-security`
-Add tags to PDF.
-
-
-
-_OPTIONS:_
-```
-  --password TEXT             Open password
-```
-
-
-
-### `test-edit-page-object-mcid`
-Edit page object mcid.
-
-
 
 
 

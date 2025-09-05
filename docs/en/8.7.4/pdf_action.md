@@ -1982,7 +1982,7 @@ Remove properties from the defined tags
         },
         {
             "name": "owner",
-            "value": "None"
+            "value": "Table"
         },
         {
             "name": "name",

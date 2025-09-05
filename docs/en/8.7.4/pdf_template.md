@@ -230,9 +230,9 @@ Example:
   "template": {
     "pagemap": [
       {
-        "element_line_w1": 1,
-        "text_height": 8,
-        "bbox_expansion": 2
+        "text_table_similarity": 0.65,
+        "text_table_text_col_w2": 1,
+        "word_overlap": 0.9
       }
     ]
   }
@@ -274,8 +274,8 @@ Example:
   "template": {
     "pagemap_regex": [
       {
-        "number_chars": "-+.,%\\u20AC$\\u00A5\\u00A3",
-        "regex_bullet_font": "(Wingdings)|(Symbol)"
+        "regex_letter_numbering": "^[\\[\\(]?[A-Za-z][\\)\\]\\.]$",
+        "regex_filling": "[._]{2,}"
       }
     ]
   }

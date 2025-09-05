@@ -78,7 +78,7 @@ __Bookmarks__: [Create Bookmarks](#create-bookmarks)
 
 <div id="md-toc-content">
 
-__Content__: [Delete Content](#delete-content), [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Clone Form XObjects](#clone-form-xobjects), [Remove Content Marks](#remove-content-marks), [Set Content Color](#set-content-color)
+__Content__: [Set Content Language](#set-content-language), [Delete Content](#delete-content), [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Clone Form XObjects](#clone-form-xobjects), [Remove Content Marks](#remove-content-marks), [Set Content Color](#set-content-color)
 
 </div>
 
@@ -120,7 +120,7 @@ __Table__: [Fix Table Cells](#fix-table-cells), [Set Table Summary](#set-table-s
 
 <div id="md-toc-tags">
 
-__Tags__: [Import Tags](#import-tags), [Delete Tags](#delete-tags), [Rename Tags](#rename-tags), [Clone Tag XObjects](#clone-tag-xobjects), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Fix Spaces](#fix-spaces), [Fix Headings](#fix-headings)
+__Tags__: [Import Tags](#import-tags), [Delete Tags](#delete-tags), [Rename Tags](#rename-tags), [Clone Tag XObjects](#clone-tag-xobjects), [Set Tag Language](#set-tag-language), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Fix Link Tag](#fix-link-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Fix Spaces](#fix-spaces), [Fix Headings](#fix-headings)
 
 </div>
 
@@ -368,7 +368,7 @@ Tag untagged annotations by placing them in the closest matching tag
 
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Specify annotation types using a regular expression format or define them by template annot_update
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
 
 #### example:
 ```
@@ -390,7 +390,7 @@ Set an alternative description for an annotation using the Contents key or TU ke
 
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Specify annotation types using a regular expression format or define them by template annot_update
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
 
 - `alt_type` (int) __Contents__ - Define the source for detecting alternative text
 
@@ -410,7 +410,7 @@ Set an alternative description for an annotation using the Contents key or TU ke
 
 - `bbox_padding_y` (float) __Bottom BBox Padding__ - Adjust vertical padding (Y axis) for the bottom edge of the BBox
 
-- `overwrite` (bool) __Overwrite__ - eplace the current alternative description if it already exists
+- `overwrite` (bool) __Overwrite__ - Replace the current alternative description if it already exists
 
 #### example:
 ```
@@ -460,7 +460,7 @@ Remove properties from the annotations
 
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Specify annotation types using a regular expression format or define them by template annot_update
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
 
 - `remove_contents` (bool) __Remove Contents__ - Remove the Contents key
 
@@ -488,7 +488,7 @@ Flatten the visual representation of annotations into the content layer. This pr
 
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Specify annotation types using a regular expression format or define them by template annot_update
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
 
 #### example:
 ```
@@ -510,7 +510,7 @@ Create link annotations from web addresses and email patterns found in the page 
 
 #### params:
 
-- `url_regex` (string) __URL Pattern__ - Specify a regular expression to identify web or email links in the content. The matched text will be used as the link target unless overridden by the URL Address or modified by adding the URL Prefix
+- `url_regex` (string) __URL Pattern__ - Specify a ECMAScript regular expression to identify web or email links in the content. The matched text will be used as the link target unless overridden by the URL Address or modified by adding the URL Prefix
 
   - __^(((http(s)?|ftp):\/\/)|(mailto:)|www.)[^\s\/$.?#].[^\s]*__ 
   - __^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}__ 
@@ -543,7 +543,7 @@ Create link annotations from web addresses and email patterns found in the page 
         },
         {
             "name": "url_prefix",
-            "value": "ws://"
+            "value": "wss://"
         },
         {
             "name": "url",
@@ -560,7 +560,7 @@ Completely remove an annotation from the PDF. Use this action when certain annot
 
 #### params:
 
-- `annot_types` (annot) __Annotations__ - Specify annotation types using a regular expression format or define them by template annot_update
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
 
 #### example:
 ```
@@ -588,7 +588,7 @@ Create bookmarks from the tag tree hierarchy
 
 #### params:
 
-- `tag_1` (tag) __Level 1__ - Define tag types using a regular expression format or specify them by template
+- `tag_1` (tag) __Level 1__ - Define tag types using a ECMAScript regular expression or specify them by template
 
 - `tag_2` (tag) __Level 2__ - Define the tag that represents second level
 
@@ -644,6 +644,40 @@ Create bookmarks from the tag tree hierarchy
 
 ## Content
 
+### Set Content Language
+
+`set_content_language`
+
+Set the content language
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
+
+- `lang` (lang) __Language__ - Content language
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_content_language",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
 ### Delete Content
 
 `delete_content`
@@ -940,7 +974,7 @@ Replace a font
 
 #### params:
 
-- `font_name` (string) __Font Name__ - Specify the PDF font name to be replaced. Regular expressions are supported
+- `font_name` (string) __Font Name__ - Specify the PDF font name to be replaced. ECMAScript regular expressions are supported
 
 - `font_family` (system_font) __Font Family__ - Specify the font family name to be used as a replacement
 
@@ -1105,13 +1139,6 @@ Set the document language
 
 - `lang` (lang) __Language__ - Document language
 
-- `apply_lang_to` (int) __Apply Language to__ - Select the objects to which the defined language will be applied
-
-  - __0__  - Document
-  - __1__  - Tag
-  - __2__  - Marked Content
-
-
 - `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
 
 #### example:
@@ -1122,10 +1149,6 @@ Set the document language
         {
             "name": "lang",
             "value": "en-US"
-        },
-        {
-            "name": "apply_lang_to",
-            "value": 0
         },
         {
             "name": "overwrite",
@@ -1193,7 +1216,7 @@ Rotate pages
 
 #### params:
 
-- `object_types` (object) __Pages__ - Select pages using regular expressions or by defining anchors in a template
+- `object_types` (object) __Pages__ - Select pages using ECMAScript regular expression or by defining anchors in a template
 
 - `rotation_type` (int) __Rotation Type__ - Specify the type of rotation
 
@@ -1237,7 +1260,7 @@ Correct the orientation of selected pages and normalize their transformation mat
 
 #### params:
 
-- `object_types` (object) __Pages__ - Select pages using regular expressions or by defining anchors in a template
+- `object_types` (object) __Pages__ - Select pages using ECMAScript regular expression or by defining anchors in a template
 
 #### example:
 ```
@@ -1261,7 +1284,7 @@ Split a PDF into multiple documents based on defined page rules or template anch
 
 - `base_pdf` (file_path) __Output Path__ - Specify the output folder based on the input file pathh
 
-- `object_types` (object) __Splitters__ - Specify split rules using regular expressions for page numbers or template-defined anchors
+- `object_types` (object) __Splitters__ - Specify split rules using ECMAScript regular expression for page numbers or template-defined anchors
 
 #### example:
 ```
@@ -1293,7 +1316,7 @@ Changes all non-standard tags to standard tags according to their role mapping
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 #### example:
 ```
@@ -1349,7 +1372,7 @@ Map the name of structure types used in the document to the selected standard st
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tag types using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tag types using a ECMAScript regular expression or define them by template tag_update
 
 - `standard_tag_name` (string) __Standard tag type__ - Specify the standard tag name to which the selected tag will be role-mapped
 
@@ -1389,7 +1412,7 @@ Fix table header and data cells
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `scope` (string) __Scope__ - Specify whether the header cell applies to a row, column, or both
 
@@ -1443,11 +1466,11 @@ Fix table header and data cells
 
 `set_table_summary`
 
-Provide a summary of the table’s purpose and structure. Only applicable to Table tags
+Provide a summary of the table. Only applicable to Table tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `summary_type` (int) __Summary__ - Define a source for detecting the summary
 
@@ -1520,7 +1543,7 @@ Delete defined tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `tag_content` (string) __Content__ - Handle the content of deleted tags
 
@@ -1576,7 +1599,7 @@ Rename tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `tag_name` (string) __Replace with__ - Specify a new tag name
 
@@ -1608,6 +1631,40 @@ Clone Form XObjects in tags
     "name": "clone_tag_xobject"
 }
 ```
+### Set Tag Language
+
+`set_tag_language`
+
+Set the tag language
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `lang` (lang) __Language__ - Tag language
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_tag_language",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^.*"
+        },
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
 ### Set Tag ID
 
 `set_tag_id`
@@ -1616,7 +1673,7 @@ Generate a unique ID key for specific tags, such as Note tags required in PDF/UA
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current tag ID if it already exists
 
@@ -1644,7 +1701,7 @@ Calculate the bounding box from the tag content and set it in the Layout attribu
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current bounding box if it already exists
 
@@ -1672,7 +1729,7 @@ Set an alternative description for the tag. These text alternatives are crucial 
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `alt_type` (int) __Alternative Description__ - Define a source for detecting the alternative text
 
@@ -1725,7 +1782,7 @@ Set a replacement text for the content, providing an equivalent text representat
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `actual_type` (int) __Actual Text__ - Define a source for detecting the replacement text
 
@@ -1769,7 +1826,7 @@ Fix incorrect placement attributes for specified tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 #### example:
 ```
@@ -1817,6 +1874,52 @@ Fix list(L) tag errors
     ]
 }
 ```
+### Fix Link Tag
+
+`fix_link_tag`
+
+Fix link(Link) tag errors
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the link tags by the template tag_update
+
+- `zoom` (float) __Destination Zoom__ - The zoom factor to set for the destination. If zero, use the predefined value to indicate a NULL zoom factor
+
+- `bbox_padding_x` (float) __Left Padding__ - Adjust horizontal padding (X axis) for the left edge of the destination
+
+- `bbox_padding_y_top` (float) __Top Padding__ - Adjust vertical padding (Y axis) for the top edge of the destination
+
+- `overwrite` (bool) __Overwrite__ - Replace the current destination if it already exists
+
+#### example:
+```
+{
+    "name": "fix_link_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Link$"
+        },
+        {
+            "name": "zoom",
+            "value": 0
+        },
+        {
+            "name": "bbox_padding_x",
+            "value": 4
+        },
+        {
+            "name": "bbox_padding_y_top",
+            "value": 4
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
 ### Remove Tag Properties
 
 `remove_tag_data`
@@ -1825,7 +1928,7 @@ Remove properties from the defined tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `accept_alternate_desc` (bool) __Remove Alternate__ - Remove the Alt key
 
@@ -1879,7 +1982,7 @@ Remove properties from the defined tags
         },
         {
             "name": "owner",
-            "value": "None"
+            "value": "Table"
         },
         {
             "name": "name",
@@ -1896,7 +1999,7 @@ Set standard structure attributes for tags. Each attribute object has an owner
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a regular expression format or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
 
 - `overwrite` (bool) __Overwrite__ - Replace the current attribute if it already exists
 
