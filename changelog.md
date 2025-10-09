@@ -1,5 +1,21 @@
 # Changelog
 
+## [8.7.5] - 2025-10-09
+
+**Accessibility**
+- Added support for reading order definition in the *create_element* function within the auto-tagging template
+
+**Command-Line**
+- Added new parameter `--no-sequential-headings` to the *add-tags* command
+
+**Actions**
+- Fixed Set Content Color action to support page objects
+
+**General**
+- Added method `PdsStructElementValidChild`
+- Fixed writing of document XMP metadata 
+- Stability and performance updates
+
 ## [8.7.4] - 2025-09-05
 
 **Accessibility**
