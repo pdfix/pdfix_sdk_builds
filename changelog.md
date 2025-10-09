@@ -4,12 +4,15 @@
 
 **Accessibility**
 - Added support for reading order definition in the *create_element* function within the auto-tagging template
+- Added support for table associated headers in layout template
+
+**Actions**
+- Added *Fix Link Tag* action to correct errors in Link tags, setting the destination and zoom factor
+- Added *Set Content Language*, *Set Document Language*, and *Set Tag Language* actions
+- Fixed *Set Content Color* action to support page objects
 
 **Command-Line**
 - Added new parameter `--no-sequential-headings` to the *add-tags* command
-
-**Actions**
-- Fixed Set Content Color action to support page objects
 
 **General**
 - Added method `PdsStructElementValidChild`
