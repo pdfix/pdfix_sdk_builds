@@ -1,5 +1,14 @@
 # Changelog
 
+## [8.7.6] - 2025-10-16
+
+### Accessibility
+- Fixed Set Alternate Description action errors when used with layout templates
+- Fixed issue preventing dc:title metadata field updates during metadata repair
+
+## Actions
+- Fixed Delete Tags action behavior after auto-tagging
+
 ## [8.7.5] - 2025-10-09
 
 **Accessibility**
