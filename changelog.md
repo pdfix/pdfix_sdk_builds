@@ -1,5 +1,23 @@
 # Changelog
 
+## [8.7.7] - 2025-12-15
+
+### Actions
+- Added Overwrite property to *AutoTag* action
+- Added support for embedded template in the *AutoTag* action
+- Added Export Bookmarks option to *Convert to JSON* action
+- Added secured flag to document information in *Convert to JSON* action
+- Fixed regular expression for Links in *Set Annotation Contents* action
+
+### Metadata
+- Fixed updating Medatada with invalid namespaces and duplicate entries
+
+### Template
+- Fixed encoding of Unicode characters in the Alt or Actual Text in the auto-tagging layout template
+
+### General
+- Fixed error handling in failures when loading template JSON files
+
 ## [8.7.6] - 2025-10-16
 
 ### Accessibility
