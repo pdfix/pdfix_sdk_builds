@@ -1,5 +1,10 @@
 # Changelog
 
+## [8.7.8] - 2025-12-17
+
+### Actions
+- Changed default value of Overwrite property to *AutoTag* action to *true*
+
 ## [8.7.7] - 2025-12-15
 
 ### Actions
