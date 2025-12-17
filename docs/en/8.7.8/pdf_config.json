@@ -1,0 +1,3467 @@
+{
+  "@metadata<desc>": "Template metadata",
+  "metadata": {
+    "author": "name",
+    "version": "2.0",
+    "created": "yyyy/mm/dd",
+    "modified": "yyyy/mm/dd",
+    "sdk_version": "major.minor.patch",
+    "notes": ""
+  },
+  "@settings<desc>": "General template settings",
+  "settings": {
+    "@rtl<type>": "bool",
+    "@rtl<desc>": "If true, right-to-left language support is enabled.",
+    "@rtl<values>": [
+      "true",
+      "false"
+    ],
+    "rtl": false,
+    "@substructure_form_xobject<type>": "bool",
+    "@substructure_form_xobject<desc>": "If false, the Form XObject is treated as a single object; otherwise, its content is tagged individually.",
+    "@substructure_form_xobject<values>": [
+      "true",
+      "false"
+    ],
+    "substructure_form_xobject": true,
+    "@page_tag<type>": "string",
+    "@page_tag<desc>": "The tag type for the page. If empty, tags are added continuously without a page tag.",
+    "page_tag": "NonStruct",
+    "@debug_pagemap_stop<type>": "string",
+    "@debug_pagemap_stop<desc>": "WARNING For debugging purpose only!",
+    "@debug_pagemap_stop<value>": [
+      "element_create",
+      "object_update",
+      "annot_update",
+      "line_update",
+      "rect_update",
+      "object_update_text",
+      "word_update",
+      "word_neighbours",
+      "word_connect",
+      "text_line_update",
+      "text_create",
+      "text_split",
+      "text_update",
+      "table_graphic_detect",
+      "image_detect",
+      "table_graphic_update",
+      "form_field_update",
+      "element_update",
+      "label_join",
+      "element_artifact",
+      "container_nest",
+      "image_nest",
+      "table_text_detect",
+      "image_join",
+      "element_nest",
+      "element_parent_update",
+      "table_update",
+      "element_finalize",
+      "table_form_update",
+      "artifact_update",
+      "label_update",
+      "list_detect",
+      "list_update"
+    ],
+    "debug_pagemap_stop": ""
+  },
+  "@template<desc>": "Template defines rules and conditions in JSON format to control how the layout recognition algorithm detects and processes specific areas in a document.",
+  "template": {
+    "@pagemap<type>": "unknown",
+    "@pagemap<desc>": "The pagemap node includes overall thresholds for pagemap recognition.",
+    "@pagemap<insert>": [
+      {}
+    ],
+    "pagemap": [
+      {
+        "statement": "$if",
+        "@query": {},
+        "@preflight_artifact_font_size_min<desc>": "Minimum font size for artifact",
+        "preflight_artifact_font_size_min": 32,
+        "@preflight_artifact_w1<desc>": "Horizontal alignment weight.",
+        "preflight_artifact_w1": 1,
+        "@preflight_artifact_w2<desc>": "Vertical alignment weight.",
+        "preflight_artifact_w2": 1,
+        "@preflight_artifact_w3<desc>": "Element width weight.",
+        "preflight_artifact_w3": 1,
+        "@preflight_artifact_w4<desc>": "Element height(for images) or font size(for text) weight.",
+        "preflight_artifact_w4": 1,
+        "@preflight_artifact_w5<desc>": "Page numbers weight.",
+        "preflight_artifact_w5": 1,
+        "@preflight_artifact_distance<desc>": "Maximum distance<0,1> when elements can be an artifact/header/footer.",
+        "@preflight_artifact_distance<use>": "Detection of headers/footers and other artifacts in Preflight process.",
+        "preflight_artifact_distance": 0.7,
+        "@preflight_artifact_cluster_points<desc>": "Minimal number of points in preflight_artifact_distance radian.",
+        "@preflight_artifact_cluster_points<use>": "Detection of headers/footers and other artifacts in Preflight process. Higher value causes that only offen repeated headers are detected.",
+        "preflight_artifact_cluster_points": 2,
+        "@concurrent_threads<desc>": "The number of concurrent threads. If zero, the number of concurrent threads supported by the implementation is used. If it's set to 1, no parallel algorithms are used.",
+        "concurrent_threads": 0,
+        "@text_only<desc>": "Process only texts in pagemap.",
+        "text_only": 0,
+        "@rotation_detect<desc>": "Detect and correct page rotation for reading.",
+        "rotation_detect": 1,
+        "@background_color_red<desc>": "Page background color - red.",
+        "background_color_red": 255,
+        "@background_color_green<desc>": "Page background color - green.",
+        "background_color_green": 255,
+        "@background_color_blue<desc>": "Page background color - blue.",
+        "background_color_blue": 255,
+        "@background_color_diff<desc>": "Page background color max color component difference.",
+        "background_color_diff": 2,
+        "@bbox_expansion<desc>": "Bounding box expansion - half of kTrTextHeight.",
+        "bbox_expansion": 2,
+        "@angle_deviation<desc>": "Maximum angle deviation for horizontal and vertical elements.",
+        "angle_deviation": 0.015707963267949,
+        "@header_ratio<desc>": "Maximum percentage of a header height. Possible values from interval [0,1].",
+        "header_ratio": 0.15,
+        "@footer_ratio<desc>": "Maximum percentage of a footer height. Possible values from interval [0,1].",
+        "footer_ratio": 0.15,
+        "@artifact_w1<desc>": "Artifact page border distance weight.",
+        "artifact_w1": 1,
+        "@artifact_w2<desc>": "Artifact image area weight.",
+        "artifact_w2": 1,
+        "@artifact_border_distance_max<desc>": "Maximum distance of artifact to page border.",
+        "artifact_border_distance_max": 2,
+        "@artifact_similarity<desc>": "Minimum similarity value when object or element is an artifact normalized to interval [0,1].",
+        "artifact_similarity": 0.7,
+        "@path_object_max<desc>": "Maximum number of subsequence path objects that are still paths.",
+        "path_object_max": 2000,
+        "@path_object_min<desc>": "Minimum number of subsequence path objects that are still paths.",
+        "path_object_min": 100,
+        "@initial_element_expansion<desc>": "Initial element bounding box expansion when searching children. Size in points. If its zero, a half of default page font size is used.",
+        "initial_element_expansion": 1,
+        "@initial_element_overlap<desc>": "Minimum percentage of covered area of element by the initial element.",
+        "initial_element_overlap": 0.5,
+        "@annot_char_overlap<desc>": "Minimum percentage of covered area of character by the annotation.",
+        "annot_char_overlap": 0.05,
+        "@isolated_text_ratio<desc>": "Maximum isolated text width ratio. Is multiplied with the font size.",
+        "isolated_text_ratio": 10,
+        "@isolated_text<desc>": "Maximum isolated text width.",
+        "isolated_text": 80,
+        "@isolated_element_ratio<desc>": "Maximum isolated element width/height ratio. Is multiplied with the font size.",
+        "isolated_element_ratio": 6,
+        "@element_isolated_w1<desc>": "Element paragraph weight.",
+        "element_isolated_w1": 1,
+        "@element_isolated_w2<desc>": "Element width weight.",
+        "element_isolated_w2": 1,
+        "@element_isolated_caption<desc>": "If set to 1 and element contains caption(table, image, chart, note) do not mark it as isolated element.",
+        "element_isolated_caption": 1,
+        "@element_isolated_width_min<desc>": "Minimal value of bbox width for isolated element. If zero, element_isolated_width_min_ratio is used. Size in points.",
+        "element_isolated_width_min": 0,
+        "@element_isolated_width_min_ratio<desc>": "Minimal value of bbox width for isolated element multiply with average page font size.",
+        "element_isolated_width_min_ratio": 4,
+        "@element_isolated_width_max<desc>": "Maximal value of bbox width for isolated element. If zero, element_isolated_width_max_ratio is used. Size in points.",
+        "element_isolated_width_max": 0,
+        "@element_isolated_width_max_ratio<desc>": "Maximal value of bbox width for isolated element multiply with average page font size.",
+        "element_isolated_width_max_ratio": 10,
+        "@element_isolated_similarity<desc>": "Minimum similarity value when element is isolated normalized to interval [0,1].",
+        "element_isolated_similarity": 0.7,
+        "@element_isolated_image_w1<desc>": "Image vs page area weight.",
+        "element_isolated_image_w1": 1,
+        "@element_isolated_image_w2<desc>": "Elements isolated similarity weight.",
+        "element_isolated_image_w2": 1,
+        "@element_isolated_image_w3<desc>": "Images area vs join image area weight.",
+        "element_isolated_image_w3": 1,
+        "@element_isolated_image_similarity<desc>": "Minimum similarity value when isolated elements can be added to an image.",
+        "@element_isolated_image_similarity<use>": "Isolated elements process. Use higher value to join isolated elements to nearest images.",
+        "element_isolated_image_similarity": 0.7,
+        "@element_line_w1<desc>": "Line width weight.",
+        "element_line_w1": 1,
+        "@element_line_width_max<desc>": "Maximal value of line width. If zero, element_line_width_max_ratio is used. Size in points.",
+        "element_line_width_max": 8,
+        "@element_line_width_max_ratio<desc>": "Maximal value of line width multiply with average page font size.",
+        "element_line_width_max_ratio": 1,
+        "@element_line_similarity<desc>": "Minimum similarity value when element is recognized as line normalized to interval [0,1].",
+        "@element_line_similarity<use>": "Multiple methods.",
+        "element_line_similarity": 0.6,
+        "@element_alignment_ratio<desc>": "Ration between baseline and bounding box alignments. Bounding box alignment precision is multiplied with element_alignment_ratio.",
+        "element_alignment_ratio": 0.5,
+        "@rect_image_similarity<desc>": "Minimum similarity value when the rectangle should be an image normalized to interval [0,1].",
+        "rect_image_similarity": 0.7,
+        "@rect_line_similarity<desc>": "Minimum similarity value when the rectangle should be a line normalized to interval [0,1].",
+        "rect_line_similarity": 0.5,
+        "@image_background_text<desc>": "Text bounding box expansion.",
+        "@image_background_text<use>": "Image detection. Images that have same size as texts(text beackground) are moved to artifacts.",
+        "image_background_text": 1,
+        "@image_overlap_distance<desc>": "Maximum distance value when graphic page objects can be joined. Distance in points.",
+        "@image_overlap_distance<use>": "Image detection. Lower value leaves possible labels isolated.",
+        "image_overlap_distance": 1,
+        "@image_join_distance<desc>": "Defines the maximum allowed distanc (in points) between small images for them to be considered joinable. These parameters help fine-tune the grouping of small image elements into a cohesive larger visual block based on their spatial proximity.",
+        "@image_join_distance<use>": "High value: Allows merging of images that are spaced apart moderately. Low value: Requires images to be nearly adjacent to be joined.",
+        "image_join_distance": 8,
+        "@char_clip_ratio<desc>": "Minimal ratio of the clipping area of the character comparing to it's original size.",
+        "char_clip_ratio": 0.5,
+        "@word_space_width_ratio<desc>": "The word_space_width_ratio is a multiplier that determines the threshold for identifying inter-word spaces by comparing the gap between characters to the typical width of a space character. It scales the space width so that small variations in spacing can be interpreted as either a valid word separator or a mere character gap.",
+        "@word_space_width_ratio<use>": "For example, if the space character in a font is 5 units wide and word_space_width_ratio is set to 1.5, the allowed gap between words would be 7.5 units. If the actual gap is less than this threshold, the algorithm may treat the characters as part of the same word, which is especially useful for fine-tuning text extraction from PDFs with variable spacing.",
+        "word_space_width_ratio": 0.6,
+        "@word_space_width_min_ratio<desc>": "The word_space_width_min_ratio is an additional multiplier that sets a minimum threshold for the allowed space between words. It ensures that, even when minimal character spacing is detected, the computed gap used to determine word boundaries does not fall below a baseline value relative to the font size.",
+        "@word_space_width_min_ratio<use>": "For instance, if the minimal character spacing in a text run is 2 units and the font size is 10, setting word_space_width_min_ratio to 0.5 would enforce a minimum allowed space of 2+(10x0.5) = 7 units. This helps prevent the algorithm from erroneously merging words when the spacing is very tight.",
+        "word_space_width_min_ratio": 0.1,
+        "@word_space_distance_max<desc>": "Maximum word space distance in points.",
+        "@word_space_distance_max<use>": "Text line detection.",
+        "word_space_distance_max": 0,
+        "@word_space_distance_max_ratio<desc>": "Maximum word space distance. The value is multiplied by word font size.",
+        "@word_space_distance_max_ratio<use>": "Text line detection.",
+        "word_space_distance_max_ratio": 0,
+        "@word_space_ratio<desc>": "Ratio that defines if the text line is simple or justify.",
+        "@word_space_ratio<use>": "Text detection.",
+        "word_space_ratio": 1,
+        "@word_space_update_min<desc>": "Minimum ratio of detected word spacing.",
+        "word_space_update_min": 0.2,
+        "@word_space_update_max<desc>": "Maximum ratio of detected word spacing. If set to 0, update word spacif from lines is not applied.",
+        "word_space_update_max": 4,
+        "@word_space_update_distance<desc>": "Distance for clustering word spaces in text line update.",
+        "word_space_update_distance": 0.04,
+        "@word_splitter_ratio<desc>": "Minimum space before splitter. The value is multiplied by most used font size.",
+        "@word_splitter_ratio<use>": "Words splitters detection. Use smaller value when columns are close to each other.",
+        "word_splitter_ratio": 2,
+        "@word_splitter_distance<desc>": "Maximum threshold value for word splitters detections. Real distance in points.",
+        "@word_splitter_distance<use>": "Words splitters detection. ",
+        "word_splitter_distance": 4,
+        "@word_overlap<desc>": "Minimum overlap percentage (0-1) required between bounding boxes to consider words as duplicates. A word must cover at least this percentage of another word's area to be considered overlapping.",
+        "word_overlap": 0.9,
+        "@text_line_baseline_ratio<desc>": "Maximum baseline shift. Value multiplies minimal font. Baseline shift moves individual characters up or down in relation to other text on the same line.",
+        "@text_line_baseline_ratio<use>": "Baseline detection. The baseline is the line upon which most letters ”sit” and below which descenders extend. Use higher value to smooth baseline shift.",
+        "text_line_baseline_ratio": 0.1,
+        "@text_line_underline_distance<desc>": "Distance of the underline line and text baseline. Size in points.",
+        "@text_line_underline_distance<use>": "Underline text detection.",
+        "text_line_underline_distance": 2.6,
+        "@text_line_underline_char_distance_ratio<desc>": "Distance of the underline line start/end point and character bounding box. The value is multiplied by line font size. Size in points.",
+        "@text_line_underline_char_distance_ratio<use>": "Underline text detection.",
+        "text_line_underline_char_distance_ratio": 0.1,
+        "@text_line_subscript_font_ratio<desc>": "This ratio is used to calculate the maximum allowed baseline difference for joining a subscript with its main word. Specifically, multiply the word's font size by this ratio to get a threshold.",
+        "@text_line_subscript_font_ratio<use>": "If the difference between the word's and the subscript's baselines is less than that threshold, they are considered part of the same text line.",
+        "text_line_subscript_font_ratio": 1,
+        "@text_line_join_font_size_distance<desc>": "Distance of two fonts in points, when two lines with different fonts can be join.",
+        "text_line_join_font_size_distance": 0,
+        "@text_line_distance_max<desc>": "Maximum distance between lines. If zero, text_line_distance_max_ratio is used. Size in points.",
+        "@text_line_distance_max<use>": "Paragraphs detection. Each space wider then this value splits the text into lines.",
+        "text_line_distance_max": 0,
+        "@text_line_distance_max_ratio<desc>": "Maximum distance between lines. The value is multiplied by line font size.",
+        "@text_line_distance_max_ratio<use>": "Paragraphs detection. Each space wider then this value splits the text into lines.",
+        "text_line_distance_max_ratio": 2,
+        "@text_line_join_distance<desc>": "Maximum threshold value in line spacing detection for specific font size. The higher value allows creating paragraph with variable line spacings. The value is multiplied by font size.",
+        "@text_line_join_distance<use>": "Used in paragraph detection, this parameter sets the acceptable vertical gap between lines. A higher value permits more variability in line spacing; if set to zero, the algorithm defaults to using the minimum font size.",
+        "text_line_join_distance": 2,
+        "@text_line_chunk_distance_max<desc>": "Maximum distance between chunks. If zero, text_chunk_distance_max_ratio is used. Size in points.",
+        "@text_line_chunk_distance_max<use>": "Text chunks detection. Each space wider then this value splits the line into chunks.",
+        "text_line_chunk_distance_max": 0,
+        "@text_line_chunk_distance_max_ratio<desc>": "Maximum distance between chunks. The value is multiplied by simple word spacing between words.",
+        "@text_line_chunk_distance_max_ratio<use>": "Text chunks detection. Each space wider then this value splits the line into chunks.",
+        "text_line_chunk_distance_max_ratio": 6,
+        "@text_line_chunk_distance<desc>": "A fixed threshold parameter used by the clustering algorithm to group word spaces in a line. When set to a nonzero value, it directly defines the threshold that determines whether adjacent word spaces are similar enough to be considered part of the same cluster. If zero, word_distance_ratio is used. Size in points.",
+        "@text_line_chunk_distance<use>": "This parameter is used for text line detection with a fixed threshold. When set to a nonzero value, it provides an absolute measure for clustering word space distances. A higher word_distance value allows the creation of justified paragraphs even when word spacings vary, accommodating texts where the spacing is not strictly uniform.",
+        "text_line_chunk_distance": 0,
+        "@text_line_chunk_distance_ratio<desc>": "A relative multiplier that comes into play when the fixed threshold (word_distance) is zero. It calculates the threshold by multiplying the line’s font size by the ratio, thereby adapting the clustering sensitivity to the text size.",
+        "@text_line_chunk_distance_ratio<use>": "This parameter is used for text line detection with a dynamic threshold. When word_distance is zero, word_distance_ratio calculates the threshold by multiplying the line’s font size by the ratio. A higher word_distance_ratio value similarly enables the formation of justified paragraphs by tolerating variations in word spacing, adapting the threshold to different font sizes and layouts.",
+        "text_line_chunk_distance_ratio": 0.4,
+        "@text_chunk_distance<desc>": "Maximum distance value when text chunks are vertically aligned. If zero, text_chunk_distance_ratio is used. Size in points.",
+        "@text_chunk_distance<use>": "Paragraph detection. Higher value causes identification of tables with not stricly aligned columns.",
+        "text_chunk_distance": 0,
+        "@text_chunk_distance_ratio<desc>": "Maximum distance value when text chunks are vertically aligned. The value is multiplied by page font width.",
+        "@text_chunk_distance_ratio<use>": "Paragraph detection. Higher value causes identification of tables with not stricly aligned columns.",
+        "text_chunk_distance_ratio": 0.42,
+        "@text_chunk_simple_distance<desc>": "Maximum distance value when text chunks create simple line. Normalized to interval [0,1].",
+        "@text_chunk_simple_distance<use>": "Paragraph detection. Lower value.",
+        "text_chunk_simple_distance": 0.4,
+        "@text_chunk_word_distance<desc>": "Maximum distance value when single line text has to be split to words. Normalized to interval [0,1].",
+        "text_chunk_word_distance": 0.1,
+        "@text_height<desc>": "Minimal text height on the page.",
+        "text_height": 8,
+        "@text_simple_similarity<desc>": "Minimum similarity value when text lines create a simple paragraph normalized to interval [0,1].",
+        "@text_simple_similarity<use>": "Paragraph detection. Higher value causes more solid paragraphs.",
+        "text_simple_similarity": 0.96,
+        "@text_justify_similarity<desc>": "Minimum similarity value when text lines create a justify paragraph normalized to interval [0,1].",
+        "@text_justify_similarity<use>": "Paragraph detection. Higher value causes more solid paragraphs.",
+        "text_justify_similarity": 0.96,
+        "@text_table_similarity<desc>": "Minimum similarity value when text lines create a table normalized to interval [0,1].",
+        "@text_table_similarity<use>": "Paragraph detection. Lower value splits lines with larger spaces into chunks to be able to detect tables.",
+        "text_table_similarity": 0.65,
+        "@text_paragraph_similarity<desc>": "Minimum similarity value when text is paragraph normalized to interval [0,1].",
+        "text_paragraph_similarity": 0.7,
+        "@text_split_distance<desc>": "Dissimilarity boundary value when text lines creates a paragraph.",
+        "text_split_distance": 0.2,
+        "@text_column_similarity<desc>": "Minimum similarity value that text creates a column normalized to interval [0,1].",
+        "text_column_similarity": 0.7,
+        "@label_image_detect<desc>": "Graphic labels detection. Possible values: 0 | 1. If 0 is set, it prevents generating labels from paths.",
+        "label_image_detect": 1,
+        "@label_word_detect<desc>": "Texts labels detection. Possible values: 0 | 1. If 0 is set, it prevents generating labels from words.",
+        "label_word_detect": 1,
+        "@label_alignment_h<desc>": "Maximum deviation of horizontal label alignment.",
+        "label_alignment_h": 2,
+        "@label_distance_ratio<desc>": "Distance of the label and text. Is multiplied with the page most used font size.",
+        "label_distance_ratio": 10,
+        "@label_baseline_ration<desc>": "Multiplies minimal font. Maximum deviation of horizontal label aligned to text.",
+        "label_baseline_ration": 0.14,
+        "@label_image_w1<desc>": "Controls how much vertical alignment matters when clustering labels. A higher value enforces stricter alignment, while a lower value allows more variation.",
+        "@label_image_w1<use>": "High value: For well-aligned labels in structured documents like tables and forms. Low or zero: For misaligned labels, scanned text, or inconsistent formatting.",
+        "label_image_w1": "1",
+        "@label_image_w2<desc>": "Controls how much the distance between a label and its associated text influences clustering. A higher value enforces stricter proximity, ensuring labels are closely linked to their text.",
+        "@label_image_w2<use>": "High value: For structured forms where labels and text are tightly grouped. Low or zero: For documents with irregular spacing, where labels and text may be farther apart.",
+        "label_image_w2": "1",
+        "@label_image_w3<desc>": "This weight controls how much the label's width consistency matters in clustering. A higher value enforces that labels should have the same width, while a lower value allows more variation in width between labels.",
+        "@label_image_w3<use>": "Higher value: When it’s important for labels to have similar widths, such as in structured documents like forms. Lower value: When label width can vary, such as in less structured or more creative layouts.",
+        "label_image_w3": "1",
+        "@label_image_w4<desc>": "This weight determines how important the height consistency of labels is when clustering. A higher value enforces that labels should have the same height, while a lower value allows more flexibility in height differences.",
+        "@label_image_w4<use>": "Higher value: When height uniformity is important for the document structure, like in neatly aligned forms. Lower value: When height variations between labels are acceptable.",
+        "label_image_w4": "1",
+        "@label_image_w5<desc>": "This weight adjusts how important the height relationship is between the image label and its associated text. A higher value means the height alignment between the label and the text is more significant in clustering decisions.",
+        "@label_image_w5<use>": "Higher value: When it’s crucial that the label and associated text are aligned in height, such as in forms where labels and content need to be closely related. Lower value: When label and text height alignment is less critical for grouping.",
+        "label_image_w5": "0.5",
+        "@label_image_width_min<desc>": "Specifies a fixed minimum width in points. If set to zero, the label_image_width_min_ratio is used instead..",
+        "@label_image_width_min<use>": "Fixed Minimum Width (label_image_width_min > 0): Use this setting when you expect label images to have a consistent size across the document. For example, if you set label_image_width_min to 10, any image with a width of less than 10 points will not be processed as a label.",
+        "label_image_width_min": 0,
+        "@label_image_width_min_ratio<desc>": "Defines the minimum width as a multiple of the average font size. Useful when label size varies with font size.",
+        "@label_image_width_min_ratio<use>": "Relative Minimum Width (label_image_width_min_ratio > 0): Use this setting when label image sizes vary with font size. For instance, if the average font size is 12 points and you set label_image_width_min_ratio to 1, any image with a width of less than 12 points will not be processed as a label.",
+        "label_image_width_min_ratio": 0,
+        "@label_image_width_max<desc>": "Specifies a fixed maximum width in points. If set to zero, the label_image_width_max_ratio is used instead.",
+        "@label_image_width_max<use>": "Fixed Maximum Width (label_image_width_max > 0): Use this setting when you expect label images to have a consistent maximum size across the document. For example, if you set label_image_width_max to 100, any image with a width greater than 100 points will not be processed as a label.",
+        "label_image_width_max": 0,
+        "@label_image_width_max_ratio<desc>": "Defines the maximum width as a multiple of the average page font size. This ratio is applied when label_image_width_max is zero.",
+        "@label_image_width_max_ratio<use>": "Relative Maximum Width (label_image_width_max_ratio > 0): Use this setting when label image sizes vary with font size. For instance, if the average font size is 12 points and you set label_image_width_max_ratio to 6, any image with a width greater than 72 points will not be processed as a label.",
+        "label_image_width_max_ratio": 6,
+        "@label_image_distance<desc>": "Clustering threshold in points that decides when labels should be grouped together. A higher value makes clustering more flexible, allowing distant labels to merge, while a lower value keeps clusters tight and separate.",
+        "@label_image_distance<use>": "High value: Good for documents with uneven label spacing. High value: Good for documents with uneven label spacing.",
+        "label_image_distance": "4",
+        "@label_word_w1<desc>": "Controls how much vertical alignment matters when clustering labels. A higher value enforces stricter alignment, while a lower value allows more variation.",
+        "@label_word_w1<use>": "High value: For well-aligned labels in structured documents like tables and forms. Low or zero: For misaligned labels, scanned text, or inconsistent formatting.",
+        "label_word_w1": "1",
+        "@label_word_w2<desc>": "Controls how much the distance between a label and its associated text influences clustering. A higher value enforces stricter proximity, ensuring labels are closely linked to their text.",
+        "@label_word_w2<use>": "High value: For structured forms where labels and text are tightly grouped. Low or zero: For documents with irregular spacing, where labels and text may be farther apart.",
+        "label_word_w2": "1",
+        "@label_word_dist_sibling_ratio<desc>": "This threshold, defined as a ratio multiplied by a siblings font size, sets the maximum gap allowed between a label and its sibling element to be joined together. If the distance exceeds this value, the label and its sibling remain separate.",
+        "@label_word_dist_sibling_ratio<use>": "For example, with a ratio of 2.0 and a sibling font size of 12, a gap greater than 24 points prevents the label from being joined with its sibling.",
+        "label_word_dist_sibling_ratio": "4",
+        "@label_word_distance<desc>": "Clustering threshold in points that decides when labels should be grouped together. A higher value makes clustering more flexible, allowing distant labels to merge, while a lower value keeps clusters tight and separate.",
+        "@label_word_distance<use>": "High value: Good for documents with uneven label spacing. High value: Good for documents with uneven label spacing.",
+        "label_word_distance": "0",
+        "@label_word_distance_ratio<desc>": "Clustering threshold value that decides when labels should be grouped together. The value is multiplied by avarage page font width.",
+        "@label_word_distance_ratio<use>": "High value: Good for documents with uneven label spacing. High value: Good for documents with uneven label spacing.",
+        "label_word_distance_ratio": "1",
+        "@toc_detect<desc>": "TOC detection. Possible values: 0 | 1. If 0 is set, it prevents generating TOC from words.",
+        "toc_detect": 1,
+        "@toc_word_distance<desc>": "Controls how much vertical alignment matters when clustering TOC words. A higher value enforces stricter alignment, ensuring TOC elements are well-structured.",
+        "@toc_word_distance<use>": "High value: For structured TOCs where entries are well-aligned. Low or zero: For scanned or irregularly formatted TOCs with inconsistent alignment.",
+        "toc_word_distance": 0,
+        "@toc_word_distance_ratio<desc>": "Threshold ratio that determines when TOC entries should be clustered together. The value is multiplied by the average page font width.",
+        "@toc_word_distance_ratio<use>": "High value: Allows more flexibility in TOC clustering when entry spacing is inconsistent.",
+        "toc_word_distance_ratio": "1",
+        "@graphic_table_detect<desc>": "Graphic tables detection. Possible values: 0 | 1. If 0 is set, it prevents generating tables from paths.",
+        "graphic_table_detect": 1,
+        "@graphic_table_detect_row<desc>": "Row graphic tables  detection.",
+        "graphic_table_detect_row": 1,
+        "@graphic_table_detect_col<desc>": "Column graphic tables detection.",
+        "graphic_table_detect_col": 1,
+        "@graphic_table_alignment_distance<desc>": "Maximum alignment distance value when elements can create a table. Distance in points.",
+        "graphic_table_alignment_distance": 0.8,
+        "@graphic_table_split_w1<desc>": "Table texts paragraph weight.",
+        "graphic_table_split_w1": 1,
+        "@graphic_table_split_w2<desc>": "Table texts horizontal alignment weight.",
+        "graphic_table_split_w2": 1,
+        "@graphic_table_split_w3<desc>": "Columns width weight.",
+        "graphic_table_split_w3": 1,
+        "@graphic_table_split_w4<desc>": "Number of columns weight.",
+        "graphic_table_split_w4": 0.5,
+        "@graphic_table_split_w5<desc>": "Number of rows weight.",
+        "graphic_table_split_w5": 0.5,
+        "@graphic_table_split_w6<desc>": "Page area weight.",
+        "graphic_table_split_w6": 1,
+        "@graphic_table_split_col_max<desc>": "Maximal number of columns when table can be split.",
+        "graphic_table_split_col_max": 5,
+        "@graphic_table_split_row_max<desc>": "Maximal number of rows when table can be split.",
+        "graphic_table_split_row_max": 5,
+        "@graphic_table_split_similarity<desc>": "Minimum similarity value when graphic table has to be split.",
+        "@graphic_table_split_similarity<use>": "Graphic table detection. Page layout sometimes creates a table. Higher value preserves this layout as table (html), otherwise it's split to elements. It's important for tagging, because it requires strictly defined tables.",
+        "graphic_table_split_similarity": 0.7,
+        "@graphic_table_split_layout_similarity<desc>": "Minimum similarity value when graphic table has to be split.",
+        "@graphic_table_split_layout_similarity<use>": "Graphic table detection. Page layout sometimes creates a table. Higher value preserves this layout as table (html), otherwise it's split to containers. It's important for tagging, because it requires strictly defined tables.",
+        "graphic_table_split_layout_similarity": 0.7,
+        "@graphic_table_chart_similarity<desc>": "Minimum similarity value when graphic table is a char.",
+        "@graphic_table_chart_similarity<use>": "Graphic table detection. Use lower value to recognize charts(images) instead of tables.",
+        "graphic_table_chart_similarity": 0.3,
+        "@graphic_table_image_w1<desc>": "Images area weight. If -1, number of images is used.",
+        "graphic_table_image_w1": -1,
+        "@graphic_table_image_w2<desc>": "Images  weight. If -1, number of images is used.",
+        "graphic_table_image_w2": -1,
+        "@graphic_table_image_w3<desc>": "Chart similarity weight. If -1, number of paths is used.",
+        "graphic_table_image_w3": -1,
+        "@graphic_table_image_w4<desc>": "Texts vertical alignment weight.",
+        "graphic_table_image_w4": 1,
+        "@graphic_table_image_w5<desc>": "Table size weight.",
+        "graphic_table_image_w5": 1,
+        "@graphic_table_image_similarity<desc>": "Minimum similarity value when graphic table has an image.",
+        "@graphic_table_image_similarity<use>": "Graphic table detection. Use lower value to recognize charts(images) instead of tables.",
+        "graphic_table_image_similarity": 0.7,
+        "@text_table_detect<desc>": "Texts (not graphic) tables detection. Possible values: 0 | 1. If 0 is set, it prevents generating tables from isolated chunk of text.",
+        "text_table_detect": 1,
+        "@text_table_detect_row<desc>": "Row texts (not graphic) tables detection.",
+        "text_table_detect_row": 1,
+        "@text_table_detect_col<desc>": "Column texts (not graphic) tables detection. ",
+        "text_table_detect_col": 1,
+        "@text_table_row_alignment_type<desc>": "Table row alignment type [0 - strong, 1 - average, 2 - weak].",
+        "@text_table_row_alignment_type<use>": "Table detection. Select strong for strictly aligned rows.",
+        "text_table_row_alignment_type": 1,
+        "@text_table_col_alignment_type<desc>": "Table column alignment type [0 - strong, 1 - average, 2 - weak].",
+        "@text_table_col_alignment_type<use>": "Table detection. Select strong for strictly aligned columns.",
+        "text_table_col_alignment_type": 1,
+        "@text_table_col_similarity_type<desc>": "Table column similarity type [0 - column alignment distance, 1 - element distance, 2 - element size, 3 - max].",
+        "@text_table_col_similarity_type<use>": "Table detection. Table columns similarity calculation. Different weights calculation for table elements.",
+        "text_table_col_similarity_type": 0,
+        "@text_table_col_distance<desc>": "Maximum deviation value for detection nearest distancies for table columns. Real distance in points.",
+        "@text_table_col_distance<use>": "Table detection. Table columns are detected from smallest element distancies. Higher value causes more presize distancies detection.",
+        "text_table_col_distance": 0.8,
+        "@text_table_col_similarity<desc>": "Minimum similarity value when elements create table column.",
+        "@text_table_col_similarity<use>": "Table detection. Use lower values for tables that contains paragraps, select higher values for typical tables with numbers.",
+        "text_table_col_similarity": 0.36,
+        "@text_table_alignment_type<desc>": "Table column alignment type [0 - strong, 1 - average, 2 - weak]. Select strong for strictly aligned table elements.",
+        "@text_table_alignment_type<use>": "Table detection. Use strong for strictly aligned tables.",
+        "text_table_alignment_type": 2,
+        "@text_table_alignment_distance<desc>": "Maximum threshold value for detection text tables. ",
+        "@text_table_alignment_distance<use>": "Table detection. Higher value tends to recognize tables. Lower values tends to paragraph detection.",
+        "text_table_alignment_distance": 0.4,
+        "@text_table_text_col_w1<desc>": "Text column paragraph weight.",
+        "text_table_text_col_w1": 1,
+        "@text_table_text_col_w2<desc>": "Text column width weight.",
+        "text_table_text_col_w2": 1,
+        "@text_table_text_col_width_min<desc>": "Minimal value of bbox width for text in table column. If zero, text_table_text_col_width_min_ratio is used. Size in points.",
+        "text_table_text_col_width_min": 0,
+        "@text_table_text_col_width_min_ratio<desc>": "Minimal value of bbox width for text in table column multiply with average page font size.",
+        "text_table_text_col_width_min_ratio": 1,
+        "@text_table_text_col_width_max<desc>": "Maximal value of bbox width for text in table column. If zero, text_table_text_col_width_max_ratio is used. Size in points.",
+        "text_table_text_col_width_max": 0,
+        "@text_table_text_col_width_max_ratio<desc>": "Maximal value of bbox width for text in table column multiply with average page font size.",
+        "text_table_text_col_width_max_ratio": 8,
+        "@text_table_image_col_w1<desc>": "Image column weight.",
+        "text_table_image_col_w1": 1,
+        "@text_table_image_col_gs<desc>": "If set to 1, image column has to have same graphics state.",
+        "text_table_image_col_gs": 1,
+        "@text_table_image_col_width_min<desc>": "Minimal value of bbox width for image in table column. If zero, text_table_image_col_width_min_ratio is used. Size in points.",
+        "text_table_image_col_width_min": 0,
+        "@text_table_image_col_width_min_ratio<desc>": "Minimal value of bbox width for image in table column multiply with average page font size.",
+        "text_table_image_col_width_min_ratio": 1,
+        "@text_table_image_col_width_max<desc>": "Maximal value of bbox width for image in table column. If zero, text_table_image_col_width_max_ratio is used. Size in points.",
+        "text_table_image_col_width_max": 0,
+        "@text_table_image_col_width_max_ratio<desc>": "Maximal value of bbox width for image in table column multiply with average page font size.",
+        "text_table_image_col_width_max_ratio": 4,
+        "@text_table_image_col_height_min<desc>": "Minimal value of bbox height for image in table column. If zero, text_table_image_col_height_min_ratio is used.",
+        "text_table_image_col_height_min": 0,
+        "@text_table_image_col_height_min_ratio<desc>": "Minimal value of bbox height for image in table column multiply with average page font size.",
+        "text_table_image_col_height_min_ratio": 1,
+        "@text_table_image_col_height_max<desc>": "Maximal value of bbox height for image in table column. If zero, text_table_image_col_height_max_ratio is used.",
+        "text_table_image_col_height_max": 0,
+        "@text_table_image_col_height_max_ratio<desc>": "Maximal value of bbox height for image in table column multiply with average page font size.",
+        "text_table_image_col_height_max_ratio": 2,
+        "@text_table_column_similarity<desc>": "Minimum similarity value when elements create table column.",
+        "text_table_column_similarity": 0.5,
+        "@text_table_image_similarity_w1<desc>": "Sect table image similarity area weight.",
+        "text_table_image_similarity_w1": 1,
+        "@text_table_image_similarity_w2<desc>": "Sect table image similarity chart weight.",
+        "text_table_image_similarity_w2": 1,
+        "@text_table_image_similarity<desc>": "Minimum similarity value when text table is image normalized to interval [0,1].",
+        "text_table_image_similarity": 0.7,
+        "@text_table_paragraph_similarity<desc>": "Minimum similarity value when text table is paragraph normalized to interval [0,1].",
+        "text_table_paragraph_similarity": 0.7,
+        "@table_update_delete_empty<desc>": "Delete empty rows and cols.",
+        "table_update_delete_empty": 1,
+        "@table_update_split_by_cell<desc>": "Split elements that should be originally splitted, It usually happens when some paragraph is recognized instead of single lines or images(bullets) are joined together.",
+        "table_update_split_by_cell": 0,
+        "@table_update_split_by_row<desc>": "Split table texts to lines.",
+        "table_update_split_by_row": 0,
+        "@table_update_split_label<desc>": "Split labels in tables.",
+        "table_update_split_label": 0,
+        "@table_update_span_empty<desc>": "Span empty cells.",
+        "table_update_span_empty": 1,
+        "@table_update_span_row<desc>": "Join rows based on the maximum row span",
+        "table_update_span_row": 0,
+        "@table_update_span_row_first<desc>": "If set to true, rows are merged together first using span",
+        "table_update_span_row_first": 0,
+        "@table_update_join<desc>": "Join texts in a single cell.",
+        "table_update_join": 0,
+        "@table_update_cell_header<desc>": "Detect headers.",
+        "table_update_cell_header": 1,
+        "@table_span_col_ratio<desc>": "Intersection percentage of colspan element. Possible values from interval [0,1].",
+        "table_span_col_ratio": 0.1,
+        "@table_span_row_ratio<desc>": "Intersection percentage of rowspan element. Possible values from interval [0,1].",
+        "table_span_row_ratio": 0.2,
+        "@table_alignment_h<desc>": "Maximum deviation (in points) of horizontal table aligned elements.",
+        "table_alignment_h": 1,
+        "@table_alignment_v<desc>": "Maximum deviation (in points) of vertical table aligned elements.",
+        "table_alignment_v": 4,
+        "@table_line_intersection<desc>": "Expansion (in points) for lines intersection. It's used in table detection.",
+        "table_line_intersection": 1,
+        "@form_table_detect<desc>": "Recognize form fields as tables.",
+        "form_table_detect": 1,
+        "@caption_distance<desc>": "Distance of the caption and the image/table.",
+        "caption_distance": 80,
+        "@caption_alignment_h<desc>": "Maximum deviation (in points) in caption and nearest element alignment.",
+        "caption_alignment_h": 4,
+        "@caption_alignment_v<desc>": "Maximum deviation (in points) in caption and nearest element alignment.",
+        "caption_alignment_v": 4,
+        "@mc_detect<desc>": "Update elements language, alternate description and actual text based on kb. Default value is set to 1 but can be turn to 0 due to optimization - when alternate description is not required.",
+        "mc_detect": 1,
+        "@rd_sort<desc>": "Sort elements: 0 - inbuild, 1 - original content positions, 2 - by x and y coordinates, 3 - by rd_index.",
+        "rd_sort": 0,
+        "@rd_sort_direction<desc>": "Sort elements: 0 - inbuild, 1 - prefere columns, 2 - prefere rows.",
+        "rd_sort_direction": 0,
+        "@rd_column_distance<desc>": "Maximum threshold value for columns detection. Real distance in points.",
+        "rd_column_distance": 0.8
+      }
+    ],
+    "@pagemap_regex<type>": "string",
+    "@pagemap_regex<desc>": "The pagemap_regex node contains patterns for the recognition algorithm. Keys prefixed with regex use regular expressions; others define acceptable characters.",
+    "@pagemap_regex<value>": [
+      "regex_hyphen",
+      "regex_hyphen_rtl",
+      "regex_bullet",
+      "regex_bullet_rtl",
+      "regex_bullet_font",
+      "regex_label",
+      "regex_label_rtl",
+      "regex_decimal_numbering",
+      "regex_roman_numbering",
+      "regex_roman_numbering_rtl",
+      "regex_letter_numbering",
+      "regex_letter_numbering_rtl",
+      "regex_filling",
+      "regex_filling_char",
+      "regex_page_number",
+      "regex_page_number_rtl",
+      "regex_first_cap",
+      "regex_first_cap_rtl",
+      "regex_terminal",
+      "regex_terminal_rtl",
+      "regex_table_caption",
+      "regex_image_caption",
+      "regex_chart_caption",
+      "regex_note_caption",
+      "regex_toc_caption",
+      "regex_colon",
+      "regex_colon_rtl",
+      "regex_comma",
+      "regex_letter",
+      "regex_letter_rtl",
+      "number_chars",
+      "numbering_splitter_chars"
+    ],
+    "@pagemap_regex<insert>": [
+      {}
+    ],
+    "pagemap_regex": [
+      {
+        "statement": "$if",
+        "@query": {},
+        "regex_hyphen": "\\w+-$",
+        "regex_bullet": "^[\\u2010\\u2011\\u2212\\u005E\\u005B\\uF0A7\\uF097\\uF0BB\\u25CF\\u2022\\u25D8\\u25CB\\u25D9\\u2023\\u2043\\uF0B7\\u2212\\u204C\\u204D\\u25E6\\u29BE\\u29BF\\u21E8\\u25BA\\u25C4\\u2219\\u25A0\\uF06C\\u25A1\\u005D\\u25C6]$",
+        "regex_bullet_font": "(Wingdings)|(Symbol)",
+        "regex_label": "^[\\[\\(]?((M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3}))|(\\d+)|([a-zA-Z]))[\\)\\]\\.]$",
+        "label_chars": ".()[]",
+        "regex_decimal_numbering": "^[\\[\\(]?(?:\\d{1,4}\\.){0,5}\\d{0,4}\\s?[\\)\\]\\.]?$",
+        "regex_roman_numbering": "^[\\[\\(]?M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})[\\)\\]\\.]?$",
+        "regex_letter_numbering": "^[\\[\\(]?[A-Za-z][\\)\\]\\.]$",
+        "regex_filling": "[._]{2,}",
+        "regex_filling_chars": "._",
+        "regex_page_number": "(^\\d+$)|(^M{0,4}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$)",
+        "regex_first_cap": "^[A-Z]",
+        "regex_terminal": "[\\.\\!\\?]$",
+        "regex_table_caption": "((^table)|(^tab\\.))",
+        "regex_image_caption": "((^image)|(^img\\.)|(^figure)|(^fig\\.))",
+        "regex_chart_caption": "((^chart)|(^map))",
+        "regex_note_caption": "((^source\\:)|(^note\\:))",
+        "regex_toc_caption": "((^content)|(^toc))",
+        "regex_colon": ":$",
+        "regex_comma": "[,;]$",
+        "regex_letter": "^[A-Za-z]$",
+        "number_chars": "-+.,%\\u20AC$\\u00A5\\u00A3",
+        "numbering_splitter_chars": ".()[]"
+      }
+    ],
+    "@element_create<type>": "function",
+    "@element_create<desc>": "Create user-defined elements.",
+    "@element_create<insert>": [
+      {
+        "query": {
+          "$and": []
+        },
+        "elements": [
+          {
+            "type": "pde_text",
+            "bbox": {
+              "left": "0",
+              "bottom": "0",
+              "right": "0",
+              "top": "0"
+            }
+          }
+        ]
+      }
+    ],
+    "@element_create": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query<insert>": {
+          "$and": []
+        },
+        "@query": {
+          "$and": []
+        },
+        "@elements<desc>": "Array of pre-defined elements.",
+        "@elements<type>": "array",
+        "@elements": [
+          {
+            "@alt<link>": "schema:values:alt",
+            "@alt": "",
+            "@actual_text<link>": "schema:values:actual_text",
+            "@actual_text": "",
+            "@lang<link>": "schema:values:lang",
+            "@lang": "",
+            "@flag<link>": "schema:values:flag",
+            "@flag": "",
+            "@text_flag<link>": "schema:values:text_flag",
+            "@text_flag": "",
+            "@numbering<link>": "schema:values:numbering",
+            "@numbering": "",
+            "@type<desc>": "Set the element type. Its important for the correct layout detection.",
+            "@type<type>": "string",
+            "@type<value>": [
+              "pde_text",
+              "pde_image",
+              "pde_container",
+              "pde_list",
+              "pde_line",
+              "pde_rect",
+              "pde_table",
+              "pde_cell",
+              "pde_toc",
+              "pde_header",
+              "pde_footer"
+            ],
+            "type": "pde_element",
+            "@bbox<link>": "schema:values:bbox",
+            "bbox": {
+              "left": "0",
+              "bottom": "0",
+              "right": "0",
+              "top": "0"
+            },
+            "@start_bbox<link>": "schema:values:bbox",
+            "@start_bbox": {
+              "left": "0",
+              "bottom": "0",
+              "right": "0",
+              "top": "0"
+            },
+            "@end_bbox<link>": "schema:values:bbox",
+            "@end_bbox": {
+              "left": "0",
+              "bottom": "0",
+              "right": "0",
+              "top": "0"
+            },
+            "@tag<link>": "schema:values:tag_type",
+            "@tag": "",
+            "@heading<link>": "schema:values:heading",
+            "@heading": "normal",
+            "@name<link>": "schema:values:name",
+            "@name": "element1",
+            "@id<link>": "schema:values:id",
+            "@id": "",
+            "@sort_direction<desc>": "Specifies the primary direction for sort: 0 - inbuild, 1 - columns, 2 - rows.",
+            "@sort_direction<type>": "int",
+            "@sort_direction": 0,
+            "@rd_index<desc>": "Specifies the reading order index of the element in the parent element or the page.",
+            "@rd_index<type>": "int",
+            "@rd_index": -1,
+            "@single_instance<link>": "schema:values:single_instance",
+            "@single_instance": "font_size|font_name|left",
+            "@col_num": 1,
+            "@col_num<link>": "schema:values:col_num",
+            "@row_num": 1,
+            "@row_num<link>": "schema:values:row_num",
+            "@cell_column": "1",
+            "@cell_column<link>": "schema:values:cell_column",
+            "@cell_row": "1",
+            "@cell_row<link>": "schema:values:cell_row",
+            "@cell_row_span": "1",
+            "@cell_row_span<link>": "schema:values:cell_row_span",
+            "@cell_column_span": "1",
+            "@cell_column_span<link>": "schema:values:cell_column_span",
+            "@cell_scope": "column",
+            "@cell_scope<link>": "schema:values:cell_scope",
+            "@cell_header": false,
+            "@cell_header<link>": "schema:values:cell_header",
+            "@cell_associated_header<link>": "schema:values:associated_header",
+            "@cell_associated_header": "",
+            "@splitter": "pde_table",
+            "@splitter<link>": "schema:values:type",
+            "@splitter<desc>": "If 'splitter' flag is selected, specifies type of elements that the splitter splits.",
+            "@element_template<desc>": "Defines the template configuration that will be applied to this element.",
+            "@element_template<insert>": {
+              "template": {
+                "pagemap": [
+                  {}
+                ]
+              }
+            },
+            "@element_template": {
+              "template": {}
+            }
+          }
+        ]
+      }
+    ],
+    "@object_update<type>": "function",
+    "@object_update<desc>": "The test is triggered when the page content object is tested.",
+    "@object_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pds_object"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@object_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pds_object"
+          ],
+          "param": [
+            [
+              "pds_object",
+              "pds_text",
+              "pds_path",
+              "pds_image",
+              "pds_shading",
+              "pds_form"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "object1",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "substructure_form_xobject": "true",
+        "substructure_form_xobject<desc>": "If false for Form XObject, the Form XObject is treated as a single object; otherwise, its content is tagged individually.",
+        "substructure_form_xobject<type>": "bool",
+        "substructure_form_xobject<value>": [
+          "true",
+          "false"
+        ]
+      }
+    ],
+    "@text_run_update<type>": "function",
+    "@text_run_update<desc>": "Updates a text run element after processing text objects.",
+    "@text_run_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_text_run"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@text_run_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_text_run"
+          ],
+          "param": [
+            [
+              "pde_text_run"
+            ]
+          ]
+        },
+        "@text_state_flag<link>": "schema:values:text_state_flag",
+        "@text_state_flag": ""
+      }
+    ],
+    "@text_run_neighbours<type>": "function",
+    "@text_run_neighbours<desc>": "This test is triggered when forming text lines from textrun.",
+    "@text_run_neighbours<use>": "Use this function to override the default text segmentation algorithm, either enforcing word merging or preventing it.",
+    "@text_run_neighbours<rule>": "The function takes two parameters: the first (textrun) refers to the left-side word, and the second (textrun) refers to the right-side word.",
+    "@text_run_neighbours<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_text_run",
+            "pde_text_run"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@text_run_neighbours": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_text_run",
+            "pde_text_run"
+          ],
+          "param": [
+            [
+              "pde_text_run"
+            ],
+            [
+              "pde_text_run"
+            ]
+          ]
+        },
+        "@join<desc>": "If @join is set to true, the target textrun and its neighboring textrun will be merged into a single line. If set to false, they will remain as separate lines.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": true
+      }
+    ],
+    "@line_update<type>": "function",
+    "@line_update<desc>": "Updates a line element after detecting horizontal and vertical lines.",
+    "@line_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_line"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@line_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_line"
+          ],
+          "param": [
+            [
+              "pde_line"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "line1",
+        "@parent<link>": "schema:values:name",
+        "@parent": ""
+      }
+    ],
+    "@rect_update<type>": "function",
+    "@rect_update<desc>": "Updates a rectangle element after detecting rectangles.",
+    "@rect_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_rect"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@rect_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_rect"
+          ],
+          "param": [
+            [
+              "pde_rect"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "rect1",
+        "@parent<link>": "schema:values:name",
+        "@parent": ""
+      }
+    ],
+    "@element_graphic_neighbours<type>": "function",
+    "@element_graphic_neighbours<desc>": "Test if two neighbours path elements can form a single graphic table.",
+    "@element_graphic_neighbours<use>": "This method is used when two graphic elements are join into a graphic table.",
+    "@element_graphic_neighbours<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element",
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@element_graphic_neighbours": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element",
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_line",
+              "pde_rect",
+              "pde_table"
+            ],
+            [
+              "pde_element",
+              "pde_line",
+              "pde_rect",
+              "pde_table"
+            ]
+          ]
+        },
+        "@join<desc>": "If join is set to true, these elements can be part of the same parent; if set to false, they are split.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": true
+      }
+    ],
+    "@element_graphic_update<type>": "function",
+    "@element_graphic_update<desc>": "Updates line, rects and graphic table element after detecting.",
+    "@element_graphic_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@element_graphic_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_line",
+              "pde_rect",
+              "pde_table"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "table1",
+        "@parent<link>": "schema:values:name",
+        "@parent": "",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|left",
+        "@id<link>": "schema:values:id",
+        "@id": ""
+      }
+    ],
+    "@word_update<type>": "function",
+    "@word_update<desc>": "Updates a word element after detecting words.",
+    "@word_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_word"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@word_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_word"
+          ],
+          "param": [
+            [
+              "pde_word"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@actual_text<link>": "schema:values:actual_text",
+        "@actual_text": "",
+        "@lang<link>": "schema:values:lang",
+        "@lang": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@heading<link>": "schema:values:heading",
+        "@heading": "normal",
+        "@word_flag<link>": "schema:values:word_flag",
+        "@word_flag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "word1",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|text",
+        "@word_space<link>": "schema:values:word_space",
+        "@word_space": 0
+      }
+    ],
+    "@word_neighbours<type>": "function",
+    "@word_neighbours<desc>": "This test is triggered when forming text lines from words.",
+    "@word_neighbours<use>": "Use this function to override the default text segmentation algorithm, either enforcing word merging or preventing it.",
+    "@word_neighbours<rule>": "The function takes two parameters: the first (pde_word) refers to the left-side word, and the second (pde_word) refers to the right-side word.",
+    "@word_neighbours<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_word",
+            "pde_word"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@word_neighbours": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_word",
+            "pde_word"
+          ],
+          "param": [
+            [
+              "pde_word"
+            ],
+            [
+              "pde_word"
+            ]
+          ]
+        },
+        "@join<desc>": "If @join is set to true, the target word and its neighboring word will be merged into a single text line. If set to false, they will remain as separate lines.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": true
+      }
+    ],
+    "@text_line_update<type>": "function",
+    "@text_line_update<desc>": "Updates a text line element after detecting text lines.",
+    "@text_line_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_text_line"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@text_line_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_text_line"
+          ],
+          "param": [
+            [
+              "pde_text_line"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@heading<link>": "schema:values:heading",
+        "@heading": "normal",
+        "@text_line_flag<link>": "schema:values:text_line_flag",
+        "@text_line_flag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "textline1",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|text",
+        "@word_space<link>": "schema:values:word_space",
+        "@word_space": 0,
+        "@split<desc>": "If true, split this line back to individual words.",
+        "@split<type>": "bool",
+        "@split<value>": [
+          "true",
+          "false"
+        ],
+        "@split_filling<desc>": "If true, do not remove filling words from line and do not mark a line as filling.",
+        "@split_filling<type>": "bool",
+        "@split_filling<value>": [
+          "true",
+          "false"
+        ],
+        "@split": true,
+        "@splitter": "pde_table",
+        "@splitter<link>": "schema:values:type",
+        "@splitter<desc>": "If 'splitter' flag is selected, specifies type of elements that the splitter splits."
+      }
+    ],
+    "@text_line_neighbours<type>": "function",
+    "@text_line_neighbours<desc>": "Test if two neighbours text lines can form a paragraph.",
+    "@text_line_neighbours<rule>": "The first parameter, (pde_text_line), is above, and the second parameter, (pde_text_line), is below, with the direction moving from top to bottom.",
+    "@text_line_neighbours<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_text_line",
+            "pde_text_line"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@text_line_neighbours": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_text_line",
+            "pde_text_line"
+          ],
+          "param": [
+            [
+              "pde_text_line"
+            ],
+            [
+              "pde_text_line"
+            ]
+          ]
+        },
+        "@join<desc>": "If join is set to true, these lines can be part of the same paragraph; if set to false, the paragraph is split. If the node is not present, the lines are joined based on font size and other properties.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": true,
+        "@split<desc>": "If split is set to true, the text is divided between these lines.",
+        "@split<type>": "bool",
+        "@split<value>": [
+          "true",
+          "false"
+        ],
+        "@split": true
+      }
+    ],
+    "@text_update<type>": "function",
+    "@text_update<desc>": "Updates the text element after detecting paragraphs.",
+    "@text_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_text"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@text_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_text"
+          ],
+          "param": [
+            [
+              "pde_text"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@heading<link>": "schema:values:heading",
+        "@heading": "normal",
+        "@text_flag<link>": "schema:values:text_flag",
+        "@text_flag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "text1",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|text",
+        "@id<link>": "schema:values:id",
+        "@id": ""
+      }
+    ],
+    "@image_update<type>": "function",
+    "@image_update<desc>": "Updates an image after detecting basic images from page objects.",
+    "@image_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_image"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@image_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_image"
+          ],
+          "param": [
+            [
+              "pde_image"
+            ]
+          ]
+        },
+        "@alt<link>": "schema:values:alt",
+        "@alt": "",
+        "@actual_text<link>": "schema:values:actual_text",
+        "@actual_text": "",
+        "@lang<link>": "schema:values:lang",
+        "@lang": "",
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "element1",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "type|width|height",
+        "@id<link>": "schema:values:id",
+        "@id": ""
+      }
+    ],
+    "@element_update<type>": "function",
+    "@element_update<desc>": "Updates an element after detecting basic elements.",
+    "@element_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@element_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_text",
+              "pde_image",
+              "pde_line",
+              "pde_rect",
+              "pde_table"
+            ]
+          ]
+        },
+        "@alt<link>": "schema:values:alt",
+        "@alt": "",
+        "@actual_text<link>": "schema:values:actual_text",
+        "@actual_text": "",
+        "@lang<link>": "schema:values:lang",
+        "@lang": "",
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@tag<link>": "schema:values:tag_type",
+        "@tag": "",
+        "@name<link>": "schema:values:name",
+        "@name": "element1",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|left",
+        "@id<link>": "schema:values:id",
+        "@id": ""
+      }
+    ],
+    "@table_update<type>": "function",
+    "@table_update<desc>": "Updates a table after the whole process od table detection is done.",
+    "@table_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_table"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@table_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_table"
+          ],
+          "param": [
+            [
+              "pde_table"
+            ]
+          ]
+        },
+        "@delete_empty<desc>": "If set to true, empty rows and columns are removed.",
+        "@delete_empty<type>": "bool",
+        "@delete_empty<value>": [
+          "true",
+          "false"
+        ],
+        "@delete_empty": true,
+        "@split_by_cell<desc>": "If set to true, table elements are split to fit into the cells.",
+        "@split_by_cell<type>": "bool",
+        "@split_by_cell<value>": [
+          "true",
+          "false"
+        ],
+        "@split_by_cell": false,
+        "@split_by_row<desc>": "If set to true, texts are split to single lines.",
+        "@split_by_row<type>": "bool",
+        "@split_by_row<value>": [
+          "true",
+          "false"
+        ],
+        "@split_by_row": false,
+        "@split_label<desc>": "If set to true, labels are split.",
+        "@split_label<type>": "bool",
+        "@split_label<value>": [
+          "true",
+          "false"
+        ],
+        "@split_label": false,
+        "@span_empty<desc>": "If set to true, empty cells are merged together using a span.",
+        "@span_empty<type>": "bool",
+        "@span_empty<value>": [
+          "true",
+          "false"
+        ],
+        "@span_empty": true,
+        "@span_row_first<desc>": "If set to true, rows are merged together first using span, followed by columns; otherwise, they are merged in the opposite order.",
+        "@span_row_first<type>": "bool",
+        "@span_row_first<value>": [
+          "true",
+          "false"
+        ],
+        "@span_row_first": false,
+        "@span_row<desc>": "If set to true, rows are merged based on the maximum available row span.",
+        "@span_row<type>": "bool",
+        "@span_row<value>": [
+          "true",
+          "false"
+        ],
+        "@span_row": false,
+        "@join<desc>": "If set to true, all text elements in a single cell are combined into one paragraph.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": false,
+        "@cell_header<link>": "schema:values:cell_header",
+        "@cell_header": true,
+        "@flag<link>": "schema:values:flag",
+        "@flag": ""
+      }
+    ],
+    "@cell_update<type>": "function",
+    "@cell_update<desc>": "Updates a table cell after the whole process od table detection is done.",
+    "@cell_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_table",
+            "pde_cell"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@cell_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_table",
+            "pde_cell"
+          ],
+          "param": [
+            [
+              "pde_table"
+            ],
+            [
+              "pde_cell"
+            ]
+          ]
+        },
+        "@cell_row_span": "",
+        "@cell_row_span<link>": "schema:values:cell_row_span",
+        "@cell_column_span": "",
+        "@cell_column_span<link>": "schema:values:cell_column_span",
+        "@cell_scope": "column",
+        "@cell_scope<link>": "schema:values:cell_scope",
+        "@join<desc>": "If set to true, all text elements in a cell are combined into one paragraph.",
+        "@join<type>": "bool",
+        "@join<value>": [
+          "true",
+          "false"
+        ],
+        "@join": false,
+        "@cell_header<link>": "schema:values:cell_header",
+        "@cell_header": true,
+        "@heading<link>": "schema:values:heading",
+        "@heading": "normal",
+        "@id<link>": "schema:values:id",
+        "@id": "",
+        "@name<link>": "schema:values:name",
+        "@name": "cell1",
+        "@cell_associated_header<link>": "schema:values:associated_header",
+        "@cell_associated_header": "",
+        "@single_instance<link>": "schema:values:single_instance",
+        "@single_instance": "font_size|font_name|text|cell_column",
+        "@join_row<desc>": "If set to -1, the current row is merged into the previous one. +1 means merging the next row into the current one. 0 means merging by cell properties.",
+        "@join_row<type>": "int",
+        "@join_row": 0
+      }
+    ],
+    "@table_split<type>": "function",
+    "@table_split<desc>": "Updates the table after the entire table detection process is completed.",
+    "@table_split<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_table",
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@table_split": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_table",
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_table"
+            ],
+            [
+              "pde_element",
+              "pde_text",
+              "pde_image",
+              "pde_container",
+              "pde_list",
+              "pde_line",
+              "pde_rect",
+              "pde_form_field",
+              "pde_annot"
+            ]
+          ]
+        },
+        "@row<desc>": "If set to true, the table is split by the row that contains an element from the query.",
+        "@row<type>": "bool",
+        "@row<default>": false,
+        "@row<values>": [
+          "true",
+          "false"
+        ],
+        "@row": false
+      }
+    ],
+    "@alt_update<type>": "function",
+    "@alt_update<desc>": "Sets an alternate description for the element. The alternate description is established in a specific order. To skip a step, set the default value to false for that step.",
+    "@alt_update<rule>": "If existing Alternate Text is not EMPTY, new text will be not apply",
+    "@alt_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@alt_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_text",
+              "pde_text_line",
+              "pde_word",
+              "pde_text_run",
+              "pde_image",
+              "pde_container",
+              "pde_list",
+              "pde_line",
+              "pde_rect",
+              "pde_table",
+              "pde_cell",
+              "pde_toc",
+              "pde_header",
+              "pde_footer",
+              "pde_form_field",
+              "pde_annot"
+            ]
+          ]
+        },
+        "@mc<desc>": "If set to true, the alternate description is taken from the original marked content and the Alt tag. If there is no marked content or if marked content is set to false, proceed to the next step.",
+        "@mc<type>": "bool",
+        "@mc<value>": [
+          "true",
+          "false"
+        ],
+        "@mc": true,
+        "@children<desc>": "If true, alternate description is taken from the children of the element. Currently only PdeImage is supported. All texts from PdeTexts children inside the image are joined into the output alternate description. If there are no children node is set to false, continue to the next step.",
+        "@children<type>": "bool",
+        "@children<value>": [
+          "true",
+          "false"
+        ],
+        "@children": true,
+        "@caption<desc>": "If set to true, the alternate description is taken from the nearest caption, if it exists.",
+        "@caption<type>": "bool",
+        "@caption<value>": [
+          "true",
+          "false"
+        ],
+        "@caption": true,
+        "@distance<desc>": "Defines the maximum distance of the alternate description from the element. This value updates the default threshold for caption_dist. To skip this step, set the value to 0.",
+        "@distance<type>": "float",
+        "@distance": 80,
+        "@position<desc>": "Defines the position of the alternate description in relation to the element. This can be used if the distance is set to more than 0.",
+        "@position<type>": "string",
+        "@position<value>": [
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ],
+        "@position": "",
+        "@alt<desc>": "The alternate description is set to this value if it is present.",
+        "@alt<type>": "string",
+        "@alt": ""
+      }
+    ],
+    "@actual_text_update<type>": "function",
+    "@actual_text_update<desc>": "Sets the actual text for the element. The actual text is established in a specific order. To skip a step, set the default value to false for that step.",
+    "@actual_text_update<rule>": "If existing Actual Text is not EMPTY, new text will be not apply",
+    "@actual_text_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@actual_text_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_text",
+              "pde_text_line",
+              "pde_word",
+              "pde_text_run",
+              "pde_image",
+              "pde_container",
+              "pde_list",
+              "pde_line",
+              "pde_rect",
+              "pde_table",
+              "pde_cell",
+              "pde_toc",
+              "pde_header",
+              "pde_footer",
+              "pde_form_field",
+              "pde_annot"
+            ]
+          ]
+        },
+        "@mc<desc>": "If set to true, the actual text is taken from the original marked content and the Alt tag. If there is no marked content or if marked content is set to false, proceed to the next step.",
+        "@mc<type>": "bool",
+        "@mc<value>": [
+          "true",
+          "false"
+        ],
+        "@mc": true,
+        "@children<desc>": "If set to true, the actual text is taken from the children of the element, currently supporting only PdeImage. All text from PdeText children within the image is combined into the output description. If there are no child nodes, set it to false and proceed to the next step.",
+        "@children<type>": "bool",
+        "@children<value>": [
+          "true",
+          "false"
+        ],
+        "@children": true,
+        "@caption<desc>": "If set to true, the actual text is taken from the nearest caption, if it exists.",
+        "@caption<type>": "bool",
+        "@caption<value>": [
+          "true",
+          "false"
+        ],
+        "@caption": true,
+        "@distance<desc>": "Defines the maximum distance of the alternate description from the element. This value updates the default threshold for caption_dist. To skip this step, set the value to 0.",
+        "@distance<type>": "float",
+        "@distance": 80,
+        "@position<desc>": "Defines the position of the alternate description in relation to the element. This can be used if the distance is set to more than 0.",
+        "@position<type>": "string",
+        "@position<value>": [
+          "left",
+          "right",
+          "top",
+          "bottom"
+        ],
+        "@position": "",
+        "@actual_text<desc>": "The actual text is set to this value if it is present.",
+        "@actual_text<type>": "string",
+        "@actual_text": ""
+      }
+    ],
+    "@artifact_update<type>": "function",
+    "@artifact_update<desc>": "Marks an element as an artifact.",
+    "@artifact_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@artifact_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_text",
+              "pde_text_line",
+              "pde_word",
+              "pde_text_run",
+              "pde_image",
+              "pde_container",
+              "pde_list",
+              "pde_line",
+              "pde_rect",
+              "pde_table",
+              "pde_cell",
+              "pde_toc",
+              "pde_header",
+              "pde_footer",
+              "pde_form_field",
+              "pde_annot"
+            ]
+          ]
+        },
+        "@artifact": true,
+        "@artifact<desc>": "If set to false, the artifact is moved back to elements; for example, a background image can be relocated into a meaningful element.",
+        "@artifact<type>": "bool",
+        "@artifact<value>": [
+          "true",
+          "false"
+        ]
+      }
+    ],
+    "@label_update<type>": "function",
+    "@label_update<desc>": "Update elements marked as labels to include them as part of the list.",
+    "@label_update<use>": "This method is called at the end before the list creation.",
+    "@label_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_element",
+            "pde_word"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@label_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_element",
+            "pde_word"
+          ],
+          "param": [
+            [
+              "pde_element",
+              "pde_word",
+              "pde_image",
+              "pde_line",
+              "pde_rect"
+            ],
+            [
+              "pde_word"
+            ]
+          ]
+        },
+        "@label<link>": "schema:values:label",
+        "@label": "",
+        "@name<link>": "schema:values:name",
+        "@name": "label1"
+      }
+    ],
+    "@list_update<type>": "function",
+    "@list_update<desc>": "Tests if a list is correct.",
+    "@list_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_list",
+            "pde_word"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@list_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_list",
+            "pde_word"
+          ],
+          "param": [
+            [
+              "pde_list"
+            ],
+            [
+              "pde_word"
+            ]
+          ]
+        },
+        "@flag<link>": "schema:values:flag",
+        "@flag": "",
+        "@numbering<link>": "schema:values:numbering",
+        "@numbering": "None",
+        "@split<desc>": "If set to true, splits the list back into individual elements. The label flag remains on each list item.",
+        "@split<type>": "bool",
+        "@split<value>": [
+          "true",
+          "false"
+        ],
+        "@split": false
+      }
+    ],
+    "@tag_image<type>": "function",
+    "@tag_image<desc>": "Handles the process of tagging images. For repurposing and accessibility purposes, a Figure element should have either an Alt entry or an ActualText entry in its structure element dictionary. If both are absent, the default behavior is to tag the Figure with an empty alt attribute.",
+    "@tag_image<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_image"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@tag_image": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_image"
+          ],
+          "param": [
+            [
+              "pde_image"
+            ]
+          ]
+        },
+        "@alt<desc>": "Sets the value of the alt text if it is present.",
+        "@alt<type>": "string",
+        "@alt": "",
+        "@actual_text<desc>": "Sets the value of the actual text if it is present.",
+        "@actual_text<type>": "string",
+        "@actual_text": "",
+        "@artifact<desc>": "If set to true and there is no alt or actual text present, a Figure element should be tagged as an artifact. Setting this node to false allows tagging this image with empty alt/actual text, even if it is not PDF/UA compliant!",
+        "@artifact<type>": "bool",
+        "@artifact<value>": [
+          "true",
+          "false"
+        ],
+        "@artifact": false,
+        "@children<desc>": "If set to true, all image children (texts and form fields) are properly tagged. Since PDF 2.0, a Figure tag can also contain other tags. If set to false, all children are tagged as artifacts.",
+        "@children<type>": "bool",
+        "@children<value>": [
+          "true",
+          "false"
+        ],
+        "@children": false
+      }
+    ],
+    "@tag_table<type>": "function",
+    "@tag_table<desc>": "Handles the process of tagging tables. For repurposing and accessibility purposes, a table should have headers. If no headers are detected, the default behavior is to leave the table without any <th> elements.",
+    "@tag_table<insert>": [
+      {
+        "query": {
+          "param": [
+            "pde_table"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@tag_table": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pde_table"
+          ],
+          "param": [
+            [
+              "pde_table"
+            ]
+          ]
+        },
+        "@split<desc>": "If set to true and no headers are detected, the table should be split into cells, with each cell tagged individually. Setting this node to false allows tagging the table without headers, even if it is not PDF/UA compliant!",
+        "@split<type>": "bool",
+        "@split<value>": [
+          "true",
+          "false"
+        ],
+        "@split": false,
+        "@row<desc>": "If set to true and the table needs to be split, the table should be divided into cells using the row reading order.",
+        "@row<type>": "bool",
+        "@row<value>": [
+          "true",
+          "false"
+        ],
+        "@row": true,
+        "@col<desc>": "If set to true and the table needs to be split, the table should be divided into cells using the column reading order.",
+        "@col<type>": "bool",
+        "@col<value>": [
+          "true",
+          "false"
+        ],
+        "@col": false,
+        "@summary<desc>": "Set a table summary for use in non-visual rendering, such as speech or braille.",
+        "@summary<type>": "string",
+        "@summary": ""
+      }
+    ],
+    "@tag_update<type>": "function",
+    "@tag_update<desc>": "Updates the tag after it has been created..",
+    "@tag_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pds_struct_elem"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@tag_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pds_struct_elem"
+          ],
+          "param": [
+            [
+              "pds_struct_elem"
+            ]
+          ]
+        }
+      }
+    ],
+    "@annot_update<type>": "function",
+    "@annot_update<desc>": "Updates the annotation tag after it has been created.",
+    "@annot_update<insert>": [
+      {
+        "query": {
+          "param": [
+            "pdf_annot"
+          ],
+          "$and": []
+        }
+      }
+    ],
+    "@annot_update": [
+      {
+        "@disable": false,
+        "@disable<link>": "schema:keywords:disable",
+        "@statement": "$if",
+        "@statement<link>": "schema:keywords:statement",
+        "@query": {
+          "@param<type>": "query_param",
+          "@param<insert>": [
+            "pdf_annot"
+          ],
+          "param": [
+            [
+              "pdf_annot"
+            ]
+          ]
+        },
+        "@alt<link>": "schema:values:alt",
+        "@alt": ""
+      }
+    ]
+  },
+  "@schema": {
+    "statement<desc>": "The if statement type of the query. According to the statement the query evaluation stops upon pass or not.",
+    "statement<use>": "Can by used in all functions. The it-statement type of the query. According to the statement the query evaluation stops upon pass or not. If statment is not present, is set to default.",
+    "statement<value>": [
+      "$if",
+      "$elif",
+      "$else"
+    ],
+    "statement<default>": "$if",
+    "statement": {
+      "$if": "",
+      "$if<type>": "statement",
+      "$if<desc>": "Can by used in all functions. Applies a rule when a condition is true.",
+      "$elif": "",
+      "$elif<type>": "statement",
+      "$elif<desc>": "Can by used in all functions. Applies a rule when a condition is true.",
+      "$else": "",
+      "$else<type>": "statement",
+      "$else<desc>": "Can by used in all functions. Applies a rule when a condition is not true."
+    },
+    "query<type>": "query",
+    "query<desc>": "The query defines thresholds and operations for a pagemap detection.",
+    "query": {
+      "param<desc>": "Define the number and type of input parameters.",
+      "param<type>": "query_param",
+      "param": {
+        "pds_object_params": "",
+        "pds_object_params<desc>": "A parameter that represents PdsObject. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.",
+        "pds_object_params<link>": "schema:pds_object_params",
+        "pde_element_params": "",
+        "pde_element_params<desc>": "A parameter that represents PdeElement. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.",
+        "pde_element_params<link>": "schema:pde_element_params",
+        "pds_struct_elem_params": "",
+        "pds_struct_elem_params<desc>": "A parameter that represents PdsStructElem. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.",
+        "pds_struct_elem_params<link>": "schema:pds_struct_elem_params",
+        "pdf_annot_params": "",
+        "pdf_annot_params<desc>": "A parameter that represents PdfAnnots. The value starts with the character $, followed by a number (e.g., $0_width). The number represents the index of the parameter in the param array.",
+        "pdf_annot_params<link>": "schema:pdf_annot_params",
+        "pdf_rect": "",
+        "pdf_rect<link>": "schema:values:pdf_rect",
+        "pdf_rgb": "",
+        "pdf_rgb<link>": "schema:values:pdf_rgb",
+        "int": "",
+        "int<desc>": "Parameter that represents integer.",
+        "int<type>": "int",
+        "bool": "",
+        "bool<desc>": "Parameter that represents boolean value.",
+        "bool<type>": "bool",
+        "float": "",
+        "float<desc>": "Parameter that represents floating value.",
+        "float<type>": "float",
+        "string": "",
+        "string<desc>": "Parameter that represents string value.",
+        "string<type>": "string"
+      },
+      "var<desc>": "User defined variables. Use macros to define variables",
+      "var<type>": "var",
+      "var": {
+        "0_value": "",
+        "0_value<type>": "var_value",
+        "0_value<value>": [
+          "left",
+          "bottom",
+          "right",
+          "top",
+          "width",
+          "height"
+        ]
+      },
+      "logical_operators<link>": "schema:logical_operators",
+      "logical_operators": ""
+    },
+    "logical_operators<desc>": "Available logical operators.",
+    "logical_operators<type>": "string",
+    "logical_operators<value>": [
+      "$and",
+      "$or",
+      "$not"
+    ],
+    "logical_operators": {
+      "$and<type>": "logical_operator",
+      "$and<desc>": "Logical AND. All sub-conditions must be true.",
+      "$and<num_values>": 2,
+      "$and<insert>": [],
+      "$and": {
+        "$and": "",
+        "$or": "",
+        "$not": "",
+        "condition": "",
+        "condition<link>": "schema:condition"
+      },
+      "$or<type>": "logical_operator",
+      "$or<desc>": "Logical OR. At least one sub-condition must be true.",
+      "$or<num_values>": 2,
+      "$or<insert>": [],
+      "$or": {
+        "$and": "",
+        "$or": "",
+        "$not": "",
+        "condition": "",
+        "condition<link>": "schema:condition"
+      },
+      "$not<type>": "logical_operator",
+      "$not<desc>": "Logical NOT.",
+      "$not<num_values>": 1,
+      "$not<insert>": [],
+      "$not": {
+        "$and": "",
+        "$or": "",
+        "$not": "",
+        "condition": "",
+        "condition<link>": "schema:condition"
+      }
+    },
+    "comparison_operators<desc>": "Available comparison operators.",
+    "comparison_operators<type>": "string",
+    "comparison_operators<value>": [
+      "$eq",
+      "$ne",
+      "$lt",
+      "$lte",
+      "$gt",
+      "$gte",
+      "$regex",
+      "$in",
+      "$nin"
+    ],
+    "comparison_operators": {
+      "$eq": "",
+      "$eq<type>": "comparison_operator",
+      "$eq<desc>": "Equal to value.",
+      "$eq<num_values>": 1,
+      "$eq<types>": [
+        "int",
+        "float",
+        "string",
+        "bool"
+      ],
+      "$ne": "",
+      "$ne<type>": "comparison_operator",
+      "$ne<desc>": "Not equal to value.",
+      "$ne<num_values>": 1,
+      "$ne<types>": [
+        "int",
+        "float",
+        "string",
+        "bool"
+      ],
+      "$lt": "",
+      "$lt<type>": "comparison_operator",
+      "$lt<desc>": "Less then value.",
+      "$lt<num_values>": 1,
+      "$lt<types>": [
+        "int",
+        "float"
+      ],
+      "$lte": "",
+      "$lte<type>": "comparison_operator",
+      "$lte<desc>": "Less or equals then value.",
+      "$lte<num_values>": 1,
+      "$lte<types>": [
+        "int",
+        "float"
+      ],
+      "$gt": "",
+      "$gt<type>": "comparison_operator",
+      "$gt<desc>": "Greater then value",
+      "$gt<num_values>": 1,
+      "$gt<types>": [
+        "int",
+        "float"
+      ],
+      "$gte": "",
+      "$gte<type>": "comparison_operator",
+      "$gte<desc>": "Greater or equals then value.",
+      "$gte<num_values>": 1,
+      "$gte<types>": [
+        "int",
+        "float"
+      ],
+      "$regex": "",
+      "$regex<type>": "comparison_operator",
+      "$regex<desc>": "Regular expression predicate.",
+      "$regex<num_values>": 1,
+      "$regex<types>": [
+        "string"
+      ],
+      "$in": "",
+      "$in<type>": "comparison_operator",
+      "$in<desc>": "Contain value operator.",
+      "$in<num_values>": 1,
+      "$in<types>": [
+        "bbox"
+      ],
+      "$nin": "",
+      "$nin<type>": "comparison_operator",
+      "$nin<desc>": "Not contain value operator.",
+      "$nin<num_values>": 1,
+      "$nin<types>": [
+        "bbox"
+      ]
+    },
+    "pds_object_params<desc>": "List of all pds_object types, can be used as parameter in QUERY->PARAM.",
+    "pds_object_params": {
+      "pds_text<desc>": "Text page object",
+      "pds_text": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox<link>": "schema:values:bbox",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "children_num": "",
+        "children_num<link>": "schema:values:children_num",
+        "artifact": "",
+        "artifact<link>": "schema:values:artifact",
+        "mcid": "",
+        "mcid<link>": "schema:values:mcid",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "text": "",
+        "text<link>": "schema:values:text"
+      },
+      "pds_path": "",
+      "pds_path<link>": "schema:pds_object_params:pds_text",
+      "pds_image": "",
+      "pds_image<link>": "schema:pds_object_params:pds_text",
+      "pds_shading": "",
+      "pds_shading<link>": "schema:pds_object_params:pds_text",
+      "pds_form": "",
+      "pds_form<link>": "schema:pds_object_params:pds_text",
+      "pds_object": {
+        "type": "",
+        "type<desc>": "Type of PdsObject.",
+        "type<type>": "string",
+        "type<value>": [
+          "pds_object",
+          "pds_text",
+          "pds_path",
+          "pds_image",
+          "pds_shading",
+          "pds_form"
+        ],
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox<link>": "schema:values:bbox",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "children_num": "",
+        "children_num<link>": "schema:values:children_num",
+        "artifact": "",
+        "artifact<link>": "schema:values:artifact",
+        "mcid": "",
+        "mcid<link>": "schema:values:mcid",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "text": "",
+        "text<link>": "schema:values:text"
+      }
+    },
+    "pds_struct_elem_params<desc>": "List of all pds_tag types, can be used as parameter in QUERY->PARAM.",
+    "pds_struct_elem_params": {
+      "pds_struct_elem": {
+        "type": "",
+        "type<desc>": "Type of PdsTag.",
+        "type<type>": "string",
+        "type<value>": [
+          "pds_struct_elem"
+        ],
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox<link>": "schema:values:bbox",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "tag_type": "",
+        "tag_type<link>": "schema:values:tag_type",
+        "role_mapped_tag_type": "",
+        "role_mapped_tag_type<link>": "schema:values:tag_type",
+        "parent_tag_type": "",
+        "parent_tag_type<link>": "schema:values:parent_tag_type",
+        "children_tag_type": "",
+        "children_tag_type<link>": "schema:values:children_tag_type",
+        "id": "",
+        "id<link>": "schema:values:id",
+        "title": "",
+        "title<link>": "schema:values:title",
+        "lang": "",
+        "lang<link>": "schema:values:lang",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "text": "",
+        "text<link>": "schema:values:text",
+        "expansion": "",
+        "espansion<link>": "schema:values:expansion",
+        "children_num": "",
+        "children_num<link>": "schema:values:children_num",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "has_content": "",
+        "has_content<link>": "schema:values:has_content",
+        "row_num": "",
+        "row_num<link>": "schema:values:row_num",
+        "col_num": "",
+        "col_num<link>": "schema:values:col_num",
+        "cell_column": "",
+        "cell_column<link>": "schema:values:cell_column",
+        "cell_row": "",
+        "cell_row<link>": "schema:values:cell_row",
+        "cell_row_span": "",
+        "cell_row_span<link>": "schema:values:cell_row_span",
+        "cell_column_span": "",
+        "cell_column_span<link>": "schema:values:cell_column_span",
+        "cell_scope": "column",
+        "cell_scope<link>": "schema:values:cell_scope"
+      }
+    },
+    "pdf_annot_params<desc>": "List of all pdf_annot types, can be used as parameter in QUERY->PARAM.",
+    "pdf_annot_params": {
+      "pdf_annot": {
+        "type": "",
+        "type<desc>": "Type of PdfAnnot.",
+        "type<type>": "string",
+        "type<value>": [
+          "pdf_annot"
+        ],
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox<link>": "schema:values:bbox",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "annot_type": "",
+        "annot_type<link>": "schema:values:annot_type",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "contents": "",
+        "contents<link>": "schema:values:contents",
+        "annot_flag": "",
+        "annot_flag<link>": "schema:values:annot_flag",
+        "tag_type": "",
+        "tag_type<link>": "schema:values:tag_type"
+      }
+    },
+    "pde_element_params<desc>": "List of all pde_element types, can be used as parameter in QUERY->PARAM.",
+    "pde_element_params": {
+      "pde_text": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "baseline_x": "",
+        "baseline_x<link>": "schema:values:baseline_x",
+        "baseline_y": "",
+        "baseline_y<link>": "schema:values:baseline_y",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "label": "",
+        "label<link>": "schema:values:label",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "text": "",
+        "text<link>": "schema:values:text",
+        "angle": "",
+        "angle<link>": "schema:values:angle",
+        "heading": "",
+        "heading<link>": "schema:values:heading",
+        "name": "",
+        "name<link>": "schema:values:name"
+      },
+      "pde_text_line": "",
+      "pde_text_line<link>": "schema:pde_element_params:pde_text",
+      "pde_word": "",
+      "pde_word<link>": "schema:pde_element_params:pde_text",
+      "pde_text_run": "",
+      "pde_text_run<link>": "schema:pde_element_params:pde_text",
+      "pde_image": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "label": "",
+        "label<link>": "schema:values:label",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "children_num": 0,
+        "children_num<link>": "schema:values:children_num",
+        "object_num": 0,
+        "object_num<link>": "schema:values:object_num",
+        "name": "",
+        "name<link>": "schema:values:name"
+      },
+      "pde_container": "",
+      "pde_container<link>": "schema:pde_element_params:pde_image",
+      "pde_list": "",
+      "pde_list<link>": "schema:pde_element_params:pde_image",
+      "pde_rect": "",
+      "pde_rect<link>": "schema:pde_element_params:pde_image",
+      "pde_cell": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "font_size": "",
+        "font_size<link>": "schema:values:font_size",
+        "font_name": "",
+        "font_name<link>": "schema:values:font_name",
+        "text": "",
+        "text<link>": "schema:values:text",
+        "cell_column": "",
+        "cell_column<link>": "schema:values:cell_column",
+        "cell_row": "",
+        "cell_row<link>": "schema:values:cell_row",
+        "cell_row_span": "",
+        "cell_row_span<link>": "schema:values:cell_row_span",
+        "cell_column_span": "",
+        "cell_column_span<link>": "schema:values:cell_column_span",
+        "cell_scope": "",
+        "cell_scope<link>": "schema:values:cell_scope",
+        "children_num": 0,
+        "children_num<link>": "schema:values:children_num",
+        "name": "",
+        "name<link>": "schema:values:name"
+      },
+      "pde_toc": "",
+      "pde_toc<link>": "schema:pde_element_params:pde_image",
+      "pde_header": "",
+      "pde_header<link>": "schema:pde_element_params:pde_image",
+      "pde_footer": "",
+      "pde_footer<link>": "schema:pde_element_params:pde_image",
+      "pde_line": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "label": "",
+        "label<link>": "schema:values:label",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "name": "",
+        "name<link>": "schema:values:name"
+      },
+      "pde_form_field": "",
+      "pde_form_field<link>": "schema:pde_element_params:pde_line",
+      "pde_annot": "",
+      "pde_annot<link>": "schema:pde_element_params:pde_line",
+      "pde_table": {
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "label": "",
+        "label<link>": "schema:values:label",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "row_num": "",
+        "row_num<link>": "schema:values:row_num",
+        "col_num": "",
+        "col_num<link>": "schema:values:col_num",
+        "cell_header": false,
+        "cell_header<link>": "schema:values:cell_header",
+        "table_type": "",
+        "table_type<link>": "schema:values:table_type",
+        "isolated_num": "",
+        "isolated_num<desc>": "Number of isolated elements in the table.",
+        "isolated_num<type>": "int",
+        "name": "",
+        "name<link>": "schema:values:name"
+      },
+      "pde_element": {
+        "type": "pde_element",
+        "type<link>": "schema:values:type",
+        "width": "",
+        "width<link>": "schema:values:width",
+        "height": "",
+        "height<link>": "schema:values:height",
+        "left": "",
+        "left<link>": "schema:values:left",
+        "right": "",
+        "right<link>": "schema:values:right",
+        "top": "",
+        "top<link>": "schema:values:top",
+        "bottom": "",
+        "bottom<link>": "schema:values:bottom",
+        "baseline_x": "",
+        "baseline_x<link>": "schema:values:baseline_x",
+        "baseline_y": "",
+        "baseline_y<link>": "schema:values:baseline_y",
+        "bbox": {
+          "left": 0,
+          "bottom": 0,
+          "right": 0,
+          "top": 0
+        },
+        "bbox<link>": "schema:values:bbox",
+        "label": "",
+        "label<link>": "schema:values:label",
+        "has_fill": "",
+        "has_fill<link>": "schema:values:has_fill",
+        "has_stroke": "",
+        "has_stroke<link>": "schema:values:has_stroke",
+        "fill_color": "",
+        "fill_color<link>": "schema:values:fill_color",
+        "stroke_color": "",
+        "stroke_color<link>": "schema:values:stroke_color",
+        "angle": "",
+        "angle<link>": "schema:values:angle",
+        "alt": "",
+        "alt<link>": "schema:values:alt",
+        "actual_text": "",
+        "actual_text<link>": "schema:values:actual_text",
+        "flag": "",
+        "flag<link>": "schema:values:flag",
+        "name": "",
+        "name<link>": "schema:values:name"
+      }
+    },
+    "general_vars<desc>": "General variables can be used without parameters. It represents general state during the processing. It contains information about the current page and the document and can be used in any query.",
+    "general_vars<type>": "string",
+    "general_vars": {
+      "$page_num": "1",
+      "$page_num<desc>": "Page number.",
+      "$page_num<type>": "int",
+      "$page_width": "",
+      "$page_width<desc>": "Page cropbox width.",
+      "$page_width<type>": "float",
+      "$page_height": "",
+      "$page_height<desc>": "Page cropbox height.",
+      "$page_height<type>": "float",
+      "$page_font_size": "",
+      "$page_font_size<desc>": "Average font size on the page.",
+      "$page_font_size<type>": "float",
+      "$page_min_font_size": "",
+      "$page_min_font_size<desc>": "Minimal font size on the page.",
+      "$page_min_font_size<type>": "float",
+      "$page_max_font_size": "",
+      "$page_max_font_size<desc>": "Maximal font size on the page.",
+      "$page_max_font_size<type>": "float",
+      "$page_rotation": "",
+      "$page_rotation<desc>": "Page rotation.",
+      "$page_rotation<type>": "int",
+      "$page_rotation<value>": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "$page_rtl": false,
+      "$page_rtl<desc>": "Page contains RTL content.",
+      "$page_rtl<type>": "bool",
+      "@page_rtl<values>": [
+        "true",
+        "false"
+      ],
+      "$page_anchor": "",
+      "$page_anchor<desc>": "Page already detected anchors.",
+      "$page_anchor<type>": "string",
+      "$doc_num_pages": "",
+      "$doc_num_pages<desc>": "Document number of pages.",
+      "$doc_num_pages<type>": "int",
+      "$doc_lang": "",
+      "$doc_lang<desc>": "Document language.",
+      "$doc_lang<type>": "string",
+      "$doc_title": "",
+      "$doc_title<desc>": "Document title.",
+      "$doc_title<type>": "string",
+      "$doc_anchor": "",
+      "$doc_anchor<desc>": "Document already detected anchors.",
+      "$doc_anchor<type>": "string"
+    },
+    "values<desc>": "General values used in JSON default template.",
+    "values": {
+      "type": "",
+      "type<desc>": "Type.",
+      "type<type>": "string",
+      "type<value>": [
+        "pds_object",
+        "pds_text",
+        "pds_path",
+        "pds_image",
+        "pds_shading",
+        "pds_form",
+        "pde_element",
+        "pde_text",
+        "pde_text_line",
+        "pde_word",
+        "pde_text_run",
+        "pde_image",
+        "pde_container",
+        "pde_list",
+        "pde_line",
+        "pde_rect",
+        "pde_table",
+        "pde_cell",
+        "pde_toc",
+        "pde_header",
+        "pde_footer",
+        "pde_form_field",
+        "pde_annot",
+        "pds_struct_elem",
+        "pdf_annot"
+      ],
+      "alt": "",
+      "alt<desc>": "Alternate description typically used for Figure tags.",
+      "alt<type>": "string",
+      "actual_text": "",
+      "actual_text<desc>": "Actual text.",
+      "actual_text<type>": "string",
+      "lang": "",
+      "lang<desc>": "The language identifier.",
+      "lang<type>": "string",
+      "id": "",
+      "id<desc>": "The unique identifier of the tag.",
+      "id<type>": "string",
+      "associated_header": "",
+      "associated_header<desc>": "The unique identifier of the associated header. For more associated headers use composed string a|b|c|d",
+      "associated_header<type>": "string",
+      "expansion": "",
+      "expansion<desc>": "The expanded form of an abbreviation.",
+      "expansion<type>": "string",
+      "has_content": "",
+      "has_content<desc>": "A value identifying whether the object or tag has associated page content.",
+      "has_content<type>": "bool",
+      "has_content<value>": [
+        "true",
+        "false"
+      ],
+      "tag_type": "",
+      "tag_type<desc>": "Tag type defined by a string or regular expression. Use .* to match all tags.",
+      "tag_type<type>": "string",
+      "tag_type<value>": [
+        "Annot",
+        "Art",
+        "Artifact",
+        "Aside",
+        "BibEntry",
+        "BlockQuote",
+        "Caption",
+        "Code",
+        "Div",
+        "Document",
+        "DocumentFragment",
+        "Em",
+        "FENote",
+        "Figure",
+        "Form",
+        "Formula",
+        "H",
+        "H1",
+        "H2",
+        "H3",
+        "H4",
+        "H5",
+        "H6",
+        "Index",
+        "L",
+        "Lbl",
+        "LBody",
+        "LI",
+        "Link",
+        "NonStruct",
+        "Note",
+        "P",
+        "Part",
+        "Private",
+        "Quote",
+        "RB",
+        "Reference",
+        "RP",
+        "RT",
+        "Ruby",
+        "Sect",
+        "Span",
+        "Strong",
+        "Sub",
+        "Table",
+        "TBody",
+        "TD",
+        "TFoot",
+        "TH",
+        "THead",
+        "Title",
+        "TOC",
+        "TOCI",
+        "TR",
+        "Warichu",
+        "WP",
+        "WT"
+      ],
+      "parent_tag_type": "",
+      "parent_tag_type<link>": "schema:values:tag_type",
+      "children_tag_type": "",
+      "children_tag_type<link>": "schema:values:tag_type",
+      "annot_type": "",
+      "annot_type<desc>": "Annotation type defined by a string or regular expression. Use .* to match all annotations.",
+      "annot_type<type>": "string",
+      "annot_type<value>": [
+        "Text",
+        "Link",
+        "FreeText",
+        "Line",
+        "Square",
+        "Circle",
+        "Polygon",
+        "PolyLine",
+        "Highlight",
+        "Underline",
+        "Squiggly",
+        "StrikeOut",
+        "Stamp",
+        "Caret",
+        "Ink",
+        "Popup",
+        "FileAttachment",
+        "Sound",
+        "Movie",
+        "Widget",
+        "Screen",
+        "PrinterMark",
+        "TrapNet",
+        "Watermark",
+        "3D",
+        "Redact",
+        "Projection",
+        "RichMedia"
+      ],
+      "contents": "",
+      "contents<desc>": "A string value specifying the annotation contents.",
+      "contents<type>": "string",
+      "annot_flag": 0,
+      "annot_flag<desc>": "A comma-delimited string value specifying the annotation flags.",
+      "annot_flag<type>": "string",
+      "annot_flag<value>": [
+        "invisible",
+        "hidden",
+        "print",
+        "no_zoom",
+        "no_rotate",
+        "no_view",
+        "read_only",
+        "locked",
+        "toggle",
+        "contents"
+      ],
+      "title": "",
+      "title<desc>": "Title.",
+      "title<type>": "string",
+      "name": "",
+      "name<desc>": "Unique name to identify element later.",
+      "name<type>": "string",
+      "angle": "",
+      "angle<desc>": "Angle.",
+      "angle<type>": "float",
+      "bbox<desc>": "Parameter that represents the bounding box of an object, formatted as an array: [left, bottom, right, top]. Each coordinate can be defined by a float number, general variables, anchor variables, or mathematical functions with previously defined variables. Each bounding box can be associated with only one anchor.",
+      "bbox<type>": "bbox",
+      "bbox": {
+        "left": 0,
+        "bottom": 0,
+        "right": 0,
+        "top": 0
+      },
+      "cell_column": "",
+      "cell_column<desc>": "The column number of the cell in the table.",
+      "cell_column<type>": "int",
+      "cell_row": "",
+      "cell_row<desc>": "The row number of the cell in the table.",
+      "cell_row<type>": "int",
+      "cell_row_span": "",
+      "cell_row_span<desc>": "The cell row span.",
+      "cell_row_span<type>": "int",
+      "cell_column_span": "",
+      "cell_column_span<desc>": "The cell column span.",
+      "cell_column_span<type>": "int",
+      "cell_scope": "column",
+      "cell_scope<desc>": "The cell scope.",
+      "cell_scope<type>": "string",
+      "cell_scope<value>": [
+        "row",
+        "column",
+        "both"
+      ],
+      "col_num": "",
+      "col_num<desc>": "Number of columns in the table.",
+      "col_num<type>": "int",
+      "children_num": "",
+      "children_num<desc>": "Number of associated child objects.",
+      "children_num<type>": "int",
+      "object_num": "",
+      "object_num<desc>": "Number of associated page objects.",
+      "object_num<type>": "int",
+      "artifact": "",
+      "artifact<desc>": "True if object has content mark Artifact, false otherwise.",
+      "artifact<type>": "bool",
+      "artifact<value>": [
+        "true",
+        "false"
+      ],
+      "mcid": "",
+      "mcid<desc>": "MCID content mark number is exists, -1 otherwise.",
+      "mcid<type>": "int",
+      "has_fill": false,
+      "has_fill<desc>": "True if fill color is set",
+      "has_fill<type>": "bool",
+      "has_fill<value>": [
+        "true",
+        "false"
+      ],
+      "fill_color<desc>": "The fill color of an object.",
+      "fill_color<type>": "rgb",
+      "fill_color": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "has_stroke": false,
+      "has_stroke<desc>": "True if stroke color is set",
+      "has_stroke<type>": "bool",
+      "has_stroke<value>": [
+        "true",
+        "false"
+      ],
+      "stroke_color<desc>": "The stroke color of an object.",
+      "stroke_color<type>": "rgb",
+      "stroke_color": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "flag": "",
+      "flag<desc>": "The flag value defines a specific property for an object, which is essential for further processing.",
+      "flag<type>": "string",
+      "flag<value>": [
+        "no_join",
+        "no_split",
+        "artifact",
+        "header",
+        "footer",
+        "splitter",
+        "no_table",
+        "no_image",
+        "no_expand",
+        "continuous",
+        "anchor"
+      ],
+      "numbering": "None",
+      "numbering<desc>": "Set the list numbering attribute.",
+      "numbering<type>": "string",
+      "numbering<value>": [
+        "None",
+        "Unordered",
+        "Disc",
+        "Circle",
+        "Square",
+        "Ordered",
+        "Decimal",
+        "UpperRoman",
+        "LowerRoman",
+        "UpperAlpha",
+        "LowerAlpha",
+        "Description"
+      ],
+      "single_instance": "font_size|font_name|text|left",
+      "single_instance<desc>": "Properties that are compared delimited by |. If the element with same properties already exists, only first instance is tagged.",
+      "single_instance<type>": "string",
+      "single_instance<value>": [
+        "type",
+        "width",
+        "height",
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "bbox",
+        "font_size",
+        "font_name",
+        "text",
+        "fill_color",
+        "stroke_color",
+        "angle",
+        "alt",
+        "actual_text",
+        "flag",
+        "word_flag",
+        "text_line_flag",
+        "text_flag",
+        "lang",
+        "cell_column",
+        "cell_row",
+        "cell_column_span",
+        "cell_row_span",
+        "cell_scope",
+        "row_num",
+        "col_num"
+      ],
+      "word_space": 0,
+      "word_space<desc>": "Update words space for the font in points.",
+      "word_space<type>": "float",
+      "font_name": "",
+      "font_name<desc>": "The name of the font used in the text object.",
+      "font_name<type>": "string",
+      "font_size": "",
+      "font_size<desc>": "The size of the font used in the text object.",
+      "font_size<type>": "float",
+      "red": 0,
+      "red<desc>": "The red component of an RGB color.",
+      "red<type>": "int",
+      "green": 0,
+      "green<desc>": "The green component of an RGB color.",
+      "green<type>": "int",
+      "blue": 0,
+      "blue<desc>": "The blue component of an RGB color.",
+      "blue<type>": "int",
+      "cell_header": false,
+      "cell_header<desc>": "Marks the object as a table header.",
+      "cell_header<type>": "bool",
+      "cell_header<value>": [
+        "true",
+        "false"
+      ],
+      "cell_associated_header": "",
+      "cell_associated_header<desc>": "Cell associated headers delimited by |.",
+      "cell_associated_header<type>": "string",
+      "heading": "",
+      "heading<desc>": "Sets the text heading style.",
+      "heading<type>": "string",
+      "heading<value>": [
+        "normal",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "h6",
+        "h7",
+        "h8",
+        "note",
+        "title"
+      ],
+      "width": "",
+      "width<desc>": "The object's width dimension.",
+      "width<type>": "float",
+      "height": "",
+      "height<desc>": "The object's height dimension.",
+      "height<type>": "float",
+      "label": "",
+      "label<desc>": "Marks the element as a list label.",
+      "label<type>": "string",
+      "label<value>": [
+        "label",
+        "li_1",
+        "li_2",
+        "li_3",
+        "li_4",
+        "label_no"
+      ],
+      "left": "",
+      "left<desc>": "The left coordinate of the object.",
+      "left<type>": "float",
+      "right": "",
+      "right<desc>": "The left coordinate of the object.",
+      "right<type>": "float",
+      "top": "",
+      "top<desc>": "The top coordinate of the object.",
+      "top<type>": "float",
+      "bottom": "",
+      "bottom<desc>": "The bottom coordinate of the object.",
+      "bottom<type>": "float",
+      "baseline_x": "",
+      "baseline_x<desc>": "The baseline x coordinate of the text object.",
+      "baseline_x<type>": "float",
+      "baseline_y": "",
+      "baseline_y<desc>": "The baseline y coordinate of the text object.",
+      "baseline_y<type>": "float",
+      "pdf_rect<desc>": "Parameter that represents the bounding box of an object, formatted as an array: [left, bottom, right, top].",
+      "pdf_rect<type>": "rec",
+      "pdf_rect": {
+        "left": 0,
+        "bottom": 0,
+        "right": 0,
+        "top": 0
+      },
+      "pdf_rgb<desc>": "Parameter that represents the RGB color of an object, formatted as an array: [red, green, blue].",
+      "pdf_rgb<type>": "rgb",
+      "pdf_rgb": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "reflow": "",
+      "reflow<desc>": "Text reflow. If set to false, each line is treated as a new line.",
+      "reflow<type>": "bool",
+      "reflow<value>": [
+        "true",
+        "false"
+      ],
+      "row_num": "",
+      "row_num<desc>": "The number of rows in the table.",
+      "row_num<type>": "int",
+      "table_type": "",
+      "table_type<desc>": "The table type represented as a value from the PdfTableType enum.",
+      "table_type<type>": "string",
+      "table_type<value>": [
+        "graphic",
+        "isolated",
+        "row",
+        "col",
+        "form"
+      ],
+      "text": "",
+      "text<desc>": "The text to be used as a value.",
+      "text<type>": "string",
+      "text_flag": "",
+      "text_flag<desc>": "The flag to be used for the text element, specifying a value similar to the regex flags.",
+      "text_flag<type>": "string",
+      "text_flag<value>": [
+        "table_caption",
+        "image_caption",
+        "chart_caption",
+        "note_caption",
+        "filling",
+        "uppercase",
+        "new_line",
+        "no_new_line"
+      ],
+      "text_line_flag": "",
+      "text_line_flag<desc>": "The flag to be used for the text line element, specifying a value similar to the regex flags.",
+      "text_line_flag<type>": "string",
+      "text_line_flag<value>": [
+        "hyphen",
+        "new_line",
+        "indent",
+        "terminal",
+        "drop_cap",
+        "filling",
+        "uppercase",
+        "no_new_line"
+      ],
+      "text_state_flag": "",
+      "text_state_flag<desc>": "The flag to be used for the text text_state_flag.",
+      "text_state_flag<type>": "string",
+      "text_state_flag<value>": [
+        "underline",
+        "strikeout",
+        "highlight",
+        "subscript",
+        "superscript",
+        "no_unicode",
+        "white_space",
+        "unicode"
+      ],
+      "word_flag": "",
+      "word_flag<desc>": "The flag to be used for the word element, specifying a value similar to the regex flags.",
+      "word_flag<type>": "string",
+      "word_flag<value>": [
+        "hyphen",
+        "bullet",
+        "colon",
+        "number",
+        "subscript",
+        "superscript",
+        "terminal",
+        "capital",
+        "image",
+        "decimal_num",
+        "roman_num",
+        "letter_num",
+        "page_num",
+        "filling",
+        "uppercase",
+        "comma",
+        "no_unicode"
+      ]
+    },
+    "suffix<desc>": "Container holding all unique suffixes used for naming in JSON default template",
+    "suffix<rule>": "If element name has suffix, its taken as additional data about element before suffix and its not read by program as a child of element(his possible value).",
+    "suffix": {
+      "<desc>": "Description of element.",
+      "<use>": "Description how to use function, object, value or anything else.",
+      "<type>": "Type of element.",
+      "<types>": "Array of possible element types.",
+      "<value>": "Array of possible values of element.",
+      "<default>": "Default value of element.",
+      "<rule>": "Describes how the element setup works.",
+      "<num_values>": "Number of values needs to be set.",
+      "<link>": "Refer to the target element in JSON, which contain needed data.",
+      "<insert>": "Value will be used as TreeItem for inserting into TreeView JSON structer"
+    },
+    "condition<desc>": "Conditions types used in the query",
+    "condition": {
+      "condition_value<desc>": "{0_width : 100}",
+      "condition_value": 0,
+      "comparison<desc>": "{0_width : {$lt : 100}",
+      "comparison": {
+        "$eq": 0
+      },
+      "comparison_array<desc>": "{0_width : [{$lt : 100}, {$gt : 100}, ...]}",
+      "comparison_array": {
+        "$gt": 0,
+        "$lt": 0
+      }
+    },
+    "keywords<desc>": "Container holding all unique keywords used in JSON default template",
+    "keywords": {
+      "general": "",
+      "general<desc>": "Holding general data like: version, date, id, SDK version, ...",
+      "template": "",
+      "template<desc>": "Holding all functions.",
+      "query": "",
+      "query<desc>": "Can be used in all functions. Each QUERY must have child PARAM, which holding array of parameters to specified query objects.",
+      "param": "",
+      "param<desc>": "Child of the QUERY. Each QUERY must include a PARAM that specifies the object types used for evaluation.",
+      "param<type>": "array_param",
+      "statement": "$if",
+      "statement<desc>": "The if statement should be used in function nodes. Based on the statement, the query evaluation stops upon pass or fail. If the if statement is not present, the condition is considered disabled.",
+      "statement<type>": "string",
+      "statement<value>": [
+        "$if",
+        "$elif",
+        "$else"
+      ],
+      "disable": false,
+      "disable<desc>": "Can by used in all main functions nodes. If value is true, node is not executed. Default value is false",
+      "disable<type>": "bool",
+      "disable<values>": [
+        "true",
+        "false"
+      ],
+      "purpose": "",
+      "purpose<desc>": "Describes the user-defined purpose or description of the QUERY.",
+      "purpose<type>": "string"
+    },
+    "insert<desc>": "Values to be added as the default for the node.",
+    "insert": {
+      "elements_add_value": "",
+      "elements_add_value<insert>": {
+        "type": "pde_text",
+        "bbox": {
+          "left": "0",
+          "bottom": "0",
+          "right": "0",
+          "top": "0"
+        }
+      },
+      "elements_add_cell": "",
+      "elements_add_cell<insert>": {
+        "bbox": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "cell_column": 1,
+        "cell_column_span": 1,
+        "cell_header": false,
+        "cell_row": 1,
+        "cell_row_span": 1,
+        "cell_scope": "column",
+        "type": "pde_cell"
+      }
+    },
+    "math_expressions": "SUM",
+    "math_expressions<desc>": "Mathemical functions to define custom variable.",
+    "math_expressions<type>": "string",
+    "math_expressions<value>": [
+      "SUM()",
+      "MINUS()",
+      "ABS()",
+      "MULTIPLY()",
+      "DIVIDE()",
+      "MIN()",
+      "MAX()",
+      "MOD()",
+      "FLOOR()",
+      "CEILING()"
+    ]
+  }
+}
