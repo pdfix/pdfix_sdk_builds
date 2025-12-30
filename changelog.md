@@ -1,5 +1,13 @@
 # Changelog
 
+## [8.7.9] - 2025-12-30
+
+### Template
+- Added *text_line_baseline_elem_ratio* – Maximum allowed baseline shift between a text line and its elements
+
+### WebAssembly
+- Enabled memory growth beyond 1GB in the WASM module
+
 ## [8.7.8] - 2025-12-17
 
 ### Actions
