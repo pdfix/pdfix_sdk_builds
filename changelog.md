@@ -1,5 +1,15 @@
 # Changelog
 
+## [8.7.10] - 2026-01-10
+
+### Template
+- Fixed label removal behavior in pde_table.
+
+### General
+- Fixed an issue with writing clip paths inside XObjects in the content writer
+- Fixed incorrect line dash handling when modifying page content
+- Renamed the argument in *SetActualText* from the previous name to *text* for improved API consistency
+
 ## [8.7.9] - 2025-12-30
 
 ### Template
