@@ -1,0 +1,2303 @@
+<div id="md-title">
+
+# PDFix Batch Actions
+
+Custom PDF actions automate the editing of PDFs and resolve various accessibility issues, streamlining document editing and remediation. This approach enhances efficiency and simplifies tasks by eliminating the need for programming skills. By utilizing a bespoke sequence of actions, you can process PDF documents tailored to your specific requirements
+
+```
+{
+    "title": "PDFix Batch Action Example",
+    "desc": "Custom action sequence to re-tag the PDF document and set the PDF/UA-1 identifier",
+    "actions": [
+        {
+            "name": "clear_structure",
+            "params": [
+                {
+                    "name": "clear_tags",
+                    "value": true
+                },
+                {
+                    "name": "clear_struct_tree",
+                    "value": true
+                },
+                {
+                    "name": "clear_bookmarks",
+                    "value": false
+                }
+            ]
+        },
+        {
+            "name": "add_tags",
+            "params": [
+                {
+                    "name": "standard_attrs",
+                    "value": false
+                },
+                {
+                    "name": "sequential_headings",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "name": "set_pdf_ua_standard",
+            "params": [
+                {
+                    "name": "part_number",
+                    "value": 1
+                }
+            ]
+        }
+    ]
+}
+```
+
+</div>
+
+<div id="md-toc">
+
+## Index
+
+<div id="md-toc-accessibility">
+
+__Accessibility__: [Fix Role Mapping](#fix-role-mapping), [AutoTag](#autotag), [Clear Document Structure](#clear-document-structure), [Fix ID Tree](#fix-id-tree), [Fix Parent Tree](#fix-parent-tree), [Fix Spaces](#fix-spaces), [Fix Headings](#fix-headings)
+
+</div>
+
+<div id="md-toc-annotations">
+
+__Annotations__: [Fix Media Clip](#fix-media-clip), [Set Tab Order](#set-tab-order), [Tag Annotations](#tag-annotations), [Set Annotation Contents](#set-annotation-contents), [Remove Annotation Properties](#remove-annotation-properties), [Flatten Annotations](#flatten-annotations), [Create Web Links](#create-web-links), [Delete Annotations](#delete-annotations)
+
+</div>
+
+<div id="md-toc-bookmarks">
+
+__Bookmarks__: [Create Bookmarks](#create-bookmarks)
+
+</div>
+
+<div id="md-toc-content">
+
+__Content__: [Set Content Language](#set-content-language), [Delete Content](#delete-content), [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Clone Form XObjects](#clone-form-xobjects), [Remove Content Marks](#remove-content-marks), [Set Content Color](#set-content-color), [Split Content](#split-content)
+
+</div>
+
+<div id="md-toc-conversion">
+
+__Conversion__: [PDF to HTML](#pdf-to-html), [PDF to JSON](#pdf-to-json)
+
+</div>
+
+<div id="md-toc-fonts">
+
+__Fonts__: [Fix Fonts](#fix-fonts)
+
+</div>
+
+<div id="md-toc-metadata">
+
+__Metadata__: [Set Document Properties](#set-document-properties), [Set PDF Version](#set-pdf-version), [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix XMP Metadata](#fix-xmp-metadata), [Fix Display Document Title](#fix-display-document-title), [Set Document Language](#set-document-language), [Set Title](#set-title)
+
+</div>
+
+<div id="md-toc-pages">
+
+__Pages__: [Rotate Page](#rotate-page), [Normalize Page Orientation](#normalize-page-orientation), [Split Pages](#split-pages)
+
+</div>
+
+<div id="md-toc-table">
+
+__Table__: [Fix Table Tag](#fix-table-tag), [Set Table Cells Attributes](#set-table-cells-attributes), [Set Table Summary](#set-table-summary)
+
+</div>
+
+<div id="md-toc-tags">
+
+__Tags__: [Apply Standard Tags](#apply-standard-tags), [Set Role Mapping](#set-role-mapping), [Delete Tags](#delete-tags), [Move Tags](#move-tags), [Rename Tags](#rename-tags), [Clone Tag XObjects](#clone-tag-xobjects), [Set Tag Language](#set-tag-language), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Fix Link Tag](#fix-link-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Set List Numbering](#set-list-numbering)
+
+</div>
+
+</div>
+
+<div id="md-accessibility">
+
+## Accessibility
+
+### Fix Role Mapping
+
+`remove_standard_tags_mapping`
+
+Resolve issues in the document's Role Map to ensure correct structure type mappings
+
+#### params:
+
+- `standard_role_mapping` (bool) __Remove standard tags mapping__ - Remove role mapping of standard structure types
+
+- `circular_role_mapping` (bool) __Remove circular role mapping__ - Detect and remove circular role mappings that is explicitly permitted
+
+- `clear_rolemap` (bool) __Clear Role Map__ - Clear the role map specified in the structure tree root
+
+#### example:
+```
+{
+    "name": "remove_standard_tags_mapping",
+    "params": [
+        {
+            "name": "standard_role_mapping",
+            "value": true
+        },
+        {
+            "name": "circular_role_mapping",
+            "value": true
+        },
+        {
+            "name": "clear_rolemap",
+            "value": true
+        }
+    ]
+}
+```
+### AutoTag
+
+`add_tags`
+
+Automatically add accessibility tags to an untagged document
+
+#### params:
+
+- `template` (template) __Template__ - Load the layout template from the file as the current template. If the file is empty, the default template will be applied
+
+- `preflight` (bool) __Preflight__ - Preflight the document and combine the preflight values with the current template
+
+- `standard_attrs` (bool) __Add Layout Attributes__ - Add all detected layout attributes
+
+- `sequential_headings` (bool) __Sequential Heading Levels__ - Keep headings in sequentially descending order
+
+- `overwrite` (bool) __Overwrite__ - Replace existing tag structure if it already exist
+
+#### example:
+```
+{
+    "name": "add_tags",
+    "params": [
+        {
+            "name": "template",
+            "value": ""
+        },
+        {
+            "name": "preflight",
+            "value": false
+        },
+        {
+            "name": "standard_attrs",
+            "value": false
+        },
+        {
+            "name": "sequential_headings",
+            "value": false
+        },
+        {
+            "name": "overwrite",
+            "value": true
+        }
+    ]
+}
+```
+### Clear Document Structure
+
+`clear_structure`
+
+Clear the document structure
+
+#### params:
+
+- `clear_tags` (bool) __Clear Content Marks__ - Clear content marks
+
+- `clear_struct_tree` (bool) __Clear Structure Tree__ - Clear the structure tree
+
+- `clear_bookmarks` (bool) __Clear Bookmarks__ - Clear bookmarks
+
+#### example:
+```
+{
+    "name": "clear_structure",
+    "params": [
+        {
+            "name": "clear_tags",
+            "value": true
+        },
+        {
+            "name": "clear_struct_tree",
+            "value": true
+        },
+        {
+            "name": "clear_bookmarks",
+            "value": true
+        }
+    ]
+}
+```
+### Fix ID Tree
+
+`fix_id_tree`
+
+Repair the document ID tree to restore valid references for structure elements and tagged content
+
+#### example:
+```
+{
+    "name": "fix_id_tree"
+}
+```
+### Fix Parent Tree
+
+`fix_parent_tree`
+
+Fix the parent tree
+
+#### example:
+```
+{
+    "name": "fix_parent_tree"
+}
+```
+### Fix Spaces
+
+`fix_structure_spaces`
+
+Add missing or resolve duplicate white spaces within a structure element
+
+#### params:
+
+- `add_missing_spaces` (bool) __Add Missing Spaces__ - Identify words in the structure and add missing spaces
+
+- `remove_unnecessary_spaces` (bool) __Remove Unnecessary Spaces__ - Remove duplicate spaces after each word
+
+- `artifact_unnecessary_spaces` (bool) __Artifact Unnecessary Spaces__ - Mark duplicate spaces as artifacts
+
+#### example:
+```
+{
+    "name": "fix_structure_spaces",
+    "params": [
+        {
+            "name": "add_missing_spaces",
+            "value": true
+        },
+        {
+            "name": "remove_unnecessary_spaces",
+            "value": false
+        },
+        {
+            "name": "artifact_unnecessary_spaces",
+            "value": true
+        }
+    ]
+}
+```
+### Fix Headings
+
+`fix_headings`
+
+Repair logical heading structure for accessibility (PDF/UA): optional H1–H6 from style, then fix invalid level sequence (no skipped levels).
+
+#### params:
+
+- `fix_heading_levels` (bool) __Assign heading levels (H1–H6)__ - Infer H1–H6 from font style and leading numbering for generic **H** tags before sequence repair.
+
+- `renumber_headings` (int) __Fix heading structure__ - How to correct invalid heading levels after assignment (PDF/UA: headings follow a logical sequence; levels must not skip).
+
+  - __0__  - Paragraph (P) for invalid heading structure
+  - __1__  - Align to next sequential heading level
+  - __2__  - Insert empty headings for skipped levels
+
+
+#### example:
+```
+{
+    "name": "fix_headings",
+    "params": [
+        {
+            "name": "fix_heading_levels",
+            "value": true
+        },
+        {
+            "name": "renumber_headings",
+            "value": 2
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-annotations">
+
+## Annotations
+
+### Fix Media Clip
+
+`fix_media_clip_keys`
+
+Define a MIME type for the media clip annotation file
+
+#### params:
+
+- `ct_key` (string) __Media Clip__ - CT key
+
+  - __text/plain__  - text/plain
+  - __text/html__  - text/html
+  - __image/jpeg__  - image/jpeg
+  - __audio/mp3__  - audio/mp3
+  - __video/mp4__  - video/mp4
+
+
+#### example:
+```
+{
+    "name": "fix_media_clip_keys",
+    "params": [
+        {
+            "name": "ct_key",
+            "value": "text/plain"
+        }
+    ]
+}
+```
+### Set Tab Order
+
+`set_tabs_key`
+
+Set the tab order key for every page. Every page containing an annotation must have the Tabs key set to S
+
+#### params:
+
+- `tabs_key` (string) __Tabs Key__ - Specify the tab order key
+
+- `overwrite` (bool) __Overwrite__ - Replace the current tab order key if it already exists
+
+#### example:
+```
+{
+    "name": "set_tabs_key",
+    "params": [
+        {
+            "name": "tabs_key",
+            "value": "S"
+        },
+        {
+            "name": "overwrite",
+            "value": true
+        }
+    ]
+}
+```
+### Tag Annotations
+
+`tag_annot`
+
+Tag untagged annotations by placing them in the closest matching tag
+
+#### params:
+
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
+
+#### example:
+```
+{
+    "name": "tag_annot",
+    "params": [
+        {
+            "name": "annot_types",
+            "value": "^(?!.*Popup).*$"
+        }
+    ]
+}
+```
+### Set Annotation Contents
+
+`set_annot_contents`
+
+Set an alternative description for an annotation using the Contents key or TU key for widget annotations
+
+#### params:
+
+- `annot_types` (annot) __Select Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
+
+- `alt_type` (int) __Contents__ - Define the source for detecting alternative text
+
+  - __0__  - Custom text
+  - __1__  - Text from annotation bounding box
+  - __2__  - Action destination
+  - __3__  - Auto generated text
+  - __4__  - Use text from the first matching tag above
+  - __5__  - Use text from the first matching tag below
+  - __6__  - Use the text parent tag content
+
+
+- `custom_text` (string) __Custom Text__ - Enter custom text for the Contents key
+
+- `description_tag` (string) __Use Text from Tag__ - Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the annotation contents.
+
+- `bbox_padding_x` (float) __Left BBox Padding__ - Adjust horizontal padding (X axis) for the left edge of the BBox
+
+- `bbox_padding_x_right` (float) __ Right BBox Padding__ - Adjust horizontal padding (X axis) for the right edge of the BBox
+
+- `bbox_padding_y_top` (float) __Top BBox Padding__ - Adjust vertical padding (Y axis) for the top edge of the BBox
+
+- `bbox_padding_y` (float) __Bottom BBox Padding__ - Adjust vertical padding (Y axis) for the bottom edge of the BBox
+
+- `overwrite` (bool) __Overwrite__ - Replace the current alternative description if it already exists
+
+#### example:
+```
+{
+    "name": "set_annot_contents",
+    "params": [
+        {
+            "name": "annot_types",
+            "value": ".*"
+        },
+        {
+            "name": "alt_type",
+            "value": 1
+        },
+        {
+            "name": "custom_text",
+            "value": "Decorative"
+        },
+        {
+            "name": "description_tag",
+            "value": ""
+        },
+        {
+            "name": "bbox_padding_x",
+            "value": 4
+        },
+        {
+            "name": "bbox_padding_x_right",
+            "value": 4
+        },
+        {
+            "name": "bbox_padding_y_top",
+            "value": 4
+        },
+        {
+            "name": "bbox_padding_y",
+            "value": 4
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Remove Annotation Properties
+
+`remove_annot_data`
+
+Remove properties from the annotations
+
+#### params:
+
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
+
+- `remove_contents` (bool) __Remove Contents__ - Remove the Contents key
+
+#### example:
+```
+{
+    "name": "remove_annot_data",
+    "params": [
+        {
+            "name": "annot_types",
+            "value": ".*"
+        },
+        {
+            "name": "remove_contents",
+            "value": true
+        }
+    ]
+}
+```
+### Flatten Annotations
+
+`flatten_annot`
+
+Flatten the visual representation of annotations into the content layer. This prevents issues with annotation tagging when interactivity is not needed in a PDF/UA-compliant document
+
+#### params:
+
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
+
+#### example:
+```
+{
+    "name": "flatten_annot",
+    "params": [
+        {
+            "name": "annot_types",
+            "value": "^(?!.*Link|.*Widget|.*Popup).*$"
+        }
+    ]
+}
+```
+### Create Web Links
+
+`create_web_links`
+
+Create link annotations from web addresses and email patterns found in the page content
+
+#### params:
+
+- `url_regex` (string) __URL Pattern__ - Specify a ECMAScript regular expression to identify web or email links in the content. The matched text will be used as the link target unless overridden by the URL Address or modified by adding the URL Prefix
+
+  - __^(((http(s)?|ftp):\/\/)|(mailto:)|www.)[^\s\/$.?#].[^\s]*__ 
+  - __^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}__ 
+
+
+- `url_prefix` (string) __URL Prefix__ - Prepend this prefix to the detected URL or email if it does not already begin with a known scheme (e.g., http, mailto). This is useful for ensuring that URLs are correctly formatted
+
+  - ____ 
+  - __http://__ 
+  - __https://__ 
+  - __ftp://__ 
+  - __file://__ 
+  - __mailto:__ 
+  - __tel:__ 
+  - __data:__ 
+  - __ws://__ 
+  - __wss://__ 
+
+
+- `url` (string) __URL Address__ - Set the destination URL. If this is set, it overrides the matched text and any prefix added by the URL Prefix
+
+#### example:
+```
+{
+    "name": "create_web_links",
+    "params": [
+        {
+            "name": "url_regex",
+            "value": "^(((http(s)?|ftp):\\/\\/)|(mailto:)|www.)[^\\s\\/$.?#].[^\\s]*"
+        },
+        {
+            "name": "url_prefix",
+            "value": "ws://"
+        },
+        {
+            "name": "url",
+            "value": ""
+        }
+    ]
+}
+```
+### Delete Annotations
+
+`delete_annot`
+
+Completely remove an annotation from the PDF. Use this action when certain annotation types (e.g., TrapNet) are not permitted in a PDF/UA-compliant document
+
+#### params:
+
+- `annot_types` (annot) __Annotations__ - Specify annotation types using a ECMAScript regular expression or define them by template annot_update
+
+#### example:
+```
+{
+    "name": "delete_annot",
+    "params": [
+        {
+            "name": "annot_types",
+            "value": "^TrapNet$"
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-bookmarks">
+
+## Bookmarks
+
+### Create Bookmarks
+
+`create_bookmarks`
+
+Create bookmarks from the tag tree hierarchy
+
+#### params:
+
+- `tag_1` (tag) __Level 1__ - Define tag types using a ECMAScript regular expression or specify them by template
+
+- `tag_2` (tag) __Level 2__ - Define the tag that represents second level
+
+- `tag_3` (tag) __Level 3__ - Define the tag that represents third level
+
+- `tag_4` (tag) __Level 4__ - Define the tag that represents fourth level
+
+- `tag_5` (tag) __Level 5__ - Define the tag that represents fifth level
+
+- `tag_6` (tag) __Level 6__ - Define the tag that represents sixth level
+
+- `overwrite` (bool) __Overwrite__ - Replace existing bookmarks if they already exist
+
+#### example:
+```
+{
+    "name": "create_bookmarks",
+    "params": [
+        {
+            "name": "tag_1",
+            "value": "^H1$"
+        },
+        {
+            "name": "tag_2",
+            "value": "^H2$"
+        },
+        {
+            "name": "tag_3",
+            "value": "^H3$"
+        },
+        {
+            "name": "tag_4",
+            "value": "^H4$"
+        },
+        {
+            "name": "tag_5",
+            "value": "^H5$"
+        },
+        {
+            "name": "tag_6",
+            "value": "^H6$"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-content">
+
+## Content
+
+### Set Content Language
+
+`set_content_language`
+
+Set the content language
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
+
+- `lang` (lang) __Language__ - Content language
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_content_language",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Delete Content
+
+`delete_content`
+
+Completely remove a content from the PDF
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the page content objects to be deleted
+
+#### example:
+```
+{
+    "name": "delete_content",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ""
+        }
+    ]
+}
+```
+### Artifact Content
+
+`artifact_content`
+
+Mark defined content as an artifact
+
+#### params:
+
+- `object_types` (object) __Objects__ - Specify the objects using the object_update template
+
+- `artifact_type` (int) __Mark as__ - Mark the content as an artifact, header, or footer
+
+  - __0__  - Artifact
+  - __1__  - Header
+  - __2__  - Footer
+
+
+#### example:
+```
+{
+    "name": "artifact_content",
+    "params": [
+        {
+            "name": "object_types",
+            "value": {
+                "template": {
+                    "object_update": [
+                        {
+                            "query": {
+                                "$and": [
+                                    {
+                                        "$0_artifact": "false"
+                                    },
+                                    {
+                                        "$0_mcid": "-1"
+                                    }
+                                ],
+                                "param": [
+                                    "pds_object"
+                                ]
+                            },
+                            "statement": "$if"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "artifact_type",
+            "value": 0
+        }
+    ]
+}
+```
+### Flatten Form XObjects
+
+`flatten_xobject`
+
+Flatten Form XObjects
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
+
+#### example:
+```
+{
+    "name": "flatten_xobject",
+    "params": [
+        {
+            "name": "object_types",
+            "value": "^pds_form$"
+        }
+    ]
+}
+```
+### Clone Form XObjects
+
+`clone_xobject`
+
+Clone Form XObjects
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
+
+#### example:
+```
+{
+    "name": "clone_xobject",
+    "params": [
+        {
+            "name": "object_types",
+            "value": "^pds_form$"
+        }
+    ]
+}
+```
+### Remove Content Marks
+
+`remove_content_marks`
+
+Remove artifacts, MCIDs, or any custom tags from page content objects. Remove All Containers by checking all flags.
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the objects by the template object_update
+
+- `flags` (flag) __Remove__ - Specify types of marked content to be removed
+
+  - __8__  - Remove Invalid MCID
+  - __4__  - Remove Custom Content Mark
+  - __1__  - Remove MCID
+  - __2__  - Remove Artifact
+
+
+#### example:
+```
+{
+    "name": "remove_content_marks",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "flags",
+            "value": 8
+        }
+    ]
+}
+```
+### Set Content Color
+
+`set_content_color`
+
+Change the fill and/or stroke color of specified content objects
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the page objects using the object_update template
+
+- `fill_color` (string) __Fill Color__ - Specify a new fill color using the format RGB(127,255,0) or CMYK(25,84,50,100). Leave empty to keep the current color unchanged
+
+- `stroke_color` (string) __Stroke Color__ - Specify a new stroke color using the format RGB(127,255,0) or CMYK(25,84,50,100). Leave empty to keep the current color unchanged
+
+#### example:
+```
+{
+    "name": "set_content_color",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "fill_color",
+            "value": "RGB(0,0,0)"
+        },
+        {
+            "name": "stroke_color",
+            "value": "RGB(0,0,0)"
+        }
+    ]
+}
+```
+### Split Content
+
+`split_content`
+
+Split specified content objects
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the page objects using the object_update template
+
+- `index` (int) __Index__ - Specify an index of the substing. Negative value indicates the last character and oposite direction (-1 is the last character, -2 is the second last, etc.)
+
+- `length` (int) __Length__ - Specify the number of character to be included in the substring. 0 indicates all characters from the index to the end/start. It's ignored if text is specified
+
+- `text` (string) __Text__ - Specify the substring of characters (regex) to be included in the substring. Leave empty to ignore
+
+#### example:
+```
+{
+    "name": "split_content",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "index",
+            "value": "0"
+        },
+        {
+            "name": "length",
+            "value": "0"
+        },
+        {
+            "name": "text",
+            "value": ""
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-conversion">
+
+## Conversion
+
+### PDF to HTML
+
+`pdf_to_html`
+
+Convert a PDF to HTML
+
+#### params:
+
+- `input_pdf` (file_path) __Input PDF__ - Specify the input PDF file path
+
+- `output_html` (file_path) __Ouput HTML__ - Specify the output HTML file
+
+- `html_type` (int) __HTML Layout__ - Choose the HTML layout type
+
+  - __0__ - Original layout
+  - __1__ - Responsive layout
+  - __2__ - Layout defined by PDF Tags
+
+
+- `template` (template) __Template__ - Load the template from a file as the current template. If the file is empty, the default template will be applied
+
+- `preflight` (bool) __Preflight__ - Preflight the document and merge its preflight values with the current template
+
+- `flags` (flag) __Conversion Flags__ - Define conversion flags
+
+  - __1__ - Export JavaScript
+  - __2__ - Export fonts
+  - __4__ - Use default font sizes
+  - __8__ - Retain text color
+  - __32__ - Inline CSS styles
+  - __64__ - Inline JavaScript code
+  - __128__ - Embed images within the document
+  - __256__ - Embed fonts within the document
+  - __512__ - Apply gray padding
+
+
+#### example:
+```
+{
+    "name": "pdf_to_html"
+}
+```
+### PDF to JSON
+
+`pdf_to_json`
+
+Convert a PDF to JSON
+
+#### params:
+
+- `input_pdf` (file_path) __Input PDF__ - Specify the input PDF file path
+
+- `output_json` (file_path) __Output JSON__ - Specify the output JSON file path
+
+- `flags` (flag) __Conversion Flags__ - Specify flags for the extracted content
+
+  - __1__ - Include document metadata
+  - __2__ - Include page information
+  - __16__ - Extract page content
+  - __32__ - Extract document structure tree
+  - __64__ - Extract layout recognition
+  - __256__ - Include bounding box data
+  - __512__ - Include content marks
+  - __4096__ - Include text content
+  - __8192__ - Include text style
+  - __16384__ - Include text state
+  - __65536__ - Extract images as base64
+  - __131072__ - Extract annotations
+  - __262144__ - Extract bookmarks
+
+
+#### example:
+```
+{
+    "name": "pdf_to_json"
+}
+```
+</div>
+
+<div id="md-fonts">
+
+## Fonts
+
+### Fix Fonts
+
+`embed_font`
+
+Embed and fix all fonts used in the document to ensure consistent rendering and reliable text extraction across platforms and assistive technologies.
+
+#### params:
+
+- `embed_font` (bool) __Embed Font__ - Embed fonts if not already embedded
+
+- `add_missing_unicode` (bool) __Add Missing Unicodes__ - Add missing unicode mappings
+
+- `type0_cid_system_info` (bool) __Type 0 CIDSystemInfo__ - UA1:7.21.3.1: A Type 0 font dictionary with encoding other than Identity-H and Identity-V failure condition. 
+
+- `type2_cid_to_gid_map` (bool) __Type 2 CIDToGIDMap__ - UA1:7.21.3.2: A Type 2 CID font CIDToGIDMap failure condition
+
+- `glyph_widths` (bool) __Glyph Widths__ - UA1:7.21.5: For one or more glyphs, the glyph width information in the font dictionary and in the embedded font program differ by more than 1/1000 unit
+
+- `notdef_glyph` (bool) __Reference the .notdef glyph__ - UA1:7.21.8: One or more characters used in text showing operators reference the .notdef glyph
+
+#### example:
+```
+{
+    "name": "embed_font",
+    "params": [
+        {
+            "name": "embed_font",
+            "value": false
+        },
+        {
+            "name": "add_missing_unicode",
+            "value": true
+        },
+        {
+            "name": "type0_cid_system_info",
+            "value": true
+        },
+        {
+            "name": "type2_cid_to_gid_map",
+            "value": true
+        },
+        {
+            "name": "glyph_widths",
+            "value": true
+        },
+        {
+            "name": "notdef_glyph",
+            "value": true
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-metadata">
+
+## Metadata
+
+### Set Document Properties
+
+`set_doc_info`
+
+Set document metadata and properties
+
+#### params:
+
+- `set_author` (bool) __Set Author__ - Set the document author
+
+- `author` (string) __Author__ - Specify the author
+
+- `set_title` (bool) __Set Title__ - Set the document title
+
+- `title` (string) __Title__ - Specify the title
+
+- `set_subject` (bool) __Set Subject__ - Set the document subject
+
+- `subject` (string) __Subject__ - Specify the subject
+
+- `set_keywords` (bool) __Set Keywords__ - Set the document keywords
+
+- `keywords` (string) __Keywords__ - Specify the keywords
+
+- `set_producer` (bool) __Set Producer__ - Set the document producer
+
+- `producer` (string) __Producer__ - Specify the producer name
+
+- `set_creator` (bool) __Set Creator__ - Set the document creator
+
+- `creator` (string) __Creator__ - Specify the creator
+
+#### example:
+```
+{
+    "name": "set_doc_info",
+    "params": [
+        {
+            "name": "set_author",
+            "value": true
+        },
+        {
+            "name": "author",
+            "value": ""
+        },
+        {
+            "name": "set_title",
+            "value": true
+        },
+        {
+            "name": "title",
+            "value": ""
+        },
+        {
+            "name": "set_subject",
+            "value": true
+        },
+        {
+            "name": "subject",
+            "value": ""
+        },
+        {
+            "name": "set_keywords",
+            "value": true
+        },
+        {
+            "name": "keywords",
+            "value": ""
+        },
+        {
+            "name": "set_producer",
+            "value": true
+        },
+        {
+            "name": "producer",
+            "value": ""
+        },
+        {
+            "name": "set_creator",
+            "value": true
+        },
+        {
+            "name": "creator",
+            "value": ""
+        }
+    ]
+}
+```
+### Set PDF Version
+
+`set_pdf_version`
+
+Set the PDF version
+
+#### params:
+
+- `version_number` (int) __PDF Version__ - Choose the PDF version designation
+
+  - __14__  - PDF 1.4
+  - __15__  - PDF 1.5
+  - __16__  - PDF 1.6
+  - __17__  - PDF 1.7
+  - __20__  - PDF 2.0
+
+
+#### example:
+```
+{
+    "name": "set_pdf_version",
+    "params": [
+        {
+            "name": "version_number",
+            "value": 17
+        }
+    ]
+}
+```
+### Set PDF/UA Standard
+
+`set_pdf_ua_standard`
+
+Set the PDF/UA identifier
+
+#### params:
+
+- `part_number` (string) __Part Identifier__ - Specify the part number of the International Standard to which the file conforms
+
+  - ____  - Remove PDF/UA Part Number
+  - __1__  - Set PDF/UA-1
+  - __2__  - Set PDF/UA-2
+
+
+- `rev_number` (string) __Rev Number__ - Specify the four-digit year of publication or revision (ignored for part 1)
+
+#### example:
+```
+{
+    "name": "set_pdf_ua_standard",
+    "params": [
+        {
+            "name": "part_number",
+            "value": "1"
+        },
+        {
+            "name": "rev_number",
+            "value": "2023"
+        }
+    ]
+}
+```
+### Set Suspect Value
+
+`set_suspect_value`
+
+Fix the document MarkInfo dictionary and Suspects entry
+
+#### example:
+```
+{
+    "name": "set_suspect_value"
+}
+```
+### Fix Optional Content
+
+`fix_oc_name`
+
+Fix the optional content configuration dictionary
+
+#### example:
+```
+{
+    "name": "fix_oc_name"
+}
+```
+### Fix XMP Metadata
+
+`fix_metadata`
+
+Repair, normalize, and optionally reset document XMP metadata for improved compliance and consistency
+
+#### params:
+
+- `reset_metadata` (bool) __Reset Metadata__ - Recreate XMP metadata from scratch by removing all non-essential and custom entries, keeping only the minimal set required for standards compliance
+
+#### example:
+```
+{
+    "name": "fix_metadata",
+    "params": [
+        {
+            "name": "reset_metadata",
+            "value": false
+        }
+    ]
+}
+```
+### Fix Display Document Title
+
+`set_display_doc_title`
+
+Fix the ViewerPreferences dictionary
+
+#### example:
+```
+{
+    "name": "set_display_doc_title"
+}
+```
+### Set Document Language
+
+`set_language`
+
+Set the document language
+
+#### params:
+
+- `lang` (lang) __Language__ - Document language
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_language",
+    "params": [
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Title
+
+`set_title`
+
+Set the document title
+
+#### params:
+
+- `title_type` (int) __Title__ - Define a source for detecting the document title
+
+  - __0__  - Define a custom title
+  - __1__  - Use text from the first matching tag
+  - __2__  - Get title from the file name
+
+
+- `custom_text` (string) __Custom Title__ - Custom title
+
+- `description_tag` (string) __Use Text from Tag__ - Define the tag type whose content is used for the title text
+
+- `overwrite` (bool) __Overwrite__ - Replace the current title if it already exists
+
+#### example:
+```
+{
+    "name": "set_title",
+    "params": [
+        {
+            "name": "title_type",
+            "value": 2
+        },
+        {
+            "name": "custom_text",
+            "value": ""
+        },
+        {
+            "name": "description_tag",
+            "value": "Caption"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-pages">
+
+## Pages
+
+### Rotate Page
+
+`rotate_pages`
+
+Rotate pages
+
+#### params:
+
+- `object_types` (object) __Pages__ - Select pages using ECMAScript regular expression or by defining anchors in a template
+
+- `rotation_type` (int) __Rotation Type__ - Specify the type of rotation
+
+  - __0__  - Set rotation angle
+  - __1__  - Rotate by angle
+
+
+- `rotation_angle` (int) __Rotation Angle__ - Specify the rotation angle
+
+  - __0__  - 0 degrees
+  - __90__  - 90 degrees
+  - __180__  - 180 degrees
+  - __270__  - 270 degrees
+
+
+#### example:
+```
+{
+    "name": "rotate_pages",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "rotation_type",
+            "value": 1
+        },
+        {
+            "name": "rotation_angle",
+            "value": 0
+        }
+    ]
+}
+```
+### Normalize Page Orientation
+
+`fix_page_orientation`
+
+Correct the orientation of selected pages and normalize their transformation matrix and bounding box
+
+#### params:
+
+- `object_types` (object) __Pages__ - Select pages using ECMAScript regular expression or by defining anchors in a template
+
+#### example:
+```
+{
+    "name": "fix_page_orientation",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        }
+    ]
+}
+```
+### Split Pages
+
+`split_pages`
+
+Split a PDF into multiple documents based on defined page rules or template anchors
+
+#### params:
+
+- `base_pdf` (file_path) __Output Path__ - Specify the output folder based on the input file pathh
+
+- `object_types` (object) __Splitters__ - Specify split rules using ECMAScript regular expression for page numbers or template-defined anchors
+
+#### example:
+```
+{
+    "name": "split_pages",
+    "params": [
+        {
+            "name": "base_pdf",
+            "value": ""
+        },
+        {
+            "name": "object_types",
+            "value": ".*"
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-table">
+
+## Table
+
+### Fix Table Tag
+
+`fix_table_tag`
+
+Resolve structural errors in tables to ensure PDF/UA compliance, including span consistency and invalid nesting
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the table tags using a ECMAScript regular expression or define them by template
+
+- `flatten_table` (bool) __Flatten Table Structure__ - Convert the table hierarchy (Table->Div, TR->Div) to flatten incorrectly formatted tables
+
+- `fix_table_spans` (bool) __Fix Cell Spans__ - Normalize RowSpan and ColSpan attributes to ensure that all rows contain the same number of columns
+
+- `fix_table_headers` (bool) __Add Missing Headers__ - Generate missing header cells to ensure proper table structure
+
+- `fix_nested` (string) __Fix Invalid Nesting__ - Resolve issues with disallowed tags nested within table
+
+  - __none__  - Do not fix
+  - __move__  - Move invalid nested tags outside the Table element
+  - __artifact__  - Convert invalid nested tags to artifacts
+
+
+#### example:
+```
+{
+    "name": "fix_table_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Table$"
+        },
+        {
+            "name": "flatten_table",
+            "value": false
+        },
+        {
+            "name": "fix_table_spans",
+            "value": false
+        },
+        {
+            "name": "fix_table_headers",
+            "value": true
+        },
+        {
+            "name": "fix_nested",
+            "value": "artifact"
+        }
+    ]
+}
+```
+### Set Table Cells Attributes
+
+`set_table_header`
+
+Fix table header and data cells
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the table cell tags using a ECMAScript regular expression or define them by template tag_update
+
+- `scope` (string) __Scope__ - Specify whether the header cell applies to a row, column, or both
+
+  - __None__  - None
+  - __Row__  - Row
+  - __Column__  - Column
+  - __Both__  - Both
+
+
+- `row_span` (int) __RowSpan__ - Set the row span for the cell. Use -1 to keep the existing RowSpan
+
+- `col_span` (int) __ColSpan__ - Set the column span for the cell. Use -1 to keep the existing ColSpan
+
+- `tag_name` (string) __Change to__ - Specify a new tag type (TD or TH) for the cell. Leave empty to retain the existing type
+
+- `overwrite` (bool) __Overwrite__ - Replace current properties if they already exist
+
+#### example:
+```
+{
+    "name": "set_table_header",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^TD$"
+        },
+        {
+            "name": "scope",
+            "value": "None"
+        },
+        {
+            "name": "row_span",
+            "value": -1
+        },
+        {
+            "name": "col_span",
+            "value": -1
+        },
+        {
+            "name": "tag_name",
+            "value": "TH"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Table Summary
+
+`set_table_summary`
+
+Provide a summary of the table. Only applicable to Table tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the table tags using a ECMAScript regular expression or define them by template
+
+- `summary_type` (int) __Summary__ - Define a source for detecting the summary
+
+  - __0__  - Define the Custom Summary
+  - __1__  - Use the associated TH content
+  - __2__  - Use the associated tag content
+
+
+- `custom_text` (string) __Custom Summary__ - Enter custom text as the table summary
+
+- `overwrite` (bool) __Overwrite__ - Replace the table summary if it already exists
+
+#### example:
+```
+{
+    "name": "set_table_summary",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Table$"
+        },
+        {
+            "name": "summary_type",
+            "value": 2
+        },
+        {
+            "name": "custom_text",
+            "value": "Summary"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+</div>
+
+<div id="md-tags">
+
+## Tags
+
+### Apply Standard Tags
+
+`apply_standard_tags`
+
+Changes all non-standard tags to standard tags according to their role mapping
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+#### example:
+```
+{
+    "name": "apply_standard_tags",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        }
+    ]
+}
+```
+### Set Role Mapping
+
+`set_role_mapping`
+
+Map the name of structure types used in the document to the selected standard structure types
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tag types using a ECMAScript regular expression or define them by template tag_update
+
+- `standard_tag_name` (string) __Standard tag type__ - Specify the standard tag name to which the selected tag will be role-mapped
+
+- `overwrite` (bool) __Overwrite__ - Replace the current tag mapping
+
+#### example:
+```
+{
+    "name": "set_role_mapping",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ""
+        },
+        {
+            "name": "standard_tag_name",
+            "value": "P"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Delete Tags
+
+`delete_tags`
+
+Delete defined tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `tag_content` (string) __Content__ - Handle the content of deleted tags
+
+  - __none__  - Leave content untagged
+  - __move__  - Move nested tags to the parent tag
+  - __artifact__  - Mark content as an artifact
+
+
+#### example:
+```
+{
+    "name": "delete_tags",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "tag_content",
+            "value": "none"
+        }
+    ]
+}
+```
+### Move Tags
+
+`move_tags`
+
+Move defined tags out of the parent tag
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `tag_pos` (string) __Position__ - Define a new position of the tag
+
+  - __move_up__  - Move tag out of the parent
+
+
+#### example:
+```
+{
+    "name": "move_tags",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "tag_pos",
+            "value": "move_up"
+        }
+    ]
+}
+```
+### Rename Tags
+
+`rename_tags`
+
+Rename tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `tag_name` (string) __Replace with__ - Specify a new tag name
+
+#### example:
+```
+{
+    "name": "rename_tags",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^P$"
+        },
+        {
+            "name": "tag_name",
+            "value": "P"
+        }
+    ]
+}
+```
+### Clone Tag XObjects
+
+`clone_tag_xobject`
+
+Clone Form XObjects in tags
+
+#### example:
+```
+{
+    "name": "clone_tag_xobject"
+}
+```
+### Set Tag Language
+
+`set_tag_language`
+
+Set the tag language
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `lang` (lang) __Language__ - Tag language
+
+- `overwrite` (bool) __Overwrite__ - Replace the current language if it already exists
+
+#### example:
+```
+{
+    "name": "set_tag_language",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "lang",
+            "value": "en-US"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Tag ID
+
+`set_tag_id`
+
+Generate a unique ID key for specific tags, such as Note tags required in PDF/UA-1
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `overwrite` (bool) __Overwrite__ - Replace the current tag ID if it already exists
+
+#### example:
+```
+{
+    "name": "set_tag_id",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Note$|^TH$"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Tag BBox
+
+`set_tag_bbox`
+
+Calculate the bounding box from the tag content and set it in the Layout attributes
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `overwrite` (bool) __Overwrite__ - Replace the current bounding box if it already exists
+
+#### example:
+```
+{
+    "name": "set_tag_bbox",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Figure$|^Formula$|^Form$|^Table$"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Alternate Description
+
+`set_alt`
+
+Set an alternative description for the tag. These text alternatives are crucial for accessibility, helping users with vision impairments understand the content
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `alt_type` (int) __Alternative Description__ - Define a source for detecting the alternative text
+
+  - __0__  - Define the Custom Alternative text
+  - __1__  - Use text from the first matching tag above
+  - __2__  - Use text from the first matching tag below
+  - __3__  - Use text from the children tags
+  - __4__  - Use the associated tag content. If there is an Annotation among the children, its Contents key is used
+
+
+- `custom_text` (string) __Custom Alternative__ - Enter custom text for the alternative description
+
+- `description_tag` (string) __Use Text from Tag__ - Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the alternative description.
+
+- `overwrite` (bool) __Overwrite__ - Replace the alternative description if it already exists
+
+#### example:
+```
+{
+    "name": "set_alt",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Figure$|^Formula$"
+        },
+        {
+            "name": "alt_type",
+            "value": 4
+        },
+        {
+            "name": "custom_text",
+            "value": "Decorative"
+        },
+        {
+            "name": "description_tag",
+            "value": ""
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Set Actual Text
+
+`set_actual`
+
+Set a replacement text for the content, providing an equivalent text representation
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `actual_type` (int) __Actual Text__ - Define a source for detecting the replacement text
+
+  - __0__  - Custom actual text
+  - __1__  - Use the associated tag content
+
+
+- `custom_text` (string) __Custom__ - Enter custom actual text as the replacement text
+
+- `overwrite` (bool) __Overwrite__ - Replace the actual text if it already exists
+
+#### example:
+```
+{
+    "name": "set_actual",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Span$"
+        },
+        {
+            "name": "actual_type",
+            "value": 0
+        },
+        {
+            "name": "custom_text",
+            "value": ""
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Fix Placement
+
+`fix_placement`
+
+Fix incorrect placement attributes for specified tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+#### example:
+```
+{
+    "name": "fix_placement",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Figure$|^Formula$|^Form$|^Note$"
+        }
+    ]
+}
+```
+### Fix Document Tag
+
+`fix_document_tag`
+
+Fix the document tag
+
+#### example:
+```
+{
+    "name": "fix_document_tag"
+}
+```
+### Fix List Tag
+
+`fix_list_tag`
+
+Fix PDF/UA list structure issues for List (L) and its list items
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the list tags using a ECMAScript regular expression or define them by template
+
+- `flatten_list` (bool) __Flatten List Structure__ - Convert the list hierarchy (L->Div, LI->Div) to flatten incorrectly formatted lists
+
+- `join_captions` (bool) __Join Captions__ - Merge multiple Caption elements under one list into a single Caption
+
+- `fix_nested` (string) __Fix Invalid Nesting__ - Resolve issues with disallowed tags nested within list
+
+  - __none__  - Keep invalid nested content unchanged
+  - __move__  - Move unsupported children out of L and normalize LI children into LBody
+  - __artifact__  - Artifact invalid nested content and remove invalid structure nodes
+
+
+#### example:
+```
+{
+    "name": "fix_list_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^L$"
+        },
+        {
+            "name": "flatten_list",
+            "value": false
+        },
+        {
+            "name": "join_captions",
+            "value": false
+        },
+        {
+            "name": "fix_nested",
+            "value": "none"
+        }
+    ]
+}
+```
+### Fix Link Tag
+
+`fix_link_tag`
+
+Fix link(Link) tag errors
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Define the link tags by the template tag_update
+
+- `zoom` (float) __Destination Zoom__ - The zoom factor to set for the destination. If zero, use the predefined value to indicate a NULL zoom factor
+
+- `bbox_padding_x` (float) __Left Padding__ - Adjust horizontal padding (X axis) for the left edge of the destination
+
+- `bbox_padding_y_top` (float) __Top Padding__ - Adjust vertical padding (Y axis) for the top edge of the destination
+
+- `overwrite` (bool) __Overwrite__ - Replace the current destination if it already exists
+
+#### example:
+```
+{
+    "name": "fix_link_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Link$"
+        },
+        {
+            "name": "zoom",
+            "value": 0
+        },
+        {
+            "name": "bbox_padding_x",
+            "value": 4
+        },
+        {
+            "name": "bbox_padding_y_top",
+            "value": 4
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+### Remove Tag Properties
+
+`remove_tag_data`
+
+Remove properties from the defined tags
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `accept_alternate_desc` (bool) __Remove Alternate Description__ - Remove Alt key
+
+- `accept_actual_text` (bool) __Remove Actual Text__ - Remove Replacement Text, ActualText key
+
+- `accept_expansion_text` (bool) __Remove Expansion Text__ - Remove the E key
+
+- `accept_id` (bool) __Remove ID__ - Remove the ID key
+
+- `accept_lang` (bool) __Remove Language__ - Remove the Lang key
+
+- `accept_title` (bool) __Remove Title__ - Remove the T key
+
+- `owner` (string) __Remove Attribute Owner__ - Remove standard attribute owners. If no attribute name is specified, all attributes in the group will be removed
+
+  - __None__  - None
+  - __Layout__  - Layout Attributes governing the layout of content
+  - __List__  - List Attributes governing the numbering of lists
+  - __PrintField__  - PrintField Attributes governing Form structure elements for non-interactive form fields
+  - __Table__  - Table Attributes governing the organisation of cells in tables
+
+
+- `name` (string) __Remove Attribute Name__ - Remove a specific attribute by name. For example Headers from the previously defined Attribute Owner
+
+#### example:
+```
+{
+    "name": "remove_tag_data",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "accept_alternate_desc",
+            "value": false
+        },
+        {
+            "name": "accept_actual_text",
+            "value": false
+        },
+        {
+            "name": "accept_expansion_text",
+            "value": false
+        },
+        {
+            "name": "accept_id",
+            "value": false
+        },
+        {
+            "name": "accept_lang",
+            "value": false
+        },
+        {
+            "name": "accept_title",
+            "value": false
+        },
+        {
+            "name": "owner",
+            "value": "List"
+        },
+        {
+            "name": "name",
+            "value": ""
+        }
+    ]
+}
+```
+### Set Tag Attributes
+
+`set_structure_attribute`
+
+Set standard structure attributes for tags. Each attribute object has an owner
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `overwrite` (bool) __Overwrite__ - Replace the current attribute if it already exists
+
+- `owner` (string) __Owner__ - Specify the standard attribute owner
+
+  - __Layout__  - Layout Attributes governing the layout of content
+  - __List__  - List Attributes governing the numbering of lists
+  - __PrintField__  - PrintField Attributes governing Form structure elements for non-interactive form fields
+  - __Table__  - Table Attributes governing the organisation of cells in tables
+
+
+- `name` (string) __Name__ - Specify the attribute name
+
+- `value` (string) __Value__ - Specify the attribute value
+
+- `value_type` (string) __Value Type__ - Specify the attribute value type
+
+  - __string__  - string
+  - __name__  - name
+  - __array__  - array
+  - __number__  - number
+
+
+#### example:
+```
+{
+    "name": "set_structure_attribute",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        },
+        {
+            "name": "owner",
+            "value": "PrintField"
+        },
+        {
+            "name": "name",
+            "value": ""
+        },
+        {
+            "name": "value",
+            "value": ""
+        },
+        {
+            "name": "value_type",
+            "value": "name"
+        }
+    ]
+}
+```
+### Set List Numbering
+
+`set_list_attribute`
+
+Attributes governing the numbering of lists
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the List tags using a ECMAScript regular expression or define them by template tag_update
+
+- `list_numbering` (string) __List Numbering__ - The numbering system used to generate the content of the Lbl (Label) elements in an autonumbered list, or the symbol used to identify each item in an unnumbered list.
+
+  - __None__  - None - Lbl elements (if present) contain arbitrary text not subject to any numbering scheme
+  - __Disc__  - Disc - Solid circular bullet
+  - __Circle__  - Circle - Open circular bullet
+  - __Square__  - Square - Solid square bullet
+  - __Decimal__  - Decimal - Decimal arabic numerals (1–9, 10–99, …)
+  - __UpperRoman__  - UpperRoman - Uppercase roman numerals (I, II, III, IV, …)
+  - __LowerRoman__  - LowerRoman - Lowercase roman numerals (i, ii, iii, iv, …)
+  - __UpperAlpha__  - UpperAlpha - Uppercase letters (A, B, C, …)
+  - __LowerAlpha__  - LowerAlpha - Lowercase letters (a, b, c, …)
+
+
+- `overwrite` (bool) __Overwrite__ - Replace the current list numbering attribute if it already exists
+
+#### example:
+```
+{
+    "name": "set_list_attribute",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^L&"
+        },
+        {
+            "name": "list_numbering",
+            "value": "None"
+        },
+        {
+            "name": "overwrite",
+            "value": false
+        }
+    ]
+}
+```
+</div>
+

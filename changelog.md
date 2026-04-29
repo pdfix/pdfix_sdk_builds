@@ -1,5 +1,145 @@
 # Changelog
 
+# pdfix/include/pdfix.h API changes for v8.8.0
+
+
+## [8.8.0] - 2026-04-29
+
+### Accessibility
+
+ * Added support for setting Alt, Actual Text, Lang, Extension, and Title properties on structure elements through layout templates and element property update functions
+ * Added and improved Fix Parent Tree, Fix Table Tag, Fix List, Set List Numbering, Move Tags, Split Content, Delete Tags, and Make Accessible workflows
+ * Added support for tagging initial elements only and improved parenting of initial elements and containers
+ * Added support for artifacting untagged content and improved removal of empty content marks after MCID cleanup
+ * Improved list recognition, ordered list detection, label validation, label updates, and combined label flag handling
+ * Improved heading level detection based on font properties
+ * Improved continuous paragraph, list, and table handling
+ * Improved reading order and content order in paragraphs, table headers, table cells, and split text
+ * Improved auto-tagging of background words, subscript and superscript text, and text spans with layout-specific edge cases
+ * Fixed Add Tags support for embedded templates
+ * Fixed Remove Tags and Remove Labels behavior and performance on larger documents
+ * Fixed Element Properties Update not applying Alt Text or Actual Text
+ * Fixed Alternate Text and Actual Text Unicode encoding issues
+ * Fixed Delete Tags crashes and Fix Parent Tree issues
+ * Fixed Split Content duplication and Split Pages issues
+ * Fixed Autotag hangs with substructure XObjects
+
+### Actions
+
+ * Added Fix Table action 
+ * Added Split Content action
+ * Added Fix Metadata and Reset Metadata actions
+ * Added Fix Fonts action, which replaces Embed Fonts and Add Missing Unicode with new options
+ * Added Move Tags action
+ * Added Set Title action option to use the document title from the Info dictionary
+ * Added support for running combined external and base custom actions directly from the SDK
+ * Added support for embedding external custom actions into the SDK, including APIs to save and enumerate custom actions
+ * Added support for external actions in `PsCommand` 
+ * Added Fix Headings parameter Assign heading levels to regenerate H1–H6 from font style and leading numbering
+ * Updated Set Annotation Contents action to use previous, next, and parent tag text for annotation content
+ * Updated Create Bookmarks action to correctly remove existing bookmarks when overwrite is enabled
+ * Fixed Set Annotation Contents action for widget annotations with empty or missing TU values
+ * Fixed Remove Annotation Properties action for widget annotations
+ * Fixed Set Title action when deriving the title from the file name
+
+### External Actions
+
+ * Improved Create Layout Template (Docling) and AutoTag (Docling) action to support List, complex Tables, and element parenting 
+ * Added a new external AutoTag (PDFix) action that utilizes layout templates and ensures backward compatibility by using the appropriate PDFix SDK version
+
+### PdfDocTemplate
+
+ * Added `element_nest` function to layout templates
+ * Added `element_prop_detect` function to set element properties
+ * Added `has_annot` and `is_standard_tag` support for structure element and template processing
+ * Added title support for structure elements in layout templates
+ * Added template support for Alt, Actual Text, Lang, and Extension properties
+ * Fixed regular expression matching for empty strings in layout templates
+ * Fixed UTF-8 to PDF string conversion from JSON templates
+ * Fixed table detection crashes caused by invalid templates
+ * Fixed alternate text encoding from templates
+ * Improved text insertion, text-in-place handling, line sorting, baseline checks, and text run bounding box recalculation
+
+### Annotations
+
+ * Fixed annotation rectangles for initial elements
+ * Fixed widget annotation TU handling in Set Annotation Contents
+ * Fixed removal of annotation properties for widget annotations
+
+### Metadata and Document Information
+
+ * Added `PdfObjectInfo` and `PdfDoc.AcquireObjectInfo(string)` for veraPDF-style object identification
+ * Added Export Bookmarks to JSON
+ * Fixed saving PDF version 2.0 documents so they are not incorrectly saved as PDF version 1.0
+
+### Fonts
+
+ * Added Fix Font support for `.notdef` glyph compliance issue (clause 7.21.8)
+ * Improved font name comparison in the knowledge base
+ * Fixed preflight issues with font names containing unsupported characters
+
+### Command-Line and Pipeline
+
+ * Refactored CLI batch command output handling for JSON output to file or stderr
+ * Fixed CLI batch command exit codes on exceptions
+ * Fixed forwarding of subprocess stdout and stderr in `pdfix_app batch`
+
+### WebAssembly
+
+ * Enabled WASM memory growth with `-s ALLOW_MEMORY_GROWTH=1`
+
+### SDK, API
+* Added `PdfObjectInfo` - New object for parsed information about a PDF object identified by a string path, intended for resolving validator paths such as veraPDF object references.
+* Added `PdfDoc::AcquireObjectInfo(const wchar_t* path)` - Acquires `PdfObjectInfo` for a validator-style object path so callers can resolve page, annotation, content, MCID, object-id, and bounding-box information.
+* Added `PdsStructElement::HasContent()` - Checks whether the structure element is connected with page content through MCID/MCR.
+* Added `PdsStructElement::HasAnnot()` - Checks whether the structure element contains an annotation reference, OBJR, directly or indirectly.
+* Added `PsCommand::SaveActionsToStream(PsStream* stream, PsDataFormat format, PdfSaveFlags flags)` - Serializes all built-in PDFix action definitions to a stream for discovering actions, parameters, and options.
+* Added `PsCommand::GetNumCustomActions()` - Returns the number of embedded custom action presets distributed with the SDK.
+* Added `PsCommand::SaveCustomActionToStream(int index, PsStream* stream, PsDataFormat format, PdfSaveFlags flags)` - Serializes one embedded custom action preset to a stream for inspection or execution through `PsCommand`.
+* Added `Pdfix::GetCommand()` - Creates a `PsCommand` object, or returns null if creation fails.
+* Added `PdfObjectInfo::GetType()` - Returns the parsed object reference type.
+* Added `PdfObjectInfo::GetPageNum()` - Returns the zero-based page index for a page-specific object path, or `-1` when no page is associated.
+* Added `PdfObjectInfo::GetCount()` - Returns the number of parsed path entries.
+* Added `PdfObjectInfo::GetBBox(int index, PdfRect* bbox)` - Returns the bounding box associated with a parsed path entry, if available.
+* Added `PdfObjectInfo::GetAnnotIndex(int index)` - Returns the zero-based annotation index for a parsed entry.
+* Added `PdfObjectInfo::GetContentStreamId(int index)` - Returns the content stream identifier for a parsed entry.
+* Added `PdfObjectInfo::GetContentId(int index)` - Returns the content identifier for a parsed entry.
+* Added `PdfObjectInfo::GetNumContentItemIds(int index)` - Returns the number of nested content item identifiers for a parsed entry.
+* Added `PdfObjectInfo::GetContentItemId(int index, int index2)` - Returns one nested content item identifier from a parsed entry.
+* Added `PdfObjectInfo::GetOperatorId(int index)` - Returns the content operator identifier for a parsed entry.
+* Added `PdfObjectInfo::GetMcid(int index)` - Returns the MCID associated with a parsed entry.
+* Added `PdfObjectInfo::GetObjectIdCount()` - Returns the number of COS object identifiers referenced by the parsed path.
+* Added `PdfObjectInfo::GetObjectId(int index)` - Returns one COS object identifier extracted from the parsed path.
+* Added `PdfObjectInfo::Release()` - Releases the `PdfObjectInfo` object and returns the remaining reference count.
+* Modified `PdeList` - Changed inheritance from `PdeElement` to `PdeContainer`, exposing list elements as containers.
+* Modified `PdsStructElement::SetActualText(const wchar_t* text)` - Parameter name changed from `alt` to `text`; the function still sets the ActualText value for the structure element.
+* Modified `PdsStructElement::RecognizeTable()` - Return type changed from `bool` to `PdsStructTableError`, allowing callers to inspect detailed table recognition errors.
+* Modified `PsAccountAuthorization::Authorize(const wchar_t* license_name, const wchar_t* license_key)` - Parameter names changed from `email` and `serial_number` to license name/key terminology.
+* Added `PdfContainerType::kPdeContainerList` - Adds list container type.
+* Added `PdfElementFlags::kElemNone` - Adds explicit no-flag value.
+* Added `PdfElementFlags::kElemNoNesting` - Adds a flag that prevents nesting.
+* Added `PdfLabelType::kLabelList` - Adds explicit list-label value.
+* Added `PdfLabelType::kLabelLevel5` - Adds list label level 5.
+* Added `PdfLabelType::kLabelLevel6` - Adds list label level 6.
+* Added `PdfObjectInfoType` - Adds object identification types used by `PdfObjectInfo`, including document, metadata, structure tree, structure element, bookmark, font, annotation, content, content item, and XObject.
+* Modified `PdfLabelType::kLabel` - Meaning changed to marked as label but do not create lists.
+* Modified `PdfTextStyle` - Replaced separate `kTextH7` and `kTextH8` heading styles with generic `kTextH`.
+* Modified `PdsStructTableError` - Reworked table errors to report invalid span, invalid tag type, and missing table headers.
+* Modified `PdfCellParams` - Added `PdsStructTableError error`, initialized to `kTableErrorNone`.
+* Removed `PsCommandType` - Removed typed command/action group enum for base, make accessible, autofix, and quickfix command exports.
+* Removed `PsCommand::SaveCommandsToStream(PsCommandType type, PsStream* stream, PsDataFormat format, PdfSaveFlags flags)` - Removed typed command export API; replaced by `SaveActionsToStream()`, `GetNumCustomActions()`, and `SaveCustomActionToStream()`.
+* Removed `PdfTextStyle::kTextH7` - Removed H7 heading style value; replaced by generic `kTextH`.
+* Removed `PdfTextStyle::kTextH8` - Removed H8 heading style value; replaced by generic `kTextH`.
+* Removed `PdsStructTableError::kTableErrorNoRow` - Removed missing-row table error value.
+* Removed `PdsStructTableError::kTableErrorRowSpan` - Removed rowspan-specific table error value; replaced by generic span error handling.
+* Removed `PdsStructTableError::kTableErrorColSpan` - Removed colspan-specific table error value; replaced by generic span error handling.
+
+### General Updates
+
+* Improved logging support 
+* Fixed C# marshaling of `const char*` return values as `IntPtr`
+* Performance, stability, memory management
+
 ## [8.7.10] - 2026-01-10
 
 ### Template
