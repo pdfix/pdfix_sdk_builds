@@ -1,8 +1,5 @@
 # Changelog
 
-# pdfix/include/pdfix.h API changes for v8.8.0
-
-
 ## [8.8.0] - 2026-04-29
 
 ### Accessibility
