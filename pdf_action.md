@@ -78,7 +78,7 @@ __Bookmarks__: [Create Bookmarks](#create-bookmarks)
 
 <div id="md-toc-content">
 
-__Content__: [Set Content Language](#set-content-language), [Delete Content](#delete-content), [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Clone Form XObjects](#clone-form-xobjects), [Remove Content Marks](#remove-content-marks), [Set Content Color](#set-content-color)
+__Content__: [Set Content Language](#set-content-language), [Delete Content](#delete-content), [Artifact Content](#artifact-content), [Flatten Form XObjects](#flatten-form-xobjects), [Clone Form XObjects](#clone-form-xobjects), [Remove Content Marks](#remove-content-marks), [Set Content Color](#set-content-color), [Split Content](#split-content)
 
 </div>
 
@@ -90,31 +90,31 @@ __Conversion__: [PDF to HTML](#pdf-to-html), [PDF to JSON](#pdf-to-json)
 
 <div id="md-toc-fonts">
 
-__Fonts__: [Embed Fonts](#embed-fonts), [Replace Font](#replace-font), [Add Missing Unicodes](#add-missing-unicodes)
+__Fonts__: [Fix Fonts](#fix-fonts)
 
 </div>
 
 <div id="md-toc-metadata">
 
-__Metadata__: [Set Document Properties](#set-document-properties), [Set PDF Version](#set-pdf-version), [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix Display Document Title](#fix-display-document-title), [Set Document Language](#set-document-language), [Set Title](#set-title)
+__Metadata__: [Set Document Properties](#set-document-properties), [Set PDF Version](#set-pdf-version), [Set PDF/UA Standard](#set-pdf/ua-standard), [Set Suspect Value](#set-suspect-value), [Fix Optional Content](#fix-optional-content), [Fix XMP Metadata](#fix-xmp-metadata), [Fix Display Document Title](#fix-display-document-title), [Set Document Language](#set-document-language), [Set Title](#set-title)
 
 </div>
 
 <div id="md-toc-pages">
 
-__Pages__: [Rotate Page](#rotate-page), [Fix Page Orientation](#fix-page-orientation), [Split Pages](#split-pages)
+__Pages__: [Rotate Page](#rotate-page), [Normalize Page Orientation](#normalize-page-orientation), [Split Pages](#split-pages)
 
 </div>
 
 <div id="md-toc-table">
 
-__Table__: [Fix Table Cells](#fix-table-cells), [Set Table Summary](#set-table-summary)
+__Table__: [Fix Table Tag](#fix-table-tag), [Set Table Cells Attributes](#set-table-cells-attributes), [Set Table Summary](#set-table-summary)
 
 </div>
 
 <div id="md-toc-tags">
 
-__Tags__: [Apply Standard Tags](#apply-standard-tags), [Set Role Mapping](#set-role-mapping), [Import Tags](#import-tags), [Delete Tags](#delete-tags), [Rename Tags](#rename-tags), [Clone Tag XObjects](#clone-tag-xobjects), [Set Tag Language](#set-tag-language), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Fix Link Tag](#fix-link-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes)
+__Tags__: [Apply Standard Tags](#apply-standard-tags), [Set Role Mapping](#set-role-mapping), [Delete Tags](#delete-tags), [Move Tags](#move-tags), [Rename Tags](#rename-tags), [Clone Tag XObjects](#clone-tag-xobjects), [Set Tag Language](#set-tag-language), [Set Tag ID](#set-tag-id), [Set Tag BBox](#set-tag-bbox), [Set Alternate Description](#set-alternate-description), [Set Actual Text](#set-actual-text), [Fix Placement](#fix-placement), [Fix Document Tag](#fix-document-tag), [Fix List Tag](#fix-list-tag), [Fix Link Tag](#fix-link-tag), [Remove Tag Properties](#remove-tag-properties), [Set Tag Attributes](#set-tag-attributes), [Set List Numbering](#set-list-numbering)
 
 </div>
 
@@ -166,7 +166,7 @@ Automatically add accessibility tags to an untagged document
 
 #### params:
 
-- `template` (file_path) __Template__ - Load the layout template from the file as the current template. If the file is empty, the default template will be applied
+- `template` (template) __Template__ - Load the layout template from the file as the current template. If the file is empty, the default template will be applied
 
 - `preflight` (bool) __Preflight__ - Preflight the document and combine the preflight values with the current template
 
@@ -242,7 +242,7 @@ Clear the document structure
 
 `fix_id_tree`
 
-Fix the ID tree
+Repair the document ID tree to restore valid references for structure elements and tagged content
 
 #### example:
 ```
@@ -300,24 +300,17 @@ Add missing or resolve duplicate white spaces within a structure element
 
 `fix_headings`
 
-Correct an invalid heading structure to maintain sequentially descending order
+Repair logical heading structure for accessibility (PDF/UA): optional H1–H6 from style, then fix invalid level sequence (no skipped levels).
 
 #### params:
 
-- `renumber_headings` (int) __Renumber Headings__ - Renumber all headings
+- `fix_heading_levels` (bool) __Assign heading levels (H1–H6)__ - Infer H1–H6 from font style and leading numbering for generic **H** tags before sequence repair.
 
-  - __0__  - Change headings to
-  - __1__  - Move headings up a level
-  - __2__  - Add empty headings
+- `renumber_headings` (int) __Fix heading structure__ - How to correct invalid heading levels after assignment (PDF/UA: headings follow a logical sequence; levels must not skip).
 
-
-- `change_headings_to` (string) __Change Headings to__ - Change all headings to a specified level
-
-  - __H__  - H
-  - __H1__  - H1
-  - __H2__  - H2
-  - __H3__  - H3
-  - __H4__  - H4
+  - __0__  - Paragraph (P) for invalid heading structure
+  - __1__  - Align to next sequential heading level
+  - __2__  - Insert empty headings for skipped levels
 
 
 #### example:
@@ -326,12 +319,12 @@ Correct an invalid heading structure to maintain sequentially descending order
     "name": "fix_headings",
     "params": [
         {
-            "name": "renumber_headings",
-            "value": 2
+            "name": "fix_heading_levels",
+            "value": true
         },
         {
-            "name": "change_headings_to",
-            "value": "H"
+            "name": "renumber_headings",
+            "value": 2
         }
     ]
 }
@@ -437,9 +430,14 @@ Set an alternative description for an annotation using the Contents key or TU ke
   - __1__  - Text from annotation bounding box
   - __2__  - Action destination
   - __3__  - Auto generated text
+  - __4__  - Use text from the first matching tag above
+  - __5__  - Use text from the first matching tag below
+  - __6__  - Use the text parent tag content
 
 
-- `custom_text` (string) __Custom__ - Enter custom text for the Contents key
+- `custom_text` (string) __Custom Text__ - Enter custom text for the Contents key
+
+- `description_tag` (string) __Use Text from Tag__ - Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the annotation contents.
 
 - `bbox_padding_x` (float) __Left BBox Padding__ - Adjust horizontal padding (X axis) for the left edge of the BBox
 
@@ -467,6 +465,10 @@ Set an alternative description for an annotation using the Contents key or TU ke
         {
             "name": "custom_text",
             "value": "Decorative"
+        },
+        {
+            "name": "description_tag",
+            "value": ""
         },
         {
             "name": "bbox_padding_x",
@@ -578,11 +580,11 @@ Create link annotations from web addresses and email patterns found in the page 
     "params": [
         {
             "name": "url_regex",
-            "value": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+            "value": "^(((http(s)?|ftp):\\/\\/)|(mailto:)|www.)[^\\s\\/$.?#].[^\\s]*"
         },
         {
             "name": "url_prefix",
-            "value": "wss://"
+            "value": "ws://"
         },
         {
             "name": "url",
@@ -905,6 +907,46 @@ Change the fill and/or stroke color of specified content objects
     ]
 }
 ```
+### Split Content
+
+`split_content`
+
+Split specified content objects
+
+#### params:
+
+- `object_types` (object) __Objects__ - Define the page objects using the object_update template
+
+- `index` (int) __Index__ - Specify an index of the substing. Negative value indicates the last character and oposite direction (-1 is the last character, -2 is the second last, etc.)
+
+- `length` (int) __Length__ - Specify the number of character to be included in the substring. 0 indicates all characters from the index to the end/start. It's ignored if text is specified
+
+- `text` (string) __Text__ - Specify the substring of characters (regex) to be included in the substring. Leave empty to ignore
+
+#### example:
+```
+{
+    "name": "split_content",
+    "params": [
+        {
+            "name": "object_types",
+            "value": ".*"
+        },
+        {
+            "name": "index",
+            "value": "0"
+        },
+        {
+            "name": "length",
+            "value": "0"
+        },
+        {
+            "name": "text",
+            "value": ""
+        }
+    ]
+}
+```
 </div>
 
 <div id="md-conversion">
@@ -930,7 +972,7 @@ Convert a PDF to HTML
   - __2__ - Layout defined by PDF Tags
 
 
-- `template` (file_path) __Template__ - Load the template from a file as the current template. If the file is empty, the default template will be applied
+- `template` (template) __Template__ - Load the template from a file as the current template. If the file is empty, the default template will be applied
 
 - `preflight` (bool) __Preflight__ - Preflight the document and merge its preflight values with the current template
 
@@ -994,56 +1036,56 @@ Convert a PDF to JSON
 
 ## Fonts
 
-### Embed Fonts
+### Fix Fonts
 
 `embed_font`
 
-Embed fonts in the document
-
-#### example:
-```
-{
-    "name": "embed_font"
-}
-```
-### Replace Font
-
-`replace_font`
-
-Replace a font
+Embed and fix all fonts used in the document to ensure consistent rendering and reliable text extraction across platforms and assistive technologies.
 
 #### params:
 
-- `font_name` (string) __Font Name__ - Specify the PDF font name to be replaced. ECMAScript regular expressions are supported
+- `embed_font` (bool) __Embed Font__ - Embed fonts if not already embedded
 
-- `font_family` (system_font) __Font Family__ - Specify the font family name to be used as a replacement
+- `add_missing_unicode` (bool) __Add Missing Unicodes__ - Add missing unicode mappings
+
+- `type0_cid_system_info` (bool) __Type 0 CIDSystemInfo__ - UA1:7.21.3.1: A Type 0 font dictionary with encoding other than Identity-H and Identity-V failure condition. 
+
+- `type2_cid_to_gid_map` (bool) __Type 2 CIDToGIDMap__ - UA1:7.21.3.2: A Type 2 CID font CIDToGIDMap failure condition
+
+- `glyph_widths` (bool) __Glyph Widths__ - UA1:7.21.5: For one or more glyphs, the glyph width information in the font dictionary and in the embedded font program differ by more than 1/1000 unit
+
+- `notdef_glyph` (bool) __Reference the .notdef glyph__ - UA1:7.21.8: One or more characters used in text showing operators reference the .notdef glyph
 
 #### example:
 ```
 {
-    "name": "replace_font",
+    "name": "embed_font",
     "params": [
         {
-            "name": "font_name",
-            "value": ""
+            "name": "embed_font",
+            "value": false
         },
         {
-            "name": "font_family",
-            "value": ""
+            "name": "add_missing_unicode",
+            "value": true
+        },
+        {
+            "name": "type0_cid_system_info",
+            "value": true
+        },
+        {
+            "name": "type2_cid_to_gid_map",
+            "value": true
+        },
+        {
+            "name": "glyph_widths",
+            "value": true
+        },
+        {
+            "name": "notdef_glyph",
+            "value": true
         }
     ]
-}
-```
-### Add Missing Unicodes
-
-`add_missing_unicode`
-
-Add missing Unicode mappings
-
-#### example:
-```
-{
-    "name": "add_missing_unicode"
 }
 ```
 </div>
@@ -1226,6 +1268,28 @@ Fix the optional content configuration dictionary
     "name": "fix_oc_name"
 }
 ```
+### Fix XMP Metadata
+
+`fix_metadata`
+
+Repair, normalize, and optionally reset document XMP metadata for improved compliance and consistency
+
+#### params:
+
+- `reset_metadata` (bool) __Reset Metadata__ - Recreate XMP metadata from scratch by removing all non-essential and custom entries, keeping only the minimal set required for standards compliance
+
+#### example:
+```
+{
+    "name": "fix_metadata",
+    "params": [
+        {
+            "name": "reset_metadata",
+            "value": false
+        }
+    ]
+}
+```
 ### Fix Display Document Title
 
 `set_display_doc_title`
@@ -1277,13 +1341,13 @@ Set the document title
 - `title_type` (int) __Title__ - Define a source for detecting the document title
 
   - __0__  - Define a custom title
-  - __1__  - Pick text from first tag
+  - __1__  - Use text from the first matching tag
   - __2__  - Get title from the file name
 
 
 - `custom_text` (string) __Custom Title__ - Custom title
 
-- `description_tag` (string) __Pick Text From Tag__ - Define the tag type whose content is used for the title text
+- `description_tag` (string) __Use Text from Tag__ - Define the tag type whose content is used for the title text
 
 - `overwrite` (bool) __Overwrite__ - Replace the current title if it already exists
 
@@ -1361,7 +1425,7 @@ Rotate pages
     ]
 }
 ```
-### Fix Page Orientation
+### Normalize Page Orientation
 
 `fix_page_orientation`
 
@@ -1417,7 +1481,58 @@ Split a PDF into multiple documents based on defined page rules or template anch
 
 ## Table
 
-### Fix Table Cells
+### Fix Table Tag
+
+`fix_table_tag`
+
+Resolve structural errors in tables to ensure PDF/UA compliance, including span consistency and invalid nesting
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the table tags using a ECMAScript regular expression or define them by template
+
+- `flatten_table` (bool) __Flatten Table Structure__ - Convert the table hierarchy (Table->Div, TR->Div) to flatten incorrectly formatted tables
+
+- `fix_table_spans` (bool) __Fix Cell Spans__ - Normalize RowSpan and ColSpan attributes to ensure that all rows contain the same number of columns
+
+- `fix_table_headers` (bool) __Add Missing Headers__ - Generate missing header cells to ensure proper table structure
+
+- `fix_nested` (string) __Fix Invalid Nesting__ - Resolve issues with disallowed tags nested within table
+
+  - __none__  - Do not fix
+  - __move__  - Move invalid nested tags outside the Table element
+  - __artifact__  - Convert invalid nested tags to artifacts
+
+
+#### example:
+```
+{
+    "name": "fix_table_tag",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^Table$"
+        },
+        {
+            "name": "flatten_table",
+            "value": false
+        },
+        {
+            "name": "fix_table_spans",
+            "value": false
+        },
+        {
+            "name": "fix_table_headers",
+            "value": true
+        },
+        {
+            "name": "fix_nested",
+            "value": "artifact"
+        }
+    ]
+}
+```
+### Set Table Cells Attributes
 
 `set_table_header`
 
@@ -1425,7 +1540,7 @@ Fix table header and data cells
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the table cell tags using a ECMAScript regular expression or define them by template tag_update
 
 - `scope` (string) __Scope__ - Specify whether the header cell applies to a row, column, or both
 
@@ -1483,7 +1598,7 @@ Provide a summary of the table. Only applicable to Table tags
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+- `tag_names` (tag) __Tags__ - Specify the table tags using a ECMAScript regular expression or define them by template
 
 - `summary_type` (int) __Summary__ - Define a source for detecting the summary
 
@@ -1582,28 +1697,6 @@ Map the name of structure types used in the document to the selected standard st
     ]
 }
 ```
-### Import Tags
-
-`import_tags`
-
-Import a tag tree with predefined values and templates
-
-#### params:
-
-- `json_path` (file_path) __Json__ - Load a JSON file that represents the tag tree in an expected format
-
-#### example:
-```
-{
-    "name": "import_tags",
-    "params": [
-        {
-            "name": "json_path",
-            "value": ""
-        }
-    ]
-}
-```
 ### Delete Tags
 
 `delete_tags`
@@ -1633,6 +1726,37 @@ Delete defined tags
         {
             "name": "tag_content",
             "value": "none"
+        }
+    ]
+}
+```
+### Move Tags
+
+`move_tags`
+
+Move defined tags out of the parent tag
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the tags using a ECMAScript regular expression or define them by template tag_update
+
+- `tag_pos` (string) __Position__ - Define a new position of the tag
+
+  - __move_up__  - Move tag out of the parent
+
+
+#### example:
+```
+{
+    "name": "move_tags",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": ".*"
+        },
+        {
+            "name": "tag_pos",
+            "value": "move_up"
         }
     ]
 }
@@ -1780,15 +1904,15 @@ Set an alternative description for the tag. These text alternatives are crucial 
 - `alt_type` (int) __Alternative Description__ - Define a source for detecting the alternative text
 
   - __0__  - Define the Custom Alternative text
-  - __1__  - Use the first Description Tag above
-  - __2__  - Use the first Description Tag below
-  - __3__  - Use the first Description Tag from children
+  - __1__  - Use text from the first matching tag above
+  - __2__  - Use text from the first matching tag below
+  - __3__  - Use text from the children tags
   - __4__  - Use the associated tag content. If there is an Annotation among the children, its Contents key is used
 
 
 - `custom_text` (string) __Custom Alternative__ - Enter custom text for the alternative description
 
-- `description_tag` (string) __Description Tag__ - Define tags whose content is used for the alternative description
+- `description_tag` (string) __Use Text from Tag__ - Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the alternative description.
 
 - `overwrite` (bool) __Overwrite__ - Replace the alternative description if it already exists
 
@@ -1811,7 +1935,7 @@ Set an alternative description for the tag. These text alternatives are crucial 
         },
         {
             "name": "description_tag",
-            "value": "Caption"
+            "value": ""
         },
         {
             "name": "overwrite",
@@ -1902,11 +2026,22 @@ Fix the document tag
 
 `fix_list_tag`
 
-Fix list(L) tag errors
+Fix PDF/UA list structure issues for List (L) and its list items
 
 #### params:
 
-- `tag_names` (tag) __Tags__ - Define the tags by the template tag_update
+- `tag_names` (tag) __Tags__ - Specify the list tags using a ECMAScript regular expression or define them by template
+
+- `flatten_list` (bool) __Flatten List Structure__ - Convert the list hierarchy (L->Div, LI->Div) to flatten incorrectly formatted lists
+
+- `join_captions` (bool) __Join Captions__ - Merge multiple Caption elements under one list into a single Caption
+
+- `fix_nested` (string) __Fix Invalid Nesting__ - Resolve issues with disallowed tags nested within list
+
+  - __none__  - Keep invalid nested content unchanged
+  - __move__  - Move unsupported children out of L and normalize LI children into LBody
+  - __artifact__  - Artifact invalid nested content and remove invalid structure nodes
+
 
 #### example:
 ```
@@ -1916,6 +2051,18 @@ Fix list(L) tag errors
         {
             "name": "tag_names",
             "value": "^L$"
+        },
+        {
+            "name": "flatten_list",
+            "value": false
+        },
+        {
+            "name": "join_captions",
+            "value": false
+        },
+        {
+            "name": "fix_nested",
+            "value": "none"
         }
     ]
 }
@@ -2034,7 +2181,7 @@ Remove properties from the defined tags
         },
         {
             "name": "owner",
-            "value": "Table"
+            "value": "List"
         },
         {
             "name": "name",
@@ -2075,8 +2222,6 @@ Set standard structure attributes for tags. Each attribute object has an owner
   - __number__  - number
 
 
-- `overwrite` (bool) __Overwrite__ - Replace the current attribute if it already exists
-
 #### example:
 ```
 {
@@ -2104,11 +2249,52 @@ Set standard structure attributes for tags. Each attribute object has an owner
         },
         {
             "name": "value_type",
-            "value": "string"
+            "value": "name"
+        }
+    ]
+}
+```
+### Set List Numbering
+
+`set_list_attribute`
+
+Attributes governing the numbering of lists
+
+#### params:
+
+- `tag_names` (tag) __Tags__ - Specify the List tags using a ECMAScript regular expression or define them by template tag_update
+
+- `list_numbering` (string) __List Numbering__ - The numbering system used to generate the content of the Lbl (Label) elements in an autonumbered list, or the symbol used to identify each item in an unnumbered list.
+
+  - __None__  - None - Lbl elements (if present) contain arbitrary text not subject to any numbering scheme
+  - __Disc__  - Disc - Solid circular bullet
+  - __Circle__  - Circle - Open circular bullet
+  - __Square__  - Square - Solid square bullet
+  - __Decimal__  - Decimal - Decimal arabic numerals (1–9, 10–99, …)
+  - __UpperRoman__  - UpperRoman - Uppercase roman numerals (I, II, III, IV, …)
+  - __LowerRoman__  - LowerRoman - Lowercase roman numerals (i, ii, iii, iv, …)
+  - __UpperAlpha__  - UpperAlpha - Uppercase letters (A, B, C, …)
+  - __LowerAlpha__  - LowerAlpha - Lowercase letters (a, b, c, …)
+
+
+- `overwrite` (bool) __Overwrite__ - Replace the current list numbering attribute if it already exists
+
+#### example:
+```
+{
+    "name": "set_list_attribute",
+    "params": [
+        {
+            "name": "tag_names",
+            "value": "^L&"
+        },
+        {
+            "name": "list_numbering",
+            "value": "None"
         },
         {
             "name": "overwrite",
-            "value": "false"
+            "value": false
         }
     ]
 }

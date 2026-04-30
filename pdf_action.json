@@ -68,14 +68,6 @@
         "ext": "pdf",
         "type": "file_path",
         "value": ""
-      },
-      {
-        "name": "config_json",
-        "title": "Json",
-        "desc": "Specify the configuration file",
-        "ext": "json",
-        "type": "file_path",
-        "value": ""
       }
     ]
   },
@@ -132,7 +124,7 @@
           "title": "Template",
           "desc": "Load the template from a file as the current template. If the file is empty, the default template will be applied",
           "name": "template",
-          "type": "file_path",
+          "type": "template",
           "value": ""
         },
         {
@@ -475,6 +467,23 @@
       "keywords": "Configs entry, OCProperties, Configuration Dictionary, AS key, D entry, Configs entry, Name entry, OCCD, optional content configuration dictionary"
     },
     {
+      "title": "Fix XMP Metadata",
+      "desc": "Repair, normalize, and optionally reset document XMP metadata for improved compliance and consistency",
+      "name": "fix_metadata",
+      "icon": "fix_metadata",
+      "category": "Metadata",
+      "keywords": "XMP metadata, fix metadata, normalize metadata, reset metadata, rebuild metadata, metadata repair, PDF metadata, PDF/UA metadata, PDF/A metadata, metadata consistency, remove custom metadata, clean metadata, invalid metadata, missing metadata",
+      "params": [
+        {
+          "title": "Reset Metadata",
+          "desc": "Recreate XMP metadata from scratch by removing all non-essential and custom entries, keeping only the minimal set required for standards compliance",
+          "name": "reset_metadata",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
       "title": "Fix Display Document Title",
       "desc": "Fix the ViewerPreferences dictionary",
       "name": "set_display_doc_title",
@@ -661,7 +670,7 @@
               "value": 0
             },
             {
-              "desc": "Pick text from first tag",
+              "desc": "Use text from the first matching tag",
               "value": 1
             },
             {
@@ -679,7 +688,7 @@
           "disable": "(title_type!=0)"
         },
         {
-          "title": "Pick Text From Tag",
+          "title": "Use Text from Tag",
           "desc": "Define the tag type whose content is used for the title text",
           "name": "description_tag",
           "type": "string",
@@ -707,9 +716,9 @@
           "title": "Template",
           "desc": "Load the layout template from the file as the current template. If the file is empty, the default template will be applied",
           "name": "template",
-          "type": "file_path",
-          "value": "",
-          "flags": 8
+          "type": "template",
+          "flags": 8,
+          "value": ""
         },
         {
           "title": "Preflight",
@@ -774,45 +783,60 @@
       ]
     },
     {
-      "title": "Embed Fonts",
-      "desc": "Embed fonts in the document",
+      "title": "Fix Fonts",
+      "desc": "Embed and fix all fonts used in the document to ensure consistent rendering and reliable text extraction across platforms and assistive technologies.",
       "name": "embed_font",
       "icon": "fontembed",
-      "category": "Fonts"
-    },
-    {
-      "title": "Replace Font",
-      "desc": "Replace a font",
-      "name": "replace_font",
-      "icon": "fontreplace",
       "category": "Fonts",
+      "keywords": "notdef glyph, incorrect glyph widths, embedded font, missing unicode mapping, CIDSystemInfo, CIDToGIDMap, font dictionary",
       "params": [
         {
-          "title": "Font Name",
-          "desc": "Specify the PDF font name to be replaced. ECMAScript regular expressions are supported",
-          "name": "font_name",
-          "type": "string",
-          "value": ""
+          "title": "Embed Font",
+          "desc": "Embed fonts if not already embedded",
+          "name": "embed_font",
+          "type": "bool",
+          "value": false
         },
         {
-          "title": "Font Family",
-          "desc": "Specify the font family name to be used as a replacement",
-          "name": "font_family",
-          "type": "system_font",
-          "value": ""
+          "title": "Add Missing Unicodes",
+          "desc": "Add missing unicode mappings",
+          "name": "add_missing_unicode",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Type 0 CIDSystemInfo",
+          "desc": "UA1:7.21.3.1: A Type 0 font dictionary with encoding other than Identity-H and Identity-V failure condition. ",
+          "name": "type0_cid_system_info",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Type 2 CIDToGIDMap",
+          "desc": "UA1:7.21.3.2: A Type 2 CID font CIDToGIDMap failure condition",
+          "name": "type2_cid_to_gid_map",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Glyph Widths",
+          "desc": "UA1:7.21.5: For one or more glyphs, the glyph width information in the font dictionary and in the embedded font program differ by more than 1/1000 unit",
+          "name": "glyph_widths",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Reference the .notdef glyph",
+          "desc": "UA1:7.21.8: One or more characters used in text showing operators reference the .notdef glyph",
+          "name": "notdef_glyph",
+          "type": "bool",
+          "value": true
         }
       ]
     },
     {
-      "title": "Add Missing Unicodes",
-      "desc": "Add missing Unicode mappings",
-      "name": "add_missing_unicode",
-      "icon": "fontunicode",
-      "category": "Fonts"
-    },
-    {
       "title": "Fix ID Tree",
-      "desc": "Fix the ID tree",
+      "desc": "Repair the document ID tree to restore valid references for structure elements and tagged content",
       "name": "fix_id_tree",
       "icon": "idtree",
       "category": "Accessibility"
@@ -1099,6 +1123,30 @@
               }
             },
             {
+              "desc": "TOC Leaders",
+              "value": {
+                "template": {
+                  "object_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_text": {
+                              "$regex": "^[.\\-_ ]{2,}$"
+                            }
+                          }
+                        ],
+                        "param": [
+                          "pds_text"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
+            },
+            {
               "desc": "Content in header area",
               "value": {
                 "template": {
@@ -1219,22 +1267,6 @@
       ]
     },
     {
-      "title": "Import Tags",
-      "desc": "Import a tag tree with predefined values and templates",
-      "name": "import_tags",
-      "icon": "importtags",
-      "category": "Tags",
-      "params": [
-        {
-          "title": "Json",
-          "desc": "Load a JSON file that represents the tag tree in an expected format",
-          "name": "json_path",
-          "type": "file_path",
-          "value": ""
-        }
-      ]
-    },
-    {
       "title": "Flatten Form XObjects",
       "desc": "Flatten Form XObjects",
       "name": "flatten_xobject",
@@ -1249,8 +1281,30 @@
           "value": "^pds_form$",
           "values": [
             {
-              "desc": "Form XObjects",
+              "desc": "All Form XObjects",
               "value": "^pds_form$"
+            },
+            {
+              "desc": "Only Form XObjects without transparency",
+              "value": {
+                "template": {
+                  "object_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_has_transparency": "false"
+                          }
+                        ],
+                        "param": [
+                          "pds_form"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
             }
           ]
         }
@@ -1467,6 +1521,84 @@
       ]
     },
     {
+      "title": "Split Content",
+      "name": "split_content",
+      "icon": "split_scene",
+      "desc": "Split specified content objects",
+      "category": "Content",
+      "keywords": "split content, divide content, break content, separate content",
+      "params": [
+        {
+          "title": "Objects",
+          "desc": "Define the page objects using the object_update template",
+          "name": "object_types",
+          "type": "object",
+          "value": ".*",
+          "values": [
+            {
+              "desc": "All page objects",
+              "value": ".*"
+            },
+            {
+              "desc": "Objects with specific font and text",
+              "value": {
+                "template": {
+                  "object_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_font_name": {
+                              "$regex": "^Arial"
+                            }
+                          },
+                          {
+                            "$0_font_size": "10"
+                          },
+                          {
+                            "$0_text": {
+                              "$regex": "^1 Note"
+                            }
+                          }
+                        ],
+                        "param": [
+                          "pds_object"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },     
+        {
+          "title": "Index",
+          "desc": "Specify an index of the substing. Negative value indicates the last character and oposite direction (-1 is the last character, -2 is the second last, etc.)",
+          "name": "index",
+          "type": "int",
+          "value": "0",
+          "disable": "(text!=\"\")"
+        },
+        {
+          "title": "Length",
+          "desc": "Specify the number of character to be included in the substring. 0 indicates all characters from the index to the end/start. It's ignored if text is specified",
+          "name": "length",
+          "type": "int",
+          "value": "0",
+          "disable": "(text!=\"\")"
+        },
+        {
+          "title": "Text",
+          "desc": "Specify the substring of characters (regex) to be included in the substring. Leave empty to ignore",
+          "name": "text",
+          "type": "string",
+          "value": ""
+        }
+      ]
+    },
+    {
       "title": "Set Tab Order",
       "desc": "Set the tab order key for every page. Every page containing an annotation must have the Tabs key set to S",
       "name": "set_tabs_key",
@@ -1507,6 +1639,51 @@
             {
               "desc": "All annotations except Popup",
               "value": "^(?!.*Popup).*$"
+            },
+            {
+              "desc": "All except untagged, hidden and invisible",
+              "value": {
+                "template": {
+                  "annot_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_annot_type": {
+                              "$regex": "^(?!Popup$|TrapNet$|FileAttachment$|Redact$).*"
+                            }
+                          },
+                          {
+                            "$0_tag_type": ""
+                          },
+                          {
+                            "$not": [
+                              {
+                                "$0_annot_flag": {
+                                  "$regex": "invisible"
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "$not": [
+                              {
+                                "$0_annot_flag": {
+                                  "$regex": "hidden"
+                                }
+                              }
+                            ]
+                          }
+                        ],
+                        "param": [
+                          "pdf_annot"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
             },
             {
               "desc": "All except hidden and invisible",
@@ -1677,6 +1854,67 @@
       ]
     },
     {
+      "title": "Move Tags",
+      "desc": "Move defined tags out of the parent tag",
+      "name": "move_tags",
+      "icon": "move_out",
+      "category": "Tags",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Specify the tags using a ECMAScript regular expression or define them by template tag_update",
+          "name": "tag_names",
+          "type": "tag",
+          "value": ".*",
+          "values": [
+            {
+              "desc": "All tags",
+              "value": ".*"
+            },
+            {
+              "desc": "Move Figure tags out of the parent P tags",
+              "value": {
+                "template": {
+                  "tag_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_tag_type": "Figure"
+                          },
+                          {
+                            "$0_parent_tag_type": "P"
+                          }
+                        ],
+                        "param": [
+                          "pds_struct_elem"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "Position",
+          "desc": "Define a new position of the tag",
+          "name": "tag_pos",
+          "type": "string",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "Move tag out of the parent",
+              "value": "move_up"
+            }
+          ],
+          "value": "move_up"
+        }
+      ]
+    },
+    {
       "title": "Rename Tags",
       "desc": "Rename tags",
       "name": "rename_tags",
@@ -1780,8 +2018,71 @@
         }
       ]
     },
-    {
-      "title": "Fix Table Cells",
+  {
+    "title": "Fix Table Tag",
+    "desc": "Resolve structural errors in tables to ensure PDF/UA compliance, including span consistency and invalid nesting",
+    "name": "fix_table_tag",
+    "icon": "fix_table",
+    "category": "Table",
+    "keywords": "table, headers, data cell, TH, TD, RowSpan, row span, ColSpan, col span, column span, table structure, associated subcells, Scope attribute, Headers attributes",
+    "params": [
+      {
+        "title": "Tags",
+        "desc": "Specify the table tags using a ECMAScript regular expression or define them by template",
+        "name": "tag_names",
+        "type": "tag",
+        "value": "^Table$"
+      },
+      {
+        "title": "Flatten Table Structure",
+        "desc": "Convert the table hierarchy (Table->Div, TR->Div) to flatten incorrectly formatted tables",
+        "name": "flatten_table",
+        "type": "bool",
+        "value": false
+      },
+      {
+        "title": "Fix Cell Spans",
+        "desc": "Normalize RowSpan and ColSpan attributes to ensure that all rows contain the same number of columns",
+        "name": "fix_table_spans",
+        "type": "bool",
+        "value": false,
+        "disable": "(flatten_table==true)"
+      },
+      {
+        "title": "Add Missing Headers",
+        "desc": "Generate missing header cells to ensure proper table structure",
+        "name": "fix_table_headers",
+        "type": "bool",
+        "value": true,
+        "disable": "(flatten_table==true)"
+      },
+      {
+        "title": "Fix Invalid Nesting",
+        "desc": "Resolve issues with disallowed tags nested within table",
+        "name": "fix_nested",
+        "type": "string",
+        "flags": 1,
+        "set": [
+          {
+            "desc": "Do not fix",
+            "value": "none"
+          },
+          {
+            "desc": "Move invalid nested tags outside the Table element",
+            "value": "move"
+          },
+          {
+            "desc": "Convert invalid nested tags to artifacts",
+            "value": "artifact"
+          }
+        ],
+        "value": "artifact",
+        "disable": "(flatten_table==true)"
+      }
+    ]
+  },
+  {
+      "title": "Set Table Cells Attributes",
       "desc": "Fix table header and data cells",
       "name": "set_table_header",
       "icon": "setheader",
@@ -1790,7 +2091,7 @@
       "params": [
         {
           "title": "Tags",
-          "desc": "Specify the tags using a ECMAScript regular expression or define them by template tag_update",
+          "desc": "Specify the table cell tags using a ECMAScript regular expression or define them by template tag_update",
           "name": "tag_names",
           "type": "tag",
           "value": "^TD$",
@@ -1979,7 +2280,7 @@
       "params": [
         {
           "title": "Tags",
-          "desc": "Specify the tags using a ECMAScript regular expression or define them by template tag_update",
+          "desc": "Specify the table tags using a ECMAScript regular expression or define them by template",
           "name": "tag_names",
           "type": "tag",
           "value": "^Table$"
@@ -2109,15 +2410,15 @@
               "value": 0
             },
             {
-              "desc": "Use the first Description Tag above",
+              "desc": "Use text from the first matching tag above",
               "value": 1
             },
             {
-              "desc": "Use the first Description Tag below",
+              "desc": "Use text from the first matching tag below",
               "value": 2
             },
             {
-              "desc": "Use the first Description Tag from children",
+              "desc": "Use text from the children tags",
               "value": 3
             },
             {
@@ -2135,11 +2436,11 @@
           "disable": "(alt_type!=0)"
         },
         {
-          "title": "Description Tag",
-          "desc": "Define tags whose content is used for the alternative description",
+          "title": "Use Text from Tag",
+          "desc": "Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the alternative description.",
           "name": "description_tag",
           "type": "string",
-          "value": "Caption",
+          "value": "",
           "disable": "(alt_type==0)||(alt_type==4)"
         },
         {
@@ -2226,18 +2527,59 @@
     },
     {
       "title": "Fix List Tag",
-      "desc": "Fix list(L) tag errors",
+      "desc": "Fix PDF/UA list structure issues for List (L) and its list items",
       "name": "fix_list_tag",
       "icon": "fixlist",
       "category": "Tags",
-      "keywords": "L, LI, LBody, Lbl, formal correctness",
+      "keywords": "PDF/UA, list structure, L, LI, LBody, Lbl, Caption",
       "params": [
         {
           "title": "Tags",
-          "desc": "Define the tags by the template tag_update",
+          "desc": "Specify the list tags using a ECMAScript regular expression or define them by template",
           "name": "tag_names",
           "type": "tag",
           "value": "^L$"
+        },
+        {
+          "title": "Flatten List Structure",
+          "desc": "Convert the list hierarchy (L->Div, LI->Div) to flatten incorrectly formatted lists",
+          "name": "flatten_list",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "title": "Join Captions",
+          "desc": "Merge multiple Caption elements under one list into a single Caption",
+          "name": "join_captions",
+          "type": "bool",
+          "value": false,
+          "disable": "(flatten_list==true)"
+        },
+        {
+          "title": "Fix Invalid Nesting",
+          "desc": "Resolve issues with disallowed tags nested within list",
+          "name": "fix_nested",
+          "type": "string",
+          "flags": 1,
+          "set": [
+            {
+              "title": "Do not fix",
+              "desc": "Keep invalid nested content unchanged",
+              "value": "none"
+            },
+            {
+              "title": "Move invalid nested tags outside the List element",
+              "desc": "Move unsupported children out of L and normalize LI children into LBody",
+              "value": "move"
+            },
+            {
+              "title": "Convert invalid nested tags to artifacts",
+              "desc": "Artifact invalid nested content and remove invalid structure nodes",
+              "value": "artifact"
+            }
+          ],
+          "value": "none",
+          "disable": "(flatten_list==true)"
         }
       ]
     },
@@ -2443,16 +2785,36 @@
             {
               "desc": "Auto generated text",
               "value": 3
+            },
+            {
+              "desc": "Use text from the first matching tag above",
+              "value": 4
+            },
+            {
+              "desc": "Use text from the first matching tag below",
+              "value": 5
+            },
+            {
+              "desc": "Use the text parent tag content",
+              "value": 6
             }
           ]
         },
         {
-          "title": "Custom",
+          "title": "Custom Text",
           "desc": "Enter custom text for the Contents key",
           "name": "custom_text",
           "type": "string",
           "value": "Decorative",
           "disable": "(alt_type!=0)"
+        },
+        {
+          "title": "Use Text from Tag",
+          "desc": "Tag types, pipe-separated (e.g. P|H1|Lbl). Leave empty to use the first tag with text regardless of type. Otherwise use text from the first matching tag for the annotation contents.",
+          "name": "description_tag",
+          "type": "string",
+          "value": "",
+          "disable": "(alt_type!=4)&&(alt_type!=5)"
         },
         {
           "title": "Left BBox Padding",
@@ -2569,7 +2931,8 @@
             {
               "value": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
             }
-          ]
+          ],
+          "value": "^(((http(s)?|ftp):\\/\\/)|(mailto:)|www.)[^\\s\\/$.?#].[^\\s]*"
         },
         {
           "title": "URL Prefix",
@@ -2694,7 +3057,7 @@
       "name": "set_structure_attribute",
       "icon": "tagattribute",
       "category": "Tags",
-      "keywords": "ListNumbering attribute, ordered list, unordered list, Decimal, UpperRoman, LowerRoman, UpperAlpha, LowerAlpha",
+      "keywords": "Layout attribute, PrintField attribute, Tag attribute",
       "params": [
         {
           "title": "Tags",
@@ -2706,35 +3069,6 @@
             {
               "desc": "All tags",
               "value": ".*"
-            },
-            {
-              "desc": "List tags with Decimal Numbering",
-              "value": {
-                "template": {
-                  "tag_update": [
-                    {
-                      "query": {
-                        "$and": [
-                          {
-                            "$0_tag_type": {
-                              "$regex": "^L&"
-                            }
-                          },
-                          {
-                            "$0_text": {
-                              "$regex": "^\\d."
-                            }
-                          }
-                        ],
-                        "param": [
-                          "pds_struct_elem"
-                        ]
-                      },
-                      "statement": "$if"
-                    }
-                  ]
-                }
-              }
             }
           ]
         },
@@ -2810,13 +3144,111 @@
           ],
           "type": "string",
           "value": ""
+        }
+      ]
+    },
+    {
+      "title": "Set List Numbering",
+      "desc": "Attributes governing the numbering of lists",
+      "name": "set_list_attribute",
+      "icon": "list_attribute",
+      "category": "Tags",
+      "keywords": "ListNumbering attribute, ordered list, unordered list, Decimal, UpperRoman, LowerRoman, UpperAlpha, LowerAlpha",
+      "params": [
+        {
+          "title": "Tags",
+          "desc": "Specify the List tags using a ECMAScript regular expression or define them by template tag_update",
+          "name": "tag_names",
+          "type": "tag",
+          "value": "^L&",
+          "values": [
+            {
+              "desc": "List tags",
+              "value": "^L&"
+            },
+            {
+              "desc": "List tags with Decimal Numbering",
+              "value": {
+                "template": {
+                  "tag_update": [
+                    {
+                      "query": {
+                        "$and": [
+                          {
+                            "$0_tag_type": {
+                              "$regex": "^L&"
+                            }
+                          },
+                          {
+                            "$0_text": {
+                              "$regex": "^\\d."
+                            }
+                          }
+                        ],
+                        "param": [
+                          "pds_struct_elem"
+                        ]
+                      },
+                      "statement": "$if"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "title": "List Numbering",
+          "desc": "The numbering system used to generate the content of the Lbl (Label) elements in an autonumbered list, or the symbol used to identify each item in an unnumbered list.",
+          "name": "list_numbering",
+          "flags": 1,
+          "set": [
+            {
+              "desc": "None - Lbl elements (if present) contain arbitrary text not subject to any numbering scheme",
+              "value": "None"
+            },
+            {
+              "desc": "Disc - Solid circular bullet",
+              "value": "Disc"
+            },
+            {
+              "desc": "Circle - Open circular bullet",
+              "value": "Circle"
+            },
+            {
+              "desc": "Square - Solid square bullet",
+              "value": "Square"
+            },
+            {
+              "desc": "Decimal - Decimal arabic numerals (1–9, 10–99, …)",
+              "value": "Decimal"
+            },
+            {
+              "desc": "UpperRoman - Uppercase roman numerals (I, II, III, IV, …)",
+              "value": "UpperRoman"
+            },
+            {
+              "desc": "LowerRoman - Lowercase roman numerals (i, ii, iii, iv, …)",
+              "value": "LowerRoman"
+            },
+            {
+              "desc": "UpperAlpha - Uppercase letters (A, B, C, …)",
+              "value": "UpperAlpha"
+            },
+            {
+              "desc": "LowerAlpha - Lowercase letters (a, b, c, …)",
+              "value": "LowerAlpha"
+            }
+          ],
+          "type": "string",
+          "value": "None"
         },
         {
           "title": "Overwrite",
-          "desc": "Replace the current attribute if it already exists",
+          "desc": "Replace the current list numbering attribute if it already exists",
           "name": "overwrite",
           "type": "bool",
-          "value": "false"
+          "value": false
         }
       ]
     },
@@ -2853,63 +3285,41 @@
     },
     {
       "title": "Fix Headings",
-      "desc": "Correct an invalid heading structure to maintain sequentially descending order",
+      "desc": "Repair logical heading structure for accessibility (PDF/UA): optional H1–H6 from style, then fix invalid level sequence (no skipped levels).",
       "name": "fix_headings",
       "icon": "fixheadings",
       "category": "Accessibility",
-      "keywords": "heading tag, numbered heading skips one ore more heading levels, headings hierarchy, descending sequence, H tags, weakly-structured, first heading is not on the first level",
+      "keywords": "heading tag, logical structure, heading hierarchy, skipped levels, H tags, PDF/UA, Matterhorn, WCAG, accessibility, outline, structure order",
       "params": [
         {
-          "title": "Renumber Headings",
-          "desc": "Renumber all headings",
+          "title": "Assign heading levels (H1–H6)",
+          "desc": "Infer H1–H6 from font style and leading numbering for generic **H** tags before sequence repair.",
+          "name": "fix_heading_levels",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "title": "Fix heading structure",
+          "desc": "How to correct invalid heading levels after assignment (PDF/UA: headings follow a logical sequence; levels must not skip).",
           "name": "renumber_headings",
           "type": "int",
           "value": 2,
           "flags": 1,
           "set": [
             {
-              "desc": "Change headings to",
+              "desc": "Paragraph (P) for invalid heading structure",
               "value": 0
             },
             {
-              "desc": "Move headings up a level",
+              "desc": "Align to next sequential heading level",
               "value": 1
             },
             {
-              "desc": "Add empty headings",
+              "desc": "Insert empty headings for skipped levels",
               "value": 2
             }
-          ]
-        },
-        {
-          "title": "Change Headings to",
-          "desc": "Change all headings to a specified level",
-          "name": "change_headings_to",
-          "set": [
-            {
-              "desc": "H",
-              "value": "H"
-            },
-            {
-              "desc": "H1",
-              "value": "H1"
-            },
-            {
-              "desc": "H2",
-              "value": "H2"
-            },
-            {
-              "desc": "H3",
-              "value": "H3"
-            },
-            {
-              "desc": "H4",
-              "value": "H4"
-            }
           ],
-          "type": "string",
-          "value": "H",
-          "disable": "(renumber_headings!=0)"
+          "disable": "(fix_heading_levels==true)"
         }
       ]
     },
@@ -3060,7 +3470,7 @@
       ]
     },
     {
-      "title": "Fix Page Orientation",
+      "title": "Normalize Page Orientation",
       "desc": "Correct the orientation of selected pages and normalize their transformation matrix and bounding box",
       "name": "fix_page_orientation",
       "icon": "crop_rotate",
