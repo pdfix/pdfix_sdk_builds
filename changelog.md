@@ -1,6 +1,6 @@
 # Changelog
 
-## [8.8.0] - 2026-04-29
+## [9.0.0] - 2026-05-04
 
 ### Accessibility
 
@@ -135,6 +135,7 @@
 
 * Improved logging support 
 * Fixed C# marshaling of `const char*` return values as `IntPtr`
+* Fixed license management in concurrent processes
 * Performance, stability, memory management
 
 ## [8.7.10] - 2026-01-10
