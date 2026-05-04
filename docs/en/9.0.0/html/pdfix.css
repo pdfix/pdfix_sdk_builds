@@ -1,0 +1,176 @@
+/* PDFix SDK Documentation cust CSS */
+
+#projectname {
+    font: 400 14px/28px Roboto,sans-serif;
+    font-style: normal;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-family: Roboto, sans-serif;
+    font-size: 100%;
+    font-weight: bold; 
+}
+
+#projectnumber {
+    font-size: 80%;
+}
+
+#projectlogo img {
+    margin: 5px;
+    vertical-align: middle !important;
+}
+
+.sm-dox a {
+color: black;
+}
+
+.sm-dox a, .sm-dox a:focus, .sm-dox a:active, .sm-dox a:hover, .sm-dox a.highlighted {
+    text-shadow: none;
+}
+
+#nav-tree {
+    background-image: none;
+    background-color: #f9f9f9;
+}
+
+div.header {
+    background-image: none;
+    background-color: #f9f9f9;
+    border-bottom: none;
+}
+
+h2.groupheader {
+  	border-bottom: 1px solid #8bc34f;
+  	color: #71aa30;
+}
+
+div.qindex, div.navtab{
+   	background-color: #f9f9f9;
+   	border: 1px solid #8bc34f;
+}
+
+a {
+   	color: #71aa30;
+    font-weight:bold;
+}
+
+.contents a:visited {
+   	color: #71aa30;
+}
+
+a.qindexHL {
+  	font-weight: bold;
+  	background-color: #8bc34f;
+  	color: #ffffff;
+  	border: 1px double #71aa30;
+}
+
+td.indexkey {
+    background-color: #f9f9f9;
+    border: 1px solid #71aa30;
+}
+
+td.indexvalue {
+	  background-color: #8bc34f;
+  	border: 1px solid #71aa30;
+}
+
+.icon {
+    background-color: #71aa30;
+}
+
+
+.directory tr.even {
+    background-color: #f9f9f9;
+}
+
+.navpath ul {
+    background: none;
+    border: solid 1px #92c759;
+}
+
+.mdescLeft, .mdescRight, .memItemLeft, .memItemRight, .memTemplItemLeft, .memTemplItemRight, .memTemplParams {
+    background-color: #f9f9f9;
+}
+
+.memproto, dl.reflist dt {
+    border-top: 1px solid #8bc34f;
+    border-left: 1px solid #8bc34f;
+    border-right: 1px solid #8bc34f;
+    background-color: #f9f9f9;
+}
+
+.memtitle {
+    background-image: none;
+    padding: 8px;
+    border-top: 1px solid #8bc34f;
+    border-left: 1px solid #8bc34f;
+    border-right: 1px solid #8bc34f;
+    border-top-right-radius: 0px; 
+    border-top-left-radius: 0px;
+    background-color: #92c759;
+    color: white;
+}
+
+.fieldtable th {
+    background-color: #92c759;
+    background-image: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom: 1px solid #8bc34f;
+}
+
+.memdoc, dl.reflist dd {
+    border-bottom: 1px solid #8bc34f;
+    border-left: 1px solid #8bc34f;
+    border-right: 1px solid #8bc34f;
+}
+
+.fieldtable td.fieldtype, .fieldtable td.fieldname {
+    border-right: 1px solid #8bc34f;
+    border-bottom: 1px solid #8bc34f;
+}
+.fieldtable td.fielddoc {
+    border-bottom: 1px solid #8bc34f;
+}
+
+table.fieldtable {
+    border: 1px solid #8bc34f;
+}
+
+
+
+#nav-tree .selected {
+    background-image: none;
+    background: #71aa30;
+    text-shadow: none;    
+}
+
+.arrow {
+    color: inherit;
+}
+
+#MSearchSelectWindow {
+    border: 1px solid #92c759;
+    background-color: #f9f9f9;
+}
+
+#titlearea {
+    border: none;
+    background-color: #f9f9f9;
+}
+
+span.mlabel {
+    background-color: #71aa30;
+    border-top: 1px solid #71aa30;
+    border-left: 1px solid #71aa30;
+    border-right: 1px solid #71aa30;
+    border-bottom: 1px solid #71aa30;
+}
+
+.navpath li.navelem a {
+    color: #71aa30;
+}
