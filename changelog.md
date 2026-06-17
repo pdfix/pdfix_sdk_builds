@@ -1,5 +1,77 @@
 # Changelog
 
+## [9.1.0] - 2026-06-17
+
+### Accessibility
+
+ * Fixed Move tags out of parent (PVQ-3570, PVQ-4846)
+ * Fixed Delete Tags with Empty Spaces removing incorrect tags (PVQ-173)
+ * Fixed Remove circular mapping (PVQ-3583)
+ * Fixed Deleting a link invalidating ParentTree (PVQ-3042)
+ * Fixed Sect Order — missing initial element for section tables (PVQ-5317)
+ * Fixed Link tag — Annotation Contents not used for Alt text (PVQ-5343)
+ * Fixed Table tool issue with span cells (PVQ-5386)
+ * Fixed template Formula element ignored and not tagged in document (PVQ-5520)
+ * Fixed continuous list and set list numbering — missing initial element, numbering regex
+ * Improved struct element MCID page-object lookup performance
+ * Improved `children_tag_type` to expose Link-OBJR
+
+### Actions
+
+ * Added Set Unicode for Font Charcode action (PVQ-5320)
+ * Added Set Annotation Flag action (PVQ-5406)
+ * Added Remove Annotation Properties action (PVQ-5407)
+ * Added Remove Corrupt Elements action (PVQ-5461)
+ * Fixed Fix Content Marks action behavior (PVQ-4985)
+ * Fixed Set Content Color — incorrect colors, CMYK range, exceptions, and error messages (PVQ-5354)
+ * Fixed Tag Annotation — Document tag not created in structure tree (PVQ-5367)
+ * Fixed Delete Content — missing "All Page Objects" name (PVQ-5528)
+ * Fixed Fix Fonts — embedded fonts when "Embed font" was not checked (PVQ-5501)
+ * Fixed Fix List Tag — Join Captions (PVQ-5438)
+ * Fixed Create Bookmarks — new bookmarks created when bookmarks already exist (PVQ-5437)
+
+### Annotations
+
+ * Fixed stamp annotation appearance removed on flatten annot (PVQ-5405)
+
+### Metadata and Document Information
+
+ * Fixed XMP metadata — missing `x:xmpmeta` namespace attribute when `dc:title` is removed (PVQ-5515)
+
+### Fonts
+
+ * Added template-based font selection for font actions via `font_update` hook (PVQ-5451)
+
+### PdfDocTemplate
+
+ * Added `font_update` template function — select and filter fonts by KB rules on `pdf_font` instead of plain name regex (PVQ-5451)
+
+### Command-Line and Pipeline
+
+ * Fixed batch command not reporting error when working in read-only folder (PVQ-5335)
+
+### SDK, API
+
+ * Added `PdfTemplateQuery` — evaluate filters (regex or template hooks `tag_update`, `font_update`, `object_update`, `annot_update`), including `TestFont()` for template-based font selection (PVQ-5451)
+ * Added `PdsText.GetCharOrigin(index)` (PVQ-5475)
+ * Added `PdfTextState.horizontal_scale` (PVQ-5476)
+ * Added PdsText scaling factors from PdfTextState to PDF-to-JSON conversion (PVQ-5477)
+
+### Python SDK
+
+ * Improved Python wrapper — type hints, `Optional[]`, `str` for `char*`, MYPY compatibility, pythonic None handling, `GetPath` fix (PVQ-5466)
+
+### PDF Core
+
+ * Fixed UTF-8 encoded string objects and dictionary keys (PVQ-5387)
+ * Fixed empty dictionary keys removed when value is empty (PVQ-5371)
+ * Fixed stack overflow in `get_page_object` on deep `/P` chains (PVQ-5447)
+ * Fixed XRef stream (pdfium update)
+
+### General Updates
+
+ * Fixed warning cleanup (num_cast, literals, C4099, CMake)
+
 ## [9.0.0] - 2026-05-04
 
 ### Accessibility
