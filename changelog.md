@@ -1,5 +1,15 @@
 # Changelog
 
+## [9.1.1] - 2026-07-16
+
+### Accessibility
+
+ * Fixed Make Accessible mirroring text on the page when horizontal scale is negative (PVQ-5638)
+
+### Command-Line and Pipeline
+
+ * Fixed PsCommand pipeline output mixed with external process stderr when memory allocation exceeds limits (PVQ-5674)
+
 ## [9.1.0] - 2026-06-17
 
 ### Accessibility
