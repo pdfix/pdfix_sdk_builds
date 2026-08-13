@@ -1,0 +1,15 @@
+var searchData=
+[
+  ['hasannot_0',['HasAnnot',['../struct_pds_struct_element.html#acb654ec8a1ac4aca3ea841ddfa313cdc',1,'PdsStructElement']]],
+  ['hasbordergraphicstate_1',['HasBorderGraphicState',['../struct_pde_cell.html#a7d28f917e0832b5ad26995830e57fc69',1,'PdeCell']]],
+  ['hascontent_2',['HasContent',['../struct_pds_struct_element.html#a29dde469fa360ee12454f152ad7dacf5',1,'PdsStructElement']]],
+  ['haselements_3',['HasElements',['../struct_pde_page_map.html#a285add073074c8f193a69c3f1b33064c',1,'PdePageMap']]],
+  ['hasfilter_4',['HasFilter',['../struct_pdf_template_query.html#a47121d9d42107c726e956efbd2a158de',1,'PdfTemplateQuery']]],
+  ['haspassword_5',['HasPassword',['../struct_pdf_standard_security_handler.html#ad62843d99f3c264b22cdafce06818834',1,'PdfStandardSecurityHandler']]],
+  ['hassmask_6',['HasSMask',['../struct_pds_image.html#a7efe553221ee2d4beaede76b12efcb63',1,'PdsImage']]],
+  ['hastextstate_7',['HasTextState',['../struct_pde_word.html#a9a3f6caf9fc6c2186b2f2a602e36e964',1,'PdeWord::HasTextState()'],['../struct_pde_text_line.html#ae37b3088965683e69c3ba5fd0f86a9b7',1,'PdeTextLine::HasTextState()'],['../struct_pde_text.html#aad84d19217cdc1a926530f299a78b0f0',1,'PdeText::HasTextState()']]],
+  ['header_8',['header',['../struct___pdf_cell_params.html#afd546bbb403831edc884e60ef5d798ce',1,'_PdfCellParams']]],
+  ['headings_9',['headings',['../struct___pdf_tags_params.html#a89f0c0112a54526e1c1718bdcf7b9274',1,'_PdfTagsParams']]],
+  ['height_10',['height',['../struct___pdf_font_state.html#ab0ff23914e0ebc3fd7830a480f894871',1,'_PdfFontState::height'],['../struct___pdf_whitespace_params.html#a3e6db52943a448f7a8a1dbe63a3ecb82',1,'_PdfWhitespaceParams::height'],['../struct___ps_image_info.html#a2d192f37bee32fdea1028999a858eced',1,'_PsImageInfo::height']]],
+  ['horizontal_5fscale_11',['horizontal_scale',['../struct___pdf_text_state.html#ad8e4762337740c535465e05110f7cc51',1,'_PdfTextState']]]
+];

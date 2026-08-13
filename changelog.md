@@ -1,5 +1,33 @@
 # Changelog
 
+## [9.2.0] - 2026-08-13
+
+### Accessibility
+
+ * Fixed continuous table tagging across pages (PVQ-5831)
+ * Fixed graphic table detection (PVQ-5814)
+
+### Actions
+
+ * Added Merge Tags action — grouping wrappers, neighbours, nested Document, Note chains, merge target, and default join values (PVQ-5452, PVQ-5834)
+ * Added Fix Fonts for Form Filling action (PVQ-5695)
+ * Fixed AutoTag Preflight — shown in the action; skipped when a template is set (PVQ-5876)
+ * Fixed Fix Content Marks removing valid Form XObject MCIDs with Remove Invalid MCID (PVQ-5816)
+
+### PdfDocTemplate
+
+ * Added `tag_neighbours` template function — pair rules for Merge Tags (cross-page, Note chains) (PVQ-5452)
+ * Added `object_num` on structure tags — identify associated page objects by ID (PVQ-5860)
+
+### Metadata and Document Information
+
+ * Fixed Catalog XMP metadata wrapping in `xpacket` (PVQ-5751)
+
+### General Updates
+
+ * Fixed license device identification on Windows (PVQ-5669)
+ * Improved action execution performance (PVQ-5753)
+
 ## [9.1.1] - 2026-07-16
 
 ### Accessibility
