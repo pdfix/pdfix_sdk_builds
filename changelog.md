@@ -1,5 +1,34 @@
 # Changelog
 
+## [9.3.0] - 2026-08-31
+
+### Accessibility
+
+ * Fixed MoveChild leaving `/Pg` on an ancestor instead of the direct parent of moved structure content (PVQ-5927)
+
+### Actions
+
+ * Fixed Set Annotation Contents skipping on-page link annotations with a zero-size rectangle (PVQ-5949)
+ * Fixed Fix Invalid Elements treating page MCR kids as orphans and Remove Invalid MCID missing page marks
+ * Updated Set PDF/UA revision year default to 2024
+
+### Metadata and Document Information
+
+ * Fixed parsing UTF-16/32 XMP Metadata streams so Set PDF/UA and Fix Metadata no longer wipe existing properties (PVQ-5950)
+ * Fixed saving PDF/A without object streams (ObjStm) or cross-reference streams (XRefStm) (PVQ-5951)
+ * Fixed preserving compact XMP attributes, writing ISO 8601 dates, and declaring the pdfuaid extension schema when setting PDF/UA (PVQ-5952)
+ * Fixed Dublin Core Text properties (`dc:coverage`, `dc:identifier`, `dc:format`, `dc:source`) being wrapped as `rdf:Bag` (PVQ-5953)
+ * Fixed keeping localized `dc:title` `xml:lang` when setting PDF/UA (PVQ-5973)
+ * Fixed Set PDF/UA dropping custom PDF/A extension schemas from `pdfaExtension:schemas`
+
+### WebAssembly
+
+ * Fixed UTF-16/32 XMP conversion on WASM (ICU converter not available in the WASM ICU subset)
+
+### SDK, API
+
+ * Modified `PdfSaveFlags::kSaveUncompressed` — also skips XRefStm; a full save of a PDF/A document applies this flag automatically
+
 ## [9.2.0] - 2026-08-13
 
 ### Accessibility
