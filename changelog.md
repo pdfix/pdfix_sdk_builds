@@ -1,5 +1,152 @@
 # Changelog
 
+# PDFix SDK
+
+## [10.0.0] - 2026-11-18
+
+### Highlights
+
+PDFix SDK 10.0 adds PDF 2.0 and PDF/UA-2 remediation, new conversions to Markdown and EPUB, and new tagging actions. Saving large tagged documents is faster and more reliable, and the SDK is now built on a current PDFium base.
+
+- **PDF/UA-2 remediation.** Ten new fix actions, structure-element namespaces with RoleMapNS, and GoTo structure destinations.
+- **New conversions.** Convert PDF to Markdown and to EPUB, and create a Reading view in HTML. PDF to HTML follows Deriving HTML from PDF 1.2 more closely.
+- **New tagging actions.** Tag Text, Wrap Tags, Fix Tag Tree, Remove Content Properties, and Split by pages, tags, or content.
+- **Faster, safer saving.** Full save of a large tagged document is about 2.5 times faster, and incremental save writes only the changes.
+- **New PDFium base.** PDFium is updated to Chromium 8053.
+
+### Accessibility and Conversion
+
+**New**
+- Convert a tagged PDF to EPUB.
+- Convert PDF to Markdown.
+- Reading view for PDF to HTML. When the PDF has no tags, conversion falls back to responsive HTML.
+- PDF to HTML follows Deriving HTML from PDF 1.2 more closely: derivation options, RoleMapNS, pagination, links, catalog associated files, nested captions, and page width.
+- Autotagging supports right-to-left text.
+- A new table of contents initial element and Tag as TOC, including explicit tables of contents recognized by title and page-number columns.
+- When you tag content that already belongs to a tag, the new tag is placed inside that tag.
+
+**Fixed**
+- Markdown and EPUB conversion keeps mixed content, Form XObjects, long paragraphs, and nested lists.
+- PDF to HTML, Markdown, and EPUB no longer stop on a figure drawn outside the page, a Form tag without a widget, or a push button or signature field without `/MK`.
+- Fixed and Responsive HTML output is no longer empty.
+- Retagging no longer nests a new tag inside an element that was fully retagged.
+- Table rows that are split across a page break are handled correctly.
+- Border detection works for thin spacer columns.
+- Images inside tables are no longer tagged as rules.
+- Fix Spaces works at inline tag boundaries, including glyphs whose ToUnicode does not round-trip.
+- `\s` matches whitespace correctly on macOS and Linux.
+- Manually tagging text as Heading no longer creates a P tag.
+- Fix List Tag no longer skips nested lists under LI/LBody.
+- Redaction no longer leaves redacted text in the tag tree.
+- Undo of page content no longer leaves structure references to dropped empty marked-content sequences.
+- Text no longer disappears after Undo of Set Content Color, or after Add Tags followed by Undo.
+
+### Actions
+
+**New**
+- **Tag Text:** wrap each regular-expression match in a new structure tag.
+- **Wrap Tags:** add a new parent tag around each matching tag.
+- **Fix Tag Tree:** repair MCID and MCR links and rename content marks to the linked tag type.
+- **Remove Content Properties:** clear Alt, ActualText, Lang, or expansion text on marked content.
+- **Split:** split a document by pages, tags, or content. The split output keeps its PDF/UA identification.
+- PDF/UA-2 fix actions: Fix Annotation PUA Strings, Fix Tag PUA Strings, Fix Associated File Descriptions, Fix Caption Position, Fix FENote, Fix File Attachment AFRelationship, Fix Formula MathML AF, Fix GoTo Structure Destination, Fix Text Field RV, and Fix TOCI Ref.
+
+**Changed**
+- Clone Form XObjects is renamed to Update Form XObjects and has clone, resources, and atomic options.
+- Set Suspect Value is renamed to Set MarkInfo and Suspects.
+
+**Fixed**
+- Set Content Color no longer removes the table rules that separate rows and columns.
+- Clear document structure no longer clears the structure tree when only Clear Content Marks is selected.
+- Tag Annotations works when `StructParent` does not lead back to the tag.
+- Editing properties of a whole marked-content sequence works when a named Properties entry is shared.
+- HTML attribute order is stable across platforms.
+
+**Removed**
+- Fix Invalid Elements has been removed. Use Fix Tag Tree instead.
+
+### Document Templates
+
+**New**
+- Separate switches turn off underline detection and strikeout detection.
+- Language can be set on a text line.
+- FontColor can be set on table cells.
+- `set_unicode_for_charcode` accepts the value `-1` to apply Unicode to every used charcode.
+
+### API
+
+**New**
+- `PdfDoc::CreateEpubConversion()` creates an EPUB conversion. Call `PdfConversion::Destroy` once for every successful create.
+- `PdfDoc::CreateMarkdownConversion()` creates a Markdown conversion. Call `PdfConversion::Destroy` once for every successful create.
+- `Pdfix::GetCommitHash()` returns the SDK build commit.
+- `Pdfix::GetProgressControl()` returns the progress control for the library.
+- `PsProgressControl::GetReport(PsStream* stream, PsDataFormat format)` writes the process report.
+- `GetObjectInfo` on `PdsObject`, `PdsPageObject`, `PdfAnnot`, `PdfFont`, `PdfPage`, `PdfBookmark`, and `PdsStructElement` builds the veraPDF-style object path for a live object. `PdfDoc::AcquireObjectInfo` still parses that path.
+- `PdsForm::GetAtomic()` and `PdsForm::SetAtomic(bool)` read and write the atomic flag on a Form XObject.
+- `PdfAnnot::GetAppearanceStream()` and `PdfAnnot::TransformBBox` read an annotation appearance and map a bounding box through it.
+- `PdfAction::GetStructureDest` and `PdfAction::SetStructureDest` read and write GoTo structure destinations.
+- `PdsStructElement::GetNumRefs()`, `GetRef`, `AddRef`, and `RemoveRef` read and edit the structure-element Ref list.
+- `PdsStructElement::RemoveAssociatedFile(int index)` removes an associated file.
+- `GetNamespace` and `SetNamespace` on structure elements, and `PdsRoleMap::AddMapped` with a namespace URI, which writes RoleMap or RoleMapNS.
+- `kEnumAnnots` lets font enumeration include annotation appearances.
+- HTML derivation flags `kHtmlDeriv*` and `kHtmlReader`.
+
+**Fixed**
+- Flatten and clone keep the structure of tagged Form XObjects, including repeated placements.
+- The ParentTree is updated correctly when tags, forms, or MCIDs are moved, flattened, or cleared.
+
+### Annotations
+
+**Fixed**
+- Flatten keeps the transparency group alpha, blend mode, and soft mask on Form XObjects.
+
+### Metadata and Security
+
+**Fixed**
+- `dc:title` is kept when it differs from Info `/Title`.
+- `rdf:about` is kept, and orphan PDF/UA identification properties are dropped.
+- A separate permissions password is handled correctly after the document is opened with the owner password.
+
+### Fonts
+
+**Fixed**
+- Embed Fonts on Linux no longer drops an embedded TrueType subset or writes an empty font dictionary.
+- An existing CIDSet is rewritten correctly.
+
+### Saving and PDF Core
+
+**New**
+- PDFium is updated from the 9.3 line to Chromium 8053.
+- Full save of a large tagged document is about 2.5 times faster in release builds.
+- Incremental save writes only the changes and leaves an unchanged file untouched, instead of rewriting the whole document uncompressed.
+
+**Fixed**
+- Full save of a hybrid-reference PDF 1.4 file keeps object streams instead of writing every object uncompressed.
+- A single-section hybrid-reference file no longer drops objects listed only in its `/XRefStm`.
+- Re-saving an opened encrypted document no longer writes an empty `/Encrypt`.
+- A full save no longer writes object-stream objects twice.
+- Saving into an existing file, including incremental save, correctly replaces the previous content.
+- Saving a document opened from a non-ASCII path works on Linux.
+- Extract Pages no longer drops Optional Content from the root.
+
+### Command Line
+
+**Fixed**
+- The CLI reports the full SDK error code on stdout.
+- An untagged PDF no longer reports that it cannot be converted to EPUB.
+
+### Language Bindings
+
+**Fixed**
+- .NET and other language bindings no longer crash on page-object handles that use virtual inheritance.
+- Python: `bool` results are read correctly. The binding now declares C `bool` as `c_bool`.
+- WebAssembly: trial marks are applied correctly when saving with a trial license.
+
+### General
+
+- Performance, stability, and memory management improvements.
+
+
 ## [9.3.0] - 2026-08-31
 
 ### Accessibility
