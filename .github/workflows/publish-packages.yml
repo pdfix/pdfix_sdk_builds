@@ -1,0 +1,201 @@
+name: Publish SDK packages (npm, PyPI, NuGet)
+
+# Publishes the registry packages of a finished Bitbucket build (dl.pdfix.net) to npm, PyPI and NuGet.
+# Authentication is OIDC trusted publishing - no registry tokens are stored in this repository.
+# Each registry must trust this workflow file (publish-packages.yml) and the environment "release".
+#
+# A published version can never be uploaded again, so:
+#   - dry_run (default) only downloads, checks and reports what is already published;
+#   - every publish job skips a package version that is already on the registry (safe to re-run).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "SDK version, e.g. 10.0.0"
+        required: true
+        type: string
+      branch:
+        description: "Full pdfix branch name of the build, e.g. release/v10.0.0"
+        required: true
+        type: string
+      commit:
+        description: "Full 40-char pdfix commit of the build"
+        required: true
+        type: string
+      npm_sdk:
+        description: "npm: pdfix-sdk"
+        type: boolean
+        default: true
+      npm_cli:
+        description: "npm: pdfix-cli + @pdfix/cli-*"
+        type: boolean
+        default: true
+      pypi_sdk:
+        description: "PyPI: pdfix-sdk"
+        type: boolean
+        default: true
+      pypi_cli:
+        description: "PyPI: pdfix-cli"
+        type: boolean
+        default: true
+      nuget:
+        description: "NuGet: PDFix.SDK"
+        type: boolean
+        default: true
+      dry_run:
+        description: "Only download, check and report - publish nothing"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-packages-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download and check packages
+        shell: bash
+        env:
+          VERSION: ${{ inputs.version }}
+          BRANCH: ${{ inputs.branch }}
+          COMMIT: ${{ inputs.commit }}
+        run: |
+          set +e
+          ./scripts/fetch-registry-packages.sh "$VERSION" "$BRANCH" "$COMMIT" "$RUNNER_TEMP/pkg" 2>&1 \
+            | tee "$RUNNER_TEMP/fetch.log"
+          status="${PIPESTATUS[0]}"
+          {
+            echo "## Packages ${VERSION} (dry run: ${{ inputs.dry_run }}) - exit code ${status}"
+            if [[ -f "$RUNNER_TEMP/pkg/status.md" ]]; then cat "$RUNNER_TEMP/pkg/status.md"; fi
+            echo; echo '<details><summary>Log</summary>'; echo; echo '```'
+            cat "$RUNNER_TEMP/fetch.log"
+            echo '```'; echo '</details>'
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit "$status"
+
+      - uses: actions/upload-artifact@v4
+        with: { name: npm-sdk, path: "${{ runner.temp }}/pkg/npm-sdk/", retention-days: 7, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: npm-cli, path: "${{ runner.temp }}/pkg/npm-cli/", retention-days: 7, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: pypi-sdk, path: "${{ runner.temp }}/pkg/pypi-sdk/", retention-days: 7, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: pypi-cli, path: "${{ runner.temp }}/pkg/pypi-cli/", retention-days: 7, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: nuget, path: "${{ runner.temp }}/pkg/nuget/", retention-days: 7, if-no-files-found: error }
+
+  npm:
+    needs: fetch
+    if: ${{ !inputs.dry_run && (inputs.npm_sdk || inputs.npm_cli) && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # npm trusted publishing (OIDC)
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          registry-url: "https://registry.npmjs.org"
+      - name: npm >= 11.5.1 (required for trusted publishing)
+        run: npm install -g npm@11 && npm --version
+      - uses: actions/download-artifact@v4
+        if: ${{ inputs.npm_cli }}
+        with: { name: npm-cli, path: pkg/npm-cli }
+      - uses: actions/download-artifact@v4
+        if: ${{ inputs.npm_sdk }}
+        with: { name: npm-sdk, path: pkg/npm-sdk }
+      - name: Publish
+        shell: bash
+        env:
+          VERSION: ${{ inputs.version }}
+          NPM_CLI: ${{ inputs.npm_cli }}
+          NPM_SDK: ${{ inputs.npm_sdk }}
+        run: |
+          files=()
+          if [[ "$NPM_CLI" == "true" ]]; then
+            # platform packages first: pdfix-cli declares them as optionalDependencies
+            for p in darwin-arm64 darwin-x64 linux-arm64 linux-x64 win32-x64; do
+              files+=("pkg/npm-cli/pdfix-cli-${p}-${VERSION}.tgz")
+            done
+            files+=("pkg/npm-cli/pdfix-cli-${VERSION}.tgz")
+          fi
+          if [[ "$NPM_SDK" == "true" ]]; then files+=("pkg/npm-sdk/pdfix-sdk-${VERSION}.tgz"); fi
+          for f in "${files[@]}"; do
+            name="$(tar -xzOf "$f" package/package.json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>console.log(JSON.parse(s).name))')"
+            if npm view "${name}@${VERSION}" version >/dev/null 2>&1; then
+              echo "skip ${name}@${VERSION}: already on npm" | tee -a "$GITHUB_STEP_SUMMARY"
+              continue
+            fi
+            echo "publish ${name}@${VERSION}"
+            npm publish "$f" --access public
+            echo "published ${name}@${VERSION}" >> "$GITHUB_STEP_SUMMARY"
+          done
+
+  pypi-sdk:
+    needs: fetch
+    if: ${{ !inputs.dry_run && inputs.pypi_sdk && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # PyPI trusted publishing (OIDC)
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: pypi-sdk, path: dist }
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          skip-existing: true # a re-run after a partial upload finishes the missing files
+          print-hash: true
+
+  pypi-cli:
+    needs: fetch
+    if: ${{ !inputs.dry_run && inputs.pypi_cli && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # PyPI trusted publishing (OIDC)
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: pypi-cli, path: dist }
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          skip-existing: true
+          print-hash: true
+
+  nuget:
+    needs: fetch
+    if: ${{ !inputs.dry_run && inputs.nuget && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      contents: read
+      id-token: write # NuGet trusted publishing (OIDC)
+    steps:
+      - uses: actions/download-artifact@v4
+        with: { name: nuget, path: pkg }
+      - name: NuGet login (OIDC -> 1 h API key)
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ${{ secrets.NUGET_USER }} # nuget.org account name (not e-mail) that owns the trusted publishing policy
+      - name: Publish
+        run: >
+          dotnet nuget push "pkg/*.nupkg"
+          --api-key "${{ steps.login.outputs.NUGET_API_KEY }}"
+          --source https://api.nuget.org/v3/index.json
+          --skip-duplicate
