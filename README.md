@@ -7,6 +7,21 @@ Developers can leverage the SDK with different [programming languages](#integrat
 
 Before getting started, check the [system requirements](#prerequisites) to ensure compatibility with your system.
 
+## Download
+
+| Package | Where |
+|---------|-------|
+| Native SDK (Windows, macOS, Linux, WebAssembly) with the CLI | [GitHub Releases](https://github.com/pdfix/pdfix_sdk_builds/releases) – `pdfix_sdk_<version>_<commit>_<platform>` |
+| Java | [GitHub Releases](https://github.com/pdfix/pdfix_sdk_builds/releases) – `java-net.pdfix.pdfixlib-<version>_<commit>.jar.zip` |
+| Python | [PyPI `pdfix-sdk`](https://pypi.org/project/pdfix-sdk/) – `pip install pdfix-sdk` |
+| JavaScript | [npm `pdfix-sdk`](https://www.npmjs.com/package/pdfix-sdk) – `npm install pdfix-sdk` |
+| .NET | [NuGet `PDFix.SDK`](https://www.nuget.org/packages/PDFix.SDK) – `dotnet add package PDFix.SDK` |
+| CLI as a Python package | [PyPI `pdfix-cli`](https://pypi.org/project/pdfix-cli/) – `pip install pdfix-cli` |
+| CLI as an npm package | [npm `pdfix-cli`](https://www.npmjs.com/package/pdfix-cli) – `npm install pdfix-cli` |
+
+Since 10.0.0 the Python, JavaScript and .NET SDK packages and the CLI packages are published only to PyPI, npm and NuGet, not to GitHub Releases.
+The npm package `pdfix-cli-app` (9.1.1–9.3.0) is replaced by `pdfix-cli`.
+
 ## Integration Using the CLI
 
 PDFix offers straightforward, rapid, and automated PDF processing via the command-line interface:

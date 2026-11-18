@@ -93,8 +93,10 @@ cat > "$NOTES_FILE" <<EOF
 [PDF Batch Actions Documentation](https://docs.pdfix.net/actions/overview)
 EOF
 
-# ---- the expected build output (see pdfix/bitbucket-pipelines.yml) ----------
-# Native SDK packages and Python wheels go to the release as they are.
+# ---- the release assets, a subset of the build output (pdfix/bitbucket-pipelines.yml) ----
+# Not in the release: npm/, npm-cli/, python/, pip-cli/, nuget/ - these packages are distributed only
+# through npm, PyPI and NuGet (see README.md "Download").
+# Native SDK packages go to the release as they are.
 AS_IS=(
   "pdfix_sdk_${VERSION}_${C8}_linux_aarch64.tar.gz"
   "pdfix_sdk_${VERSION}_${C8}_linux_x86_64.tar.gz"
@@ -102,27 +104,12 @@ AS_IS=(
   "pdfix_sdk_${VERSION}_${C8}_macos_x86_64.zip"
   "pdfix_sdk_${VERSION}_${C8}_wasm.zip"
   "pdfix_sdk_${VERSION}_${C8}_windows_x86_64.zip"
-  "python/pdfix_sdk-${VERSION}-py3-none-any.whl"
-  "pip-cli/pdfix_cli-${VERSION}-py3-none-macosx_10_13_x86_64.whl"
-  "pip-cli/pdfix_cli-${VERSION}-py3-none-macosx_11_0_arm64.whl"
-  "pip-cli/pdfix_cli-${VERSION}-py3-none-manylinux_2_17_aarch64.whl"
-  "pip-cli/pdfix_cli-${VERSION}-py3-none-manylinux_2_17_x86_64.whl"
-  "pip-cli/pdfix_cli-${VERSION}-py3-none-win_amd64.whl"
 )
 # These are zipped so that the release asset carries the version and the commit:
 #   <folder>-<file with _<commit8> after the version>.zip
 #   java/net.pdfix.pdfixlib-10.0.0.jar -> java-net.pdfix.pdfixlib-10.0.0_14ecb689.jar.zip
 ZIPPED=(
   "java/net.pdfix.pdfixlib-${VERSION}.jar"
-  "nuget/PDFix.SDK.${VERSION}.nupkg"
-  "npm/pdfix-sdk-${VERSION}.tgz"
-  "python/pdfix_sdk-${VERSION}.tar.gz"
-  "npm-cli/pdfix-cli-${VERSION}.tgz"
-  "npm-cli/pdfix-cli-darwin-arm64-${VERSION}.tgz"
-  "npm-cli/pdfix-cli-darwin-x64-${VERSION}.tgz"
-  "npm-cli/pdfix-cli-linux-arm64-${VERSION}.tgz"
-  "npm-cli/pdfix-cli-linux-x64-${VERSION}.tgz"
-  "npm-cli/pdfix-cli-win32-x64-${VERSION}.tgz"
 )
 
 # ---- download ---------------------------------------------------------------
