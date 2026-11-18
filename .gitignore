@@ -1,0 +1,3 @@
+__pycache__/
+# Local tests of scripts/update_examples.py (not in the repo)
+scripts/tests/

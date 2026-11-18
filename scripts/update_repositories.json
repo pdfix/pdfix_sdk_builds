@@ -1,0 +1,107 @@
+{
+    "org": "pdfix",
+    "targets": [
+        {
+            "name": "python",
+            "repo": "pdfix_sdk_example_python",
+            "files": [
+                {
+                    "path": "requirements.txt",
+                    "rules": [
+                        {
+                            "pattern": "^pdfix-sdk==(?P<val>[^\\s#;]+)",
+                            "value": "{version}",
+                            "compare": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "dotnet",
+            "repo": "pdfix_sdk_example_dotnet",
+            "files": [
+                {
+                    "path": "pdfix_sdk_example_dotnet.csproj",
+                    "rules": [
+                        {
+                            "pattern": "<PackageReference\\s+Include=\"PDFix\\.SDK\"\\s+Version=\"(?P<val>[^\"]*)\"",
+                            "value": "{version}",
+                            "compare": true
+                        }
+                    ]
+                },
+                {
+                    "path": "packages.config",
+                    "rules": [
+                        {
+                            "pattern": "<package\\s+id=\"PDFix\\.SDK\"\\s+version=\"(?P<val>[^\"]*)\"",
+                            "value": "{version}",
+                            "compare": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "java",
+            "repo": "pdfix_sdk_example_java",
+            "files": [
+                {
+                    "path": "pom.xml",
+                    "rules": [
+                        {
+                            "pattern": "<pdfixlib\\.version>(?P<val>[^<]*)</pdfixlib\\.version>",
+                            "value": "{version}",
+                            "compare": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "cpp",
+            "repo": "pdfix_sdk_example_cpp",
+            "requires_commit": true,
+            "check_url": "https://github.com/pdfix/pdfix_sdk_builds/releases/download/v{version}/pdfix_sdk_{version}_{commit}_linux_x86_64.tar.gz",
+            "files": [
+                {
+                    "path": "CMakeLists.txt",
+                    "rules": [
+                        {
+                            "pattern": "set\\(PDFIX_SDK_VERSION\\s+\"(?P<val>[^\"]*)\"\\)",
+                            "value": "{version}",
+                            "compare": true
+                        },
+                        {
+                            "pattern": "set\\(PDFIX_SDK_COMMIT\\s+\"(?P<val>[^\"]*)\"\\)",
+                            "value": "{commit}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "npm",
+            "repo": "pdfix_sdk_example_npm",
+            "wait_for_npm": "pdfix-sdk",
+            "files": [
+                {
+                    "path": "package.json",
+                    "rules": [
+                        {
+                            "pattern": "\"pdfix-sdk\"\\s*:\\s*\"(?P<val>[^\"]*)\"",
+                            "value": "{version}",
+                            "compare": true
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "versions_repo": {
+        "repo": "pdfix-version-updates",
+        "path": "v1/versions.json",
+        "entry": "pdfix-sdk"
+    }
+}

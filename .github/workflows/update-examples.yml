@@ -1,0 +1,103 @@
+# Sets the exact SDK version of a published release in the example repos
+# (python, dotnet, java, cpp, npm) and in pdfix-version-updates/v1/versions.json.
+#
+# The version comes from the GitHub Release (platform asset names
+# pdfix_sdk_<version>_<commit8>_<platform>.*), not from the git tag. Only upgrades are written;
+# one failing target never fails the job (see the job summary).
+#
+# Triggers:
+#   release: published   - drafts and prereleases are skipped by the script.
+#   workflow_dispatch    - inputs:
+#       version  SDK version whose release is used, e.g. 9.3.0 (release tag v<version>).
+#       dry_run  true (default): show per-file diffs in the job summary, push nothing.
+#
+# Secrets (same GitHub App as the action repos, write access to the org repos):
+#   APP_ID, APP_PRIVATE_KEY
+#
+# Needs no FTP secrets: pdfix-version-updates uploads versions.json itself when it gets the tag.
+#
+# Script: scripts/update_examples.py, target repos and files: scripts/update_repositories.json.
+# Its tests are local only (scripts/tests/ is gitignored):
+#   python3 -m unittest discover -s scripts/tests -v
+
+name: Update examples
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "SDK version of the release to roll out (e.g. 9.3.0)"
+        required: true
+        type: string
+      dry_run:
+        description: "Dry run: show diffs only, no commit or push"
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+# One run at a time across all versions: every run pushes to the same repos.
+# A second run waits (not cancelled); GitHub keeps only the newest pending run.
+concurrency:
+  group: update-examples
+  cancel-in-progress: false
+
+jobs:
+  update-examples:
+    runs-on: ubuntu-latest
+    # npm is polled for up to 60 minutes (--npm-timeout-min); the rest takes a few minutes.
+    timeout-minutes: 90
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+
+      - name: Get the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          if [[ "$EVENT_NAME" == "release" ]]; then
+            jq '.release' "$GITHUB_EVENT_PATH" > release.json
+            echo "EXPECT_VERSION=" >> "$GITHUB_ENV"
+          else
+            if [[ ! "$INPUT_VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+              echo "version must look like 9.3.0" >&2
+              exit 1
+            fi
+            gh api "repos/${GITHUB_REPOSITORY}/releases/tags/v${INPUT_VERSION}" > release.json
+            echo "EXPECT_VERSION=${INPUT_VERSION}" >> "$GITHUB_ENV"
+          fi
+
+      - name: Generate GitHub App token
+        id: app-token
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: pdfix
+          repositories: |
+            pdfix_sdk_example_python
+            pdfix_sdk_example_dotnet
+            pdfix_sdk_example_java
+            pdfix_sdk_example_cpp
+            pdfix_sdk_example_npm
+            pdfix-version-updates
+
+      - name: Update examples and versions.json
+        env:
+          GH_APP_TOKEN: ${{ steps.app-token.outputs.token }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          args=(--release-json release.json)
+          if [[ -n "$EXPECT_VERSION" ]]; then
+            args+=(--expect-version "$EXPECT_VERSION")
+          fi
+          if [[ "$DRY_RUN" == "true" ]]; then
+            args+=(--dry-run)
+          fi
+          python3 scripts/update_examples.py run "${args[@]}"
