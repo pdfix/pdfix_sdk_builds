@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Set the exact PDFix SDK version of a published release in the example repos and in
 pdfix-version-updates/v1/versions.json.
 
@@ -31,10 +30,11 @@ import tempfile
 import time
 import urllib.error
 import urllib.request
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from functools import partial
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 SEMVER_RE = re.compile(r"^(\d+)\.(\d+)\.(\d+)$")
 ASSET_RE = re.compile(
@@ -123,9 +123,13 @@ def derive_release(release: dict[str, Any]) -> Release:
 
     name_match = RELEASE_NAME_RE.match(str(release.get("name") or "").strip())
     if name_match is None:
-        raise ReleaseError(f"release name is not 'PDFix SDK <version>': {release.get('name')!r}")
+        raise ReleaseError(
+            f"release name is not 'PDFix SDK <version>': {release.get('name')!r}"
+        )
     if name_match.group("version") != version:
-        raise ReleaseError(f"release name says {name_match.group('version')}, assets say {version}")
+        raise ReleaseError(
+            f"release name says {name_match.group('version')}, assets say {version}"
+        )
     return Release(version, commit, published)
 
 
@@ -136,7 +140,9 @@ def replace_val(match: re.Match[str], value: str) -> str:
     return whole[: match.start("val") - base] + value + whole[match.end("val") - base :]
 
 
-def rewrite_text(text: str, rules: list[dict[str, Any]], values: dict[str, str]) -> tuple[str, str, str]:
+def rewrite_text(
+    text: str, rules: list[dict[str, Any]], values: dict[str, str]
+) -> tuple[str, str, str]:
     """Apply the rewrite rules of one file.
 
     Each rule has ``pattern`` (regex with a named group ``val``), ``value`` (template using
@@ -170,7 +176,9 @@ def rewrite_text(text: str, rules: list[dict[str, Any]], values: dict[str, str])
     return text, UPDATED, current
 
 
-def rewrite_versions_json(text: str, entry: str, version: str, release_date: str) -> tuple[str, str, str]:
+def rewrite_versions_json(
+    text: str, entry: str, version: str, release_date: str
+) -> tuple[str, str, str]:
     """Set ``<entry>.version`` and ``<entry>.release_date`` only (4-space indent like jq).
 
     Same status semantics as rewrite_text. All other keys are left unchanged.
@@ -207,7 +215,9 @@ def next_patch_tag(tags: list[str]) -> str:
 
 
 class Context:
-    def __init__(self, args: argparse.Namespace, release: Release, workdir: Path) -> None:
+    def __init__(
+        self, args: argparse.Namespace, release: Release, workdir: Path
+    ) -> None:
         self.dry_run: bool = args.dry_run
         self.release = release
         self.workdir = workdir
@@ -239,11 +249,17 @@ class Context:
         return run(["git", *args], cwd, self.env, check)
 
 
-def run(cmd: list[str], cwd: Path | None, env: dict[str, str], check: bool = True) -> str:
-    proc = subprocess.run(cmd, check=False, cwd=cwd, env=env, capture_output=True, text=True)
+def run(
+    cmd: list[str], cwd: Path | None, env: dict[str, str], check: bool = True
+) -> str:
+    proc = subprocess.run(
+        cmd, check=False, cwd=cwd, env=env, capture_output=True, text=True
+    )
     if check and proc.returncode != 0:
         detail = (proc.stderr or proc.stdout).strip().splitlines()
-        raise RuntimeError(f"{' '.join(cmd[:3])} failed: {detail[-1] if detail else proc.returncode}")
+        raise RuntimeError(
+            f"{' '.join(cmd[:3])} failed: {detail[-1] if detail else proc.returncode}"
+        )
     return proc.stdout.strip()
 
 
@@ -282,7 +298,17 @@ def default_branch(ctx: Context, repo_dir: Path) -> str:
 def commit_all(ctx: Context, repo_dir: Path, message: str) -> None:
     name, email = COMMIT_AUTHOR
     ctx.git(repo_dir, "add", "-u")
-    ctx.git(repo_dir, "-c", f"user.name={name}", "-c", f"user.email={email}", "commit", "-q", "-m", message)
+    ctx.git(
+        repo_dir,
+        "-c",
+        f"user.name={name}",
+        "-c",
+        f"user.email={email}",
+        "commit",
+        "-q",
+        "-m",
+        message,
+    )
 
 
 def check_url_reachable(url: str) -> bool:
@@ -295,7 +321,12 @@ def check_url_reachable(url: str) -> bool:
 
 
 def npm_has_version(ctx: Context, repo_dir: Path, package: str, version: str) -> bool:
-    out = run(["npm", "view", f"{package}@{version}", "version"], repo_dir, ctx.env, check=False)
+    out = run(
+        ["npm", "view", f"{package}@{version}", "version"],
+        repo_dir,
+        ctx.env,
+        check=False,
+    )
     return out == version
 
 
@@ -307,7 +338,9 @@ def wait_for_npm(ctx: Context, repo_dir: Path, package: str, version: str) -> bo
             return True
         if ctx.dry_run or time.monotonic() >= deadline:
             return False
-        print(f"npm: {package}@{version} not published yet, waiting {ctx.npm_interval_s:.0f}s")
+        print(
+            f"npm: {package}@{version} not published yet, waiting {ctx.npm_interval_s:.0f}s"
+        )
         time.sleep(ctx.npm_interval_s)
 
 
@@ -330,9 +363,14 @@ def process_example(ctx: Context, target: dict[str, Any]) -> Outcome:
 
     repo_dir = clone(ctx, repo)
     default = default_branch(ctx, repo_dir)
-    if ctx.git(repo_dir, "rev-parse", "--verify", "--quiet", "origin/dev", check=False) == "":
+    if (
+        ctx.git(repo_dir, "rev-parse", "--verify", "--quiet", "origin/dev", check=False)
+        == ""
+    ):
         return Outcome(name, "skipped-no-dev-branch")
-    in_sync = ctx.git(repo_dir, "rev-parse", "origin/dev") == ctx.git(repo_dir, "rev-parse", f"origin/{default}")
+    in_sync = ctx.git(repo_dir, "rev-parse", "origin/dev") == ctx.git(
+        repo_dir, "rev-parse", f"origin/{default}"
+    )
     ctx.git(repo_dir, "checkout", "--quiet", "-B", "dev", "origin/dev")
 
     statuses: dict[str, str] = {}
@@ -355,7 +393,11 @@ def process_example(ctx: Context, target: dict[str, Any]) -> Outcome:
             return Outcome(name, "skipped-npm-missing")
         if not wait_for_npm(ctx, repo_dir, package, release.version):
             note = " (dry run: not waiting)" if ctx.dry_run else ""
-            return Outcome(name, "skipped-npm-timeout", f"{package}@{release.version} not on npm{note}")
+            return Outcome(
+                name,
+                "skipped-npm-timeout",
+                f"{package}@{release.version} not on npm{note}",
+            )
         run(
             [
                 "npm",
@@ -387,7 +429,9 @@ def process_example(ctx: Context, target: dict[str, Any]) -> Outcome:
             warnings.append(f"{default} not moved: {exc}")
     else:
         warnings.append(f"{default} differs from dev, left unchanged")
-    return Outcome(name, "updated", f"{current} -> {release.version} ({where})", diff, warnings)
+    return Outcome(
+        name, "updated", f"{current} -> {release.version} ({where})", diff, warnings
+    )
 
 
 def process_versions_repo(ctx: Context, cfg: dict[str, Any]) -> Outcome:
@@ -399,7 +443,9 @@ def process_versions_repo(ctx: Context, cfg: dict[str, Any]) -> Outcome:
     ctx.git(repo_dir, "fetch", "--quiet", "--tags")
 
     path = repo_dir / cfg["path"]
-    new, status, current = rewrite_versions_json(read_file(path), cfg["entry"], release.version, release.published)
+    new, status, current = rewrite_versions_json(
+        read_file(path), cfg["entry"], release.version, release.published
+    )
     if status == ALREADY_SET:
         return Outcome(name, "skipped-already-set")
     if status == NOT_HIGHER:
@@ -410,7 +456,9 @@ def process_versions_repo(ctx: Context, cfg: dict[str, Any]) -> Outcome:
     tags = ctx.git(repo_dir, "tag", "-l", "v*.*.*").splitlines()
     new_tag = next_patch_tag(tags)
     if ctx.dry_run:
-        return Outcome(name, "would-update", f"{current} -> {release.version}, tag {new_tag}", diff)
+        return Outcome(
+            name, "would-update", f"{current} -> {release.version}, tag {new_tag}", diff
+        )
 
     commit_all(ctx, repo_dir, f"{cfg['entry']} {release.version}")
     try:
@@ -430,7 +478,9 @@ def process_versions_repo(ctx: Context, cfg: dict[str, Any]) -> Outcome:
             ctx.git(repo_dir, "tag", "-a", new_tag, "-m", f"Release {new_tag}")
             ctx.git(repo_dir, "push", "origin", new_tag)
         except RuntimeError as exc:
-            warnings.append(f"tag-conflict: {new_tag} not pushed ({exc}); tag it manually")
+            warnings.append(
+                f"tag-conflict: {new_tag} not pushed ({exc}); tag it manually"
+            )
     return Outcome(name, "updated", f"{current} -> {release.version}", diff, warnings)
 
 
@@ -447,7 +497,12 @@ def load_release(path: str, expect_version: str = "") -> Release:
 
 
 def write_summary(title: str, outcomes: list[Outcome], dry_run: bool) -> None:
-    lines = [f"## {title}{' (dry run)' if dry_run else ''}", "", "| Target | Result | Detail |", "|---|---|---|"]
+    lines = [
+        f"## {title}{' (dry run)' if dry_run else ''}",
+        "",
+        "| Target | Result | Detail |",
+        "|---|---|---|",
+    ]
     for o in outcomes:
         lines.append(f"| {o.target} | {o.status} | {o.detail} |")
     for o in outcomes:
@@ -482,7 +537,9 @@ def cmd_derive(args: argparse.Namespace) -> int:
     if release.skip_reason:
         print(f"skip: {release.skip_reason}")
         return 1
-    print(f"version={release.version}\ncommit={release.commit}\npublished={release.published}")
+    print(
+        f"version={release.version}\ncommit={release.commit}\npublished={release.published}"
+    )
     return 0
 
 
@@ -502,7 +559,9 @@ def cmd_run(args: argparse.Namespace) -> int:
     config = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
     if args.url_template is None:
         args.url_template = f"https://github.com/{config['org']}/{{repo}}.git"
-    only = set(filter(None, args.only.split(","))) if args.only else None
+    only: set[str] | None = (
+        set(filter(None, args.only.split(","))) if args.only else None
+    )
 
     tmp = None if args.workdir else tempfile.mkdtemp(prefix="update-examples-")
     workdir = Path(args.workdir or tmp or "")
@@ -512,8 +571,12 @@ def cmd_run(args: argparse.Namespace) -> int:
     # npm waits for the registry, so it runs after everything else.
     plain = [t for t in config["targets"] if not t.get("wait_for_npm")]
     waiting = [t for t in config["targets"] if t.get("wait_for_npm")]
-    steps: list[tuple[str, Callable[[], Outcome]]] = [(t["name"], partial(process_example, ctx, t)) for t in plain]
-    steps.append(("versions.json", partial(process_versions_repo, ctx, config["versions_repo"])))
+    steps: list[tuple[str, Callable[[], Outcome]]] = [
+        (t["name"], partial(process_example, ctx, t)) for t in plain
+    ]
+    steps.append(
+        ("versions.json", partial(process_versions_repo, ctx, config["versions_repo"]))
+    )
     steps += [(t["name"], partial(process_example, ctx, t)) for t in waiting]
 
     outcomes = []
@@ -522,9 +585,11 @@ def cmd_run(args: argparse.Namespace) -> int:
             continue
         try:
             outcomes.append(step())
-        except Exception as exc:  # one failing target must not stop the others
+        except Exception as exc:  # one failing target must not stop the others  # noqa: BLE001
             outcomes.append(Outcome(name, "skipped-error", str(exc)))
-    write_summary(f"PDFix SDK {release.version} ({release.commit})", outcomes, args.dry_run)
+    write_summary(
+        f"PDFix SDK {release.version} ({release.commit})", outcomes, args.dry_run
+    )
     if tmp:
         shutil.rmtree(tmp, ignore_errors=True)
     return 0
@@ -539,10 +604,14 @@ def write_summary_note(text: str) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawTextHelpFormatter
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
-    derive = sub.add_parser("derive", help="print version/commit/date derived from a release JSON")
+    derive = sub.add_parser(
+        "derive", help="print version/commit/date derived from a release JSON"
+    )
     derive.add_argument("--release-json", required=True)
     derive.add_argument("--expect-version", default="")
     derive.set_defaults(func=cmd_derive)
@@ -550,13 +619,23 @@ def main(argv: list[str] | None = None) -> int:
     runner = sub.add_parser("run", help="update all targets")
     runner.add_argument("--release-json", required=True)
     runner.add_argument("--expect-version", default="")
-    runner.add_argument("--dry-run", action="store_true", help="show diffs, never commit or push")
+    runner.add_argument(
+        "--dry-run", action="store_true", help="show diffs, never commit or push"
+    )
     runner.add_argument("--only", default="", help="comma-separated target names")
-    runner.add_argument("--url-template", default=None, help="clone URL with {repo}; default GitHub")
-    runner.add_argument("--workdir", default="", help="keep clones here (default: temp dir)")
+    runner.add_argument(
+        "--url-template", default=None, help="clone URL with {repo}; default GitHub"
+    )
+    runner.add_argument(
+        "--workdir", default="", help="keep clones here (default: temp dir)"
+    )
     runner.add_argument("--npm-timeout-min", type=float, default=60)
     runner.add_argument("--npm-interval-s", type=float, default=60)
-    runner.add_argument("--skip-checks", action="store_true", help="dry run only: skip the C++ URL check")
+    runner.add_argument(
+        "--skip-checks",
+        action="store_true",
+        help="dry run only: skip the C++ URL check",
+    )
     runner.set_defaults(func=cmd_run)
 
     args = parser.parse_args(argv)
