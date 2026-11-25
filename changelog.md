@@ -2,6 +2,54 @@
 
 # PDFix SDK
 
+## [10.0.1] - 2026-11-25
+
+### Highlights
+
+PDFix SDK 10.0.1 is a bug-fix release. Retagging already tagged content is now reliable, and Fix Spaces and XMP metadata handling produce files that pass validation.
+
+- **Reliable retagging.** Tag As and AddTags no longer give one MCID to two tags or leave a tag without content.
+- **Fix Spaces.** Artifacted spaces no longer break PDF/UA-1 rule 7.21.7 or duplicate an MCID.
+- **XMP metadata.** Metadata written by older XMP tools stays readable after you set PDF/UA identification.
+
+### Accessibility and Tagging
+
+**Fixed**
+- Retagging removes the old structure reference also when it is a marked-content reference (MCR), for example in LaTeX-tagged PDFs. Two tags no longer reference one MCID.
+- MCIDs of empty marked-content sequences are no longer given to a new tag.
+- Retagging includes the sublists of list items, the graphics of figures, and joined graphics, so the old tag is no longer left without content.
+- Tagging content that still has an MCID removes its old structure reference.
+- Text split from a rectangle selection no longer shares one MCID across lines.
+- Tag As places the new tag at the content and replaces parent tags that it left empty.
+- Retagging text that was tagged earlier in the same session removes its previous structure.
+- Repeated Tag As no longer makes the page's ParentTree array grow, and no MCIDs are skipped.
+- Splitting artifact content whose MCID no structure element refers to no longer leaves an MCID without a structure reference.
+- Autotagging keeps the space after a word next to that word, so one MCID no longer spans two separate content runs.
+- A Form XObject outside a Tag As selection keeps its bounding box and is no longer turned into an artifact.
+- Layout recognition joins path fragments that are a tiny fraction of a point apart, so they are no longer recognized as separate images.
+
+### Actions
+
+**Fixed**
+- Fix Spaces with artifacting of unnecessary spaces writes one GlyphLessFont code for each removed space, so PDF/UA-1 rule 7.21.7 passes after the action.
+- Fix Spaces gives the content after an artifacted space its own MCID, so validators no longer report a duplicate MCID.
+
+### Metadata and Security
+
+**Fixed**
+- XMP metadata that uses the legacy `about` attribute on `rdf:Description` stays valid after Set PDF/UA. veraPDF no longer reports `dc:title` and the PDF/UA identification as missing.
+
+### API
+
+**Fixed**
+- `PdePageMap::AddTags` keeps the new tags inside the parent element you pass, also when it retags already tagged content.
+- `kStateNoRender` only skips rendering again, as in 9.3. The object still counts for bounding boxes, text extraction, and content generation.
+
+### Language Bindings
+
+**Fixed**
+- The npm package `pdfix-sdk` now includes its repository information.
+
 ## [10.0.0] - 2026-11-18
 
 ### Highlights
